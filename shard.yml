@@ -1,0 +1,13 @@
+name: snob
+version: 0.1.0
+
+authors:
+  - Vagrant <vagrant@localhost>
+
+targets:
+  snob:
+    main: src/snob.cr
+
+crystal: 0.23.1
+
+license: MIT
