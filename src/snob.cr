@@ -1,18 +1,16 @@
 #===============================================================================
-#
 #         FILE:  snob.cr
-#        USAGE:  snob.cr [hostname] [oid]
-#  DEVELOPMENT:  crystal build src/snob.cr
-#  DESCRIPTION:  Snmp Network Object Browser.
-#
+#        USAGE:  snob [arguments...]
+#  DEVELOPMENT:  crystal build|run src/snob.cr
+#      RELEASE:  crystal build --release --no-debug src/snob.cr
+#  DESCRIPTION:  A simple Snmp Network Object Browser.
 #      OPTIONS:  ---
-# REQUIREMENTS:  ---
-#
+# REQUIREMENTS:  shards: 
 #         BUGS:  ---
 #        NOTES:  #
 #       AUTHOR:  Lewis E. Bogan
 #      COMPANY:  Earthsea@Home
-#      CREATED:  2017-11-08 14:30
+#      CREATED:  2017-11-10 10:19
 #    COPYRIGHT:  (C) 2017 Lewis E. Bogan <lewis.bogan@comcast.net>
 #     GIT REPO:  ssh://devforge/var/lib/git/snob.git
 #             :  git remote add origin ssh://devforge/var/lib/git/snob.git
