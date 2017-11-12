@@ -10,35 +10,63 @@ module Reports
   end
 
   # Displays the report header
-  def display_header(hostname, header)
+  def display_header(hostname, header, oid)
     puts "==================================================================="
-    puts "#{hostname.upcase} - #{header[2]}"
+    puts "#{hostname.upcase} - #{oid}"
     puts "-------------------------------------------------------------------"
     printf("%-16s |%s\n", header[0], header[1])
     puts "=================+================================================="
+  end
+
+  # Formats the label depending on which oid it represents.
+  #     Returns
+  def format_label(entry)
+    case
+    when entry.split(/=/)[0].split(/\"/)[0].includes?("ipNetToPhysicalPhysAddress")
+      label = entry.split(/=/)[0].split(/\"/)[-2].to_s
+    when entry.split(/=/)[0].split(/\"/)[0].includes?("iso")
+      label = entry.split(/=/)[0].split(/\"/)[0].split(/\./)[-2..-1].join(".").to_s
+    else
+      label = entry.split(/=/)[0].split(/\"/)[0].to_s
+    end
   end
 
   # Formats the table into label and info.
   #     Returns # => Hash(String, String)
   def format_table(results, table)
     results.each do |entry|
-      next if entry == "" || entry == "00 \"" || entry.size == 1
+      next if entry.size == 0# || entry == "00 \"" || entry.size == 1
+      label = format_label(entry)
       info = truncate(entry.split(/=/)[1].strip).to_s
-      label = entry.split(/=/)[0].split(/\./)[-2]
       table[label] = info
     end
     table
   end
 
+  # Formats the appropriate oid header.
+  #     Returns  # => Tuple(String, String)
+  def format_header(oid)
+    case
+    when oid.includes?("1.0.8802.1.1.2.1.4.1.1.9")
+      {"port.instance", "remote host"}
+    when oid.includes?("ipNetToPhysicalPhysAddress")
+      {"ip address", "mac address"}
+    else
+      {"oid", "description"}
+    end
+  end
+
   # Displays header and formatted table information.
   def display_table(table, hostname, oid)
-    header = {"key", "value", "#{oid}"} # => Tuple(String, String, String)
-    display_header(hostname, header)
+    header = format_header(oid) # => Tuple(String, String, String)
+    pp oid
+    pp header
+    display_header(hostname, header, oid)
     display_table_info(table)
   end
 
   # Displays the raw unformatted snmpwalk results.
-  def display_stuff(table)
+  def display_raw_table(table)
     table.to_s.split("\n").each { |line| puts line }
   end
 end

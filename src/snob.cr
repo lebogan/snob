@@ -19,6 +19,7 @@
 #===============================================================================
 require "./snob/*"
 require "yaml"
+require "option_parser"
 
 
 # Allows displaying object methods during development.
@@ -33,6 +34,7 @@ end
 #
 # We have to rely on having net-snmp installed on our pc. 
 # TODO: Bind the net-snmp c library to make this app portable.
+# TODO: Add option parser.
 class App
   include Reports
   include Utils
@@ -40,7 +42,23 @@ class App
 
   # Runs the main application.
   def run
-    puts
+    mib_oid = "system"
+    display = false
+
+    OptionParser.parse! do |parser|
+      parser.banner = <<-BANNER
+      Usage: snob [OPTION] [HOST]
+      Browse a host snmpv3 mib tree.
+
+      Will prompt for HOST if not specified on the command-line.
+
+      BANNER
+      parser.on("-m OID", "--mib=OID", "Show mib information for this oid") { |oid| mib_oid = oid }
+      parser.on("-l", "--list", "List useful OIDs") { list_oids; exit 0 }
+      parser.on("-r", "--raw", "Raw list of OIDs") { display = true }
+      parser.on("-h", "--help", "Show this help") { puts parser; exit 1 }
+      parser.on("-v", "--version", "Show version") { puts "v#{Snob::VERSION}"; exit 1 }
+    end
 
     # Asks for a command line argument if none is given on the command line.
     if ARGV.empty?
@@ -74,8 +92,7 @@ class App
       config["crypto"].to_s.upcase) # => Snmp
 
     # Invokes the walk_mib3 method on the Snmp object, host, and
-    #   gets status => Int32 and results => String
-    mib_oid = ARGV.size > 1 ? ARGV[1] : "system"
+    #   returns status => Int32 and results => String
     status, results = host.walk_mib3(hostname, mib_oid)
     abort "not snmpv3 enabled or unknown object identifier: #{mib_oid}." unless status == 0
 
@@ -83,7 +100,12 @@ class App
     table = {} of String => String # => Hash(String, String)
     formatted_results = results.split("\n") # => Array(String)
     format_table(formatted_results, table)
-    display_table(table, hostname, mib_oid)
+    if display
+      display_raw_table(results)
+      exit 0
+    else
+      display_table(table, hostname, mib_oid)
+    end
   end
 end
 

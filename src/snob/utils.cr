@@ -62,6 +62,17 @@ module Utils
   def say_hey(hostname)
     puts "Hey #{hostname}!"
   end
+
+  # Lists some useful oids.
+  def list_oids
+    puts <<-OIDS
+    Here are some useful mib oids. Copy and paste as needed.
+    lldp port: 1.0.8802.1.1.2.1.4.1.1.9
+    arp cache: ipNetToPhysicalPhysAddress
+    memory usage: memory
+    disk volumes: dsk
+    OIDS
+  end
 end
 
 
