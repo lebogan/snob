@@ -59,8 +59,6 @@ module Reports
   # Displays header and formatted table information.
   def display_table(table, hostname, oid)
     header = format_header(oid) # => Tuple(String, String, String)
-    pp oid
-    pp header
     display_header(hostname, header, oid)
     display_table_info(table)
   end

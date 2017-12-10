@@ -47,9 +47,9 @@ class App
     OptionParser.parse! do |parser|
       parser.banner = <<-BANNER
       Usage: snob [OPTIONS] [HOST]
-      Browse a host snmpv3 mib tree.
+      Browse a host's snmpv3 mib tree.
 
-      Will prompt for HOST if not specified on the command-line.
+      Prompts for HOST if not specified on the command-line.
 
       BANNER
       parser.on("-l", "--list", "List useful OIDs") { list_oids; exit 0 }
