@@ -34,6 +34,7 @@ end
 # We have to rely on having net-snmp installed on our pc.
 # TODO: Bind the net-snmp c library to make this app portable.
 # TODO: Add paging to long outputs.
+# TODO: Allow dump to file without command-line redirection.
 class App
   include Reports
   include Utils
@@ -94,8 +95,7 @@ class App
 
     # Show your stuff
     if display_raw
-      display_raw_table(results)
-      exit 0
+      display_raw_table(results.split("\n")) # => Array(String)
     else
       table = {} of String => String          # => Hash(String, String)
       formatted_results = results.split("\n") # => Array(String)

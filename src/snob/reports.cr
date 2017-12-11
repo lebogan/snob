@@ -3,9 +3,16 @@ module Reports
 
   # Displays the table information.
   def display_table_info(table)
+    page_size = 15
+    page_count = 1
     table.each do |label, info|
       printf("%-16s |%s\n", label.to_s, info.delete("\""))
       puts "-----------------+-------------------------------------------------"
+      page_count += 1
+      if page_count % page_size == 0
+        choice = ask("\n -- press enter/return to continue or q to quit -- ")
+        choice == "q" ? break : next
+      end
     end
   end
 
@@ -65,7 +72,16 @@ module Reports
 
   # Displays the raw unformatted snmpwalk results.
   def display_raw_table(table)
-    table.to_s.split("\n").each { |line| puts line }
+    page_size = 20
+    page_count = 1
+    table.each do |line|
+      puts line
+      page_count += 1
+      if page_count % page_size == 0
+        choice = ask("\n -- press enter/return to continue or q to quit -- ")
+        choice == "q" ? break : next
+      end
+    end
   end
 end
 
