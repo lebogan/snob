@@ -1,0 +1,7 @@
+# ~/.snobrc.yml
+---
+hostname: 
+  user: "username" 
+  auth: "auth passphrase"
+  priv: "priv passphrase"
+  crypto: "crypto aes/des"
