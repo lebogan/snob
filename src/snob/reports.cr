@@ -83,6 +83,18 @@ module Reports
       end
     end
   end
+
+  # Opens a file for writing. Creates it if it doesn't exist. Overwrites contets.
+  def write_raw_results_to_file(filename, content)
+    File.open(filename, "w") do |file|
+      file.puts content
+    end
+  end
+
+  def read_file(filename)
+    result = File.read_lines(filename)
+    result # => Array(String)
+  end
 end
 
 

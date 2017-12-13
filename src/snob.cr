@@ -44,17 +44,20 @@ class App
   def run
     mib_oid = "system"
     display_raw = false
+    file_write = false
 
     OptionParser.parse! do |parser|
       parser.banner = <<-BANNER
       Usage: snob [OPTIONS] [HOST]
       Browse a host's snmpv3 mib tree.
 
-      Prompts for HOST if not specified on the command-line.
+      Prompts for HOST if not specified on the command-line. Also, prompts
+      for security credentials if HOST is not in the config file, ~/.snobrc.yml.
 
       BANNER
       parser.on("-l", "--list", "List useful OIDs") { list_oids; exit 0 }
-      parser.on("-m OID", "--mib=OID", "Show formatted mib information for this oid") { |oid| mib_oid = oid }
+      parser.on("-m OID", "--mib=OID", "Show information for this oid") { |oid| mib_oid = oid }
+      parser.on("-f", "--file", "Write output to file") { file_write = true }
       parser.on("-r", "--raw", "Show raw mib information for this oid") { display_raw = true }
       parser.on("-h", "--help", "Show this help") { puts parser; exit 1 }
       parser.on("-v", "--version", "Show version") { puts "v#{Snob::VERSION}"; exit 1 }
@@ -96,6 +99,10 @@ class App
     # Show your stuff
     if display_raw
       display_raw_table(results.split("\n")) # => Array(String)
+    elsif file_write
+      outfile = File.expand_path("~/tmp/raw_dump.txt")
+      write_raw_results_to_file(outfile, results) # => results(String)
+      #write_raw_results_to_file(outfile, results.split("\n"))
     else
       table = {} of String => String          # => Hash(String, String)
       formatted_results = results.split("\n") # => Array(String)
