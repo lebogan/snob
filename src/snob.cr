@@ -61,7 +61,10 @@ class App
       parser.on("-f", "--file", "Write output to file") { file_write = true }
       parser.on("-r", "--raw", "Show raw mib information for this oid") { display_raw = true }
       parser.on("-h", "--help", "Show this help") { puts parser; exit 1 }
-      parser.on("-v", "--version", "Show version") { puts "v#{Snob::VERSION}"; exit 1 }
+      parser.on("-v", "--version", "Show version") do
+        puts "snob v#{Snob::VERSION}"
+        exit 1
+      end
     end
 
     # Asks for a command line argument if none is given on the command line.
