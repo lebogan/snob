@@ -73,17 +73,29 @@ class App
 
     # Checks if host exists on this network
     args = ("-c 2 #{hostname}").split(" ") # => Array of String
-    say_hey(hostname)
+    #say_hey(hostname)
     status, result = run_cmd("ping", args)
     abort "ping: #{hostname}: is unreachable on this network" unless status == 0
 
-    # Checks for the existance of a valid config file and tests if host
-    #   is in it. Otherwise, asks for manual entry of credentials.
     config_file = File.expand_path("~/.snobrc.yml")
+
+    # Checks for existance of a config file and creates a dummy entry 
+    #    if the user answers yes.
+    check_for_config(config_file)
+
+    # Checks for the existance of a valid config file and tests if host
+    #   is in it. Otherwise, asks for manual entry of credentials and
+    #   adds them to existing config file.
     if File.exists?(config_file) && fetch_config(config_file)["#{hostname}"]? != nil
       config = fetch_config(config_file)["#{hostname}"] # => YAML::Any
     else
+      puts "#{hostname} is not in config file. Configuring..."
       config = configure_session[0].to_h # => Hash(String, String)
+      options = {hostname => config}
+      session = options.to_yaml.gsub("---", "")
+      puts "You entered: %s" % session
+      choice = ask("Save this session? ")
+      /#{choice}/i =~ "yes" ? add_session(config_file, session) : exit 1
     end
 
     # Creates a Snmp object and invokes the walk_mib3 method on the Snmp object, host.
@@ -102,8 +114,8 @@ class App
     elsif file_write
       outfile = File.expand_path("~/tmp/raw_dump.txt")
       write_raw_results_to_file(outfile, results) # => results(String)
-      #write_raw_results_to_file(outfile, results.split("\n"))
     else
+      clear_screen
       table = {} of String => String          # => Hash(String, String)
       formatted_results = results.split("\n") # => Array(String)
       format_table(formatted_results, table)

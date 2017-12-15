@@ -17,6 +17,14 @@ module Utils
     end
   end
 
+  # Clears the screen using ansi codes.
+  # \e[ is the escape
+  # 2J clear screen
+  # 1;1H move cursor to line 1, column 1
+  def clear_screen
+    print "\e[2J\e[1;1H"
+  end
+
   # Prompts for user input displaying the passed prompt in **args*.
   #     Returns #  => String
   def ask(*args)
@@ -33,10 +41,36 @@ module Utils
     {passphrase}
   end
 
+  # Checks for existance of a config file and creates a dummy entry 
+  #    if the user answers yes.
+  def check_for_config(config_file)
+    unless File.exists?(config_file)
+      choice = ask("Build a new config file? ")
+      options = {"dummy" => {"user" => "username", "auth" => "auth passphrase",
+                             "priv" => "priv passphrase", "crypto" => "AES/DES"}}
+      build_config_file(config_file, options) if /#{choice}/i =~ "yes"
+    end
+  end
+
+  # Creates a new config file.
+  def build_config_file(config_file, conf)
+    File.open(config_file, "w") do |file|
+      file.puts "# #{config_file}"
+      YAML.dump(conf, file)
+    end
+  end
+
   # Parses a YAML configuration file.
   #     Returns # => YAML::Any
   def fetch_config(config_file)
     YAML.parse(File.read(config_file))
+  end
+
+  # Adds new session credentials to config file.
+  def add_session(config_file, conf)
+    File.open(config_file, "a") do |file|
+      file.puts conf
+    end
   end
 
   # Prompts the user for host credentials. This method is typically invoked
