@@ -35,6 +35,7 @@ end
 # TODO: Bind the net-snmp c library to make this app portable.
 # TODO: Add paging to long outputs.
 # TODO: Allow dump to file without command-line redirection.
+# TODO: Create a hash of hard-to-remember oids and list with -l
 class App
   include Reports
   include Utils
