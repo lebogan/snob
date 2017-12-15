@@ -115,7 +115,8 @@ class App
       outfile = File.expand_path("~/tmp/raw_dump.txt")
       write_raw_results_to_file(outfile, results) # => results(String)
     else
-      clear_screen
+      clear
+      say_hey(hostname)
       table = {} of String => String          # => Hash(String, String)
       formatted_results = results.split("\n") # => Array(String)
       format_table(formatted_results, table)

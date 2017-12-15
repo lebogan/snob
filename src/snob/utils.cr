@@ -25,6 +25,11 @@ module Utils
     print "\e[2J\e[1;1H"
   end
 
+  # ditto
+  def clear
+    puts IO::Memory.new << "\e[2J\e[1;1H"
+  end
+
   # Prompts for user input displaying the passed prompt in **args*.
   #     Returns #  => String
   def ask(*args)
@@ -45,9 +50,9 @@ module Utils
   #    if the user answers yes.
   def check_for_config(config_file)
     unless File.exists?(config_file)
-      choice = ask("Build a new config file? ")
       options = {"dummy" => {"user" => "username", "auth" => "auth passphrase",
                              "priv" => "priv passphrase", "crypto" => "AES/DES"}}
+      choice = ask("Config file doesn't exist. Create it? ")
       build_config_file(config_file, options) if /#{choice}/i =~ "yes"
     end
   end
