@@ -1,6 +1,16 @@
+#===============================================================================
+#         FILE:  reports.cr
+#        USAGE:  Internal
+#  DESCRIPTION:  Reporting utilities.
+#       AUTHOR:  Lewis E. Bogan
+#      COMPANY:  Earthsea@Home
+#      CREATED:  2017-12-16 13:29
+#    COPYRIGHT:  (C) 2017 Lewis E. Bogan <lewis.bogan@comcast.net>
+# Distributed under terms of the MIT license.
+#===============================================================================
+
 # Displays the results of a snmpwalk operation.
 module Reports
-
   # Displays the table information.
   def display_table_info(table)
     page_size = 15
@@ -42,7 +52,7 @@ module Reports
   #     Returns # => Hash(String, String)
   def format_table(results, table)
     results.each do |entry|
-      next if entry.size == 0# || entry == "00 \"" || entry.size == 1
+      next if entry.size == 0 # || entry == "00 \"" || entry.size == 1
       label = format_label(entry)
       info = truncate(entry.split(/=/)[1].strip).to_s
       table[label] = info
@@ -84,6 +94,14 @@ module Reports
     end
   end
 
+  # Lists some useful oids.
+  def list_oids(list)
+    clear
+    header = {"flag value", "oid name"}
+    display_header("OIDs", header, "Included dictionary of useful oids")
+    display_table_info(list)
+  end
+
   # Opens a file for writing. Creates it if it doesn't exist. Overwrites contets.
   def write_raw_results_to_file(filename, content)
     File.open(filename, "w") do |file|
@@ -96,5 +114,3 @@ module Reports
     result # => Array(String)
   end
 end
-
-

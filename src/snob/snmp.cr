@@ -23,4 +23,3 @@ module Snmp
     end
   end
 end
-

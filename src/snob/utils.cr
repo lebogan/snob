@@ -1,3 +1,14 @@
+#===============================================================================
+#         FILE:  utils.cr
+#        USAGE:  Internal
+#  DESCRIPTION:  General program utilities.
+#       AUTHOR:  Lewis E. Bogan
+#      COMPANY:  Earthsea@Home
+#      CREATED:  2017-12-16 13:28
+#    COPYRIGHT:  (C) 2017 Lewis E. Bogan <lewis.bogan@comcast.net>
+# Distributed under terms of the MIT license.
+#===============================================================================
+
 # Defines general program utility methods. **extend self** allows these
 # methods to be included in a program (class) and invoked without a namespace
 # or just used as a namespace.
@@ -46,7 +57,7 @@ module Utils
     {passphrase}
   end
 
-  # Checks for existance of a config file and creates a dummy entry 
+  # Checks for existance of a config file and creates a dummy entry
   #    if the user answers yes.
   def check_for_config(config_file)
     unless File.exists?(config_file)
@@ -90,7 +101,7 @@ module Utils
     {conf}
   end
 
-  # Truncates a string longer than length characters and prints _..._ in the 
+  # Truncates a string longer than length characters and prints _..._ in the
   # place of the removed text. Defaults to 48 characters.
   def truncate(text, length = 48, truncate_string = "...")
     l = length - truncate_string.size
@@ -101,17 +112,4 @@ module Utils
   def say_hey(hostname)
     puts "Hey #{hostname}!"
   end
-
-  # Lists some useful oids.
-  def list_oids
-    puts <<-OIDS
-    Here are some useful mib oids. Copy and paste as needed.
-    lldp port: 1.0.8802.1.1.2.1.4.1.1.9
-    arp cache: ipNetToPhysicalPhysAddress
-    memory usage: memory
-    disk volumes: dsk
-    OIDS
-  end
 end
-
-

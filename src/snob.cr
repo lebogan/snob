@@ -5,7 +5,7 @@
 #      RELEASE:  crystal build --release --no-debug src/snob.cr
 #  DESCRIPTION:  A simple Snmp Network Object Browser.
 #      OPTIONS:  ---
-# REQUIREMENTS:  shards:
+# REQUIREMENTS:  net-snmp net-snmp-utils
 #         BUGS:  ---
 #        NOTES:  #
 #       AUTHOR:  Lewis E. Bogan
@@ -40,10 +40,17 @@ class App
   include Reports
   include Utils
   include Snmp
+  OIDLIST = {arp:    "ipNetToPhysicalPhysAddress",
+             lldp:   "1.0.8802.1.1.2.1.4.1.1.9",
+             sys: "system",
+             mem:    "memory",
+             dsk:    "dskTable",
+             ifdesc:    "ifDescr",
+  }
 
   # Runs the main application.
   def run
-    mib_oid = "system"
+    mib_oid = ""
     display_raw = false
     file_write = false
 
@@ -56,11 +63,25 @@ class App
       for security credentials if HOST is not in the config file, ~/.snobrc.yml.
 
       BANNER
-      parser.on("-l", "--list", "List useful OIDs") { list_oids; exit 0 }
-      parser.on("-m OID", "--mib=OID", "Show information for this oid") { |oid| mib_oid = oid }
+      parser.on("-l", "--list", "List some included OIDs") do
+        list_oids(OIDLIST)
+        exit 0
+      end
+      parser.on("-m OID", "--mib=OID", "Show information for this oid") do |oid|
+        if OIDLIST.has_key?(oid)
+          mib_oid = OIDLIST["#{oid}"]
+        elsif !oid.blank?
+          mib_oid = oid
+        else
+          mib_oid = "system"
+        end
+      end
       parser.on("-f", "--file", "Write output to file") { file_write = true }
       parser.on("-r", "--raw", "Show raw mib information for this oid") { display_raw = true }
-      parser.on("-h", "--help", "Show this help") { puts parser; exit 1 }
+      parser.on("-h", "--help", "Show this help") do
+        puts parser
+        exit 1
+      end
       parser.on("-v", "--version", "Show version") do
         puts "snob v#{Snob::VERSION}"
         exit 1
@@ -77,13 +98,13 @@ class App
 
     # Checks if host exists on this network
     args = ("-c 2 #{hostname}").split(" ") # => Array of String
-    #say_hey(hostname)
+    # say_hey(hostname)
     status, result = run_cmd("ping", args)
     abort "ping: #{hostname}: is unreachable on this network" unless status == 0
 
     config_file = File.expand_path("~/.snobrc.yml")
 
-    # Checks for existance of a config file and creates a dummy entry 
+    # Checks for existance of a config file and creates a dummy entry
     #    if the user answers yes.
     check_for_config(config_file)
 
@@ -99,7 +120,7 @@ class App
       session = options.to_yaml.gsub("---", "")
       puts "You entered: %s" % session
       choice = ask("Save this session? ")
-      /#{choice}/i =~ "yes" ? add_session(config_file, session) : exit 1
+      add_session(config_file, session) if /#{choice}/i =~ "yes"
     end
 
     # Creates a Snmp object and invokes the walk_mib3 method on the Snmp object, host.
@@ -110,14 +131,17 @@ class App
       config["user"].to_s,
       config["crypto"].to_s.upcase) # => Snmp
     status, results = host.walk_mib3(hostname, mib_oid)
-    abort "not snmpv3 enabled or unknown object identifier: #{mib_oid}." unless status == 0
+    snmp_message = <<-SNMP
+    net-snmp-utils not installed or host #{hostname} not snmpv3 enabled
+    or unknown object identifier: #{mib_oid}.
+    SNMP
+    abort snmp_message unless status == 0
 
     # Show your stuff
     if display_raw
       display_raw_table(results.split("\n")) # => Array(String)
-    elsif file_write
       outfile = File.expand_path("~/tmp/raw_dump.txt")
-      write_raw_results_to_file(outfile, results) # => results(String)
+      write_raw_results_to_file(outfile, results) if file_write # => results(String)
     else
       clear
       say_hey(hostname)
