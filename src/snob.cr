@@ -63,7 +63,7 @@ class App
       for security credentials if HOST is not in the config file, ~/.snobrc.yml.
 
       BANNER
-      parser.on("-l", "--list", "List some included OIDs") do
+      parser.on("-l", "--list", "List some pre-cooked OIDs") do
         list_oids(OIDLIST)
         exit 0
       end
@@ -76,7 +76,7 @@ class App
           mib_oid = "system"
         end
       end
-      parser.on("-f", "--file", "Write output to file") { file_write = true }
+      parser.on("-d", "--dump", "Write output to file") { file_write = true }
       parser.on("-r", "--raw", "Show raw mib information for this oid") { display_raw = true }
       parser.on("-h", "--help", "Show this help") do
         puts parser

@@ -8,6 +8,10 @@ targets:
   snob:
     main: src/snob.cr
 
+development_dependencies:
+  ameba:
+    github: veelenga/ameba
+
 crystal: 0.23.1
 
 license: MIT

@@ -1,20 +1,118 @@
-# snob
+# snob (Snmp Network Object Browser)
+This is an attempt to rewrite my Ruby app [YASB](https://github.com/lebogan/yasb.git)
+in the Crystal programming language. The idea is to:
 
-TODO: Write a description here
+- have a somewhat easily distributable utility for
+probing network devices using snmpV3
+- share this utility with colleagues without them having to install some
+development environment
+- build fast performing apps
+- learn Crystal while leveraging my Ruby experience
+- have fun:)
+
+This application is written specifically for snmp version 3 because of
+its security features. Backwards compatibility to version 2c is not included
+at this time. Sorry.
+
+The special *-l* switch is included because I have a difficult time remembering
+1.0.8802.1.1.2.1.4.1.1.9 or ipNetToPhysicalPhysAddress **and** I find these two
+oid's useful. In addition, a --dump option with --raw is included for dumping
+the resulting output to a file, raw_dump.txt, for later perusal.
 
 ## Installation
+```bash
+$ git clone https://github.com/lebogan/snob.git
+$ cd snob
+$ sudo cp snob /usr/local/bin/snob
+```
+Required utilities:  
+-  net-snmp  
+-  net-snmp-utils  
 
-TODO: Write installation instructions here
+Configure your hosts to respond to snmp requests.
 
 ## Usage
+```bash
+$ snob --help
+Usage: snob [OPTIONS] [HOST]
+Browse a host snmpv3 mib tree.
 
-TODO: Write usage instructions here
+Prompts for HOST if not specified on the command-line. Also, prompts
+for security credentials if HOST is not in the config file, ~/.snobrc.yml.
+
+    -l, --list                       List useful OIDs
+    -m OID, --mib=OID                Show information for this oid
+    -f, --file                       Write output to file
+    -r, --raw                        Show raw mib information for this oid
+    -h, --help                       Show this help
+    -v, --version                    Show version
+
+$ snob --list
+===================================================================
+OIDS - Included dictionary of useful oids
+-------------------------------------------------------------------
+flag value       |oid name
+=================+=================================================
+arp              |ipNetToPhysicalPhysAddress
+-----------------+-------------------------------------------------
+lldp             |1.0.8802.1.1.2.1.4.1.1.9
+-----------------+-------------------------------------------------
+sys              |system
+-----------------+-------------------------------------------------
+mem              |memory
+-----------------+-------------------------------------------------
+dsk              |dskTable
+-----------------+-------------------------------------------------
+ifdesc           |ifDescr
+-----------------+-------------------------------------------------
+```
+## Config file
+A first run will create a default YAML config file named **~/.snobrc.yml**
+if it doesn't already exist. Afterwards, if the host is not in the 
+config file, you will be asked to enter credentials manually with the
+option to save them.
+```
+$ snob myserver
+Config file doesn't exist. Create it? <yes>
+myserver is not in config file. Configuring...
+Enter security name: myname
+Enter authentication phrase: secret
+Enter privacy phrase: realsecret
+Crypto algorithm [AES/DES]: DES
+You entered: 
+myserver:
+  user: myname
+  auth: secret
+  priv: realsecret
+  crypto: DES
+Save this session? <yes>
+
+```
+
+The config file is YAML format and can be edited manually.
+```text
+# /home/vagrant/.snobrc.yml
+---
+dummy:
+  user: username
+  auth: auth passphrase
+  priv: priv passphrase
+  crypto: AES/DES
+
+myserver:
+  user: myname
+  auth: secret
+  priv: realsecret
+  crypto: DES
+```
 
 ## Development
-
-TODO: Write development instructions here
+Please, see the DISCLAIMER below.
+Fork on GitHub at https://github.com/lebogan/snob.git
+Developed using Crystal 0.23.1 on Fedora 26 workstation running under Vagrant.
 
 ## Contributing
+Please, see the DISCLAIMER below.
 
 1. Fork it ( https://github.com/[your-github-name]/snob/fork )
 2. Create your feature branch (git checkout -b my-new-feature)
@@ -23,5 +121,14 @@ TODO: Write development instructions here
 5. Create a new Pull Request
 
 ## Contributors
+- [lebogan](https://github.com/lebogan/snob.git) lebogan - creator, maintainer
 
-- [[your-github-name]](https://github.com/[your-github-name]) Vagrant - creator, maintainer
+## Disclaimer
+This utility was originally created for my personal use in my work as a network
+specialist. It was developed on a Fedora Workstation using Crystal 0.23.1. This has
+only been tested on Fedora 26/27 Workstation and CentOS 7 
+
+I am not a professional software developer nor do I pretend to be. I am a retired IT 
+network specialist and this is a hobby to keep me out of trouble. If you 
+use this application and it doesn't work the way you would want, feel free to 
+fork it and modify it to your liking. Fork on GitHub at https://github.com/lebogan/snob.git
