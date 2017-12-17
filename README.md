@@ -1,5 +1,8 @@
 # snob (Snmp Network Object Browser)
-This is an attempt to rewrite my Ruby app [YASB](https://github.com/lebogan/yasb.git)
+## Introduction
+***This utility is experimental, use at your own risk!***
+
+**snob** is an attempt to rewrite my Ruby app [YASB](https://github.com/lebogan/yasb.git)
 in the Crystal programming language. The idea is to:
 
 - have a somewhat easily distributable utility for
@@ -10,11 +13,11 @@ development environment
 - learn Crystal while leveraging my Ruby experience
 - have fun:)
 
-This application is written specifically for snmp version 3 because of
+This utility is written specifically for snmp version 3 because of
 its security features. Backwards compatibility to version 2c is not included
 at this time. Sorry.
 
-The special *-l* switch is included because I have a difficult time remembering
+The special *--list* switch is included because I have a difficult time remembering
 1.0.8802.1.1.2.1.4.1.1.9 or ipNetToPhysicalPhysAddress **and** I find these two
 oid's useful. In addition, a --dump option with --raw is included for dumping
 the resulting output to a file, raw_dump.txt, for later perusal.
@@ -42,7 +45,7 @@ for security credentials if HOST is not in the config file, ~/.snobrc.yml.
 
     -l, --list                       List useful OIDs
     -m OID, --mib=OID                Show information for this oid
-    -f, --file                       Write output to file
+    -d, --dump                       Write output to file
     -r, --raw                        Show raw mib information for this oid
     -h, --help                       Show this help
     -v, --version                    Show version
@@ -68,10 +71,9 @@ ifdesc           |ifDescr
 ```
 ## Config file
 A first run will create a default YAML config file named **~/.snobrc.yml**
-if it doesn't already exist. Afterwards, if the host is not in the 
-config file, you will be asked to enter credentials manually with the
-option to save them.
-```
+if it doesn't already exist. The initial set of credentials is for a host named
+__dummy__. Afterwards, if the host is not in the config file, you will be asked
+to enter credentials manually with the option to save them.```
 $ snob myserver
 Config file doesn't exist. Create it? <yes>
 myserver is not in config file. Configuring...
@@ -107,9 +109,10 @@ myserver:
 ```
 
 ## Development
-Please, see the DISCLAIMER below.
-Fork on GitHub at https://github.com/lebogan/snob.git
-Developed using Crystal 0.23.1 on Fedora 26 workstation running under Vagrant.
+Please, see the DISCLAIMER below.  
+Check out the repo on GitHub at https://github.com/lebogan/snob.git  
+Developed using Crystal 0.23.1 on Fedora 26 workstation running under Vagrant v2.0.1.  
+Tested on Fedora 26/27 and CentOS 7.  
 
 ## Contributing
 Please, see the DISCLAIMER below.
@@ -122,6 +125,10 @@ Please, see the DISCLAIMER below.
 
 ## Contributors
 - [lebogan](https://github.com/lebogan/snob.git) lebogan - creator, maintainer
+
+## License
+This utility is available as open source under the terms of the
+[MIT License](http://opensource.org/licenses/MIT).
 
 ## Disclaimer
 This utility was originally created for my personal use in my work as a network

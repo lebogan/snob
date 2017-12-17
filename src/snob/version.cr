@@ -1,3 +1,6 @@
 module Snob
-  VERSION = "0.4.0"
+  VERSION = begin
+              YAML.parse(File.read(File.join(__DIR__, "../..",
+                                             "shard.yml")))["version"].as_s
+            end
 end

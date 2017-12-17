@@ -98,7 +98,6 @@ class App
 
     # Checks if host exists on this network
     args = ("-c 2 #{hostname}").split(" ") # => Array of String
-    # say_hey(hostname)
     status, result = run_cmd("ping", args)
     abort "ping: #{hostname}: is unreachable on this network" unless status == 0
 

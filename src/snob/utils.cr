@@ -105,7 +105,7 @@ module Utils
   # place of the removed text. Defaults to 48 characters.
   def truncate(text, length = 48, truncate_string = "...")
     l = length - truncate_string.size
-    (text.size > length ? text[0..l] + truncate_string : text) if text
+    (text.size > length ? text[0...l] + truncate_string : text) if text
   end
 
   # Says hello to _hostname_.
