@@ -44,10 +44,10 @@ class App
 
   OIDLIST = {arp:    "ipNetToPhysicalPhysAddress",
              lldp:   "1.0.8802.1.1.2.1.4.1.1.9",
-             sys: "system",
+             sys:    "system",
              mem:    "memory",
              dsk:    "dskTable",
-             ifdesc:    "ifDescr",
+             ifdesc: "ifDescr",
   }
 
   # Runs the main application.
@@ -69,7 +69,8 @@ class App
         list_oids(OIDLIST)
         exit 0
       end
-      parser.on("-m OID", "--mib=OID", "Show information for this oid") do |oid|
+      parser.on("-m OID", "--mib=OID", "Show information for this oid
+                                     (Default: system)") do |oid|
         if OIDLIST.has_key?(oid)
           mib_oid = OIDLIST["#{oid}"]
         elsif !oid.blank?
@@ -82,18 +83,17 @@ class App
       parser.on("-r", "--raw", "Show raw mib information for this oid") { display_raw = true }
       parser.on("-h", "--help", "Show this help") do
         puts parser
-        exit 1
+        exit 0
       end
       parser.on("-v", "--version", "Show version") do
         puts "snob v#{Snob::VERSION}"
-        exit 1
+        exit 0
       end
     end
 
     # Asks for a command line argument if none is given on the command line.
     if ARGV.empty?
-      print("Enter hostname: ")
-      hostname = gets.to_s
+      hostname = ask("Enter hostname: ")
     else
       hostname = ARGV[0]
     end
@@ -126,6 +126,7 @@ class App
 
     # Creates a Snmp object and invokes the walk_mib3 method on the Snmp object, host.
     #     Returns # => Tuple{Int32, String}
+    mib_oid = "system" if mib_oid.empty?
     host = Snmp.new(
       config["auth"].to_s,
       config["priv"].to_s,

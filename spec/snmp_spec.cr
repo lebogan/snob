@@ -10,4 +10,3 @@ describe Snmp do
     end
   end
 end
-

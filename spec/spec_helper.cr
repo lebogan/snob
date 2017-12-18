@@ -1,5 +1,6 @@
 require "spec"
 require "../src/snob/utils"
+
 # Prompts for user input displaying the passed prompt in **args*.
 #     Returns #  => String
 def ask(*args)

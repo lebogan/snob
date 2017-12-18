@@ -1,4 +1,4 @@
-#===============================================================================
+# ===============================================================================
 #         FILE:  config.cr
 #        USAGE:  Internal
 #  DESCRIPTION:  Configuration.
@@ -7,7 +7,7 @@
 #      CREATED:  2017-12-17 15:13
 #    COPYRIGHT:  (C) 2017 Lewis E. Bogan <lewis.bogan@comcast.net>
 # Distributed under terms of the MIT license.
-#===============================================================================
+# ===============================================================================
 
 # Defines configuration file methods. **extend self** allows these
 # methods to be included in a program (class) and invoked without a namespace

@@ -9,4 +9,3 @@ describe Session do
     end
   end
 end
-

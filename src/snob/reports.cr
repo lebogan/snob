@@ -1,4 +1,4 @@
-#===============================================================================
+# ===============================================================================
 #         FILE:  reports.cr
 #        USAGE:  Internal
 #  DESCRIPTION:  Reporting utilities.
@@ -7,7 +7,7 @@
 #      CREATED:  2017-12-16 13:29
 #    COPYRIGHT:  (C) 2017 Lewis E. Bogan <lewis.bogan@comcast.net>
 # Distributed under terms of the MIT license.
-#===============================================================================
+# ===============================================================================
 
 # Displays the results of a snmpwalk operation.
 module Reports

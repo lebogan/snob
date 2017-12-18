@@ -1,4 +1,4 @@
-#===============================================================================
+# ===============================================================================
 #         FILE:  utils.cr
 #        USAGE:  Internal
 #  DESCRIPTION:  General program utilities.
@@ -7,7 +7,7 @@
 #      CREATED:  2017-12-16 13:28
 #    COPYRIGHT:  (C) 2017 Lewis E. Bogan <lewis.bogan@comcast.net>
 # Distributed under terms of the MIT license.
-#===============================================================================
+# ===============================================================================
 
 # Defines general program utility methods. **extend self** allows these
 # methods to be included in a program (class) and invoked without a namespace
