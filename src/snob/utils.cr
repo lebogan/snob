@@ -64,6 +64,12 @@ module Utils
     (text.size > length ? text[0...l] + truncate_string : text) if text
   end
 
+  # Reads a file.
+  def read_file(filename)
+    result = File.read_lines(filename)
+    result # => Array(String)
+  end
+
   # Says hello to _hostname_.
   def say_hey(hostname)
     puts "Hey #{hostname}!"

@@ -33,9 +33,8 @@ end
 #
 # We have to rely on having net-snmp installed on our pc.
 # TODO: Bind the net-snmp c library to make this app portable.
-# TODO: Add paging to long outputs.
-# TODO: Allow dump to file without command-line redirection.
-# TODO: Create a hash of hard-to-remember oids and list with -l
+# TODO: Make press paging prompt respond to single keypress
+# TODO: Make utility default to "system" when --mib flag is mossing.
 # TODO: Test, test, test!
 class App
   include Reports

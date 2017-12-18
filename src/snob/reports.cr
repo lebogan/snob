@@ -108,9 +108,4 @@ module Reports
       file.puts content
     end
   end
-
-  def read_file(filename)
-    result = File.read_lines(filename)
-    result # => Array(String)
-  end
 end
