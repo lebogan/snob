@@ -57,6 +57,19 @@ module Utils
     {passphrase}
   end
 
+  # Gets a single character for use in paging long displays.
+  #    Returns # => Char
+  # To break out of a block:
+  # ```
+  # choice = page("\n -- press any key to continue or q to quit -- ")
+  # choice == 'q' ? break : next
+  # ```
+  # NOTE: see Reports.display_table_info for usage.
+  def page(*args)
+    args[0].to_s.ends_with?(" ") ? print(*args) : puts(*args)
+    STDIN.raw &.read_char
+  end
+
   # Truncates a string longer than length characters and prints _..._ in the
   # place of the removed text. Defaults to 48 characters.
   def truncate(text, length = 48, truncate_string = "...")

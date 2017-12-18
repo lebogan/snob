@@ -20,10 +20,11 @@ module Reports
       puts "-----------------+-------------------------------------------------"
       page_count += 1
       if page_count % page_size == 0
-        choice = ask("\n -- press enter/return to continue or q to quit -- ")
-        choice == "q" ? break : next
+        choice = page("\n -- press any key to continue or q to quit -- ")
+        choice == 'q' ? break : next
       end
     end
+    puts
   end
 
   # Displays the report header

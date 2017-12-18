@@ -33,7 +33,6 @@ end
 #
 # We have to rely on having net-snmp installed on our pc.
 # TODO: Bind the net-snmp c library to make this app portable.
-# TODO: Make press paging prompt respond to single keypress
 # TODO: Make utility default to "system" when --mib flag is mossing.
 # TODO: Test, test, test!
 class App
