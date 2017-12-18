@@ -32,19 +32,19 @@ module Utils
   # \e[ is the escape
   # 2J clear screen
   # 1;1H move cursor to line 1, column 1
-  def clear_screen
+  def clear
     print "\e[2J\e[1;1H"
   end
 
   # ditto
-  def clear
+  def clear_screen
     puts IO::Memory.new << "\e[2J\e[1;1H"
   end
 
   # Prompts for user input displaying the passed prompt in **args*.
   #     Returns #  => String
   def ask(*args)
-    print(*args)
+    args[0].to_s.ends_with?(" ") ? print(*args) : puts(*args)
     gets.to_s
   end
 

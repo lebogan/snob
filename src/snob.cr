@@ -101,12 +101,11 @@ class App
     # Checks if host exists on this network
     args = ("-c 2 #{hostname}").split(" ") # => Array of String
     status, result = run_cmd("ping", args)
-    abort "ping: #{hostname}: is unreachable on this network" unless status == 0
-
-    config_file = File.expand_path("~/.snobrc.yml")
+    abort "ping: #{hostname} is unreachable on this network" unless status == 0
 
     # Checks for existance of a config file and creates a dummy entry
     #    if the user answers yes.
+    config_file = File.expand_path("~/.snobrc.yml")
     check_for_config(config_file)
 
     # Checks for the existance of a valid config file and tests if host
@@ -124,7 +123,8 @@ class App
       add_session(config_file, session) if /#{choice}/i =~ "yes"
     end
 
-    # Creates a Snmp object and invokes the walk_mib3 method on the Snmp object, host.
+    # Creates a Snmp object and invokes the walk_mib3 method on the Snmp object, host,
+    # using 'system' oid if the --mib flag is missing.
     #     Returns # => Tuple{Int32, String}
     mib_oid = "system" if mib_oid.empty?
     host = Snmp.new(
@@ -145,7 +145,7 @@ class App
       outfile = File.expand_path("~/tmp/raw_dump.txt")
       write_raw_results_to_file(outfile, results) if file_write # => results(String)
     else
-      clear
+      clear_screen
       say_hey(hostname)
       table = {} of String => String          # => Hash(String, String)
       formatted_results = results.split("\n") # => Array(String)

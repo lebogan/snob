@@ -16,7 +16,7 @@ module Reports
     page_size = 15
     page_count = 1
     table.each do |label, info|
-      printf("%-16s |%s\n", label.to_s, info.delete("\""))
+      printf("%-16s |%s\n", label, info.delete("\""))
       puts "-----------------+-------------------------------------------------"
       page_count += 1
       if page_count % page_size == 0
@@ -24,7 +24,7 @@ module Reports
         choice == 'q' ? break : next
       end
     end
-    puts
+    puts "\n\n"
   end
 
   # Displays the report header
@@ -37,7 +37,7 @@ module Reports
   end
 
   # Formats the label depending on which oid it represents.
-  #     Returns
+  #     Returns # => String
   def format_label(entry)
     case
     when entry.split(/=/)[0].split(/\"/)[0].includes?("ipNetToPhysicalPhysAddress")
@@ -53,7 +53,7 @@ module Reports
   #     Returns # => Hash(String, String)
   def format_table(results, table)
     results.each do |entry|
-      next if entry.size == 0 # || entry == "00 \"" || entry.size == 1
+      next if entry.size == 0
       label = format_label(entry)
       info = truncate(entry.split(/=/)[1].strip).to_s
       table[label] = info
@@ -89,17 +89,18 @@ module Reports
       puts line
       page_count += 1
       if page_count % page_size == 0
-        choice = ask("\n -- press enter/return to continue or q to quit -- ")
-        choice == "q" ? break : next
+        choice = page("\n -- press any key to continue or q to quit -- ")
+        choice == 'q' ? break : next
       end
     end
+    puts "\n\n"
   end
 
   # Lists some useful oids.
   def list_oids(list)
-    clear
-    header = {"flag value", "oid name"}
-    display_header("OIDs", header, "Included dictionary of useful oids")
+    clear_screen
+    header = {"flag name", "oid name"}
+    display_header("OIDs", header, "Included pre-defined flag names")
     display_table_info(list)
   end
 
