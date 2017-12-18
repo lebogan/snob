@@ -36,10 +36,14 @@ end
 # TODO: Add paging to long outputs.
 # TODO: Allow dump to file without command-line redirection.
 # TODO: Create a hash of hard-to-remember oids and list with -l
+# TODO: Test, test, test!
 class App
   include Reports
   include Utils
   include Snmp
+  include Config
+  include Session
+
   OIDLIST = {arp:    "ipNetToPhysicalPhysAddress",
              lldp:   "1.0.8802.1.1.2.1.4.1.1.9",
              sys: "system",

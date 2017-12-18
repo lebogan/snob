@@ -1,3 +1,14 @@
+#===============================================================================
+#         FILE:  snmp.cr
+#        USAGE:  Internal
+#  DESCRIPTION:  Snmp stuff.
+#       AUTHOR:  Lewis E. Bogan
+#      COMPANY:  Earthsea@Home
+#      CREATED:  2017-12-17 15:26
+#    COPYRIGHT:  (C) 2017 Lewis E. Bogan <lewis.bogan@comcast.net>
+# Distributed under terms of the MIT license.
+#===============================================================================
+
 require "./utils.cr"
 
 # Defines the Snmp object and forms the **walk_mib3** command string.
