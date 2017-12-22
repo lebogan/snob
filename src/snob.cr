@@ -50,6 +50,9 @@ class App
              ifdesc: "ifDescr",
   }
 
+  CONFIG_PATH = File.expand_path("~/.snob/")
+  CONFIG_FILE = File.expand_path("~/.snob/snobrc.yml")
+
   # Runs the main application.
   def run
     mib_oid = ""
@@ -105,8 +108,8 @@ class App
 
     # Checks for existance of a config file and creates a dummy entry
     #    if the user answers yes.
-    config_file = File.expand_path("~/.snobrc.yml")
-    check_for_config(config_file)
+    config_file = File.expand_path("~/.snob/snobrc.yml")
+    check_for_config(CONFIG_PATH, CONFIG_FILE)
 
     # Checks for the existance of a valid config file and tests if host
     #   is in it. Otherwise, asks for manual entry of credentials and
@@ -116,8 +119,8 @@ class App
     else
       puts "#{hostname} is not in config file. Configuring..."
       config = configure_session[0].to_h # => Hash(String, String)
-      options = {hostname => config}
-      session = options.to_yaml.gsub("---", "")
+      options = {hostname => config} # => Hash(String, Hash(String, String))
+      session = options.to_yaml.gsub("---", "") # => String
       puts "You entered: %s" % session
       choice = ask("Save this session? ")
       add_session(config_file, session) if /#{choice}/i =~ "yes"

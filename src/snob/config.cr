@@ -17,8 +17,10 @@ module Config
 
   # Checks for existance of a config file and creates a dummy entry
   #    if the user answers yes.
-  def check_for_config(config_file)
+  def check_for_config(config_path, config_file)
     unless File.exists?(config_file)
+      Dir.mkdir_p(config_path, 0o700)
+      #Dir.mkdir_p(File.expand_path("~/.snob/"))
       options = {"dummy" => {"user" => "username", "auth" => "auth passphrase",
                              "priv" => "priv passphrase", "crypto" => "AES/DES"}}
       choice = ask("Config file doesn't exist. Create it? ")
