@@ -32,8 +32,8 @@ Required utilities:
 -  net-snmp  
 -  net-snmp-utils  
 
-Configure your hosts to respond to snmp requests.
-
+Configure your hosts to respond to snmp requests. See documentation at: 
+[net-snmp](http://net-snmp.sourceforge.net/docs/README.snmpv3.html)
 ## Usage
 ```bash
 $ snob --help
@@ -70,17 +70,19 @@ ifdesc           |ifDescr
 -----------------+-------------------------------------------------
 ```
 ## Config file
-A first run will create a default YAML config file named **~/.snobrc.yml**
-if it doesn't already exist. The initial set of credentials is for a host named
+A first run will create a default YAML config file named **~/.snob/snobrc.yml**
+if it doesn't already exist. The directory's permissions are set to 0o700
+(-rw-r--r--) for added security. The initial set of credentials is for a host named
 __dummy__. Afterwards, if the host is not in the config file, you will be asked
-to enter credentials manually with the option to save them.```
+to enter credentials manually with the option to save them.  
+```
 $ snob myserver
 Config file doesn't exist. Create it? <yes>
 myserver is not in config file. Configuring...
-Enter security name: myname
-Enter authentication phrase: secret
-Enter privacy phrase: realsecret
-Crypto algorithm [AES/DES]: DES
+Enter security name: <myname>
+Enter authentication phrase: <secret>
+Enter privacy phrase: <realsecret>
+Crypto algorithm [AES/DES]: <DES>
 You entered: 
 myserver:
   user: myname
