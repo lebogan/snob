@@ -92,6 +92,18 @@ class App
         puts "snob v#{Snob::VERSION}"
         exit 0
       end
+      parser.invalid_option do |flag|
+        abort <<-INVALID_OPTION
+        snob: invalid option -- '#{flag}'
+        Try 'snob --help' for more information.
+        INVALID_OPTION
+      end
+      parser.missing_option do |flag|
+        abort <<-MISSING_OPTION
+        Missing option argument: #{flag} OID
+        Example: snob -m lldp hostname
+        MISSING_OPTION
+      end
     end
 
     # Asks for a command line argument if none is given on the command line.
@@ -118,8 +130,8 @@ class App
       config = fetch_config(config_file)["#{hostname}"] # => YAML::Any
     else
       puts "#{hostname} is not in config file. Configuring..."
-      config = configure_session[0].to_h # => Hash(String, String)
-      options = {hostname => config} # => Hash(String, Hash(String, String))
+      config = configure_session[0].to_h        # => Hash(String, String)
+      options = {hostname => config}            # => Hash(String, Hash(String, String))
       session = options.to_yaml.gsub("---", "") # => String
       puts "You entered: %s" % session
       choice = ask("Save this session? ")
