@@ -95,7 +95,7 @@ Save this session? <yes>
 
 The config file is YAML format and can be edited manually.
 ```text
-# /home/vagrant/.snobrc.yml
+# /home/vagrant/.snob/snobrc.yml
 ---
 dummy:
   user: username
