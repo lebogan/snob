@@ -65,7 +65,7 @@ class App
       Browse a host's snmpv3 mib tree.
 
       Prompts for HOST if not specified on the command-line. Also, prompts
-      for security credentials if HOST is not in the config file, ~/.snobrc.yml.
+      for security credentials if HOST is not in the config file, snobrc.yml.
 
       BANNER
       parser.on("-l", "--list", "List some pre-cooked OIDs") do
