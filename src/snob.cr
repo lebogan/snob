@@ -41,6 +41,7 @@ class App
   include Snmp
   include Config
   include Session
+  include Messages
 
   OIDLIST = {arp:    "ipNetToPhysicalPhysAddress",
              lldp:   "1.0.8802.1.1.2.1.4.1.1.9",
@@ -60,27 +61,18 @@ class App
     file_write = false
 
     OptionParser.parse! do |parser|
-      parser.banner = <<-BANNER
-      Usage: snob [OPTIONS] [HOST]
-      Browse a host's snmpv3 mib tree.
-
-      Prompts for HOST if not specified on the command-line. Also, prompts
-      for security credentials if HOST is not in the config file, snobrc.yml.
-
-      BANNER
+      parser.banner = banner
       parser.on("-l", "--list", "List some pre-cooked OIDs") do
         list_oids(OIDLIST)
         exit 0
       end
       parser.on("-m OID", "--mib=OID", "Show information for this oid
                                      (Default: system)") do |oid|
-        if OIDLIST.has_key?(oid)
-          mib_oid = OIDLIST["#{oid}"]
-        elsif !oid.blank?
-          mib_oid = oid
-        else
-          mib_oid = "system"
-        end
+        mib_oid = case
+                  when OIDLIST.has_key?(oid) then OIDLIST["#{oid}"]
+                  when !oid.empty? then oid
+                  else "system"
+                  end
       end
       parser.on("-d", "--dump", "Write output to file") { file_write = true }
       parser.on("-r", "--raw", "Show raw mib information for this oid") { display_raw = true }
@@ -93,16 +85,10 @@ class App
         exit 0
       end
       parser.invalid_option do |flag|
-        abort <<-INVALID_OPTION
-        snob: invalid option -- '#{flag}'
-        Try 'snob --help' for more information.
-        INVALID_OPTION
+        abort invalid_message(flag)
       end
       parser.missing_option do |flag|
-        abort <<-MISSING_OPTION
-        Missing option argument: #{flag} OID
-        Example: snob -m lldp hostname
-        MISSING_OPTION
+        abort missig_message(flag)
       end
     end
 
@@ -148,11 +134,7 @@ class App
       config["user"].to_s,
       config["crypto"].to_s.upcase) # => Snmp
     status, results = host.walk_mib3(hostname, mib_oid)
-    snmp_message = <<-SNMP
-    net-snmp-utils not installed or host #{hostname} not snmpv3 enabled
-    or unknown object identifier: #{mib_oid}.
-    SNMP
-    abort snmp_message unless status == 0
+    abort snmp_message(hostname, mib_oid) unless status == 0
 
     # Show your stuff
     if display_raw
