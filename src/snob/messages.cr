@@ -12,7 +12,7 @@
 module Messages
   extend self
 
-  def banner
+  def banner_message
       <<-BANNER
       Usage: snob [OPTIONS] [HOST]
       Browse a host's snmpv3 mib tree.
@@ -23,12 +23,20 @@ module Messages
       BANNER
   end
 
+  def ping_message(hostname)
+    <<-PING
+    ping: #{hostname} is unreachable on this network
+    PING
+  end
+
   def snmp_message(hostname, mib_oid)
     <<-SNMP
     Error: cannot process this request because:
     1. net-snmp-utils not installed or
     2. host #{hostname} not snmpv3 enabled or
-    3. unknown object identifier: #{mib_oid}.
+    3. incorrect credentials used or
+    4. communication not permitted from this host or
+    5. unknown object identifier: #{mib_oid}.
     Try 'snob --help' for more information.
     SNMP
   end

@@ -33,7 +33,6 @@ end
 #
 # We have to rely on having net-snmp installed on our pc.
 # TODO: Bind the net-snmp c library to make this app portable.
-# TODO: Make utility default to "system" when --mib flag is mossing.
 # TODO: Test, test, test!
 class App
   include Reports
@@ -53,6 +52,7 @@ class App
 
   CONFIG_PATH = File.expand_path("~/.snob/")
   CONFIG_FILE = File.expand_path("~/.snob/snobrc.yml")
+  OUTFILE = File.expand_path("~/tmp/raw_dump.txt")
 
   # Runs the main application.
   def run
@@ -61,8 +61,8 @@ class App
     file_write = false
 
     OptionParser.parse! do |parser|
-      parser.banner = banner
-      parser.on("-l", "--list", "List some pre-cooked OIDs") do
+      parser.banner = banner_message
+      parser.on("-l", "--list", "List some pre-defined OIDs") do
         list_oids(OIDLIST)
         exit 0
       end
@@ -102,7 +102,7 @@ class App
     # Checks if host exists on this network
     args = ("-c 2 #{hostname}").split(" ") # => Array of String
     status, result = run_cmd("ping", args)
-    abort "ping: #{hostname} is unreachable on this network" unless status == 0
+    abort ping_message(hostname) unless status == 0
 
     # Checks for existance of a config file and creates a dummy entry
     #    if the user answers yes.
@@ -112,16 +112,16 @@ class App
     # Checks for the existance of a valid config file and tests if host
     #   is in it. Otherwise, asks for manual entry of credentials and
     #   adds them to existing config file.
+    # NOTE: {hostname => config} => Hash(String, Hash(String, String))
     if File.exists?(config_file) && fetch_config(config_file)["#{hostname}"]? != nil
       config = fetch_config(config_file)["#{hostname}"] # => YAML::Any
     else
       puts "#{hostname} is not in config file. Configuring..."
-      config = configure_session[0].to_h        # => Hash(String, String)
-      options = {hostname => config}            # => Hash(String, Hash(String, String))
-      session = options.to_yaml.gsub("---", "") # => String
-      puts "You entered: %s" % session
-      choice = ask("Save this session? ")
-      add_session(config_file, session) if /#{choice}/i =~ "yes"
+      config = configure_session[0].to_h  # => Hash(String, String)
+      credentials = {hostname => config}.to_yaml.gsub("---", "") # => String
+      puts "You entered: %s" % credentials
+      choice = ask("Save these credentials? ")
+      add_session(config_file, credentials) if /#{choice}/i =~ "yes"
     end
 
     # Creates a Snmp object and invokes the walk_mib3 method on the Snmp object, host,
@@ -139,14 +139,12 @@ class App
     # Show your stuff
     if display_raw
       display_raw_table(results.split("\n")) # => Array(String)
-      outfile = File.expand_path("~/tmp/raw_dump.txt")
-      write_raw_results_to_file(outfile, results) if file_write # => results(String)
+      write_raw_results_to_file(OUTFILE, results) if file_write
     else
       clear_screen
       say_hey(hostname)
       table = {} of String => String          # => Hash(String, String)
-      formatted_results = results.split("\n") # => Array(String)
-      format_table(formatted_results, table)
+      format_table(results.split("\n"), table)
       display_table(table, hostname, mib_oid)
     end
   end

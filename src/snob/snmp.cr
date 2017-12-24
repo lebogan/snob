@@ -13,7 +13,7 @@ require "./utils.cr"
 
 # Defines the Snmp object and forms the **walk_mib3** command string.
 module Snmp
-  class Snmp
+  struct Snmp
     include Utils
     property :auth, :priv, :user, :crypto
 
