@@ -12,8 +12,8 @@
 #      COMPANY:  Earthsea@Home
 #      CREATED:  2017-11-10 10:19
 #    COPYRIGHT:  (C) 2017 Lewis E. Bogan <lewis.bogan@comcast.net>
-#     GIT REPO:  ssh://devforge/var/lib/git/snob.git
-#             :  git remote add origin ssh://devforge/var/lib/git/snob.git
+#     GIT REPO:  https://github.com/lebogan/snob.git
+#             :  git remote add origin https://github.com/lebogan/snob.git
 #             :  git push -u origin master
 # Distributed under terms of the MIT license.
 # ===============================================================================
@@ -28,13 +28,13 @@ class Object
   end
 end
 
-# This class is the main application. It checks for command line arguments,
+# This struct contains the main application. It checks for command line arguments,
 # valid hostname, and snmpv3 credentials.
 #
 # We have to rely on having net-snmp installed on our pc.
 # TODO: Bind the net-snmp c library to make this app portable.
 # TODO: Test, test, test!
-class App
+struct App
   include Reports
   include Utils
   include Snmp
@@ -48,7 +48,7 @@ class App
              mem:    "memory",
              dsk:    "dskTable",
              ifdesc: "ifDescr",
-  }
+  } # => Hash(Symbol, String)
 
   CONFIG_PATH = File.expand_path("~/.snob/")
   CONFIG_FILE = File.expand_path("~/.snob/snobrc.yml")
@@ -117,7 +117,7 @@ class App
       config = fetch_config(config_file)["#{hostname}"] # => YAML::Any
     else
       puts "#{hostname} is not in config file. Configuring..."
-      config = configure_session[0].to_h  # => Hash(String, String)
+      config = configure_session[0]  # => Hash(String, String)
       credentials = {hostname => config}.to_yaml.gsub("---", "") # => String
       puts "You entered: %s" % credentials
       choice = ask("Save these credentials? ")
