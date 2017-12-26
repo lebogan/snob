@@ -113,7 +113,7 @@ myserver:
 ## Development
 Please, see the DISCLAIMER below.  
 Check out the repo on GitHub at https://github.com/lebogan/snob.git  
-Developed using Crystal 0.23.1 on Fedora 26 workstation running under Vagrant v2.0.1.  
+Developed using Crystal 0.24.1 on Fedora 26 workstation running under Vagrant v2.0.1.  
 Tested on Fedora 26/27 and CentOS 7.  
 
 ## Contributing
@@ -134,7 +134,7 @@ This utility is available as open source under the terms of the
 
 ## Disclaimer
 This utility was originally created for my personal use in my work as a network
-specialist. It was developed on a Fedora Workstation using Crystal 0.23.1. This has
+specialist. It was developed on a Fedora Workstation using Crystal 0.24.1. This has
 only been tested on Fedora 26/27 Workstation and CentOS 7 
 
 I am not a professional software developer nor do I pretend to be. I am a retired IT 

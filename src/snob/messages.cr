@@ -1,4 +1,4 @@
-#===============================================================================
+# ===============================================================================
 #         FILE:  messages.cr
 #        USAGE:  Internal
 #  DESCRIPTION:  Contains the error messages.
@@ -7,20 +7,20 @@
 #      CREATED:  2017-12-24 10:40
 #    COPYRIGHT:  (C) 2017 Lewis E. Bogan <lewis.bogan@comcast.net>
 # Distributed under terms of the MIT license.
-#===============================================================================
+# ===============================================================================
 
 module Messages
   extend self
 
   def banner_message
-      <<-BANNER
-      Usage: snob [OPTIONS] [HOST]
-      Browse a host's snmpv3 mib tree.
+    <<-BANNER
+    Usage: snob [OPTIONS] [HOST]
+    Browse a host's snmpv3 mib tree.
 
-      Prompts for HOST if not specified on the command-line. Also, prompts
-      for security credentials if HOST is not in the config file, snobrc.yml.
+    Prompts for HOST if not specified on the command-line. Also, prompts
+    for security credentials if HOST is not in the config file, snobrc.yml.
 
-      BANNER
+    BANNER
   end
 
   def ping_message(hostname)

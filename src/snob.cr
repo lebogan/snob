@@ -52,7 +52,7 @@ struct App
 
   CONFIG_PATH = File.expand_path("~/.snob/")
   CONFIG_FILE = File.expand_path("~/.snob/snobrc.yml")
-  OUTFILE = File.expand_path("~/tmp/raw_dump.txt")
+  OUTFILE     = File.expand_path("~/tmp/raw_dump.txt")
 
   # Runs the main application.
   def run
@@ -70,8 +70,8 @@ struct App
                                      (Default: system)") do |oid|
         mib_oid = case
                   when OIDLIST.has_key?(oid) then OIDLIST["#{oid}"]
-                  when !oid.empty? then oid
-                  else "system"
+                  when !oid.empty?           then oid
+                  else                            "system"
                   end
       end
       parser.on("-d", "--dump", "Write output to file") { file_write = true }
@@ -117,7 +117,7 @@ struct App
       config = fetch_config(config_file)["#{hostname}"] # => YAML::Any
     else
       puts "#{hostname} is not in config file. Configuring..."
-      config = configure_session[0]  # => Hash(String, String)
+      config = configure_session[0]                              # => Hash(String, String)
       credentials = {hostname => config}.to_yaml.gsub("---", "") # => String
       puts "You entered: %s" % credentials
       choice = ask("Save these credentials? ")
@@ -143,7 +143,7 @@ struct App
     else
       clear_screen
       say_hey(hostname)
-      table = {} of String => String          # => Hash(String, String)
+      table = {} of String => String # => Hash(String, String)
       format_table(results.split("\n"), table)
       display_table(table, hostname, mib_oid)
     end
