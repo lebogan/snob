@@ -1,4 +1,4 @@
-# ~/.snobrc.yml
+# ~/.snob/snobrc.yml
 ---
 hostname: 
   user: "username" 
