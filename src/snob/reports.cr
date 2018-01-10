@@ -53,10 +53,11 @@ module Reports
   #     Returns # => Hash(String, String)
   def format_table(results, table)
     results.each do |entry|
-      next if entry.size == 0
-      label = format_label(entry)
-      info = truncate(entry.split(/=/)[1].strip).to_s
-      table[label] = info
+      if entry.split(/=/).size > 1
+        label = format_label(entry)
+        info = truncate(entry.split(/=/)[1]).to_s
+        table[label] = info
+      end
     end
     table
   end
