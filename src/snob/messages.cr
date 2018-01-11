@@ -29,6 +29,12 @@ module Messages
     PING
   end
 
+  def blank_host_message
+    <<-HOSTNAME
+    ping: hostname can not be blank
+    HOSTNAME
+  end
+
   def snmp_message(hostname, mib_oid)
     <<-SNMP
     Error: cannot process this request because:
@@ -41,7 +47,7 @@ module Messages
     SNMP
   end
 
-  def missig_message(flag)
+  def missing_message(flag)
     <<-MISSING_OPTION
     Missing option argument: #{flag} OID
     Example: snob -m lldp hostname

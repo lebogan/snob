@@ -15,12 +15,15 @@ development environment
 
 This utility is written specifically for snmp version 3 because of
 its security features. Backwards compatibility to version 2c is not included
-at this time. Sorry.
+at this time. Sorry:(.
 
-The special *--list* switch is included because I have a difficult time remembering
-1.0.8802.1.1.2.1.4.1.1.9 or ipNetToPhysicalPhysAddress **and** I find these two
-oid's useful. In addition, a --dump option with --raw is included for dumping
-the resulting output to a file, raw_dump.txt, for later perusal.
+The special *--list* switch is included to provide easily remembered names for
+1.0.8802.1.1.2.1.4.1.1.9 or ipNetToPhysicalPhysAddress or other cryptic
+oids.
+
+The output is raw by default. In addition, a --dump option is included for dumping
+the resulting output to a file, raw_dump.txt, for later perusal. A --format option
+exists in an attempt to pretty-print the output for display on screen.
 
 ## Installation
 ```bash

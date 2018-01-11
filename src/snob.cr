@@ -48,7 +48,9 @@ struct App
              mem:    "memory",
              dsk:    "dskTable",
              ifdesc: "ifDescr",
-  } # => Hash(Symbol, String)
+             distro: "ucdavis.7890.1.4",
+             temp:   "lmTempSensorsDevice",
+  } # => NamedTuple(Symbol, String...)
 
   CONFIG_PATH = File.expand_path("~/.snob/")
   CONFIG_FILE = File.expand_path("~/.snob/snobrc.yml")
@@ -57,7 +59,7 @@ struct App
   # Runs the main application.
   def run
     mib_oid = ""
-    display_raw = false
+    display_formatted = false
     file_write = false
 
     OptionParser.parse! do |parser|
@@ -66,7 +68,7 @@ struct App
         list_oids(OIDLIST)
         exit 0
       end
-      parser.on("-m OID", "--mib=OID", "Show information for this oid
+      parser.on("-m OID", "--mib=OID", "Display information for this oid
                                      (Default: system)") do |oid|
         mib_oid = case
                   when OIDLIST.has_key?(oid) then OIDLIST["#{oid}"]
@@ -74,8 +76,8 @@ struct App
                   else                            "system"
                   end
       end
-      parser.on("-d", "--dump", "Write output to file") { file_write = true }
-      parser.on("-r", "--raw", "Show raw mib information for this oid") { display_raw = true }
+      parser.on("-d", "--dump", "Write output to file, raw only") { file_write = true }
+      parser.on("-f", "--formatted", "Display formatted output") { display_formatted = true }
       parser.on("-h", "--help", "Show this help") do
         puts parser
         exit 0
@@ -88,13 +90,14 @@ struct App
         abort invalid_message(flag)
       end
       parser.missing_option do |flag|
-        abort missig_message(flag)
+        abort missing_message(flag)
       end
     end
 
     # Asks for a command line argument if none is given on the command line.
     if ARGV.empty?
       hostname = ask("Enter hostname: ")
+      abort blank_host_message if hostname.blank?
     else
       hostname = ARGV[0]
     end
@@ -104,24 +107,25 @@ struct App
     status, result = run_cmd("ping", args)
     abort ping_message(hostname) unless status == 0
 
-    # Checks for existance of a config file and creates a dummy entry
+    # Checks for existence of a config file and creates a dummy entry
     #    if the user answers yes.
-    config_file = File.expand_path("~/.snob/snobrc.yml")
     check_for_config(CONFIG_PATH, CONFIG_FILE)
 
-    # Checks for the existance of a valid config file and tests if host
+    # Checks for the existence of a valid config file and tests if host
     #   is in it. Otherwise, asks for manual entry of credentials and
     #   adds them to existing config file.
     # NOTE: {hostname => config} => Hash(String, Hash(String, String))
-    if File.exists?(config_file) && fetch_config(config_file)["#{hostname}"]? != nil
-      config = fetch_config(config_file)["#{hostname}"] # => YAML::Any
+    if File.exists?(CONFIG_FILE) && fetch_config(CONFIG_FILE)["#{hostname}"]? != nil
+      config = fetch_config(CONFIG_FILE)["#{hostname}"] # => YAML::Any
     else
-      puts "#{hostname} is not in config file. Configuring..."
+      puts "'#{hostname}' is not in config file."
+      puts "%s" % '-' * 35
       config = configure_session[0]                              # => Hash(String, String)
       credentials = {hostname => config}.to_yaml.gsub("---", "") # => String
+      puts "%s" % '-' * 35
       puts "You entered: %s" % credentials
       choice = ask("Save these credentials? ")
-      add_session(config_file, credentials) if /#{choice}/i =~ "yes"
+      add_session(CONFIG_FILE, credentials) if /#{choice}/i =~ "yes"
     end
 
     # Creates a Snmp object and invokes the walk_mib3 method on the Snmp object, host,
@@ -137,15 +141,15 @@ struct App
     abort snmp_message(hostname, mib_oid) unless status == 0
 
     # Show your stuff
-    if display_raw
-      display_raw_table(results.split("\n")) # => Array(String)
-      write_raw_results_to_file(OUTFILE, results) if file_write
-    else
+    if display_formatted
       clear_screen
       say_hey(hostname)
       table = {} of String => String # => Hash(String, String)
       format_table(results.split("\n"), table)
       display_table(table, hostname, mib_oid)
+    else
+      display_raw_table(results.split("\n")) # => Array(String)
+      write_file(OUTFILE, results) if file_write
     end
   end
 end

@@ -83,6 +83,13 @@ module Utils
     result # => Array(String)
   end
 
+  # Opens a file for writing. Creates it if it doesn't exist. Overwrites contents.
+  def write_file(filename, content)
+    File.open(filename, "w") do |file|
+      file.puts content
+    end
+  end
+
   # Says hello to _hostname_.
   def say_hey(hostname)
     puts "Hey #{hostname}!"

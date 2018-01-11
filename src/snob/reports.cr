@@ -104,11 +104,4 @@ module Reports
     display_header("OIDs", header, "Included pre-defined flag names")
     display_table_info(list)
   end
-
-  # Opens a file for writing. Creates it if it doesn't exist. Overwrites contets.
-  def write_raw_results_to_file(filename, content)
-    File.open(filename, "w") do |file|
-      file.puts content
-    end
-  end
 end
