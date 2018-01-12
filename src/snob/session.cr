@@ -24,7 +24,7 @@ module Session
 
   # Prompts the user for host credentials. This method is typically invoked
   # when the credentials are not in the configuration file.
-  #     Returns #  => Tuple(Hash(Symbol, String))
+  #     Returns #  => Tuple(Hash(String, String))
   def configure_session
     conf = {} of String => String
     conf["user"] = ask("Enter security name: ")

@@ -16,6 +16,9 @@ module Utils
   extend self
 
   # Runs a system-level commands and returns a status and results object.
+  #     cmd => String
+  #     args => Tuple(String, String, String...)
+  #     stdout_str, stderr_str => Stdio = Redirect::Close
   #     Returns # => Tuple{Int32, String}
   def run_cmd(cmd, args)
     stdout_str = IO::Memory.new

@@ -94,7 +94,7 @@ struct App
       end
     end
 
-    # Asks for a command line argument if none is given on the command line.
+    # Asks for a hostname if none is given on the command line.
     if ARGV.empty?
       hostname = ask("Enter hostname: ")
       abort blank_host_message if hostname.blank?
@@ -103,7 +103,7 @@ struct App
     end
 
     # Checks if host exists on this network
-    args = ("-c 2 #{hostname}").split(" ") # => Array of String
+    args = {"-c", "2", "#{hostname}"} # => Tuple(String, String, String)
     status, result = run_cmd("ping", args)
     abort ping_message(hostname) unless status == 0
 

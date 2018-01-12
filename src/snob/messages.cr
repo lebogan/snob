@@ -31,7 +31,7 @@ module Messages
 
   def blank_host_message
     <<-HOSTNAME
-    ping: hostname can not be blank
+    snob: hostname can not be blank
     HOSTNAME
   end
 

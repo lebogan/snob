@@ -84,7 +84,7 @@ module Reports
 
   # Displays the raw unformatted snmpwalk results.
   def display_raw_table(table)
-    page_size = 20
+    page_size = 30
     page_count = 1
     table.each do |line|
       puts line
