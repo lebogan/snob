@@ -44,20 +44,21 @@ Usage: snob [OPTIONS] [HOST]
 Browse a host snmpv3 mib tree.
 
 Prompts for HOST if not specified on the command-line. Also, prompts
-for security credentials if HOST is not in the config file, ~/.snobrc.yml.
+for security credentials if HOST is not in the config file, ~/.snob/snobrc.yml.
 
-    -l, --list                       List useful OIDs
-    -m OID, --mib=OID                Show information for this oid
-    -d, --dump                       Write output to file
-    -r, --raw                        Show raw mib information for this oid
+    -l, --list                       List some pre-defined OIDs
+    -m OID, --mib=OID                Display information for this oid
+                                     (Default: system)
+    -d, --dump                       Write output to file, raw only
+    -f, --formatted                  Display formatted output
     -h, --help                       Show this help
     -v, --version                    Show version
 
 $ snob --list
 ===================================================================
-OIDS - Included dictionary of useful oids
+OIDS - Included pre-defined flag names
 -------------------------------------------------------------------
-flag value       |oid name
+flag name        |oid name
 =================+=================================================
 arp              |ipNetToPhysicalPhysAddress
 -----------------+-------------------------------------------------
@@ -70,6 +71,10 @@ mem              |memory
 dsk              |dskTable
 -----------------+-------------------------------------------------
 ifdesc           |ifDescr
+-----------------+-------------------------------------------------
+distro           |ucdavis.7890.1.4
+-----------------+-------------------------------------------------
+temp             |lmTempSensorsDevice
 -----------------+-------------------------------------------------
 ```
 ## Config file

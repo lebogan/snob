@@ -120,7 +120,7 @@ struct App
     else
       puts "'#{hostname}' is not in config file."
       puts "%s" % '-' * 35
-      config = configure_session[0]                              # => Hash(String, String)
+      config = configure_session[0]                              # => Hash(String, NamedTuple)
       credentials = {hostname => config}.to_yaml.gsub("---", "") # => String
       puts "%s" % '-' * 35
       puts "You entered: %s" % credentials
