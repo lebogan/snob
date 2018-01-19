@@ -22,8 +22,8 @@ module Config
       Dir.mkdir_p(config_path, 0o700)
       options = {"dummy" => {"user" => "username", "auth" => "auth passphrase",
                              "priv" => "priv passphrase", "crypto" => "AES/DES"}}
-      choice = ask("Config file doesn't exist. Create it? ")
-      build_config_file(config_file, options) if /#{choice}/i =~ "yes"
+      choice = agree?("Config file doesn't exist. Create it? ")
+      build_config_file(config_file, options) if choice
     end
   end
 

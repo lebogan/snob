@@ -124,8 +124,8 @@ struct App
       credentials = {hostname => config}.to_yaml.gsub("---", "") # => String
       puts "%s" % '-' * 35
       puts "You entered: %s" % credentials
-      choice = ask("Save these credentials? ")
-      add_session(CONFIG_FILE, credentials) if /#{choice}/i =~ "yes"
+      choice = agree?("Save these credentials? ")
+      add_session(CONFIG_FILE, credentials) if choice
     end
 
     # Creates a Snmp object and invokes the walk_mib3 method on the Snmp object, host,

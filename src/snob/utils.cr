@@ -15,12 +15,25 @@
 module Utils
   extend self
 
-  # Runs a system-level commands and returns a status and results object.
-  #     cmd => String
-  #     args => Tuple(String, String, String...)
-  #     stdout_str, stderr_str => Stdio = Redirect::Close
-  #     Returns # => Tuple{Int32, String}
-  def run_cmd(cmd, args)
+  # Displays prompt and cursor all on one line if prompt ends with a space,
+  # otherwise displays prompt string and a newline.
+  #
+  # ```
+  # prompt_msg("Enter something: ") # => Nil
+  # ```
+  #
+  private def prompt_msg(prompt)
+    prompt[0].ends_with?(" ") ? print(*prompt) : puts(*prompt)
+  end
+
+  # Runs a system-level command and returns a Tuple(Int32, String) containing
+  # status, and command output or error.
+  #
+  # ```
+  # status, result = Utils.run_cmd("ls", {"-ls"}) # => 0, listing 
+  # ```
+  #
+  def run_cmd(cmd : String, args : Tuple) : Tuple(Int32, String)
     stdout_str = IO::Memory.new
     stderr_str = IO::Memory.new
     status = Process.run(cmd, args: args, output: stdout_str, error: stderr_str)
@@ -32,52 +45,97 @@ module Utils
   end
 
   # Clears the screen using ansi codes.
-  # \e[ is the escape
-  # 2J clear screen
-  # 1;1H move cursor to line 1, column 1
-  def clear
-    print "\e[2J\e[1;1H"
-  end
-
-  # ditto
+  #
+  #```text
+  # \e[ is the escape code
+  # 2J clears the screen
+  # 1;1H moves cursor to line 1, column 1
+  #```
+  #
+  #```text
+  # clear_screen # => "\e[2J\e[1;1H]]"
+  #```
+  #
   def clear_screen
     puts IO::Memory.new << "\e[2J\e[1;1H"
   end
 
-  # Prompts for user input displaying the passed prompt in **args*.
-  #     Returns #  => String
-  def ask(*args)
-    args[0].to_s.ends_with?(" ") ? print(*args) : puts(*args)
+  # Prompts for user input displaying the passed prompt in _args_.
+  #
+  # ```
+  # Utils.ask("Enter something: ") # => "whatever you entered"
+  # ```
+  #
+  # ```text
+  # $ Enter something: _ 
+  # ```
+  #
+  def ask(*args) : String
+    prompt_msg(args)
     gets.to_s
   end
 
   # Gets passphrase without echoing it to the screen. Uses io/console.cr.
-  #     Returns # => Tuple(String)
-  def askpass(*args)
-    print(*args)
+  #     Returns # => 
+  # Gets passphrase without echoing it to the screen.
+  #
+  # ```
+  # Question.ask_pass("Enter passphrase: ") # => Tuple(String?)
+  # ```
+  #
+  # ```text
+  # $ Enter passphrase: _ <no echo>
+  # ```
+  #
+  def askpass(*args) : Tuple(String?)
+    prompt_msg(args)
     passphrase = STDIN.noecho &.gets.try &.chomp
     puts
     {passphrase}
   end
 
-  # Gets a single character for use in paging long displays.
-  #    Returns # => Char
-  # To break out of a block:
+  # Gets a single character (no newline) for use in paging long displays
+  # and other single character prompts.
+  #
   # ```
-  # choice = page("\n -- press any key to continue or q to quit -- ")
-  # choice == 'q' ? break : next
+  # Utils.ask_char("press 'q' to quit ") # => 'q'
   # ```
+  #
+  # ```text
+  # $ press 'q' to quit _
+  # ```
+  #
   # NOTE: see Reports.display_table_info for usage.
-  def page(*args)
-    args[0].to_s.ends_with?(" ") ? print(*args) : puts(*args)
+  def ask_char(*args) : Char?
+    prompt_msg(args)
     STDIN.raw &.read_char
   end
 
-  # Truncates a string longer than length characters and prints _..._ in the
-  # place of the removed text. Defaults to 48 characters.
-  def truncate(text, length = 48, truncate_string = "...")
+  # Prompts for an agreement in the form 'y'(yes) or whatever else.
+  #
+  # ```
+  # Utils.agree?("Are you sure(y/n)?: ") # => true | false
+  # ```
+  #
+  # ```text
+  # $ Are you sure(y/n)?: _ 
+  # ```
+  #
+  def agree?(*args) : Bool
+    prompt_msg(args)
+    gets =~ /^y/i ? true : false
+  end
+
+  # Truncates a _text_ string longer than _length_ characters and prints
+  # a _truncate_ _string_ in the place of the removed text. Defaults to 48 characters.
+  #
+  # ```
+  # Utils.truncate("hello, world", 10, "...") # => hello, ...
+  # ```
+  #
+  def truncate(text : String, length = 48, truncate_string = "...") : String
     l = length - truncate_string.size
-    (text.size > length ? text[0...l] + truncate_string : text) if text
+    text.size > length ? (text[0...l] + truncate_string) : text
   end
 
   # Reads a file.
