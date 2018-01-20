@@ -11,24 +11,25 @@
 
 # Displays the results of a snmpwalk operation.
 module Reports
+
   # Displays the table information.
-  def display_table_info(table)
+  def display_table_info(formatted_table : Hash | NamedTuple)
     page_size = 15
     page_count = 1
-    table.each do |label, info|
+    formatted_table.each do |label, info|
       printf("%-16s |%s\n", label, info.delete("\""))
       puts "-----------------+-------------------------------------------------"
       page_count += 1
       if page_count % page_size == 0
-        choice = ask_char("\n -- press any key to continue or q to quit -- \n\n")
+        choice = ask_char("\n -- press any key to continue or q to quit --  ")
         choice == 'q' ? break : next
       end
     end
     puts "\n\n"
   end
 
-  # Displays the report header
-  def display_header(hostname, header, oid)
+  # Displays the report header.
+  def display_header(hostname : String, header : Tuple, oid : String)
     puts "==================================================================="
     puts "#{hostname.upcase} - #{oid}"
     puts "-------------------------------------------------------------------"
@@ -37,8 +38,7 @@ module Reports
   end
 
   # Formats the label depending on which oid it represents.
-  #     Returns # => String
-  def format_label(entry)
+  def format_label(entry : String) : String
     case
     when entry.split(/=/)[0].split(/\"/)[0].includes?("ipNetToPhysicalPhysAddress")
       label = entry.split(/=/)[0].split(/\"/)[-2].to_s
@@ -50,8 +50,7 @@ module Reports
   end
 
   # Formats the table into label and info.
-  #     Returns # => Hash(String, String)
-  def format_table(results, table)
+  def format_table(results : Array, table : Hash) : Hash(String, String)
     results.each do |entry|
       if entry.split(/=/).size > 1
         label = format_label(entry)
@@ -59,12 +58,11 @@ module Reports
         table[label] = info
       end
     end
-    table
+    table # => Hash(String, String)
   end
 
   # Formats the appropriate oid header.
-  #     Returns  # => Tuple(String, String)
-  def format_header(oid)
+  def format_header(oid : String) : Tuple(String, String)
     case
     when oid.includes?("1.0.8802.1.1.2.1.4.1.1.9")
       {"port.instance", "remote host"}
@@ -76,14 +74,14 @@ module Reports
   end
 
   # Displays header and formatted table information.
-  def display_table(table, hostname, oid)
+  def display_table(formatted_table : Hash, hostname : String, oid : String)
     header = format_header(oid) # => Tuple(String, String, String)
     display_header(hostname, header, oid)
-    display_table_info(table)
+    display_table_info(formatted_table)
   end
 
   # Displays the raw unformatted snmpwalk results.
-  def display_raw_table(table)
+  def display_raw_table(table : Array(String))
     page_size = 30
     page_count = 1
     table.each do |line|
@@ -98,7 +96,7 @@ module Reports
   end
 
   # Lists some useful oids.
-  def list_oids(list)
+  def list_oids(list : NamedTuple)
     clear_screen
     header = {"flag name", "oid name"}
     display_header("OIDs", header, "Included pre-defined flag names")

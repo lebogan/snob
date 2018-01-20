@@ -17,18 +17,18 @@ module Config
 
   # Checks for existance of a config file and creates a dummy entry
   #    if the user answers yes.
-  def check_for_config(config_path, config_file)
+  def check_for_config(config_path : String, config_file : String)
     unless File.exists?(config_file)
       Dir.mkdir_p(config_path, 0o700)
-      options = {"dummy" => {"user" => "username", "auth" => "auth passphrase",
+      conf = {"dummy" => {"user" => "username", "auth" => "auth passphrase",
                              "priv" => "priv passphrase", "crypto" => "AES/DES"}}
-      choice = agree?("Config file doesn't exist. Create it? ")
-      build_config_file(config_file, options) if choice
+      choice = agree?("Config file doesn't exist. Create it(y/n)? ")
+      build_config_file(config_file, conf) if choice
     end
   end
 
   # Creates a new config file.
-  def build_config_file(config_file, conf)
+  def build_config_file(config_file : String, conf : Hash)
     File.open(config_file, "w") do |file|
       file.puts "# #{config_file}"
       YAML.dump(conf, file)
@@ -36,8 +36,7 @@ module Config
   end
 
   # Parses a YAML configuration file.
-  #     Returns # => YAML::Any
-  def fetch_config(config_file)
+  def fetch_config(config_file : String) : YAML::Any
     YAML.parse(File.read(config_file))
   end
 end

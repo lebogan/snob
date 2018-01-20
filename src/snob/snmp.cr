@@ -18,7 +18,11 @@ module Snmp
     property :auth, :priv, :user, :crypto
 
     # Creates a new Snmp object.
-    #     Snmp.new(args...) # => Snmp
+    #
+    #```
+    #Snmp.new(args...) # => Snmp
+    #```
+    #
     def initialize(auth : String, priv : String, user : String, crypto : String)
       @auth = auth
       @priv = priv
@@ -27,12 +31,12 @@ module Snmp
     end
 
     # Walks the mib tree.
-    def walk_mib3(hostname, oid)
+    def walk_mib3(hostname : String, oid : String) : Tuple(Int32, String)
       cmd = "snmpwalk"
       args = {"-v3", "-u", "#{@user}", "-OQUsT", "-l", "authpriv",
               "-a", "MD5", "-A", "#{@auth}", "-x", "#{@crypto}", "-X",
               "#{@priv}", "#{hostname}", "#{oid}"}
-      run_cmd(cmd, args)
+      run_cmd(cmd, args) # => Tuple(Int32, String)
     end
   end
 end

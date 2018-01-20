@@ -15,17 +15,16 @@
 module Session
   extend self
 
-  # Adds new session credentials to config file.
-  def add_session(config_file, conf)
+  # Adds new session _credentials_ to config file.
+  def add_session(config_file : String, credentials : String)
     File.open(config_file, "a") do |file|
-      file.puts conf
+      file.puts credentials
     end
   end
 
   # Prompts the user for host credentials. This method is typically invoked
   # when the credentials are not in the configuration file.
-  #     Returns #  => Tuple(Hash(String, String))
-  def configure_session
+  def configure_session : Tuple(Hash(String, String))
     conf = {} of String => String
     conf["user"] = ask("Enter security name: ")
     conf["auth"] = askpass("Enter authentication phrase: ")[0].to_s

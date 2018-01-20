@@ -138,13 +138,13 @@ module Utils
     text.size > length ? (text[0...l] + truncate_string) : text
   end
 
-  # Reads a file.
+  # Reads _filename_.
   def read_file(filename)
     result = File.read_lines(filename)
     result # => Array(String)
   end
 
-  # Opens a file for writing. Creates it if it doesn't exist. Overwrites contents.
+  # Opens _filename_ for writing. Creates it if it doesn't exist. Overwrites _content_.
   def write_file(filename, content)
     File.open(filename, "w") do |file|
       file.puts content

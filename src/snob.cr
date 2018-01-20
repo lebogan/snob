@@ -124,7 +124,7 @@ struct App
       credentials = {hostname => config}.to_yaml.gsub("---", "") # => String
       puts "%s" % '-' * 35
       puts "You entered: %s" % credentials
-      choice = agree?("Save these credentials? ")
+      choice = agree?("Save these credentials(y/n)? ")
       add_session(CONFIG_FILE, credentials) if choice
     end
 
