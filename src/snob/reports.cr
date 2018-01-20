@@ -9,7 +9,7 @@
 # Distributed under terms of the MIT license.
 # ===============================================================================
 
-# Displays the results of a snmpwalk operation.
+# Displays the results of a snmpwalk operation either raw or formatted.
 module Reports
 
   # Displays the table information.
@@ -88,18 +88,30 @@ module Reports
       puts line
       page_count += 1
       if page_count % page_size == 0
-        choice = ask_char("\n -- press any key to continue or q to quit -- \n\n")
+        choice = ask_char("\n -- press any key to continue or q to quit --  ")
         choice == 'q' ? break : next
       end
     end
     puts "\n\n"
   end
 
-  # Lists some useful oids.
+  # Lists some useful difficult-to-remember oids.
+  #
+  #```text
+  #===================================================================
+  #OIDS - Included pre-defined object identifiers
+  #-------------------------------------------------------------------
+  #name             |object identifier
+  #=================+=================================================
+  #arp              |ipNetToPhysicalPhysAddress
+  #-----------------+-------------------------------------------------
+  #lldp             |1.0.8802.1.1.2.1.4.1.1.9
+  #-----------------+-------------------------------------------------
+  #```
   def list_oids(list : NamedTuple)
     clear_screen
-    header = {"flag name", "oid name"}
-    display_header("OIDs", header, "Included pre-defined flag names")
+    header = {"name", "object identifier"}
+    display_header("OIDs", header, "Included pre-defined object identifiers")
     display_table_info(list)
   end
 end

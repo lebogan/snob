@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta id="repository-name" content="github.com/lebogan/snob">
+  <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="js/doc.js"></script>
+  <title>Reports - github.com/lebogan/snob</title>
+</head>
+<body>
+
+<div id="types-list">
+  <div id="search-box">
+    <input type="search" id="search-input" placeholder="Search...">
+  </div>
+
+  <ul>
+    <li><a href="index.html">README</a></li>
+  </ul>
+
+  <ul>
+  
+  <li class=" " data-id="github.com/lebogan/snob/App" data-name="app">
+      <a href="App.html">App</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/lebogan/snob/Config" data-name="config">
+      <a href="Config.html">Config</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/lebogan/snob/Messages" data-name="messages">
+      <a href="Messages.html">Messages</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/lebogan/snob/Object" data-name="object">
+      <a href="Object.html">Object</a>
+      
+    </li>
+  
+  <li class=" current" data-id="github.com/lebogan/snob/Reports" data-name="reports">
+      <a href="Reports.html">Reports</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/lebogan/snob/Session" data-name="session">
+      <a href="Session.html">Session</a>
+      
+    </li>
+  
+  <li class="parent " data-id="github.com/lebogan/snob/Snmp" data-name="snmp">
+      <a href="Snmp.html">Snmp</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/lebogan/snob/Snmp/Snmp" data-name="snmp::snmp">
+      <a href="Snmp/Snmp.html">Snmp</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="github.com/lebogan/snob/Snob" data-name="snob">
+      <a href="Snob.html">Snob</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/lebogan/snob/Utils" data-name="utils">
+      <a href="Utils.html">Utils</a>
+      
+    </li>
+  
+</ul>
+
+</div>
+
+<div id="main-content">
+<h1 class="type-name">
+
+  <span class="kind">module</span> Reports
+
+</h1>
+
+
+
+
+
+  <h2>Overview</h2>
+
+  <p>Displays the results of a snmpwalk operation either raw or formatted.</p>
+
+
+
+
+
+
+
+
+
+
+
+  <h2>Direct including types</h2>
+  <ul class="other-types-list">
+  
+    <li class="other-type"><a href="App.html">App</a></li>
+  
+  </ul>
+
+
+
+
+  <h2>Defined in:</h2>
+  
+    
+      <a href="https://github.com/lebogan/snob/blob/920199fe9c5d0ab4380ceea0a07c2e14861a2799/src/snob/reports.cr#L13" target="_blank">snob/reports.cr</a>
+    
+    <br/>
+  
+
+
+
+
+
+
+
+
+
+  <h2>Instance Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#display_header%28hostname%3AString%2Cheader%3ATuple%2Coid%3AString%29-instance-method" class="signature"><strong>#display_header</strong>(hostname : String, header : Tuple, oid : String)</a>
+        
+          <div class="summary"><p>Displays the report header.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#display_raw_table%28table%3AArray%28String%29%29-instance-method" class="signature"><strong>#display_raw_table</strong>(table : Array(String))</a>
+        
+          <div class="summary"><p>Displays the raw unformatted snmpwalk results.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#display_table%28formatted_table%3AHash%2Chostname%3AString%2Coid%3AString%29-instance-method" class="signature"><strong>#display_table</strong>(formatted_table : Hash, hostname : String, oid : String)</a>
+        
+          <div class="summary"><p>Displays header and formatted table information.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#display_table_info%28formatted_table%3AHash%7CNamedTuple%29-instance-method" class="signature"><strong>#display_table_info</strong>(formatted_table : Hash | NamedTuple)</a>
+        
+          <div class="summary"><p>Displays the table information.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#format_header%28oid%3AString%29%3ATuple%28String%2CString%29-instance-method" class="signature"><strong>#format_header</strong>(oid : String) : Tuple(String, String)</a>
+        
+          <div class="summary"><p>Formats the appropriate oid header.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#format_label%28entry%3AString%29%3AString-instance-method" class="signature"><strong>#format_label</strong>(entry : String) : String</a>
+        
+          <div class="summary"><p>Formats the label depending on which oid it represents.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#format_table%28results%3AArray%2Ctable%3AHash%29%3AHash%28String%2CString%29-instance-method" class="signature"><strong>#format_table</strong>(results : Array, table : Hash) : Hash(String, String)</a>
+        
+          <div class="summary"><p>Formats the table into label and info.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#list_oids%28list%3ANamedTuple%29-instance-method" class="signature"><strong>#list_oids</strong>(list : NamedTuple)</a>
+        
+          <div class="summary"><p>Lists some useful difficult-to-remember oids.</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+<div class="methods-inherited">
+  
+</div>
+
+
+
+
+
+
+  <h2>Instance Method Detail</h2>
+  
+    <div class="entry-detail" id="display_header(hostname:String,header:Tuple,oid:String)-instance-method">
+      <div class="signature">
+        
+        def <strong>display_header</strong>(hostname : String, header : Tuple, oid : String)
+
+        <a class="method-permalink" href="#display_header%28hostname%3AString%2Cheader%3ATuple%2Coid%3AString%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Displays the report header.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/lebogan/snob/blob/920199fe9c5d0ab4380ceea0a07c2e14861a2799/src/snob/reports.cr#L32" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="display_raw_table(table:Array(String))-instance-method">
+      <div class="signature">
+        
+        def <strong>display_raw_table</strong>(table : Array(String))
+
+        <a class="method-permalink" href="#display_raw_table%28table%3AArray%28String%29%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Displays the raw unformatted snmpwalk results.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/lebogan/snob/blob/920199fe9c5d0ab4380ceea0a07c2e14861a2799/src/snob/reports.cr#L84" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="display_table(formatted_table:Hash,hostname:String,oid:String)-instance-method">
+      <div class="signature">
+        
+        def <strong>display_table</strong>(formatted_table : Hash, hostname : String, oid : String)
+
+        <a class="method-permalink" href="#display_table%28formatted_table%3AHash%2Chostname%3AString%2Coid%3AString%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Displays header and formatted table information.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/lebogan/snob/blob/920199fe9c5d0ab4380ceea0a07c2e14861a2799/src/snob/reports.cr#L77" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="display_table_info(formatted_table:Hash|NamedTuple)-instance-method">
+      <div class="signature">
+        
+        def <strong>display_table_info</strong>(formatted_table : Hash | NamedTuple)
+
+        <a class="method-permalink" href="#display_table_info%28formatted_table%3AHash%7CNamedTuple%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Displays the table information.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/lebogan/snob/blob/920199fe9c5d0ab4380ceea0a07c2e14861a2799/src/snob/reports.cr#L16" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="format_header(oid:String):Tuple(String,String)-instance-method">
+      <div class="signature">
+        
+        def <strong>format_header</strong>(oid : String) : Tuple(String, String)
+
+        <a class="method-permalink" href="#format_header%28oid%3AString%29%3ATuple%28String%2CString%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Formats the appropriate oid header.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/lebogan/snob/blob/920199fe9c5d0ab4380ceea0a07c2e14861a2799/src/snob/reports.cr#L65" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="format_label(entry:String):String-instance-method">
+      <div class="signature">
+        
+        def <strong>format_label</strong>(entry : String) : String
+
+        <a class="method-permalink" href="#format_label%28entry%3AString%29%3AString-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Formats the label depending on which oid it represents.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/lebogan/snob/blob/920199fe9c5d0ab4380ceea0a07c2e14861a2799/src/snob/reports.cr#L41" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="format_table(results:Array,table:Hash):Hash(String,String)-instance-method">
+      <div class="signature">
+        
+        def <strong>format_table</strong>(results : Array, table : Hash) : Hash(String, String)
+
+        <a class="method-permalink" href="#format_table%28results%3AArray%2Ctable%3AHash%29%3AHash%28String%2CString%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Formats the table into label and info.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/lebogan/snob/blob/920199fe9c5d0ab4380ceea0a07c2e14861a2799/src/snob/reports.cr#L53" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="list_oids(list:NamedTuple)-instance-method">
+      <div class="signature">
+        
+        def <strong>list_oids</strong>(list : NamedTuple)
+
+        <a class="method-permalink" href="#list_oids%28list%3ANamedTuple%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Lists some useful difficult-to-remember oids.</p>
+
+<pre><code class='language-text'>===================================================================
+OIDS - Included pre-defined object identifiers
+-------------------------------------------------------------------
+name             |object identifier
+=================+=================================================
+arp              |ipNetToPhysicalPhysAddress
+-----------------+-------------------------------------------------
+lldp             |1.0.8802.1.1.2.1.4.1.1.9
+-----------------+-------------------------------------------------</code></pre></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/lebogan/snob/blob/920199fe9c5d0ab4380ceea0a07c2e14861a2799/src/snob/reports.cr#L111" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+</div>
+
+</body>
+</html>

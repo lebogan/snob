@@ -1,7 +1,7 @@
 # ===============================================================================
 #         FILE:  messages.cr
 #        USAGE:  Internal
-#  DESCRIPTION:  Contains the error messages.
+#  DESCRIPTION:  Contains error messages.
 #       AUTHOR:  Lewis E. Bogan
 #      COMPANY:  Earthsea@Home
 #      CREATED:  2017-12-24 10:40
@@ -9,6 +9,7 @@
 # Distributed under terms of the MIT license.
 # ===============================================================================
 
+# Error and other messages.
 module Messages
   extend self
 
@@ -23,7 +24,7 @@ module Messages
     BANNER
   end
 
-  def ping_message(hostname)
+  def ping_message(hostname : String)
     <<-PING
     ping: #{hostname} is unreachable on this network
     PING
@@ -35,26 +36,26 @@ module Messages
     HOSTNAME
   end
 
-  def snmp_message(hostname, mib_oid)
+  def snmp_message(hostname : String, mib_oid : String)
     <<-SNMP
     Error: cannot process this request because:
     1. net-snmp-utils not installed or
-    2. host #{hostname} not snmpv3 enabled or
+    2. host '#{hostname}' not snmpv3 enabled or
     3. incorrect credentials used or
     4. communication not permitted from this host or
-    5. unknown object identifier: #{mib_oid}.
+    5. unknown object identifier: '#{mib_oid}'.
     Try 'snob --help' for more information.
     SNMP
   end
 
-  def missing_message(flag)
+  def missing_message(flag : String)
     <<-MISSING_OPTION
     Missing option argument: #{flag} OID
     Example: snob -m lldp hostname
     MISSING_OPTION
   end
 
-  def invalid_message(flag)
+  def invalid_message(flag : String)
     <<-INVALID_OPTION
     snob: invalid option -- '#{flag}'
     Try 'snob --help' for more information.

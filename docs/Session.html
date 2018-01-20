@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta id="repository-name" content="github.com/lebogan/snob">
+  <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="js/doc.js"></script>
+  <title>Session - github.com/lebogan/snob</title>
+</head>
+<body>
+
+<div id="types-list">
+  <div id="search-box">
+    <input type="search" id="search-input" placeholder="Search...">
+  </div>
+
+  <ul>
+    <li><a href="index.html">README</a></li>
+  </ul>
+
+  <ul>
+  
+  <li class=" " data-id="github.com/lebogan/snob/App" data-name="app">
+      <a href="App.html">App</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/lebogan/snob/Config" data-name="config">
+      <a href="Config.html">Config</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/lebogan/snob/Messages" data-name="messages">
+      <a href="Messages.html">Messages</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/lebogan/snob/Object" data-name="object">
+      <a href="Object.html">Object</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/lebogan/snob/Reports" data-name="reports">
+      <a href="Reports.html">Reports</a>
+      
+    </li>
+  
+  <li class=" current" data-id="github.com/lebogan/snob/Session" data-name="session">
+      <a href="Session.html">Session</a>
+      
+    </li>
+  
+  <li class="parent " data-id="github.com/lebogan/snob/Snmp" data-name="snmp">
+      <a href="Snmp.html">Snmp</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/lebogan/snob/Snmp/Snmp" data-name="snmp::snmp">
+      <a href="Snmp/Snmp.html">Snmp</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="github.com/lebogan/snob/Snob" data-name="snob">
+      <a href="Snob.html">Snob</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/lebogan/snob/Utils" data-name="utils">
+      <a href="Utils.html">Utils</a>
+      
+    </li>
+  
+</ul>
+
+</div>
+
+<div id="main-content">
+<h1 class="type-name">
+
+  <span class="kind">module</span> Session
+
+</h1>
+
+
+
+
+
+  <h2>Overview</h2>
+
+  <p>Defines session methods. <strong>extend self</strong> allows these
+methods to be included in a program (class) and invoked without a namespace
+or just used as a namespace.</p>
+
+
+
+
+
+
+
+  <h2>Extended Modules</h2>
+  <ul class="other-types-list">
+  
+    <li class="other-type"><a href="Session.html">Session</a></li>
+  
+  </ul>
+
+
+
+
+
+  <h2>Direct including types</h2>
+  <ul class="other-types-list">
+  
+    <li class="other-type"><a href="App.html">App</a></li>
+  
+  </ul>
+
+
+
+
+  <h2>Defined in:</h2>
+  
+    
+      <a href="https://github.com/lebogan/snob/blob/920199fe9c5d0ab4380ceea0a07c2e14861a2799/src/snob/session.cr#L15" target="_blank">snob/session.cr</a>
+    
+    <br/>
+  
+
+
+
+
+
+
+
+
+
+  <h2>Instance Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#add_session%28config_file%3AString%2Ccredentials%3AString%29-instance-method" class="signature"><strong>#add_session</strong>(config_file : String, credentials : String)</a>
+        
+          <div class="summary"><p>Adds new session <em>credentials</em> to config file.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#configure_session%3ATuple%28Hash%28String%2CString%29%29-instance-method" class="signature"><strong>#configure_session</strong> : Tuple(Hash(String, String))</a>
+        
+          <div class="summary"><p>Prompts the user for host credentials.</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+<div class="methods-inherited">
+  
+</div>
+
+
+
+
+
+
+  <h2>Instance Method Detail</h2>
+  
+    <div class="entry-detail" id="add_session(config_file:String,credentials:String)-instance-method">
+      <div class="signature">
+        
+        def <strong>add_session</strong>(config_file : String, credentials : String)
+
+        <a class="method-permalink" href="#add_session%28config_file%3AString%2Ccredentials%3AString%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Adds new session <em>credentials</em> to config file.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/lebogan/snob/blob/920199fe9c5d0ab4380ceea0a07c2e14861a2799/src/snob/session.cr#L19" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="configure_session:Tuple(Hash(String,String))-instance-method">
+      <div class="signature">
+        
+        def <strong>configure_session</strong> : Tuple(Hash(String, String))
+
+        <a class="method-permalink" href="#configure_session%3ATuple%28Hash%28String%2CString%29%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Prompts the user for host credentials. This method is typically invoked
+when the credentials are not in the configuration file.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/lebogan/snob/blob/920199fe9c5d0ab4380ceea0a07c2e14861a2799/src/snob/session.cr#L27" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+</div>
+
+</body>
+</html>

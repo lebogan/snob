@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta id="repository-name" content="github.com/lebogan/snob">
+  <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="js/doc.js"></script>
+  <title>README - github.com/lebogan/snob</title>
+</head>
+<body>
+
+<div id="types-list">
+  <div id="search-box">
+    <input type="search" id="search-input" placeholder="Search...">
+  </div>
+
+  <ul>
+    <li class="current"><a href="index.html">README</a></li>
+  </ul>
+
+  <ul>
+  
+  <li class=" " data-id="github.com/lebogan/snob/App" data-name="app">
+      <a href="App.html">App</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/lebogan/snob/Config" data-name="config">
+      <a href="Config.html">Config</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/lebogan/snob/Messages" data-name="messages">
+      <a href="Messages.html">Messages</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/lebogan/snob/Object" data-name="object">
+      <a href="Object.html">Object</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/lebogan/snob/Reports" data-name="reports">
+      <a href="Reports.html">Reports</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/lebogan/snob/Session" data-name="session">
+      <a href="Session.html">Session</a>
+      
+    </li>
+  
+  <li class="parent " data-id="github.com/lebogan/snob/Snmp" data-name="snmp">
+      <a href="Snmp.html">Snmp</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/lebogan/snob/Snmp/Snmp" data-name="snmp::snmp">
+      <a href="Snmp/Snmp.html">Snmp</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="github.com/lebogan/snob/Snob" data-name="snob">
+      <a href="Snob.html">Snob</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/lebogan/snob/Utils" data-name="utils">
+      <a href="Utils.html">Utils</a>
+      
+    </li>
+  
+</ul>
+
+</div>
+
+<div id="main-content">
+<h1>snob (Snmp Network Object Browser)</h1>
+
+<h2>Introduction</h2>
+
+<p>*<strong>This utility is experimental, it will change radically as I leearn more of the
+Crystal language, use at your own risk!</strong>*</p>
+
+<p><strong>snob</strong> is an attempt to rewrite my Ruby app <a href="https://github.com/lebogan/yasb.git" target="_blank">YASB</a>
+in the Crystal programming language. The idea is to:</p>
+
+<ul><li>have a somewhat easily distributable utility for
+probing network devices using snmpV3</li><li>share this utility with colleagues without them having to install some
+development environment</li><li>build fast performing apps</li><li>learn Crystal while leveraging my Ruby experience</li><li>have fun:)</li></ul>
+
+<p>This utility is written specifically for snmp version 3 because of
+its security features. Backwards compatibility to version 2c is not included
+at this time. Sorry:(.</p>
+
+<p>The special <em>--list</em> switch is included to provide easily remembered names for</p>
+
+<ol><li>0.8802.1.1.2.1.4.1.1.9 or ipNetToPhysicalPhysAddress or other cryptic
+oids.</li></ol>
+
+<p>The output is raw by default. In addition, a --dump option is included for dumping
+the resulting output to a file, raw_dump.txt, for later perusal. A --format option
+exists in an attempt to pretty-print the output for display on screen.</p>
+
+<h2>Installation</h2>
+
+<pre><code class='language-bash'>$ git clone https://github.com/lebogan/snob.git
+$ cd snob
+$ sudo cp snob /usr/local/bin/snob</code></pre>
+
+<p>Required utilities:  </p>
+
+<ul><li>net-snmp  </li><li>net-snmp-utils  </li></ul>
+
+<p>Configure your hosts to respond to snmp requests. See documentation at: 
+<a href="http://net-snmp.sourceforge.net/docs/README.snmpv3.html" target="_blank">net-snmp</a></p>
+
+<h2>Usage</h2>
+
+<pre><code class='language-bash'>$ snob --help
+Usage: snob [OPTIONS] [HOST]
+Browse a host snmpv3 mib tree.
+
+Prompts for HOST if not specified on the command-line. Also, prompts
+for security credentials if HOST is not in the config file, ~/.snob/snobrc.yml.
+
+    -l, --list                       List some pre-defined OIDs
+    -m OID, --mib=OID                Display information for this oid
+                                     (Default: system)
+    -d, --dump                       Write output to file, raw only
+    -f, --formatted                  Display formatted output
+    -h, --help                       Show this help
+    -v, --version                    Show version
+
+$ snob --list
+===================================================================
+OIDS - Included pre-defined flag names
+-------------------------------------------------------------------
+flag name        |oid name
+=================+=================================================
+arp              |ipNetToPhysicalPhysAddress
+-----------------+-------------------------------------------------
+lldp             |1.0.8802.1.1.2.1.4.1.1.9
+-----------------+-------------------------------------------------
+sys              |system
+-----------------+-------------------------------------------------
+mem              |memory
+-----------------+-------------------------------------------------
+dsk              |dskTable
+-----------------+-------------------------------------------------
+ifdesc           |ifDescr
+-----------------+-------------------------------------------------
+distro           |ucdavis.7890.1.4
+-----------------+-------------------------------------------------
+temp             |lmTempSensorsDevice
+-----------------+-------------------------------------------------</code></pre>
+
+<h2>Config file</h2>
+
+<p>A first run will create a default YAML config file named <strong>~/.snob/snobrc.yml</strong>
+if it doesn't already exist. The directory's permissions are set to 0o700
+(-rw-r--r--) for added security. The initial set of credentials is for a host named
+<strong>dummy</strong>. Afterwards, if the host is not in the config file, you will be asked
+to enter credentials manually with the option to save them.  </p>
+
+<pre><code></code></pre>
+
+<p>The config file is YAML format and can be edited manually.</p>
+
+<pre><code class='language-text'># /home/vagrant/.snob/snobrc.yml
+---
+dummy:
+  user: username
+  auth: auth passphrase
+  priv: priv passphrase
+  crypto: AES/DES
+
+myserver:
+  user: myname
+  auth: secret
+  priv: realsecret
+  crypto: DES</code></pre>
+
+<h2>Development</h2>
+
+<p>Please, see the DISCLAIMER below.  
+Check out the repo on GitHub at https://github.com/lebogan/snob.git  
+Developed using Crystal 0.24.1 on Fedora 26 workstation running under Vagrant v2.0.1.  
+Tested on Fedora 26/27 and CentOS 7.  </p>
+
+<h2>Contributing</h2>
+
+<p>Please, see the DISCLAIMER below.</p>
+
+<ol><li>Fork it ( https://github.com/[your-github-name]/snob/fork )</li><li>Create your feature branch (git checkout -b my-new-feature)</li><li>Commit your changes (git commit -am 'Add some feature')</li><li>Push to the branch (git push origin my-new-feature)</li><li>Create a new Pull Request</li></ol>
+
+<h2>Contributors</h2>
+
+<ul><li><a href="https://github.com/lebogan/snob.git" target="_blank">lebogan</a> lebogan - creator, maintainer</li></ul>
+
+<h2>License</h2>
+
+<p>This utility is available as open source under the terms of the
+<a href="http://opensource.org/licenses/MIT" target="_blank">MIT License</a>.</p>
+
+<h2>Disclaimer</h2>
+
+<p>This utility was originally created for my personal use in my work as a network
+specialist. It was developed on a Fedora Workstation using Crystal 0.24.1. This has
+only been tested on Fedora 26/27 Workstation and CentOS 7 </p>
+
+<p>I am not a professional software developer nor do I pretend to be. I am a retired IT 
+network specialist and this is a hobby to keep me out of trouble. If you 
+use this application and it doesn't work the way you would want, feel free to 
+fork it and modify it to your liking. Fork on GitHub at https://github.com/lebogan/snob.git</p>
+</div>
+</body>
+</html>

@@ -22,7 +22,7 @@ module Utils
   # prompt_msg("Enter something: ") # => Nil
   # ```
   #
-  private def prompt_msg(prompt)
+  private def prompt_msg(prompt : Tuple)
     prompt[0].ends_with?(" ") ? print(*prompt) : puts(*prompt)
   end
 
@@ -30,7 +30,7 @@ module Utils
   # status, and command output or error.
   #
   # ```
-  # status, result = Utils.run_cmd("ls", {"-ls"}) # => 0, listing 
+  # status, result = Utils.run_cmd("ls", {"-ls"}) # => 0, listing
   # ```
   #
   def run_cmd(cmd : String, args : Tuple) : Tuple(Int32, String)
@@ -67,7 +67,7 @@ module Utils
   # ```
   #
   # ```text
-  # $ Enter something: _ 
+  # $ Enter something: _
   # ```
   #
   def ask(*args) : String
@@ -75,8 +75,6 @@ module Utils
     gets.to_s
   end
 
-  # Gets passphrase without echoing it to the screen. Uses io/console.cr.
-  #     Returns # => 
   # Gets passphrase without echoing it to the screen.
   #
   # ```
@@ -111,14 +109,16 @@ module Utils
     STDIN.raw &.read_char
   end
 
-  # Prompts for an agreement in the form 'y'(yes) or whatever else.
+  # Prompts for an agreement in the form (y/n) or whatever else. Any
+  # answer starting with 'y' or 'Y' is evaluated true. Anything else
+  # is false.
   #
   # ```
   # Utils.agree?("Are you sure(y/n)?: ") # => true | false
   # ```
   #
   # ```text
-  # $ Are you sure(y/n)?: _ 
+  # $ Are you sure(y/n)?: _
   # ```
   #
   def agree?(*args) : Bool
@@ -127,7 +127,8 @@ module Utils
   end
 
   # Truncates a _text_ string longer than _length_ characters and prints
-  # a _truncate_ _string_ in the place of the removed text. Defaults to 48 characters.
+  # a _truncate_ _string_ (defaults to '...') in place of the removed text.
+  # Defaults to # 48 characters.
   #
   # ```
   # Utils.truncate("hello, world", 10, "...") # => hello, ...
@@ -139,20 +140,25 @@ module Utils
   end
 
   # Reads _filename_.
-  def read_file(filename)
+  def read_file(filename : String)
     result = File.read_lines(filename)
     result # => Array(String)
   end
 
   # Opens _filename_ for writing. Creates it if it doesn't exist. Overwrites _content_.
-  def write_file(filename, content)
+  def write_file(filename : String, content : String)
     File.open(filename, "w") do |file|
       file.puts content
     end
   end
 
   # Says hello to _hostname_.
-  def say_hey(hostname)
+  #
+  # ```
+  # Utils.say_hey("myserver") # => "Hey, myserver!"
+  # ```
+  #
+  def say_hey(hostname : String)
     puts "Hey #{hostname}!"
   end
 end

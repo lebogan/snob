@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta id="repository-name" content="github.com/lebogan/snob">
+  <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="js/doc.js"></script>
+  <title>App - github.com/lebogan/snob</title>
+</head>
+<body>
+
+<div id="types-list">
+  <div id="search-box">
+    <input type="search" id="search-input" placeholder="Search...">
+  </div>
+
+  <ul>
+    <li><a href="index.html">README</a></li>
+  </ul>
+
+  <ul>
+  
+  <li class=" current" data-id="github.com/lebogan/snob/App" data-name="app">
+      <a href="App.html">App</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/lebogan/snob/Config" data-name="config">
+      <a href="Config.html">Config</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/lebogan/snob/Messages" data-name="messages">
+      <a href="Messages.html">Messages</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/lebogan/snob/Object" data-name="object">
+      <a href="Object.html">Object</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/lebogan/snob/Reports" data-name="reports">
+      <a href="Reports.html">Reports</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/lebogan/snob/Session" data-name="session">
+      <a href="Session.html">Session</a>
+      
+    </li>
+  
+  <li class="parent " data-id="github.com/lebogan/snob/Snmp" data-name="snmp">
+      <a href="Snmp.html">Snmp</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/lebogan/snob/Snmp/Snmp" data-name="snmp::snmp">
+      <a href="Snmp/Snmp.html">Snmp</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="github.com/lebogan/snob/Snob" data-name="snob">
+      <a href="Snob.html">Snob</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/lebogan/snob/Utils" data-name="utils">
+      <a href="Utils.html">Utils</a>
+      
+    </li>
+  
+</ul>
+
+</div>
+
+<div id="main-content">
+<h1 class="type-name">
+
+  <span class="kind">struct</span> App
+
+</h1>
+
+
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="App.html">App</a></li><li class="superclass">Struct</li><li class="superclass">Value</li><li class="superclass"><a href="Object.html">Object</a></li></ul>
+
+
+
+
+  <h2>Overview</h2>
+
+  <p>This struct contains the main application. It checks for command line arguments,
+valid hostname, and snmpv3 credentials.</p>
+
+<p>We have to rely on having net-snmp installed on our pc.</p>
+
+<p><span class="flag orange">TODO</span>  Bind the net-snmp c library to make this app portable.</p>
+
+<p><span class="flag orange">TODO</span>  Test, test, test!</p>
+
+
+
+
+
+  <h2>Included Modules</h2>
+  <ul class="other-types-list">
+  
+    <li class="other-type"><a href="Config.html">Config</a></li>
+  
+    <li class="other-type"><a href="Messages.html">Messages</a></li>
+  
+    <li class="other-type"><a href="Reports.html">Reports</a></li>
+  
+    <li class="other-type"><a href="Session.html">Session</a></li>
+  
+    <li class="other-type"><a href="Snmp.html">Snmp</a></li>
+  
+    <li class="other-type"><a href="Utils.html">Utils</a></li>
+  
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  <h2>Defined in:</h2>
+  
+    
+      <a href="https://github.com/lebogan/snob/blob/920199fe9c5d0ab4380ceea0a07c2e14861a2799/src/snob.cr#L37" target="_blank">snob.cr</a>
+    
+    <br/>
+  
+
+
+
+  
+    <h2>Constant Summary</h2>
+  
+  <dl>
+    
+      <dt class="entry-const" id="CONFIG_FILE">
+        <strong>CONFIG_FILE</strong> = <code><span class="t">File</span>.expand_path(<span class="s">&quot;~/.snob/snobrc.yml&quot;</span>)</code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="CONFIG_PATH">
+        <strong>CONFIG_PATH</strong> = <code><span class="t">File</span>.expand_path(<span class="s">&quot;~/.snob/&quot;</span>)</code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="OIDLIST">
+        <strong>OIDLIST</strong> = <code>{arp: <span class="s">&quot;ipNetToPhysicalPhysAddress&quot;</span>, lldp: <span class="s">&quot;1.0.8802.1.1.2.1.4.1.1.9&quot;</span>, sys: <span class="s">&quot;system&quot;</span>, mem: <span class="s">&quot;memory&quot;</span>, dsk: <span class="s">&quot;dskTable&quot;</span>, ifdesc: <span class="s">&quot;ifDescr&quot;</span>, distro: <span class="s">&quot;ucdavis.7890.1.4&quot;</span>, temp: <span class="s">&quot;lmTempSensorsDevice&quot;</span>}</code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="OUTFILE">
+        <strong>OUTFILE</strong> = <code><span class="t">File</span>.expand_path(<span class="s">&quot;~/tmp/raw_dump.txt&quot;</span>)</code>
+      </dt>
+      
+    
+  </dl>
+
+
+
+  <h2>Constructors</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#new-class-method" class="signature"><strong>.new</strong></a>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+  <h2>Instance Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#run-instance-method" class="signature"><strong>#run</strong></a>
+        
+          <div class="summary"><p>Runs the main application.</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+<div class="methods-inherited">
+  
+    
+
+  <h3>Instance methods inherited from module <code><a href="Messages.html">Messages</a></code></h3>
+  
+  
+    <a href="Messages.html#banner_message-instance-method" class="tooltip">
+      <span>banner_message</span>
+    banner_message</a>, 
+    
+  
+    <a href="Messages.html#blank_host_message-instance-method" class="tooltip">
+      <span>blank_host_message</span>
+    blank_host_message</a>, 
+    
+  
+    <a href="Messages.html#invalid_message%28flag%3AString%29-instance-method" class="tooltip">
+      <span>invalid_message(flag : String)</span>
+    invalid_message</a>, 
+    
+  
+    <a href="Messages.html#missing_message%28flag%3AString%29-instance-method" class="tooltip">
+      <span>missing_message(flag : String)</span>
+    missing_message</a>, 
+    
+  
+    <a href="Messages.html#ping_message%28hostname%3AString%29-instance-method" class="tooltip">
+      <span>ping_message(hostname : String)</span>
+    ping_message</a>, 
+    
+  
+    <a href="Messages.html#snmp_message%28hostname%3AString%2Cmib_oid%3AString%29-instance-method" class="tooltip">
+      <span>snmp_message(hostname : String, mib_oid : String)</span>
+    snmp_message</a>
+    
+  
+
+
+    
+
+
+    
+
+
+  
+    
+
+  <h3>Instance methods inherited from module <code><a href="Session.html">Session</a></code></h3>
+  
+  
+    <a href="Session.html#add_session%28config_file%3AString%2Ccredentials%3AString%29-instance-method" class="tooltip">
+      <span>add_session(config_file : String, credentials : String)</span>
+    add_session</a>, 
+    
+  
+    <a href="Session.html#configure_session%3ATuple%28Hash%28String%2CString%29%29-instance-method" class="tooltip">
+      <span>configure_session : Tuple(Hash(String, String))</span>
+    configure_session</a>
+    
+  
+
+
+    
+
+
+    
+
+
+  
+    
+
+  <h3>Instance methods inherited from module <code><a href="Config.html">Config</a></code></h3>
+  
+  
+    <a href="Config.html#build_config_file%28config_file%3AString%2Cconf%3AHash%29-instance-method" class="tooltip">
+      <span>build_config_file(config_file : String, conf : Hash)</span>
+    build_config_file</a>, 
+    
+  
+    <a href="Config.html#check_for_config%28config_path%3AString%2Cconfig_file%3AString%29-instance-method" class="tooltip">
+      <span>check_for_config(config_path : String, config_file : String)</span>
+    check_for_config</a>, 
+    
+  
+    <a href="Config.html#fetch_config%28config_file%3AString%29%3AYAML%3A%3AAny-instance-method" class="tooltip">
+      <span>fetch_config(config_file : String) : YAML::Any</span>
+    fetch_config</a>
+    
+  
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+  <h3>Instance methods inherited from module <code><a href="Utils.html">Utils</a></code></h3>
+  
+  
+    <a href="Utils.html#agree%3F%28%2Aargs%29%3ABool-instance-method" class="tooltip">
+      <span>agree?(*args) : Bool</span>
+    agree?</a>, 
+    
+  
+    <a href="Utils.html#ask%28%2Aargs%29%3AString-instance-method" class="tooltip">
+      <span>ask(*args) : String</span>
+    ask</a>, 
+    
+  
+    <a href="Utils.html#ask_char%28%2Aargs%29%3AChar%3F-instance-method" class="tooltip">
+      <span>ask_char(*args) : Char?</span>
+    ask_char</a>, 
+    
+  
+    <a href="Utils.html#askpass%28%2Aargs%29%3ATuple%28String%3F%29-instance-method" class="tooltip">
+      <span>askpass(*args) : Tuple(String?)</span>
+    askpass</a>, 
+    
+  
+    <a href="Utils.html#clear_screen-instance-method" class="tooltip">
+      <span>clear_screen</span>
+    clear_screen</a>, 
+    
+  
+    <a href="Utils.html#read_file%28filename%3AString%29-instance-method" class="tooltip">
+      <span>read_file(filename : String)</span>
+    read_file</a>, 
+    
+  
+    <a href="Utils.html#run_cmd%28cmd%3AString%2Cargs%3ATuple%29%3ATuple%28Int32%2CString%29-instance-method" class="tooltip">
+      <span>run_cmd(cmd : String, args : Tuple) : Tuple(Int32, String)</span>
+    run_cmd</a>, 
+    
+  
+    <a href="Utils.html#say_hey%28hostname%3AString%29-instance-method" class="tooltip">
+      <span>say_hey(hostname : String)</span>
+    say_hey</a>, 
+    
+  
+    <a href="Utils.html#truncate%28text%3AString%2Clength%3D48%2Ctruncate_string%3D%26quot%3B...%26quot%3B%29%3AString-instance-method" class="tooltip">
+      <span>truncate(text : String, length = <span class="n">48</span>, truncate_string = <span class="s">&quot;...&quot;</span>) : String</span>
+    truncate</a>, 
+    
+  
+    <a href="Utils.html#write_file%28filename%3AString%2Ccontent%3AString%29-instance-method" class="tooltip">
+      <span>write_file(filename : String, content : String)</span>
+    write_file</a>
+    
+  
+
+
+    
+
+
+    
+
+
+  
+    
+
+  <h3>Instance methods inherited from module <code><a href="Reports.html">Reports</a></code></h3>
+  
+  
+    <a href="Reports.html#display_header%28hostname%3AString%2Cheader%3ATuple%2Coid%3AString%29-instance-method" class="tooltip">
+      <span>display_header(hostname : String, header : Tuple, oid : String)</span>
+    display_header</a>, 
+    
+  
+    <a href="Reports.html#display_raw_table%28table%3AArray%28String%29%29-instance-method" class="tooltip">
+      <span>display_raw_table(table : Array(String))</span>
+    display_raw_table</a>, 
+    
+  
+    <a href="Reports.html#display_table%28formatted_table%3AHash%2Chostname%3AString%2Coid%3AString%29-instance-method" class="tooltip">
+      <span>display_table(formatted_table : Hash, hostname : String, oid : String)</span>
+    display_table</a>, 
+    
+  
+    <a href="Reports.html#display_table_info%28formatted_table%3AHash%7CNamedTuple%29-instance-method" class="tooltip">
+      <span>display_table_info(formatted_table : Hash | NamedTuple)</span>
+    display_table_info</a>, 
+    
+  
+    <a href="Reports.html#format_header%28oid%3AString%29%3ATuple%28String%2CString%29-instance-method" class="tooltip">
+      <span>format_header(oid : String) : Tuple(String, String)</span>
+    format_header</a>, 
+    
+  
+    <a href="Reports.html#format_label%28entry%3AString%29%3AString-instance-method" class="tooltip">
+      <span>format_label(entry : String) : String</span>
+    format_label</a>, 
+    
+  
+    <a href="Reports.html#format_table%28results%3AArray%2Ctable%3AHash%29%3AHash%28String%2CString%29-instance-method" class="tooltip">
+      <span>format_table(results : Array, table : Hash) : Hash(String, String)</span>
+    format_table</a>, 
+    
+  
+    <a href="Reports.html#list_oids%28list%3ANamedTuple%29-instance-method" class="tooltip">
+      <span>list_oids(list : NamedTuple)</span>
+    list_oids</a>
+    
+  
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
+</div>
+
+
+  <h2>Constructor Detail</h2>
+  
+    <div class="entry-detail" id="new-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>
+
+        <a class="method-permalink" href="#new-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/lebogan/snob/blob/920199fe9c5d0ab4380ceea0a07c2e14861a2799/src/snob.cr#L37" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+
+  <h2>Instance Method Detail</h2>
+  
+    <div class="entry-detail" id="run-instance-method">
+      <div class="signature">
+        
+        def <strong>run</strong>
+
+        <a class="method-permalink" href="#run-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Runs the main application.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/lebogan/snob/blob/920199fe9c5d0ab4380ceea0a07c2e14861a2799/src/snob.cr#L60" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+</div>
+
+</body>
+</html>

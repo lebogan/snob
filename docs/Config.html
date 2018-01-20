@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta id="repository-name" content="github.com/lebogan/snob">
+  <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="js/doc.js"></script>
+  <title>Config - github.com/lebogan/snob</title>
+</head>
+<body>
+
+<div id="types-list">
+  <div id="search-box">
+    <input type="search" id="search-input" placeholder="Search...">
+  </div>
+
+  <ul>
+    <li><a href="index.html">README</a></li>
+  </ul>
+
+  <ul>
+  
+  <li class=" " data-id="github.com/lebogan/snob/App" data-name="app">
+      <a href="App.html">App</a>
+      
+    </li>
+  
+  <li class=" current" data-id="github.com/lebogan/snob/Config" data-name="config">
+      <a href="Config.html">Config</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/lebogan/snob/Messages" data-name="messages">
+      <a href="Messages.html">Messages</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/lebogan/snob/Object" data-name="object">
+      <a href="Object.html">Object</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/lebogan/snob/Reports" data-name="reports">
+      <a href="Reports.html">Reports</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/lebogan/snob/Session" data-name="session">
+      <a href="Session.html">Session</a>
+      
+    </li>
+  
+  <li class="parent " data-id="github.com/lebogan/snob/Snmp" data-name="snmp">
+      <a href="Snmp.html">Snmp</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/lebogan/snob/Snmp/Snmp" data-name="snmp::snmp">
+      <a href="Snmp/Snmp.html">Snmp</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="github.com/lebogan/snob/Snob" data-name="snob">
+      <a href="Snob.html">Snob</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/lebogan/snob/Utils" data-name="utils">
+      <a href="Utils.html">Utils</a>
+      
+    </li>
+  
+</ul>
+
+</div>
+
+<div id="main-content">
+<h1 class="type-name">
+
+  <span class="kind">module</span> Config
+
+</h1>
+
+
+
+
+
+  <h2>Overview</h2>
+
+  <p>Defines configuration file methods. <strong>extend self</strong> allows these
+methods to be included in a program (class) and invoked without a namespace
+or just used as a namespace.</p>
+
+
+
+
+
+
+
+  <h2>Extended Modules</h2>
+  <ul class="other-types-list">
+  
+    <li class="other-type"><a href="Config.html">Config</a></li>
+  
+  </ul>
+
+
+
+
+
+  <h2>Direct including types</h2>
+  <ul class="other-types-list">
+  
+    <li class="other-type"><a href="App.html">App</a></li>
+  
+  </ul>
+
+
+
+
+  <h2>Defined in:</h2>
+  
+    
+      <a href="https://github.com/lebogan/snob/blob/920199fe9c5d0ab4380ceea0a07c2e14861a2799/src/snob/config.cr#L15" target="_blank">snob/config.cr</a>
+    
+    <br/>
+  
+
+
+
+
+
+
+
+
+
+  <h2>Instance Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#build_config_file%28config_file%3AString%2Cconf%3AHash%29-instance-method" class="signature"><strong>#build_config_file</strong>(config_file : String, conf : Hash)</a>
+        
+          <div class="summary"><p>Creates a new config file.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#check_for_config%28config_path%3AString%2Cconfig_file%3AString%29-instance-method" class="signature"><strong>#check_for_config</strong>(config_path : String, config_file : String)</a>
+        
+          <div class="summary"><p>Checks for existance of a config file and creates a dummy entry    if the user answers yes.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#fetch_config%28config_file%3AString%29%3AYAML%3A%3AAny-instance-method" class="signature"><strong>#fetch_config</strong>(config_file : String) : YAML::Any</a>
+        
+          <div class="summary"><p>Parses a YAML configuration file.</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+<div class="methods-inherited">
+  
+</div>
+
+
+
+
+
+
+  <h2>Instance Method Detail</h2>
+  
+    <div class="entry-detail" id="build_config_file(config_file:String,conf:Hash)-instance-method">
+      <div class="signature">
+        
+        def <strong>build_config_file</strong>(config_file : String, conf : Hash)
+
+        <a class="method-permalink" href="#build_config_file%28config_file%3AString%2Cconf%3AHash%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Creates a new config file.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/lebogan/snob/blob/920199fe9c5d0ab4380ceea0a07c2e14861a2799/src/snob/config.cr#L31" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="check_for_config(config_path:String,config_file:String)-instance-method">
+      <div class="signature">
+        
+        def <strong>check_for_config</strong>(config_path : String, config_file : String)
+
+        <a class="method-permalink" href="#check_for_config%28config_path%3AString%2Cconfig_file%3AString%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Checks for existance of a config file and creates a dummy entry
+   if the user answers yes.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/lebogan/snob/blob/920199fe9c5d0ab4380ceea0a07c2e14861a2799/src/snob/config.cr#L20" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="fetch_config(config_file:String):YAML::Any-instance-method">
+      <div class="signature">
+        
+        def <strong>fetch_config</strong>(config_file : String) : YAML::Any
+
+        <a class="method-permalink" href="#fetch_config%28config_file%3AString%29%3AYAML%3A%3AAny-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Parses a YAML configuration file.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/lebogan/snob/blob/920199fe9c5d0ab4380ceea0a07c2e14861a2799/src/snob/config.cr#L39" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+</div>
+
+</body>
+</html>
