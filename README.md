@@ -1,6 +1,6 @@
 # snob (Snmp Network Object Browser)
 ## Introduction
-***This utility is experimental, it will change radically as I leearn more of the
+***This utility is experimental, it will change radically as I learn more of the
 Crystal language, use at your own risk!***
 
 **snob** is an attempt to rewrite my Ruby app [YASB](https://github.com/lebogan/yasb.git)
