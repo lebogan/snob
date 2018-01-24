@@ -1,7 +1,7 @@
 # snob (Snmp Network Object Browser)
 ## Introduction
 ***This utility is experimental, it will change radically as I learn more of the
-Crystal language, use at your own risk!***
+Crystal language, so use at your own risk!***
 
 **snob** is an attempt to rewrite my Ruby app [YASB](https://github.com/lebogan/yasb.git)
 in the Crystal programming language. The idea is to:
@@ -19,7 +19,7 @@ its security features. Backwards compatibility to version 2c is not included
 at this time. Sorry:(.
 
 The special *--list* switch is included to provide easily remembered names for
-1.0.8802.1.1.2.1.4.1.1.9 or ipNetToPhysicalPhysAddress or other cryptic
+1.0.8802.1.1.2.1.4.1.1.9 or ipNetToPhysicalPhysAddress or other cryptic looking
 oids.
 
 The output is raw by default. In addition, a --dump option is included for dumping
