@@ -81,7 +81,7 @@ temp             |lmTempSensorsDevice
 ## Config file
 A first run will create a default YAML config file named **~/.snob/snobrc.yml**
 if it doesn't already exist. The directory's permissions are set to 0o700
-(-rw-r--r--) for added security. The initial set of credentials is for a host named
+(drwx------) for added security. The initial set of credentials is for a host named
 __dummy__. Afterwards, if the host is not in the config file, you will be asked
 to enter credentials manually with the option to save them.  
 ```

@@ -32,11 +32,10 @@ module Snmp
 
     # Walks the mib tree.
     def walk_mib3(hostname : String, oid : String) : Tuple(Int32, String)
-      cmd = "snmpwalk"
-      args = {"-v3", "-u", "#{@user}", "-OQUsT", "-l", "authpriv",
-              "-a", "MD5", "-A", "#{@auth}", "-x", "#{@crypto}", "-X",
-              "#{@priv}", "#{hostname}", "#{oid}"}
-      run_cmd(cmd, args) # => Tuple(Int32, String)
+      run_cmd("snmpwalk", {"-v3", "-u", "#{@user}", "-OQUsT", "-l", "authpriv",
+                           "-a", "MD5", "-A", "#{@auth}", "-x", "#{@crypto}", "-X",
+                           "#{@priv}", "#{hostname}", "#{oid}"}
+      )
     end
   end
 end

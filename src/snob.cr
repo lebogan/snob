@@ -54,8 +54,8 @@ struct App
 
   CONFIG_PATH = File.expand_path("~/.snob/")
   CONFIG_FILE = File.expand_path("~/.snob/snobrc.yml")
-  OUTDIR      = File.expand_path("~/tmp")
-  OUTFILE     = File.expand_path("~/tmp/raw_dump.txt")
+  OUT_PATH    = File.expand_path("~/tmp")
+  OUT_FILE    = File.expand_path("~/tmp/raw_dump.txt")
 
   # Runs the main application.
   def run
@@ -104,17 +104,16 @@ struct App
     end
 
     # Checks if host exists on this network
-    args = {"-c", "2", "#{hostname}"} # => Tuple(String, String, String)
-    status, result = run_cmd("ping", args)
+    status, result = run_cmd("ping", {"-c", "2", "#{hostname}"})
     abort ping_message(hostname) unless status == 0
 
     # Checks for existence of a config file and creates a dummy entry
-    #    if the user answers yes.
+    # if the user answers yes.
     check_for_config(CONFIG_PATH, CONFIG_FILE)
 
     # Checks for the existence of a valid config file and tests if host
-    #   is in it. Otherwise, asks for manual entry of credentials and
-    #   adds them to existing config file.
+    # is in it. Otherwise, asks for manual entry of credentials and
+    # adds them to existing config file.
     # NOTE: {hostname => config} => Hash(String, Hash(String, String))
     if File.exists?(CONFIG_FILE) && fetch_config(CONFIG_FILE)["#{hostname}"]? != nil
       config = fetch_config(CONFIG_FILE)["#{hostname}"] # => YAML::Any
@@ -131,7 +130,6 @@ struct App
 
     # Creates a Snmp object and invokes the walk_mib3 method on the Snmp object, host,
     # using 'system' oid if the --mib flag is missing.
-    #     Returns # => Tuple{Int32, String}
     mib_oid = "system" if mib_oid.empty?
     host = Snmp.new(
       config["auth"].to_s,
@@ -150,8 +148,8 @@ struct App
       display_table(table, hostname, mib_oid)
     else
       if file_write
-        Dir.mkdir_p(OUTDIR) unless Dir.exists?(OUTDIR)
-        write_file(OUTFILE, results)
+        Dir.mkdir_p(OUT_PATH) unless Dir.exists?(OUT_PATH)
+        write_file(OUT_FILE, results)
       end
       display_raw_table(results.split("\n")) # => Array(String)
     end
