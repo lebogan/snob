@@ -19,9 +19,9 @@ module Snmp
 
     # Creates a new Snmp object.
     #
-    #```
-    #Snmp.new(args...) # => Snmp
-    #```
+    # ```
+    # Snmp.new(args...) # => Snmp
+    # ```
     #
     def initialize(auth : String, priv : String, user : String, crypto : String)
       @auth = auth

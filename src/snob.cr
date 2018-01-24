@@ -54,6 +54,7 @@ struct App
 
   CONFIG_PATH = File.expand_path("~/.snob/")
   CONFIG_FILE = File.expand_path("~/.snob/snobrc.yml")
+  OUTDIR      = File.expand_path("~/tmp")
   OUTFILE     = File.expand_path("~/tmp/raw_dump.txt")
 
   # Runs the main application.
@@ -148,8 +149,11 @@ struct App
       format_table(results.split("\n"), table)
       display_table(table, hostname, mib_oid)
     else
+      if file_write
+        Dir.mkdir_p(OUTDIR) unless Dir.exists?(OUTDIR)
+        write_file(OUTFILE, results)
+      end
       display_raw_table(results.split("\n")) # => Array(String)
-      write_file(OUTFILE, results) if file_write
     end
   end
 end

@@ -11,7 +11,6 @@
 
 # Displays the results of a snmpwalk operation either raw or formatted.
 module Reports
-
   # Displays the table information.
   def display_table_info(formatted_table : Hash | NamedTuple)
     page_size = 15
@@ -97,17 +96,17 @@ module Reports
 
   # Lists some useful difficult-to-remember oids.
   #
-  #```text
-  #===================================================================
-  #OIDS - Included pre-defined object identifiers
-  #-------------------------------------------------------------------
-  #name             |object identifier
-  #=================+=================================================
-  #arp              |ipNetToPhysicalPhysAddress
-  #-----------------+-------------------------------------------------
-  #lldp             |1.0.8802.1.1.2.1.4.1.1.9
-  #-----------------+-------------------------------------------------
-  #```
+  # ```text
+  # ===================================================================
+  # OIDS - Included pre-defined object identifiers
+  # -------------------------------------------------------------------
+  # name             |object identifier
+  # =================+=================================================
+  # arp              |ipNetToPhysicalPhysAddress
+  # -----------------+-------------------------------------------------
+  # lldp             |1.0.8802.1.1.2.1.4.1.1.9
+  # -----------------+-------------------------------------------------
+  # ```
   def list_oids(list : NamedTuple)
     clear_screen
     header = {"name", "object identifier"}

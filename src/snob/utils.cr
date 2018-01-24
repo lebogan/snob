@@ -46,15 +46,15 @@ module Utils
 
   # Clears the screen using ansi codes.
   #
-  #```text
+  # ```text
   # \e[ is the escape code
   # 2J clears the screen
   # 1;1H moves cursor to line 1, column 1
-  #```
+  # ```
   #
-  #```text
+  # ```text
   # clear_screen # => "\e[2J\e[1;1H]]"
-  #```
+  # ```
   #
   def clear_screen
     puts IO::Memory.new << "\e[2J\e[1;1H"
