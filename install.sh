@@ -38,22 +38,19 @@ prompt ()
   then
     echo ""
   else
-    break
+    exit 1
   fi
 }
 
-# Copy application to install_dir. If the app esists, offer to upgrade the app
+# Copy application to install_dir. If the symlink esists, offer to upgrade the app
 # only and exit.
-if [ ! -f ${install_dir}/snob ]
+if [ ! -L $install_dir/snob ]
 then
   prompt "Do you want to install snob? (y/n)[n] "
-  cd $HOME/snob
-  sudo ln -s ./snob /usr/local/bin/snob
+  sudo ln -s $(realpath ./snob) $install_dir/snob
 else
   prompt "Do you want to upgrade snob? (y/n)[n] "
-  cd $HOME/snob
   git pull
-  sudo ln -s --force ./snob /usr/local/bin/snob
   echo "snob upgraded."
   exit 0
 fi
