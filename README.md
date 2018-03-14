@@ -27,12 +27,13 @@ the resulting output to a file, raw_dump.txt, for later perusal. A --format opti
 exists in an attempt to pretty-print the output for display on screen.
 
 ## Installation
-You need git to proceed. Get git.
+You need git to proceed. Get git. The install script will also update snob by
+pulling a fresh copy from github.
 
 ```bash
 $ git clone https://github.com/lebogan/snob.git
 $ cd snob
-$ sudo cp snob /usr/local/bin/snob
+$ ./install.sh
 ```
 Required utilities:  
 -  git  
