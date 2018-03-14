@@ -17,7 +17,7 @@
 # Distributed under terms of the MIT license.
 #===============================================================================
 
-install_dir=/usr/local/bin
+INSTALL_DIR=/usr/local/bin
 
 prompt ()
 {
@@ -44,17 +44,18 @@ prompt ()
 
 # Copy application to install_dir. If the app esists, offer to upgrade the app
 # only and exit.
-if [ ! -f ${install_dir}/snob ]
+if [ ! -f ${INSTALL_DIR}/snob ]
 then
   prompt "Do you want to install snob? (y/n)[n] "
+  cd $HOME
   git clone https://github.com/lebogan/snob.git
   cd snob
   sudo ln -s ./snob /usr/local/bin/snob
 else
   prompt "Do you want to upgrade snob? (y/n)[n] "
-  cd snob
+  cd $HOME/snob
   git pull
-  sudo cp --remove-destination ./snob ${install_dir}
+  sudo cp --remove-destination ./snob ${INSTALL_DIR}
   echo "snob upgraded."
   exit 0
 fi
