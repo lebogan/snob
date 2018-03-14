@@ -17,7 +17,7 @@
 # Distributed under terms of the MIT license.
 #===============================================================================
 
-INSTALL_DIR=/usr/local/bin
+install_dir=/usr/local/bin
 
 prompt ()
 {
@@ -44,7 +44,7 @@ prompt ()
 
 # Copy application to install_dir. If the app esists, offer to upgrade the app
 # only and exit.
-if [ ! -f ${INSTALL_DIR}/snob ]
+if [ ! -f ${install_dir}/snob ]
 then
   prompt "Do you want to install snob? (y/n)[n] "
   cd $HOME/snob
