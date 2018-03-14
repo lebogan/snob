@@ -47,15 +47,13 @@ prompt ()
 if [ ! -f ${INSTALL_DIR}/snob ]
 then
   prompt "Do you want to install snob? (y/n)[n] "
-  cd $HOME
-  git clone https://github.com/lebogan/snob.git
-  cd snob
+  cd $HOME/snob
   sudo ln -s ./snob /usr/local/bin/snob
 else
   prompt "Do you want to upgrade snob? (y/n)[n] "
   cd $HOME/snob
   git pull
-  sudo cp --remove-destination ./snob ${INSTALL_DIR}
+  sudo ln -s --force ./snob /usr/local/bin/snob
   echo "snob upgraded."
   exit 0
 fi
