@@ -48,6 +48,7 @@ if [ ! -L $install_dir/snob ]
 then
   prompt "Do you want to install snob? (y/n)[n] "
   sudo ln -s $(realpath ./snob) $install_dir/snob
+  sudo ln -s $(realpath ./mibwalk) $install_dir/mibwalk
 else
   prompt "Do you want to upgrade snob? (y/n)[n] "
   git pull
