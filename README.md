@@ -29,8 +29,7 @@ exists in an attempt to pretty-print the output for display on screen.
 ## Installation
 You need ___git___ to proceed. Get git! The install script can also update snob by
 pulling a fresh copy from github. Check out install.sh to see what the script
-is doing. A utility, ***mibwalk***, is included in an attempt to make this more
-stand-alone and reduce the reliance on net-snmp-utils. See ***TODO*** below.
+is doing.
 
 ```bash
 $ git clone https://github.com/lebogan/snob.git
@@ -39,8 +38,6 @@ $ ./install.sh
 ```
 Required utilities for nms (network management station):  
 -  git  
-
-Optional utilities for nms and hosts:  
 -  net-snmp  
 -  net-snmp-utils  
 
@@ -129,7 +126,6 @@ myserver:
 ```
 
 ## TODO
-- [ ] Include a mibwalk utility to ease reliance on external net-snmp-utils.      
 - [ ] Bind the net-snmp c library to make this app even more portable.
 
 ## Development
