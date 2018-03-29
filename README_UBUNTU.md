@@ -43,7 +43,7 @@ $ ./install.sh <answer yes>
 Apparantly, in Ubuntu-land, you need the snmp-mibs-downloader so you can refer to 
 mibs by colorful names like ___system___ instead of 1.3.6.1.... There is an entry in 
 `/etc/snmp/snmp.conf` that prevents that from happening. Comment out the line that
-contains mib:
+contains `mibs:`
 ```
 # As the snmp packages come without MIB files due to license reasons, loading
 # of MIBs is disabled by default. If you added the MIBs you can reenable
