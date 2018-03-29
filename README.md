@@ -148,7 +148,7 @@ Please, see the DISCLAIMER below.
 5. Create a new Pull Request
 
 ## Contributors
-- [lebogan](https://github.com/lebogan/snob.git) lebogan - creator, maintainer
+- [lebogan](https://github.com/lebogan/snob.git) - creator, maintainer
 
 ## License
 This utility is available as open source under the terms of the
