@@ -29,7 +29,7 @@ exists in an attempt to pretty-print the output for display on screen.
 ## Installation
 You need ___git___ to proceed. Get git! The install script can also update snob by
 pulling a fresh copy from github. Check out install.sh to see what the script
-is doing.
+is doing. See README_UBUNTU.md for my tests on Ubuntu 14.04.
 
 ```bash
 $ git clone https://github.com/lebogan/snob.git
@@ -134,6 +134,7 @@ Check out the repo on GitHub at https://github.com/lebogan/snob.git
 Developed using Crystal 0.24.2 on Fedora 27 workstation running under Vagrant v2.0.2
 with VirtualBox 5.2 provider.  
 Tested on Fedora 26/27 and CentOS 7.  
+See README_UBUNTU.md for my tests on Ubuntu 14.04.
 
 ## Contributing
 Please, see the DISCLAIMER below.
