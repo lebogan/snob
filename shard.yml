@@ -1,5 +1,5 @@
 name: snob
-version: 0.7.2
+version: 0.8.0
 
 authors:
   - lebogan <lewis.bogan@comcast.net>
@@ -11,6 +11,8 @@ targets:
 development_dependencies:
   ameba:
     github: veelenga/ameba
+  secrets:
+    github: faustinoaq/secrets
  
 crystal: 0.24.2
 

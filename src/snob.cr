@@ -20,6 +20,7 @@
 require "./snob/*"
 require "yaml"
 require "option_parser"
+require "secrets"
 
 # Allows displaying object methods during development.
 class Object

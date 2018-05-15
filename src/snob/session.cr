@@ -27,8 +27,8 @@ module Session
   def configure_session : Tuple(Hash(String, String))
     conf = {} of String => String
     conf["user"] = ask("Enter security name: ")
-    conf["auth"] = askpass("Enter authentication phrase: ")[0].to_s
-    conf["priv"] = askpass("Enter privacy phrase: ")[0].to_s
+    conf["auth"] = Secrets.gets(prompt: "Enter authentication phrase: ") 
+    conf["priv"] = Secrets.gets(prompt: "Enter privacy phrase: ")
     conf["crypto"] = ask("Crypto algorithm [AES/DES]: ").upcase
     {conf}
   end
