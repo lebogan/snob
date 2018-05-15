@@ -128,7 +128,6 @@ myserver:
 ## TODO
 - [ ] Bind the net-snmp c library to make this app even more portable.
 - [X] Build a Ubuntu test environment, write installation instructions.
-- [ ] Build ArchLinux test environment, write installation instructions.
 
 ## Development
 Please, see the DISCLAIMER below.  

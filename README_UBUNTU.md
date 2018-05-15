@@ -7,6 +7,8 @@ running Ubuntu 14.04, I cloned and installed snob. Disaster! I kept getting an
 error about not finding libpcre.so.1. After some head scratching, this is what 
 I came up with.
 
+See notes below for other deb distros I tried.
+
 ## Installation
 First you need to install crystal and rebuild the executable. Then install and 
 configure net-snmp.
@@ -17,6 +19,7 @@ configure net-snmp.
 - net-snmp  
 There is a good write up on snmp by Justin Ellingwood on the DigitalOcean website 
 [here](https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-an-snmp-daemon-and-client-on-ubuntu-14-04).
+- your editor of choice (I use Vim)
 ```
 $ sudo apt-get update
 $ sudo apt-get install snmp snmp-mibs-downloader
@@ -51,3 +54,21 @@ contains `mibs:`
 #mibs :
 ```
 That's it. Have fun with this!
+
+## Notes on other flavors on VirtualBox without Vagrant
+
+### Ubuntu 16.04
+Install git and curl.
+Install libyaml-dev
+
+### Mint
+
+### Debian 9
+Install git and curl.
+Install libyaml-dev
+Install apt-transport-https, dirmngr
+For snmp, add to file: /etc/apt/sources.list
+```text
+deb http://ftp.br.debian.org/debian/ wheezy main contrib non-free
+deb-src http://ftp.br.debian.org/debian/ wheezy main contrib non-free
+```
