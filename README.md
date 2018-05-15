@@ -36,6 +36,9 @@ $ git clone https://github.com/lebogan/snob.git
 $ cd snob
 $ ./install.sh
 ```
+> #### Installation on Ubuntu
+> see README_UBUNTU for details.
+
 Required utilities for nms (network management station):  
 -  git  
 -  net-snmp  
