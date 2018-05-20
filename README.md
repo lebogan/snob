@@ -24,7 +24,9 @@ oids.
 
 The output is raw by default. In addition, a --dump option is included for dumping
 the resulting output to a file, raw_dump.txt, for later perusal. A --format option
-exists in an attempt to pretty-print the output for display on screen.
+exists in an attempt to pretty-print the output for display on screen. The --only-values
+flag allows output to be used raw by another application like RRDTool for graphing 
+trends when you know which OID you want.
 
 ## Installation
 You need ___git___ to proceed. Get git! The install script can also update snob by
@@ -61,6 +63,7 @@ for security credentials if HOST is not in the config file, ~/.snob/snobrc.yml.
                                      (Default: system)
     -d, --dump                       Write output to file, raw only
     -f, --formatted                  Display formatted output
+    -o, --only-values                Display values only (not OID = value)
     -h, --help                       Show this help
     -v, --version                    Show version
 

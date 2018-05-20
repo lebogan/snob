@@ -62,6 +62,7 @@ struct App
   def run
     mib_oid = ""
     display_formatted = false
+    only_values = false
     file_write = false
 
     OptionParser.parse! do |parser|
@@ -79,7 +80,8 @@ struct App
                   end
       end
       parser.on("-d", "--dump", "Write output to file, raw only") { file_write = true }
-      parser.on("-f", "--formatted", "Display formatted output") { display_formatted = true }
+      parser.on("-f", "--formatted", "Display pretty formatted output") { display_formatted = true }
+      parser.on("-o", "--only-values", "Display values only (not OID = value)") { only_values = true }
       parser.on("-h", "--help", "Show this help") do
         puts parser
         exit 0
@@ -137,7 +139,8 @@ struct App
       config["priv"].to_s,
       config["user"].to_s,
       config["crypto"].to_s.upcase) # => Snmp
-    status, results = host.walk_mib3(hostname, mib_oid)
+    format = only_values ? "vq" : "QUsT"
+    status, results = host.walk_mib3(hostname, mib_oid, format)
     abort snmp_message(hostname, mib_oid) unless status == 0
 
     # Show your stuff

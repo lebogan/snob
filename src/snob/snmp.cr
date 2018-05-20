@@ -31,8 +31,8 @@ module Snmp
     end
 
     # Walks the mib tree.
-    def walk_mib3(hostname : String, oid : String) : Tuple(Int32, String)
-      run_cmd("snmpwalk", {"-v3", "-u", "#{@user}", "-OQUsT", "-l", "authpriv",
+    def walk_mib3(hostname : String, oid : String, format : String) : Tuple(Int32, String)
+      run_cmd("snmpwalk", {"-v3", "-u", "#{@user}", "-O#{format}", "-l", "authpriv",
                            "-a", "MD5", "-A", "#{@auth}", "-x", "#{@crypto}", "-X",
                            "#{@priv}", "#{hostname}", "#{oid}"}
       )
