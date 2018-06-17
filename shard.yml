@@ -1,5 +1,5 @@
 name: snob
-version: 0.9.0
+version: 0.10.0
 
 authors:
   - lebogan <lewis.bogan@comcast.net>
@@ -14,6 +14,6 @@ development_dependencies:
   secrets:
     github: faustinoaq/secrets
  
-crystal: 0.24.2
+crystal: 0.25.0
 
 license: MIT
