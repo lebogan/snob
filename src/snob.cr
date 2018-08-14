@@ -54,9 +54,9 @@ struct App
   } # => NamedTuple(Symbol, String...)
 
   CONFIG_PATH = File.expand_path("~/.snob/")
-  CONFIG_FILE = File.expand_path("~/.snob/snobrc.yml")
+  CONFIG_FILE = File.expand_path("#{CONFIG_PATH}/snobrc.yml")
   OUT_PATH    = File.expand_path("~/tmp")
-  OUT_FILE    = File.expand_path("~/tmp/raw_dump.txt")
+  OUT_FILE    = File.expand_path("#{OUT_PATH}/raw_dump.txt")
 
   # Runs the main application.
   def run
