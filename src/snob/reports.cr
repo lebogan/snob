@@ -20,7 +20,7 @@ module Reports
       puts "-----------------+-------------------------------------------------"
       page_count += 1
       if page_count % page_size == 0
-        choice = ask_char("\n -- press any key to continue or q to quit --  ")
+        choice = ask_char("\n -- press any key to continue or q to quit --  \n")
         choice == 'q' ? break : next
       end
     end
@@ -29,11 +29,11 @@ module Reports
 
   # Displays the report header.
   def display_header(hostname : String, header : Tuple, oid : String)
-    puts "==================================================================="
+    print_chars('=', 67)
     puts "#{hostname.upcase} - #{oid}"
-    puts "-------------------------------------------------------------------"
+    print_chars('-', 67)
     printf("%-16s |%s\n", header[0], header[1])
-    puts "=================+================================================="
+    print_chars('=', 67)
   end
 
   # Formats the label depending on which oid it represents.
