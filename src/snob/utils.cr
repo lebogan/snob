@@ -178,13 +178,14 @@ module Utils
     end
   end
 
-  # Prints a line of characters for display, defaults to 20.
+  # Prints a line of characters for display, defaults to 20 dashes.
   #
   # ```
-  # Utils.print_chars('-', 10) # => "----------"
+  # Utils.print_chars('*', 10) # => "**********"
+  # Utils.print_chars # => "----------"
   # ```
   #
-  def print_chars(character : Char, number : Int32 = 20)
+  def print_chars(character : Char = '-', number : Int32 = 20)
     puts "%s" % character * number
   end
 end

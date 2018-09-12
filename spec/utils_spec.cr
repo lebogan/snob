@@ -22,26 +22,32 @@ describe Utils do
   end
 
   describe "#process_argv" do
-    pending "prompts for a string when no ARGV is given\n" do
+    it "prompts for a string when no ARGV is given\n" do
       process_argv(BLANK_ARGV).should be_a(String)
     end
   end
 
   describe "#run_cmd(cmd, args)" do
-    it "returns a tuple" do
+    it "returns a tuple containing a status number and a string" do
       run_cmd("ls", {"-l"}).should be_a(Tuple(Int32, String))
     end
   end
 
   describe "#run_cmd(cmd)" do
-    it "returns a tuple when no args specified" do
+    it "returns a tuple containing a status number and a string" do
       run_cmd("ls").should be_a(Tuple(Int32, String))
     end
   end
 
   describe "#print_chars(character, number)" do
-    it "prints a number of characters and returns nil" do
+    it "prints a number of specified characters and returns nil" do
       print_chars('*', 10).should be_nil
+    end
+  end
+
+  describe "#print_chars" do
+    it "prints 20 dashes by default and returns nil" do
+      print_chars.should be_nil
     end
   end
 end
