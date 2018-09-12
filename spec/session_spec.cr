@@ -1,12 +1,13 @@
 require "./spec_helper"
 require "../src/snob/session.cr"
+require "secrets"
 
 describe Session do
-  describe "configure_session" do
-    it "returns a Hash(String, String)" do
-      puts "Configuring a test session ..."
-      config = Session.configure_session[0].to_h # => Hash(String, String)
-      config.should be_a(Hash(String, String))
+  describe "#configure_session" do
+    it "returns a Tuple(Hash(String, String))" do
+      puts "\nConfiguring a test session ..."
+      config = Session.configure_session
+      config.should be_a(Tuple(Hash(String, String)))
     end
   end
 end

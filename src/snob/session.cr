@@ -17,9 +17,7 @@ module Session
 
   # Adds new session _credentials_ to config file.
   def add_session(config_file : String, credentials : String)
-    File.open(config_file, "a") do |file|
-      file.puts credentials
-    end
+    File.open(config_file, "a") { |file| file.puts credentials }
   end
 
   # Prompts the user for host credentials. This method is typically invoked
