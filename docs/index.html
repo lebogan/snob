@@ -1,24 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Crystal Docs 0.26.1">
+
+
+<link href="css/style.css" rel="stylesheet" type="text/css">
+
+<script type="text/javascript" src="js/doc.js"></script>
+<script type="text/javascript">
+  CrystalDoc.base_path = "";
+</script>
+
   <meta id="repository-name" content="github.com/lebogan/snob">
-  <link href="css/style.css" rel="stylesheet" type="text/css" />
-  <script type="text/javascript" src="js/doc.js"></script>
   <title>README - github.com/lebogan/snob</title>
 </head>
 <body>
 
-<div id="types-list">
-  <div id="search-box">
-    <input type="search" id="search-input" placeholder="Search...">
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="search-box">
+      <input type="search" class="search-input" placeholder="Search..." spellcheck="false">
+    </div>
+
+    <div class="repository-links">
+      <a href="index.html">README</a>
+    </div>
   </div>
 
-  <ul>
-    <li class="current"><a href="index.html">README</a></li>
-  </ul>
+  <div class="search-results" class="hidden">
+    <ul class="search-list"></ul>
+  </div>
 
-  <ul>
+  <div class="types-list">
+    <ul>
   
   <li class=" " data-id="github.com/lebogan/snob/App" data-name="app">
       <a href="App.html">App</a>
@@ -77,15 +93,17 @@
   
 </ul>
 
+  </div>
 </div>
 
-<div id="main-content">
+
+<div class="main-content">
 <h1>snob (Snmp Network Object Browser)</h1>
 
 <h2>Introduction</h2>
 
-<p>*<strong>This utility is experimental, it will change radically as I leearn more of the
-Crystal language, use at your own risk!</strong>*</p>
+<p>*<strong>This utility is experimental, it will change radically as I learn more of the
+Crystal language, so use at your own risk!</strong>*</p>
 
 <p><strong>snob</strong> is an attempt to rewrite my Ruby app <a href="https://github.com/lebogan/yasb.git" target="_blank">YASB</a>
 in the Crystal programming language. The idea is to:</p>
@@ -100,29 +118,38 @@ at this time. Sorry:(.</p>
 
 <p>The special <em>--list</em> switch is included to provide easily remembered names for</p>
 
-<ol><li>0.8802.1.1.2.1.4.1.1.9 or ipNetToPhysicalPhysAddress or other cryptic
+<ol><li>0.8802.1.1.2.1.4.1.1.9 or ipNetToPhysicalPhysAddress or other cryptic looking
 oids.</li></ol>
 
 <p>The output is raw by default. In addition, a --dump option is included for dumping
 the resulting output to a file, raw_dump.txt, for later perusal. A --format option
-exists in an attempt to pretty-print the output for display on screen.</p>
+exists in an attempt to pretty-print the output for display on screen. The --only-values
+flag allows output to be used raw by another application like RRDTool for graphing 
+trends when you know which OID you want.</p>
 
 <h2>Installation</h2>
 
-<pre><code class='language-bash'>$ git clone https://github.com/lebogan/snob.git
+<p>You need ___git___ to proceed. Get git! The install script can also update snob by
+pulling a fresh copy from github. Check out install.sh to see what the script
+is doing. See README_UBUNTU.md for my tests on Ubuntu 14.04.</p>
+
+<pre><code class="language-bash">$ git clone https://github.com/lebogan/snob.git
 $ cd snob
-$ sudo cp snob /usr/local/bin/snob</code></pre>
+$ ./install.sh</code></pre>
 
-<p>Required utilities:  </p>
+<blockquote>#### Installation on Ubuntu
+> see README_UBUNTU for details.</blockquote>
 
-<ul><li>net-snmp  </li><li>net-snmp-utils  </li></ul>
+<p>Required utilities for nms (network management station):  </p>
+
+<ul><li>git  </li><li>net-snmp  </li><li>net-snmp-utils  </li></ul>
 
 <p>Configure your hosts to respond to snmp requests. See documentation at: 
 <a href="http://net-snmp.sourceforge.net/docs/README.snmpv3.html" target="_blank">net-snmp</a></p>
 
 <h2>Usage</h2>
 
-<pre><code class='language-bash'>$ snob --help
+<pre><code class="language-bash">$ snob --help
 Usage: snob [OPTIONS] [HOST]
 Browse a host snmpv3 mib tree.
 
@@ -134,6 +161,7 @@ for security credentials if HOST is not in the config file, ~/.snob/snobrc.yml.
                                      (Default: system)
     -d, --dump                       Write output to file, raw only
     -f, --formatted                  Display formatted output
+    -o, --only-values                Display values only (not OID = value)
     -h, --help                       Show this help
     -v, --version                    Show version
 
@@ -164,7 +192,7 @@ temp             |lmTempSensorsDevice
 
 <p>A first run will create a default YAML config file named <strong>~/.snob/snobrc.yml</strong>
 if it doesn't already exist. The directory's permissions are set to 0o700
-(-rw-r--r--) for added security. The initial set of credentials is for a host named
+(drwx------) for added security. The initial set of credentials is for a host named
 <strong>dummy</strong>. Afterwards, if the host is not in the config file, you will be asked
 to enter credentials manually with the option to save them.  </p>
 
@@ -172,7 +200,7 @@ to enter credentials manually with the option to save them.  </p>
 
 <p>The config file is YAML format and can be edited manually.</p>
 
-<pre><code class='language-text'># /home/vagrant/.snob/snobrc.yml
+<pre><code class="language-text"># /home/vagrant/.snob/snobrc.yml
 ---
 dummy:
   user: username
@@ -186,12 +214,18 @@ myserver:
   priv: realsecret
   crypto: DES</code></pre>
 
+<h2>TODO</h2>
+
+<ul><li>[ ] Bind the net-snmp c library to make this app even more portable.</li><li>[X] Build a Ubuntu test environment, write installation instructions.</li></ul>
+
 <h2>Development</h2>
 
 <p>Please, see the DISCLAIMER below.  
 Check out the repo on GitHub at https://github.com/lebogan/snob.git  
-Developed using Crystal 0.24.1 on Fedora 26 workstation running under Vagrant v2.0.1.  
-Tested on Fedora 26/27 and CentOS 7.  </p>
+Developed using Crystal 0.24.2 on Fedora 27 workstation running under Vagrant v2.0.2
+with VirtualBox 5.2 provider.  
+Tested on Fedora 26/27 and CentOS 7.  
+See README_UBUNTU.md for my tests on Ubuntu 14.04.</p>
 
 <h2>Contributing</h2>
 
@@ -201,7 +235,7 @@ Tested on Fedora 26/27 and CentOS 7.  </p>
 
 <h2>Contributors</h2>
 
-<ul><li><a href="https://github.com/lebogan/snob.git" target="_blank">lebogan</a> lebogan - creator, maintainer</li></ul>
+<ul><li><a href="https://github.com/lebogan/snob.git" target="_blank">lebogan</a> - creator, maintainer</li></ul>
 
 <h2>License</h2>
 
@@ -211,7 +245,7 @@ Tested on Fedora 26/27 and CentOS 7.  </p>
 <h2>Disclaimer</h2>
 
 <p>This utility was originally created for my personal use in my work as a network
-specialist. It was developed on a Fedora Workstation using Crystal 0.24.1. This has
+specialist. It was developed on a Fedora Workstation using Crystal 0.24.2. This has
 only been tested on Fedora 26/27 Workstation and CentOS 7 </p>
 
 <p>I am not a professional software developer nor do I pretend to be. I am a retired IT 

@@ -1,24 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Crystal Docs 0.26.1">
+
+
+<link href="css/style.css" rel="stylesheet" type="text/css">
+
+<script type="text/javascript" src="js/doc.js"></script>
+<script type="text/javascript">
+  CrystalDoc.base_path = "";
+</script>
+
   <meta id="repository-name" content="github.com/lebogan/snob">
-  <link href="css/style.css" rel="stylesheet" type="text/css" />
-  <script type="text/javascript" src="js/doc.js"></script>
   <title>App - github.com/lebogan/snob</title>
 </head>
 <body>
 
-<div id="types-list">
-  <div id="search-box">
-    <input type="search" id="search-input" placeholder="Search...">
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="search-box">
+      <input type="search" class="search-input" placeholder="Search..." spellcheck="false">
+    </div>
+
+    <div class="repository-links">
+      <a href="index.html">README</a>
+    </div>
   </div>
 
-  <ul>
-    <li><a href="index.html">README</a></li>
-  </ul>
+  <div class="search-results" class="hidden">
+    <ul class="search-list"></ul>
+  </div>
 
-  <ul>
+  <div class="types-list">
+    <ul>
   
   <li class=" current" data-id="github.com/lebogan/snob/App" data-name="app">
       <a href="App.html">App</a>
@@ -77,9 +93,11 @@
   
 </ul>
 
+  </div>
 </div>
 
-<div id="main-content">
+
+<div class="main-content">
 <h1 class="type-name">
 
   <span class="kind">struct</span> App
@@ -136,7 +154,9 @@ valid hostname, and snmpv3 credentials.</p>
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/lebogan/snob/blob/920199fe9c5d0ab4380ceea0a07c2e14861a2799/src/snob.cr#L37" target="_blank">snob.cr</a>
+      <a href="https://github.com/lebogan/snob/blob/56c1d7635f208c7906a677d934f69a25552fbf7b/src/snob.cr#L38" target="_blank">
+        snob.cr
+      </a>
     
     <br/>
   
@@ -149,7 +169,7 @@ valid hostname, and snmpv3 credentials.</p>
   <dl>
     
       <dt class="entry-const" id="CONFIG_FILE">
-        <strong>CONFIG_FILE</strong> = <code><span class="t">File</span>.expand_path(<span class="s">&quot;~/.snob/snobrc.yml&quot;</span>)</code>
+        <strong>CONFIG_FILE</strong> = <code><span class="t">File</span>.expand_path(<span class="s">&quot;</span><span class="i">#{</span><span class="t">CONFIG_PATH</span><span class="i">}</span><span class="s">/snobrc.yml&quot;</span>)</code>
       </dt>
       
     
@@ -163,8 +183,13 @@ valid hostname, and snmpv3 credentials.</p>
       </dt>
       
     
-      <dt class="entry-const" id="OUTFILE">
-        <strong>OUTFILE</strong> = <code><span class="t">File</span>.expand_path(<span class="s">&quot;~/tmp/raw_dump.txt&quot;</span>)</code>
+      <dt class="entry-const" id="OUT_FILE">
+        <strong>OUT_FILE</strong> = <code><span class="t">File</span>.expand_path(<span class="s">&quot;</span><span class="i">#{</span><span class="t">OUT_PATH</span><span class="i">}</span><span class="s">/raw_dump.txt&quot;</span>)</code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="OUT_PATH">
+        <strong>OUT_PATH</strong> = <code><span class="t">File</span>.expand_path(<span class="s">&quot;~/tmp&quot;</span>)</code>
       </dt>
       
     
@@ -341,13 +366,23 @@ valid hostname, and snmpv3 credentials.</p>
     clear_screen</a>, 
     
   
+    <a href="Utils.html#print_chars%28character%3AChar%2Cnumber%3AInt32%3D20%29-instance-method" class="tooltip">
+      <span>print_chars(character : Char, number : Int32 = <span class="n">20</span>)</span>
+    print_chars</a>, 
+    
+  
+    <a href="Utils.html#process_argv%28argv%29%3AString-instance-method" class="tooltip">
+      <span>process_argv(argv) : String</span>
+    process_argv</a>, 
+    
+  
     <a href="Utils.html#read_file%28filename%3AString%29-instance-method" class="tooltip">
       <span>read_file(filename : String)</span>
     read_file</a>, 
     
   
-    <a href="Utils.html#run_cmd%28cmd%3AString%2Cargs%3ATuple%29%3ATuple%28Int32%2CString%29-instance-method" class="tooltip">
-      <span>run_cmd(cmd : String, args : Tuple) : Tuple(Int32, String)</span>
+    <a href="Utils.html#run_cmd%28cmd%3AString%2Cargs%3ATuple%3D%7B%26quot%3B%26quot%3B%7D%29%3ATuple%28Int32%2CString%29-instance-method" class="tooltip">
+      <span>run_cmd(cmd : String, args : Tuple = {<span class="s">&quot;&quot;</span>}) : Tuple(Int32, String)</span>
     run_cmd</a>, 
     
   
@@ -475,7 +510,7 @@ valid hostname, and snmpv3 credentials.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/lebogan/snob/blob/920199fe9c5d0ab4380ceea0a07c2e14861a2799/src/snob.cr#L37" target="_blank">View source</a>]
+          [<a href="https://github.com/lebogan/snob/blob/56c1d7635f208c7906a677d934f69a25552fbf7b/src/snob.cr#L38" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -500,7 +535,7 @@ valid hostname, and snmpv3 credentials.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/lebogan/snob/blob/920199fe9c5d0ab4380ceea0a07c2e14861a2799/src/snob.cr#L60" target="_blank">View source</a>]
+          [<a href="https://github.com/lebogan/snob/blob/56c1d7635f208c7906a677d934f69a25552fbf7b/src/snob.cr#L62" target="_blank">View source</a>]
         
       </div>
     </div>

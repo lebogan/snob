@@ -1,24 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Crystal Docs 0.26.1">
+
+
+<link href="css/style.css" rel="stylesheet" type="text/css">
+
+<script type="text/javascript" src="js/doc.js"></script>
+<script type="text/javascript">
+  CrystalDoc.base_path = "";
+</script>
+
   <meta id="repository-name" content="github.com/lebogan/snob">
-  <link href="css/style.css" rel="stylesheet" type="text/css" />
-  <script type="text/javascript" src="js/doc.js"></script>
   <title>Utils - github.com/lebogan/snob</title>
 </head>
 <body>
 
-<div id="types-list">
-  <div id="search-box">
-    <input type="search" id="search-input" placeholder="Search...">
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="search-box">
+      <input type="search" class="search-input" placeholder="Search..." spellcheck="false">
+    </div>
+
+    <div class="repository-links">
+      <a href="index.html">README</a>
+    </div>
   </div>
 
-  <ul>
-    <li><a href="index.html">README</a></li>
-  </ul>
+  <div class="search-results" class="hidden">
+    <ul class="search-list"></ul>
+  </div>
 
-  <ul>
+  <div class="types-list">
+    <ul>
   
   <li class=" " data-id="github.com/lebogan/snob/App" data-name="app">
       <a href="App.html">App</a>
@@ -77,9 +93,11 @@
   
 </ul>
 
+  </div>
 </div>
 
-<div id="main-content">
+
+<div class="main-content">
 <h1 class="type-name">
 
   <span class="kind">module</span> Utils
@@ -128,7 +146,9 @@ or just used as a namespace.</p>
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/lebogan/snob/blob/920199fe9c5d0ab4380ceea0a07c2e14861a2799/src/snob/utils.cr#L15" target="_blank">snob/utils.cr</a>
+      <a href="https://github.com/lebogan/snob/blob/56c1d7635f208c7906a677d934f69a25552fbf7b/src/snob/utils.cr#L15" target="_blank">
+        snob/utils.cr
+      </a>
     
     <br/>
   
@@ -180,6 +200,20 @@ or just used as a namespace.</p>
       </li>
     
       <li class="entry-summary">
+        <a href="#print_chars%28character%3AChar%2Cnumber%3AInt32%3D20%29-instance-method" class="signature"><strong>#print_chars</strong>(character : Char, number : Int32 = <span class="n">20</span>)</a>
+        
+          <div class="summary"><p>Prints a line of characters for display, defaults to 20.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#process_argv%28argv%29%3AString-instance-method" class="signature"><strong>#process_argv</strong>(argv) : String</a>
+        
+          <div class="summary"><p>Checks for hostname in ARGV</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#read_file%28filename%3AString%29-instance-method" class="signature"><strong>#read_file</strong>(filename : String)</a>
         
           <div class="summary"><p>Reads <em>filename</em>.</p></div>
@@ -187,7 +221,7 @@ or just used as a namespace.</p>
       </li>
     
       <li class="entry-summary">
-        <a href="#run_cmd%28cmd%3AString%2Cargs%3ATuple%29%3ATuple%28Int32%2CString%29-instance-method" class="signature"><strong>#run_cmd</strong>(cmd : String, args : Tuple) : Tuple(Int32, String)</a>
+        <a href="#run_cmd%28cmd%3AString%2Cargs%3ATuple%3D%7B%26quot%3B%26quot%3B%7D%29%3ATuple%28Int32%2CString%29-instance-method" class="signature"><strong>#run_cmd</strong>(cmd : String, args : Tuple = {<span class="s">&quot;&quot;</span>}) : Tuple(Int32, String)</a>
         
           <div class="summary"><p>Runs a system-level command and returns a Tuple(Int32, String) containing status, and command output or error.</p></div>
         
@@ -245,12 +279,12 @@ is false.</p>
 
 <pre><code><span class="t">Utils</span>.agree?(<span class="s">&quot;Are you sure(y/n)?: &quot;</span>) <span class="c"># =&gt; true | false</span></code></pre>
 
-<pre><code class='language-text'>$ Are you sure(y/n)?: _</code></pre></div>
+<pre><code class="language-text">$ Are you sure(y/n)?: _</code></pre></div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/lebogan/snob/blob/920199fe9c5d0ab4380ceea0a07c2e14861a2799/src/snob/utils.cr#L124" target="_blank">View source</a>]
+          [<a href="https://github.com/lebogan/snob/blob/56c1d7635f208c7906a677d934f69a25552fbf7b/src/snob/utils.cr#L124" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -267,12 +301,12 @@ is false.</p>
 
 <pre><code><span class="t">Utils</span>.ask(<span class="s">&quot;Enter something: &quot;</span>) <span class="c"># =&gt; &quot;whatever you entered&quot;</span></code></pre>
 
-<pre><code class='language-text'>$ Enter something: _</code></pre></div>
+<pre><code class="language-text">$ Enter something: _</code></pre></div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/lebogan/snob/blob/920199fe9c5d0ab4380ceea0a07c2e14861a2799/src/snob/utils.cr#L73" target="_blank">View source</a>]
+          [<a href="https://github.com/lebogan/snob/blob/56c1d7635f208c7906a677d934f69a25552fbf7b/src/snob/utils.cr#L73" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -290,14 +324,14 @@ and other single character prompts.</p>
 
 <pre><code><span class="t">Utils</span>.ask_char(<span class="s">&quot;press &#39;q&#39; to quit &quot;</span>) <span class="c"># =&gt; &#39;q&#39;</span></code></pre>
 
-<pre><code class='language-text'>$ press 'q' to quit _</code></pre>
+<pre><code class="language-text">$ press 'q' to quit _</code></pre>
 
 <p><span class="flag purple">NOTE</span>  see Reports.display_table_info for usage.</p></div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/lebogan/snob/blob/920199fe9c5d0ab4380ceea0a07c2e14861a2799/src/snob/utils.cr#L107" target="_blank">View source</a>]
+          [<a href="https://github.com/lebogan/snob/blob/56c1d7635f208c7906a677d934f69a25552fbf7b/src/snob/utils.cr#L107" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -314,12 +348,12 @@ and other single character prompts.</p>
 
 <pre><code><span class="t">Question</span>.ask_pass(<span class="s">&quot;Enter passphrase: &quot;</span>) <span class="c"># =&gt; Tuple(String?)</span></code></pre>
 
-<pre><code class='language-text'>$ Enter passphrase: _ &lt;no echo></code></pre></div>
+<pre><code class="language-text">$ Enter passphrase: _ &lt;no echo></code></pre></div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/lebogan/snob/blob/920199fe9c5d0ab4380ceea0a07c2e14861a2799/src/snob/utils.cr#L88" target="_blank">View source</a>]
+          [<a href="https://github.com/lebogan/snob/blob/56c1d7635f208c7906a677d934f69a25552fbf7b/src/snob/utils.cr#L88" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -334,16 +368,56 @@ and other single character prompts.</p>
       
         <div class="doc"><p>Clears the screen using ansi codes.</p>
 
-<pre><code class='language-text'>\e[ is the escape code
+<pre><code class="language-text">\e[ is the escape code
 2J clears the screen
 1;1H moves cursor to line 1, column 1</code></pre>
 
-<pre><code class='language-text'>clear_screen # => "\e[2J\e[1;1H]]"</code></pre></div>
+<pre><code class="language-text">clear_screen # => "\e[2J\e[1;1H]]"</code></pre></div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/lebogan/snob/blob/920199fe9c5d0ab4380ceea0a07c2e14861a2799/src/snob/utils.cr#L59" target="_blank">View source</a>]
+          [<a href="https://github.com/lebogan/snob/blob/56c1d7635f208c7906a677d934f69a25552fbf7b/src/snob/utils.cr#L59" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="print_chars(character:Char,number:Int32=20)-instance-method">
+      <div class="signature">
+        
+        def <strong>print_chars</strong>(character : Char, number : Int32 = <span class="n">20</span>)
+
+        <a class="method-permalink" href="#print_chars%28character%3AChar%2Cnumber%3AInt32%3D20%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Prints a line of characters for display, defaults to 20.</p>
+
+<pre><code><span class="t">Utils</span>.print_chars(<span class="s">&#39;*&#39;</span>, <span class="n">10</span>) <span class="c"># =&gt; &quot;----------&quot;</span></code></pre></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/lebogan/snob/blob/56c1d7635f208c7906a677d934f69a25552fbf7b/src/snob/utils.cr#L187" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="process_argv(argv):String-instance-method">
+      <div class="signature">
+        
+        def <strong>process_argv</strong>(argv) : String
+
+        <a class="method-permalink" href="#process_argv%28argv%29%3AString-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Checks for hostname in ARGV</p>
+
+<pre><code><span class="t">Utils</span>.process_argv(<span class="s">&quot;myhost&quot;</span>) <span class="c"># =&gt; &quot;myhost&quot;</span></code></pre></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/lebogan/snob/blob/56c1d7635f208c7906a677d934f69a25552fbf7b/src/snob/utils.cr#L171" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -361,17 +435,17 @@ and other single character prompts.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/lebogan/snob/blob/920199fe9c5d0ab4380ceea0a07c2e14861a2799/src/snob/utils.cr#L143" target="_blank">View source</a>]
+          [<a href="https://github.com/lebogan/snob/blob/56c1d7635f208c7906a677d934f69a25552fbf7b/src/snob/utils.cr#L143" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="run_cmd(cmd:String,args:Tuple):Tuple(Int32,String)-instance-method">
+    <div class="entry-detail" id="run_cmd(cmd:String,args:Tuple={&amp;quot;&amp;quot;}):Tuple(Int32,String)-instance-method">
       <div class="signature">
         
-        def <strong>run_cmd</strong>(cmd : String, args : Tuple) : Tuple(Int32, String)
+        def <strong>run_cmd</strong>(cmd : String, args : Tuple = {<span class="s">&quot;&quot;</span>}) : Tuple(Int32, String)
 
-        <a class="method-permalink" href="#run_cmd%28cmd%3AString%2Cargs%3ATuple%29%3ATuple%28Int32%2CString%29-instance-method">#</a>
+        <a class="method-permalink" href="#run_cmd%28cmd%3AString%2Cargs%3ATuple%3D%7B%26quot%3B%26quot%3B%7D%29%3ATuple%28Int32%2CString%29-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Runs a system-level command and returns a Tuple(Int32, String) containing
@@ -382,7 +456,7 @@ status, and command output or error.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/lebogan/snob/blob/920199fe9c5d0ab4380ceea0a07c2e14861a2799/src/snob/utils.cr#L36" target="_blank">View source</a>]
+          [<a href="https://github.com/lebogan/snob/blob/56c1d7635f208c7906a677d934f69a25552fbf7b/src/snob/utils.cr#L36" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -402,7 +476,7 @@ status, and command output or error.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/lebogan/snob/blob/920199fe9c5d0ab4380ceea0a07c2e14861a2799/src/snob/utils.cr#L161" target="_blank">View source</a>]
+          [<a href="https://github.com/lebogan/snob/blob/56c1d7635f208c7906a677d934f69a25552fbf7b/src/snob/utils.cr#L161" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -424,7 +498,7 @@ Defaults to # 48 characters.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/lebogan/snob/blob/920199fe9c5d0ab4380ceea0a07c2e14861a2799/src/snob/utils.cr#L137" target="_blank">View source</a>]
+          [<a href="https://github.com/lebogan/snob/blob/56c1d7635f208c7906a677d934f69a25552fbf7b/src/snob/utils.cr#L137" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -442,7 +516,7 @@ Defaults to # 48 characters.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/lebogan/snob/blob/920199fe9c5d0ab4380ceea0a07c2e14861a2799/src/snob/utils.cr#L149" target="_blank">View source</a>]
+          [<a href="https://github.com/lebogan/snob/blob/56c1d7635f208c7906a677d934f69a25552fbf7b/src/snob/utils.cr#L149" target="_blank">View source</a>]
         
       </div>
     </div>

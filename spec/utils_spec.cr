@@ -1,20 +1,47 @@
 require "./spec_helper"
 require "../src/snob/utils"
+require "../src/snob/messages"
+
+include Utils
+include Messages
+
+TEST_ARGV = ["test"]
+BLANK_ARGV = [] of String
 
 describe Utils do
-  describe "run_cmd" do
-    it "returns a Tuple(Int32, String)" do
-      args = ("-ls").split(" ") # => Array of String
-      status, result = Utils.run_cmd("ls", args)
-      status.should be_a(Int32)
-      result.should be_a(String)
+  describe "#truncate " do
+    it "returns a string with 10 characters" do
+      truncate("A truncated string ", 10).size.should eq(10)
     end
   end
 
-  describe "truncate" do
-    it "returns a string with 10 characters" do
-      string = Utils.truncate("A truncated string ", 10).to_s
-      string.size.should eq(10)
+  describe "#process_argv" do
+    it "returns a string when ARGV is given" do
+      process_argv(TEST_ARGV).should be_a(String)
+    end
+  end
+
+  describe "#process_argv" do
+    pending "prompts for a string when no ARGV is given\n" do
+      process_argv(BLANK_ARGV).should be_a(String)
+    end
+  end
+
+  describe "#run_cmd(cmd, args)" do
+    it "returns a tuple" do
+      run_cmd("ls", {"-l"}).should be_a(Tuple(Int32, String))
+    end
+  end
+
+  describe "#run_cmd(cmd)" do
+    it "returns a tuple when no args specified" do
+      run_cmd("ls").should be_a(Tuple(Int32, String))
+    end
+  end
+
+  describe "#print_chars(character, number)" do
+    it "prints a number of characters and returns nil" do
+      print_chars('*', 10).should be_nil
     end
   end
 end

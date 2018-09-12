@@ -33,7 +33,7 @@ module Utils
   # status, result = Utils.run_cmd("ls", {"-ls"}) # => 0, listing
   # ```
   #
-  def run_cmd(cmd : String, args : Tuple) : Tuple(Int32, String)
+  def run_cmd(cmd : String, args : Tuple = {""}) : Tuple(Int32, String)
     stdout_str = IO::Memory.new
     stderr_str = IO::Memory.new
     status = Process.run(cmd, args: args, output: stdout_str, error: stderr_str)
@@ -160,5 +160,31 @@ module Utils
   #
   def say_hey(hostname : String)
     puts "Hey #{hostname}!"
+  end
+
+  # Checks for hostname in ARGV
+  #
+  # ```
+  # Utils.process_argv("myhost") # => "myhost"
+  # ```
+  #
+  def process_argv(argv) : String
+    if argv.empty?
+      hostname = ask("Enter hostname: ")
+      abort blank_host_message if hostname.blank?
+      hostname
+    else
+      argv[0]
+    end
+  end
+
+  # Prints a line of characters for display, defaults to 20.
+  #
+  # ```
+  # Utils.print_chars('-', 10) # => "----------"
+  # ```
+  #
+  def print_chars(character : Char, number : Int32 = 20)
+    puts "%s" % character * number
   end
 end

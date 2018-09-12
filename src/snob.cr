@@ -99,12 +99,7 @@ struct App
     end
 
     # Asks for a hostname if none is given on the command line.
-    if ARGV.empty?
-      hostname = ask("Enter hostname: ")
-      abort blank_host_message if hostname.blank?
-    else
-      hostname = ARGV[0]
-    end
+    hostname = process_argv(ARGV)
 
     # Checks if host exists on this network
     status, result = run_cmd("ping", {"-c", "2", "#{hostname}"})
@@ -122,10 +117,10 @@ struct App
       config = fetch_config(CONFIG_FILE)["#{hostname}"] # => YAML::Any
     else
       puts "'#{hostname}' is not in config file."
-      puts "%s" % '-' * 35
+      print_chars('-', 40)
       config = configure_session[0]                              # => Hash(String, NamedTuple)
       credentials = {hostname => config}.to_yaml.gsub("---", "") # => String
-      puts "%s" % '-' * 35
+      print_chars('-', 40)
       puts "You entered: %s" % credentials
       choice = agree?("Save these credentials(y/n)? ")
       add_session(CONFIG_FILE, credentials) if choice
