@@ -101,7 +101,7 @@ struct App
     # Asks for a hostname if none is given on the command line.
     hostname = process_argv(ARGV)
 
-    # Checks if host exists on this network
+    # Checks if host exists on this network.
     status, result = run_cmd("ping", {"-c", "2", "#{hostname}"})
     abort ping_message(hostname) unless status == 0
 
@@ -112,7 +112,7 @@ struct App
     # Checks for the existence of a valid config file and tests if host
     # is in it. Otherwise, asks for manual entry of credentials and
     # adds them to existing config file.
-    # NOTE: {hostname => config} => Hash(String, Hash(String, String))
+    # NOTE: {hostname => config} is a Hash(String => Hash(String, String))
     if File.exists?(CONFIG_FILE) && fetch_config(CONFIG_FILE)["#{hostname}"]? != nil
       config = fetch_config(CONFIG_FILE)["#{hostname}"] # => YAML::Any
     else
@@ -126,8 +126,8 @@ struct App
       add_credentials(CONFIG_FILE, credentials) if choice
     end
 
-    # Creates a Snmp object and invokes the walk_mib3 method on the Snmp object, host,
-    # using 'system' oid if the --mib flag is missing.
+    # Creates an Snmp session object and invokes the walk_mib3 method on the object,
+    # host_session, using 'system' oid if the --mib flag is missing.
     mib_oid = "system" if mib_oid.empty?
     host_session = Snmp.new(
       config["auth"].to_s,
