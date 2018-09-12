@@ -10,16 +10,17 @@
 # ===============================================================================
 
 # Displays the results of a snmpwalk operation either raw or formatted.
+PAGE_SIZE = 15
+
 module Reports
-  # Displays the table information.
+  # Displays the table information, removes quotes from info string.
   def display_table_info(formatted_table : Hash | NamedTuple)
-    page_size = 15
     page_count = 1
     formatted_table.each do |label, info|
       printf("%-18s |%s\n", label, info.delete("\""))
       puts "-------------------+-------------------------------------------------"
       page_count += 1
-      if page_count % page_size == 0
+      if page_count % PAGE_SIZE == 0
         choice = ask_char("\n -- press any key to continue or q to quit --  \n\n")
         choice == 'q' ? break : next
       end
