@@ -17,7 +17,7 @@ module Snmp
     include Utils
     property :auth, :priv, :user, :crypto
 
-    # Creates a new Snmp object.
+    # Creates a new Snmp object for a walk session.
     #
     # ```
     # Snmp.new(args...) # => Snmp

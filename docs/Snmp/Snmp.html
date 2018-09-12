@@ -133,7 +133,7 @@
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/lebogan/snob/blob/56c1d7635f208c7906a677d934f69a25552fbf7b/src/snob/snmp.cr#L16" target="_blank">
+      <a href="https://github.com/lebogan/snob/blob/184c0e7ad676cbfbf6fe3fefbe4fb6110553a80e/src/snob/snmp.cr#L16" target="_blank">
         snob/snmp.cr
       </a>
     
@@ -150,7 +150,7 @@
       <li class="entry-summary">
         <a href="#new%28auth%3AString%2Cpriv%3AString%2Cuser%3AString%2Ccrypto%3AString%29-class-method" class="signature"><strong>.new</strong>(auth : String, priv : String, user : String, crypto : String)</a>
         
-          <div class="summary"><p>Creates a new Snmp object.</p></div>
+          <div class="summary"><p>Creates a new Snmp object for a walk session.</p></div>
         
       </li>
     
@@ -206,7 +206,7 @@
       <li class="entry-summary">
         <a href="#walk_mib3%28hostname%3AString%2Coid%3AString%2Cformat%3AString%29%3ATuple%28Int32%2CString%29-instance-method" class="signature"><strong>#walk_mib3</strong>(hostname : String, oid : String, format : String) : Tuple(Int32, String)</a>
         
-          <div class="summary"><p>Walks the mib tree.</p></div>
+          <div class="summary"><p>Walks the mib tree branch.</p></div>
         
       </li>
     
@@ -248,8 +248,8 @@
     clear_screen</a>, 
     
   
-    <a href="../Utils.html#print_chars%28character%3AChar%2Cnumber%3AInt32%3D20%29-instance-method" class="tooltip">
-      <span>print_chars(character : Char, number : Int32 = <span class="n">20</span>)</span>
+    <a href="../Utils.html#print_chars%28character%3AChar%3D%26%2339%3B-%26%2339%3B%2Cnumber%3AInt32%3D20%29-instance-method" class="tooltip">
+      <span>print_chars(character : Char = <span class="s">&#39;-&#39;</span>, number : Int32 = <span class="n">20</span>)</span>
     print_chars</a>, 
     
   
@@ -335,14 +335,14 @@
         <a class="method-permalink" href="#new%28auth%3AString%2Cpriv%3AString%2Cuser%3AString%2Ccrypto%3AString%29-class-method">#</a>
       </div>
       
-        <div class="doc"><p>Creates a new Snmp object.</p>
+        <div class="doc"><p>Creates a new Snmp object for a walk session.</p>
 
 <pre><code><span class="t">Snmp</span>.<span class="k">new</span>(args...) <span class="c"># =&gt; Snmp</span></code></pre></div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/lebogan/snob/blob/56c1d7635f208c7906a677d934f69a25552fbf7b/src/snob/snmp.cr#L26" target="_blank">View source</a>]
+          [<a href="https://github.com/lebogan/snob/blob/184c0e7ad676cbfbf6fe3fefbe4fb6110553a80e/src/snob/snmp.cr#L26" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -365,7 +365,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/lebogan/snob/blob/56c1d7635f208c7906a677d934f69a25552fbf7b/src/snob/snmp.cr#L18" target="_blank">View source</a>]
+          [<a href="https://github.com/lebogan/snob/blob/184c0e7ad676cbfbf6fe3fefbe4fb6110553a80e/src/snob/snmp.cr#L18" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -381,7 +381,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/lebogan/snob/blob/56c1d7635f208c7906a677d934f69a25552fbf7b/src/snob/snmp.cr#L18" target="_blank">View source</a>]
+          [<a href="https://github.com/lebogan/snob/blob/184c0e7ad676cbfbf6fe3fefbe4fb6110553a80e/src/snob/snmp.cr#L18" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -397,7 +397,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/lebogan/snob/blob/56c1d7635f208c7906a677d934f69a25552fbf7b/src/snob/snmp.cr#L18" target="_blank">View source</a>]
+          [<a href="https://github.com/lebogan/snob/blob/184c0e7ad676cbfbf6fe3fefbe4fb6110553a80e/src/snob/snmp.cr#L18" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -413,7 +413,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/lebogan/snob/blob/56c1d7635f208c7906a677d934f69a25552fbf7b/src/snob/snmp.cr#L18" target="_blank">View source</a>]
+          [<a href="https://github.com/lebogan/snob/blob/184c0e7ad676cbfbf6fe3fefbe4fb6110553a80e/src/snob/snmp.cr#L18" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -429,7 +429,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/lebogan/snob/blob/56c1d7635f208c7906a677d934f69a25552fbf7b/src/snob/snmp.cr#L18" target="_blank">View source</a>]
+          [<a href="https://github.com/lebogan/snob/blob/184c0e7ad676cbfbf6fe3fefbe4fb6110553a80e/src/snob/snmp.cr#L18" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -445,7 +445,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/lebogan/snob/blob/56c1d7635f208c7906a677d934f69a25552fbf7b/src/snob/snmp.cr#L18" target="_blank">View source</a>]
+          [<a href="https://github.com/lebogan/snob/blob/184c0e7ad676cbfbf6fe3fefbe4fb6110553a80e/src/snob/snmp.cr#L18" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -461,7 +461,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/lebogan/snob/blob/56c1d7635f208c7906a677d934f69a25552fbf7b/src/snob/snmp.cr#L18" target="_blank">View source</a>]
+          [<a href="https://github.com/lebogan/snob/blob/184c0e7ad676cbfbf6fe3fefbe4fb6110553a80e/src/snob/snmp.cr#L18" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -477,7 +477,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/lebogan/snob/blob/56c1d7635f208c7906a677d934f69a25552fbf7b/src/snob/snmp.cr#L18" target="_blank">View source</a>]
+          [<a href="https://github.com/lebogan/snob/blob/184c0e7ad676cbfbf6fe3fefbe4fb6110553a80e/src/snob/snmp.cr#L18" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -490,12 +490,14 @@
         <a class="method-permalink" href="#walk_mib3%28hostname%3AString%2Coid%3AString%2Cformat%3AString%29%3ATuple%28Int32%2CString%29-instance-method">#</a>
       </div>
       
-        <div class="doc"><p>Walks the mib tree.</p></div>
+        <div class="doc"><p>Walks the mib tree branch.</p>
+
+<pre><code><span class="t">Snmp</span>.walk_mib3(<span class="s">&quot;myhost&quot;</span>, <span class="s">&quot;system&quot;</span>, <span class="s">&quot;vQ&quot;</span>) <span class="c"># =&gt; Tuple(Int32, String)</span></code></pre></div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/lebogan/snob/blob/56c1d7635f208c7906a677d934f69a25552fbf7b/src/snob/snmp.cr#L34" target="_blank">View source</a>]
+          [<a href="https://github.com/lebogan/snob/blob/184c0e7ad676cbfbf6fe3fefbe4fb6110553a80e/src/snob/snmp.cr#L35" target="_blank">View source</a>]
         
       </div>
     </div>

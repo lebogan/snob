@@ -146,7 +146,7 @@ or just used as a namespace.</p>
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/lebogan/snob/blob/56c1d7635f208c7906a677d934f69a25552fbf7b/src/snob/utils.cr#L15" target="_blank">
+      <a href="https://github.com/lebogan/snob/blob/184c0e7ad676cbfbf6fe3fefbe4fb6110553a80e/src/snob/utils.cr#L15" target="_blank">
         snob/utils.cr
       </a>
     
@@ -200,9 +200,9 @@ or just used as a namespace.</p>
       </li>
     
       <li class="entry-summary">
-        <a href="#print_chars%28character%3AChar%2Cnumber%3AInt32%3D20%29-instance-method" class="signature"><strong>#print_chars</strong>(character : Char, number : Int32 = <span class="n">20</span>)</a>
+        <a href="#print_chars%28character%3AChar%3D%26%2339%3B-%26%2339%3B%2Cnumber%3AInt32%3D20%29-instance-method" class="signature"><strong>#print_chars</strong>(character : Char = <span class="s">&#39;-&#39;</span>, number : Int32 = <span class="n">20</span>)</a>
         
-          <div class="summary"><p>Prints a line of characters for display, defaults to 20.</p></div>
+          <div class="summary"><p>Prints a line of characters for display, defaults to 20 dashes.</p></div>
         
       </li>
     
@@ -284,7 +284,7 @@ is false.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/lebogan/snob/blob/56c1d7635f208c7906a677d934f69a25552fbf7b/src/snob/utils.cr#L124" target="_blank">View source</a>]
+          [<a href="https://github.com/lebogan/snob/blob/184c0e7ad676cbfbf6fe3fefbe4fb6110553a80e/src/snob/utils.cr#L124" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -306,7 +306,7 @@ is false.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/lebogan/snob/blob/56c1d7635f208c7906a677d934f69a25552fbf7b/src/snob/utils.cr#L73" target="_blank">View source</a>]
+          [<a href="https://github.com/lebogan/snob/blob/184c0e7ad676cbfbf6fe3fefbe4fb6110553a80e/src/snob/utils.cr#L73" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -331,7 +331,7 @@ and other single character prompts.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/lebogan/snob/blob/56c1d7635f208c7906a677d934f69a25552fbf7b/src/snob/utils.cr#L107" target="_blank">View source</a>]
+          [<a href="https://github.com/lebogan/snob/blob/184c0e7ad676cbfbf6fe3fefbe4fb6110553a80e/src/snob/utils.cr#L107" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -353,7 +353,7 @@ and other single character prompts.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/lebogan/snob/blob/56c1d7635f208c7906a677d934f69a25552fbf7b/src/snob/utils.cr#L88" target="_blank">View source</a>]
+          [<a href="https://github.com/lebogan/snob/blob/184c0e7ad676cbfbf6fe3fefbe4fb6110553a80e/src/snob/utils.cr#L88" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -377,27 +377,28 @@ and other single character prompts.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/lebogan/snob/blob/56c1d7635f208c7906a677d934f69a25552fbf7b/src/snob/utils.cr#L59" target="_blank">View source</a>]
+          [<a href="https://github.com/lebogan/snob/blob/184c0e7ad676cbfbf6fe3fefbe4fb6110553a80e/src/snob/utils.cr#L59" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="print_chars(character:Char,number:Int32=20)-instance-method">
+    <div class="entry-detail" id="print_chars(character:Char=&amp;#39;-&amp;#39;,number:Int32=20)-instance-method">
       <div class="signature">
         
-        def <strong>print_chars</strong>(character : Char, number : Int32 = <span class="n">20</span>)
+        def <strong>print_chars</strong>(character : Char = <span class="s">&#39;-&#39;</span>, number : Int32 = <span class="n">20</span>)
 
-        <a class="method-permalink" href="#print_chars%28character%3AChar%2Cnumber%3AInt32%3D20%29-instance-method">#</a>
+        <a class="method-permalink" href="#print_chars%28character%3AChar%3D%26%2339%3B-%26%2339%3B%2Cnumber%3AInt32%3D20%29-instance-method">#</a>
       </div>
       
-        <div class="doc"><p>Prints a line of characters for display, defaults to 20.</p>
+        <div class="doc"><p>Prints a line of characters for display, defaults to 20 dashes.</p>
 
-<pre><code><span class="t">Utils</span>.print_chars(<span class="s">&#39;*&#39;</span>, <span class="n">10</span>) <span class="c"># =&gt; &quot;----------&quot;</span></code></pre></div>
+<pre><code><span class="t">Utils</span>.print_chars(<span class="s">&#39;*&#39;</span>, <span class="n">10</span>) <span class="c"># =&gt; &quot;**********&quot;</span>
+<span class="t">Utils</span>.print_chars <span class="c"># =&gt; &quot;----------&quot;</span></code></pre></div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/lebogan/snob/blob/56c1d7635f208c7906a677d934f69a25552fbf7b/src/snob/utils.cr#L187" target="_blank">View source</a>]
+          [<a href="https://github.com/lebogan/snob/blob/184c0e7ad676cbfbf6fe3fefbe4fb6110553a80e/src/snob/utils.cr#L188" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -417,7 +418,7 @@ and other single character prompts.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/lebogan/snob/blob/56c1d7635f208c7906a677d934f69a25552fbf7b/src/snob/utils.cr#L171" target="_blank">View source</a>]
+          [<a href="https://github.com/lebogan/snob/blob/184c0e7ad676cbfbf6fe3fefbe4fb6110553a80e/src/snob/utils.cr#L171" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -435,7 +436,7 @@ and other single character prompts.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/lebogan/snob/blob/56c1d7635f208c7906a677d934f69a25552fbf7b/src/snob/utils.cr#L143" target="_blank">View source</a>]
+          [<a href="https://github.com/lebogan/snob/blob/184c0e7ad676cbfbf6fe3fefbe4fb6110553a80e/src/snob/utils.cr#L143" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -456,7 +457,7 @@ status, and command output or error.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/lebogan/snob/blob/56c1d7635f208c7906a677d934f69a25552fbf7b/src/snob/utils.cr#L36" target="_blank">View source</a>]
+          [<a href="https://github.com/lebogan/snob/blob/184c0e7ad676cbfbf6fe3fefbe4fb6110553a80e/src/snob/utils.cr#L36" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -476,7 +477,7 @@ status, and command output or error.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/lebogan/snob/blob/56c1d7635f208c7906a677d934f69a25552fbf7b/src/snob/utils.cr#L161" target="_blank">View source</a>]
+          [<a href="https://github.com/lebogan/snob/blob/184c0e7ad676cbfbf6fe3fefbe4fb6110553a80e/src/snob/utils.cr#L161" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -498,7 +499,7 @@ Defaults to # 48 characters.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/lebogan/snob/blob/56c1d7635f208c7906a677d934f69a25552fbf7b/src/snob/utils.cr#L137" target="_blank">View source</a>]
+          [<a href="https://github.com/lebogan/snob/blob/184c0e7ad676cbfbf6fe3fefbe4fb6110553a80e/src/snob/utils.cr#L137" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -516,7 +517,7 @@ Defaults to # 48 characters.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/lebogan/snob/blob/56c1d7635f208c7906a677d934f69a25552fbf7b/src/snob/utils.cr#L149" target="_blank">View source</a>]
+          [<a href="https://github.com/lebogan/snob/blob/184c0e7ad676cbfbf6fe3fefbe4fb6110553a80e/src/snob/utils.cr#L149" target="_blank">View source</a>]
         
       </div>
     </div>
