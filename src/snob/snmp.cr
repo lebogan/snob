@@ -23,14 +23,15 @@ module Snmp
     # Snmp.new(args...) # => Snmp
     # ```
     #
-    def initialize(auth : String, priv : String, user : String, crypto : String)
-      @auth = auth
-      @priv = priv
-      @user = user
-      @crypto = crypto
+    def initialize(@auth : String, @priv : String, @user : String, @crypto : String)
     end
 
-    # Walks the mib tree.
+    # Walks the mib tree branch.
+    #
+    # ```
+    # Snmp.walk_mib3("myhost", "system", "vQ") # => Tuple(Int32, String)
+    # ```
+    #
     def walk_mib3(hostname : String, oid : String, format : String) : Tuple(Int32, String)
       run_cmd("snmpwalk", {"-v3", "-u", "#{@user}", "-O#{format}", "-l", "authpriv",
                            "-a", "MD5", "-A", "#{@auth}", "-x", "#{@crypto}", "-X",

@@ -16,7 +16,7 @@ module Session
   extend self
 
   # Adds new session _credentials_ to config file.
-  def add_session(config_file : String, credentials : String)
+  def add_credentials(config_file : String, credentials : String)
     File.open(config_file, "a") { |file| file.puts credentials }
   end
 

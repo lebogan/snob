@@ -123,19 +123,19 @@ struct App
       print_chars('-', 40)
       puts "You entered: %s" % credentials
       choice = agree?("Save these credentials(y/n)? ")
-      add_session(CONFIG_FILE, credentials) if choice
+      add_credentials(CONFIG_FILE, credentials) if choice
     end
 
     # Creates a Snmp object and invokes the walk_mib3 method on the Snmp object, host,
     # using 'system' oid if the --mib flag is missing.
     mib_oid = "system" if mib_oid.empty?
-    host = Snmp.new(
+    host_session = Snmp.new(
       config["auth"].to_s,
       config["priv"].to_s,
       config["user"].to_s,
       config["crypto"].to_s.upcase) # => Snmp
     format = only_values ? "vq" : "QUsT"
-    status, results = host.walk_mib3(hostname, mib_oid, format)
+    status, results = host_session.walk_mib3(hostname, mib_oid, format)
     abort snmp_message(hostname, mib_oid) unless status == 0
 
     # Show your stuff
