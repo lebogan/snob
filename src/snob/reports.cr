@@ -16,11 +16,11 @@ module Reports
     page_size = 15
     page_count = 1
     formatted_table.each do |label, info|
-      printf("%-16s |%s\n", label, info.delete("\""))
-      puts "-----------------+-------------------------------------------------"
+      printf("%-18s |%s\n", label, info.delete("\""))
+      puts "-------------------+-------------------------------------------------"
       page_count += 1
       if page_count % page_size == 0
-        choice = ask_char("\n -- press any key to continue or q to quit --  \n")
+        choice = ask_char("\n -- press any key to continue or q to quit --  \n\n")
         choice == 'q' ? break : next
       end
     end
@@ -32,7 +32,7 @@ module Reports
     print_chars('=', 67)
     puts "#{hostname.upcase} - #{oid}"
     print_chars('-', 67)
-    printf("%-16s |%s\n", header[0], header[1])
+    printf("%-18s | %s\n", header[0], header[1])
     print_chars('=', 67)
   end
 
