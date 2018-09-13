@@ -13,7 +13,7 @@
 PAGE_SIZE = 15
 
 module Reports
-  # Displays the table information, removes quotes from info string.
+  # Displays the table information, removes quotes from info string variable.
   def display_table_info(formatted_table : Hash | NamedTuple)
     page_count = 1
     formatted_table.each do |label, info|
@@ -25,7 +25,7 @@ module Reports
         choice == 'q' ? break : next
       end
     end
-    puts "\n\n"
+    puts "\n"
   end
 
   # Displays the report header.
@@ -39,13 +39,21 @@ module Reports
 
   # Formats the label depending on which oid it represents.
   def format_label(entry : String) : String
+    label = entry.split(/=/)[0].split(/\"/)
     case
-    when entry.split(/=/)[0].split(/\"/)[0].includes?("ipNetToPhysicalPhysAddress")
-      label = entry.split(/=/)[0].split(/\"/)[-2].to_s
-    when entry.split(/=/)[0].split(/\"/)[0].includes?("iso")
-      label = entry.split(/=/)[0].split(/\"/)[0].split(/\./)[-2..-1].join(".").to_s
+    when label[0].includes?("ipNetToPhysicalPhysAddress")
+      # when entry.split(/=/)[0].split(/\"/)[0].includes?("ipNetToPhysicalPhysAddress")
+      label[-2].to_s
+      # entry.split(/=/)[0].split(/\"/)[-2].to_s
+    when label[0].includes?("iso")
+      # when entry.split(/=/)[0].split(/\"/)[0].includes?("iso")
+      label[0].split(/\./)[-2..-1].join(".").to_s
+      # entry.split(/=/)[0].split(/\"/)[0].split(/\./)[-2..-1].join(".").to_s
+    when label[0].includes?("ucdavis")
+      "distro os"
     else
-      label = entry.split(/=/)[0].split(/\"/)[0].to_s
+      label[0].to_s
+      # entry.split(/=/)[0].split(/\"/)[0].to_s
     end
   end
 
