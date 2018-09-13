@@ -23,7 +23,7 @@ module Reports
       puts SEPERATOR
       page_count += 1
       if page_count % FORMATTED_PAGE_SIZE == 0
-        choice = ask_char("\n -- press any key to continue or q to quit --  \n\n")
+        choice = ask_char("\n -- press any key to continue or q to quit --\n\n")
         choice == 'q' ? break : next
       end
     end
@@ -37,7 +37,7 @@ module Reports
       puts entry
       page_count += 1
       if page_count % RAW_PAGE_SIZE == 0
-        choice = ask_char("\n -- press any key to continue or q to quit --  ")
+        choice = ask_char("\n -- press any key to continue or q to quit --\n\n ")
         choice == 'q' ? break : next
       end
     end
