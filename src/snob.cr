@@ -43,14 +43,15 @@ struct App
   include Session
   include Messages
 
-  OIDLIST = {arp:    "ipNetToPhysicalPhysAddress",
-             lldp:   "1.0.8802.1.1.2.1.4.1.1.9",
-             sys:    "system",
-             mem:    "memory",
-             dsk:    "dskTable",
-             ifdesc: "ifDescr",
-             distro: "ucdavis.7890.1.4",
-             temp:   "lmTempSensorsDevice",
+  OIDLIST = {arp:     "ipNetToPhysicalPhysAddress",
+             lldp:    "1.0.8802.1.1.2.1.4.1.1.9",
+             sys:     "system",
+             mem:     "memory",
+             dsk:     "dskTable",
+             ifdesc:  "ifDescr",
+             distro:  "ucdavis.7890.1.4",
+             temp:    "lmTempSensorsDevice",
+             hp_desc: "enterprises.11.2.14.11.1.2.4.1.4.1",
   } # => NamedTuple(Symbol, String...)
 
   CONFIG_PATH = File.expand_path("~/.snob/")

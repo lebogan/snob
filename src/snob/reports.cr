@@ -10,18 +10,34 @@
 # ===============================================================================
 
 # Displays the results of a snmpwalk operation either raw or formatted.
-PAGE_SIZE = 15
+FORMATTED_PAGE_SIZE = 15
+RAW_PAGE_SIZE       = 30
+SEPERATOR           = "-------------------+-------------------------------------------------"
 
 module Reports
-  # Displays the table information, removes quotes from info string variable.
+  # Displays the formatted table information, removes quotes from info string variable.
   def display_table_info(formatted_table : Hash | NamedTuple)
     page_count = 1
     formatted_table.each do |label, info|
       printf("%-18s |%s\n", label, info.delete("\""))
-      puts "-------------------+-------------------------------------------------"
+      puts SEPERATOR
       page_count += 1
-      if page_count % PAGE_SIZE == 0
+      if page_count % FORMATTED_PAGE_SIZE == 0
         choice = ask_char("\n -- press any key to continue or q to quit --  \n\n")
+        choice == 'q' ? break : next
+      end
+    end
+    puts "\n"
+  end
+
+  # Displays the raw unformatted snmpwalk results.
+  def display_raw_table(table : Array(String))
+    page_count = 1
+    table.each do |entry|
+      puts entry
+      page_count += 1
+      if page_count % RAW_PAGE_SIZE == 0
+        choice = ask_char("\n -- press any key to continue or q to quit --  ")
         choice == 'q' ? break : next
       end
     end
@@ -41,19 +57,16 @@ module Reports
   def format_label(entry : String) : String
     label = entry.split(/=/)[0].split(/\"/)
     case
-    when label[0].includes?("ipNetToPhysicalPhysAddress")
-      # when entry.split(/=/)[0].split(/\"/)[0].includes?("ipNetToPhysicalPhysAddress")
+    when label[0].includes?("ipNetToPhysicalPhysAddress") # arp table
       label[-2].to_s
-      # entry.split(/=/)[0].split(/\"/)[-2].to_s
-    when label[0].includes?("iso")
-      # when entry.split(/=/)[0].split(/\"/)[0].includes?("iso")
+    when label[0].includes?("iso.0.8802.1.1.2.1.4.1.1.9") # lldp
       label[0].split(/\./)[-2..-1].join(".").to_s
-      # entry.split(/=/)[0].split(/\"/)[0].split(/\./)[-2..-1].join(".").to_s
-    when label[0].includes?("ucdavis")
-      "distro os"
+    when label[0].includes?("ucdavis.7890.1.4") # Linux distro
+      "Linux distro"
+    when label[0].includes?("enterprises.11.2.14.11.1.2.4.1.4.1") # hp_description
+      "hp switch desc"
     else
       label[0].to_s
-      # entry.split(/=/)[0].split(/\"/)[0].to_s
     end
   end
 
@@ -77,7 +90,7 @@ module Reports
     when oid.includes?("ipNetToPhysicalPhysAddress")
       {"ip address", "mac address"}
     else
-      {"oid", "description"}
+      {"label", "value"}
     end
   end
 
@@ -86,21 +99,6 @@ module Reports
     header = format_header(oid) # => Tuple(String, String, String)
     display_header(hostname, header, oid)
     display_table_info(formatted_table)
-  end
-
-  # Displays the raw unformatted snmpwalk results.
-  def display_raw_table(table : Array(String))
-    page_size = 30
-    page_count = 1
-    table.each do |line|
-      puts line
-      page_count += 1
-      if page_count % page_size == 0
-        choice = ask_char("\n -- press any key to continue or q to quit --  ")
-        choice == 'q' ? break : next
-      end
-    end
-    puts "\n\n"
   end
 
   # Lists some useful difficult-to-remember oids.
@@ -113,12 +111,12 @@ module Reports
   # =================+=================================================
   # arp              |ipNetToPhysicalPhysAddress
   # -----------------+-------------------------------------------------
-  # lldp             |1.0.8802.1.1.2.1.4.1.1.9
+  # lldp (switches)  |1.0.8802.1.1.2.1.4.1.1.9
   # -----------------+-------------------------------------------------
   # ```
   def list_oids(list : NamedTuple)
     clear_screen
-    header = {"name", "object identifier"}
+    header = {"friendly name", "object identifier"}
     display_header("OIDs", header, "Included pre-defined object identifiers")
     display_table_info(list)
   end
