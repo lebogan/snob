@@ -41,7 +41,7 @@ module Reports
         choice == 'q' ? break : next
       end
     end
-    puts "\n"
+    puts "\n\n"
   end
 
   # Displays the report header.
