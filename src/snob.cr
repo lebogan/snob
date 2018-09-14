@@ -81,14 +81,14 @@ struct App
                   end
       end
       parser.on("-d", "--dump", "Write output to file, raw only") { file_write = true }
-      parser.on("-f", "--formatted", "Display pretty formatted output") { display_formatted = true }
+      parser.on("-f", "--formatted", "Display as formatted table") { display_formatted = true }
       parser.on("-o", "--only-values", "Display values only (not OID = value)") { only_values = true }
       parser.on("-h", "--help", "Show this help") do
         puts parser
         exit 0
       end
       parser.on("-v", "--version", "Show version") do
-        puts "snob v#{Snob::VERSION}"
+        puts snob_version
         exit 0
       end
       parser.invalid_option do |flag|

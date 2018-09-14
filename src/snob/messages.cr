@@ -24,6 +24,14 @@ module Messages
     BANNER
   end
 
+  def snob_version
+    <<-VERSION
+    snob #{Snob::VERSION}
+    Built using the Crystal programming language (#{Crystal::VERSION}).
+    Distributed under the MIT License, http://opensource.org/licenses/MIT.
+    VERSION
+  end
+
   def ping_message(hostname : String)
     <<-PING
     ping: #{hostname} is unreachable on this network
