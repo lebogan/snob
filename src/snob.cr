@@ -17,7 +17,13 @@
 #             :  git push -u origin master
 # Distributed under terms of the MIT license.
 # ===============================================================================
-require "./snob/*"
+require "./config.cr"
+require "./messages.cr"
+require "./reports.cr"
+require "./session.cr"
+require "./snmp.cr"
+require "./utils.cr"
+require "./version.cr"
 require "yaml"
 require "option_parser"
 require "secrets"
