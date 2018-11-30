@@ -9,12 +9,9 @@
 # Distributed under terms of the MIT license.
 # ===============================================================================
 
-require "./utils.cr"
-
 # Defines the Snmp object and forms the **walk_mib3** command string.
 module Snmp
   struct Snmp
-    include Utils
     property :auth, :priv, :user, :crypto
 
     # Creates a new Snmp object for a walk session.
@@ -33,9 +30,9 @@ module Snmp
     # ```
     #
     def walk_mib3(hostname : String, oid : String, format : String) : Tuple(Int32, String)
-      run_cmd("snmpwalk", {"-v3", "-u", "#{@user}", "-O#{format}", "-l", "authpriv",
-                           "-a", "MD5", "-A", "#{@auth}", "-x", "#{@crypto}", "-X",
-                           "#{@priv}", "#{hostname}", "#{oid}"}
+      Myutils.run_cmd("snmpwalk", {"-v3", "-u", "#{@user}", "-O#{format}", "-l", "authpriv",
+                                   "-a", "MD5", "-A", "#{@auth}", "-x", "#{@crypto}", "-X",
+                                   "#{@priv}", "#{hostname}", "#{oid}"}
       )
     end
   end

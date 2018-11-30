@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Crystal Docs 0.26.1">
+<meta name="generator" content="Crystal Docs 0.27.0">
 
 
 <link href="css/style.css" rel="stylesheet" type="text/css">
@@ -21,7 +21,7 @@
 <div class="sidebar">
   <div class="sidebar-header">
     <div class="search-box">
-      <input type="search" class="search-input" placeholder="Search..." spellcheck="false">
+      <input type="search" class="search-input" placeholder="Search..." spellcheck="false" aria-label="Search">
     </div>
 
     <div class="repository-links">
@@ -43,6 +43,11 @@
   
   <li class=" " data-id="github.com/lebogan/snob/Config" data-name="config">
       <a href="Config.html">Config</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/lebogan/snob/Helpers" data-name="helpers">
+      <a href="Helpers.html">Helpers</a>
       
     </li>
   
@@ -86,11 +91,6 @@
       
     </li>
   
-  <li class=" " data-id="github.com/lebogan/snob/Utils" data-name="utils">
-      <a href="Utils.html">Utils</a>
-      
-    </li>
-  
 </ul>
 
   </div>
@@ -110,17 +110,6 @@
 
 
 
-  <h2>Overview</h2>
-
-  <p>This struct contains the main application. It checks for command line arguments,
-valid hostname, and snmpv3 credentials.</p>
-
-<p>We have to rely on having net-snmp installed on our pc.</p>
-
-<p><span class="flag orange">TODO</span>  Bind the net-snmp c library to make this app portable.</p>
-
-<p><span class="flag orange">TODO</span>  Test, test, test!</p>
-
 
 
 
@@ -130,6 +119,8 @@ valid hostname, and snmpv3 credentials.</p>
   
     <li class="other-type"><a href="Config.html">Config</a></li>
   
+    <li class="other-type"><a href="Helpers.html">Helpers</a></li>
+  
     <li class="other-type"><a href="Messages.html">Messages</a></li>
   
     <li class="other-type"><a href="Reports.html">Reports</a></li>
@@ -137,8 +128,6 @@ valid hostname, and snmpv3 credentials.</p>
     <li class="other-type"><a href="Session.html">Session</a></li>
   
     <li class="other-type"><a href="Snmp.html">Snmp</a></li>
-  
-    <li class="other-type"><a href="Utils.html">Utils</a></li>
   
   </ul>
 
@@ -154,7 +143,7 @@ valid hostname, and snmpv3 credentials.</p>
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/lebogan/snob/blob/184c0e7ad676cbfbf6fe3fefbe4fb6110553a80e/src/snob.cr#L38" target="_blank">
+      <a href="https://github.com/lebogan/snob/blob/3318c881ec6112583b3e3c02df80a1dfa15ffaa9/src/snob.cr#L46" target="_blank">
         snob.cr
       </a>
     
@@ -179,7 +168,7 @@ valid hostname, and snmpv3 credentials.</p>
       
     
       <dt class="entry-const" id="OIDLIST">
-        <strong>OIDLIST</strong> = <code>{arp: <span class="s">&quot;ipNetToPhysicalPhysAddress&quot;</span>, lldp: <span class="s">&quot;1.0.8802.1.1.2.1.4.1.1.9&quot;</span>, sys: <span class="s">&quot;system&quot;</span>, mem: <span class="s">&quot;memory&quot;</span>, dsk: <span class="s">&quot;dskTable&quot;</span>, ifdesc: <span class="s">&quot;ifDescr&quot;</span>, distro: <span class="s">&quot;ucdavis.7890.1.4&quot;</span>, temp: <span class="s">&quot;lmTempSensorsDevice&quot;</span>}</code>
+        <strong>OIDLIST</strong> = <code>{arp: <span class="s">&quot;ipNetToPhysicalPhysAddress&quot;</span>, lldp: <span class="s">&quot;1.0.8802.1.1.2.1.4.1.1.9&quot;</span>, sys: <span class="s">&quot;system&quot;</span>, mem: <span class="s">&quot;memory&quot;</span>, dsk: <span class="s">&quot;dskTable&quot;</span>, ifdesc: <span class="s">&quot;ifDescr&quot;</span>, distro: <span class="s">&quot;ucdavis.7890.1.4&quot;</span>, temp: <span class="s">&quot;lmTempSensorsDevice&quot;</span>, hp_desc: <span class="s">&quot;enterprises.11.2.14.11.1.2.4.1.4.1&quot;</span>}</code>
       </dt>
       
     
@@ -261,7 +250,12 @@ valid hostname, and snmpv3 credentials.</p>
   
     <a href="Messages.html#snmp_message%28hostname%3AString%2Cmib_oid%3AString%29-instance-method" class="tooltip">
       <span>snmp_message(hostname : String, mib_oid : String)</span>
-    snmp_message</a>
+    snmp_message</a>, 
+    
+  
+    <a href="Messages.html#snob_version-instance-method" class="tooltip">
+      <span>snob_version</span>
+    snob_version</a>
     
   
 
@@ -338,67 +332,22 @@ valid hostname, and snmpv3 credentials.</p>
   
     
 
-  <h3>Instance methods inherited from module <code><a href="Utils.html">Utils</a></code></h3>
+  <h3>Instance methods inherited from module <code><a href="Helpers.html">Helpers</a></code></h3>
   
   
-    <a href="Utils.html#agree%3F%28%2Aargs%29%3ABool-instance-method" class="tooltip">
-      <span>agree?(*args) : Bool</span>
-    agree?</a>, 
-    
-  
-    <a href="Utils.html#ask%28%2Aargs%29%3AString-instance-method" class="tooltip">
-      <span>ask(*args) : String</span>
-    ask</a>, 
-    
-  
-    <a href="Utils.html#ask_char%28%2Aargs%29%3AChar%3F-instance-method" class="tooltip">
-      <span>ask_char(*args) : Char?</span>
-    ask_char</a>, 
-    
-  
-    <a href="Utils.html#askpass%28%2Aargs%29%3ATuple%28String%3F%29-instance-method" class="tooltip">
-      <span>askpass(*args) : Tuple(String?)</span>
-    askpass</a>, 
-    
-  
-    <a href="Utils.html#clear_screen-instance-method" class="tooltip">
-      <span>clear_screen</span>
-    clear_screen</a>, 
-    
-  
-    <a href="Utils.html#print_chars%28character%3AChar%3D%26%2339%3B-%26%2339%3B%2Cnumber%3AInt32%3D20%29-instance-method" class="tooltip">
+    <a href="Helpers.html#print_chars%28character%3AChar%3D%26%2339%3B-%26%2339%3B%2Cnumber%3AInt32%3D20%29-instance-method" class="tooltip">
       <span>print_chars(character : Char = <span class="s">&#39;-&#39;</span>, number : Int32 = <span class="n">20</span>)</span>
     print_chars</a>, 
     
   
-    <a href="Utils.html#process_argv%28argv%29%3AString-instance-method" class="tooltip">
+    <a href="Helpers.html#process_argv%28argv%29%3AString-instance-method" class="tooltip">
       <span>process_argv(argv) : String</span>
     process_argv</a>, 
     
   
-    <a href="Utils.html#read_file%28filename%3AString%29-instance-method" class="tooltip">
-      <span>read_file(filename : String)</span>
-    read_file</a>, 
-    
-  
-    <a href="Utils.html#run_cmd%28cmd%3AString%2Cargs%3ATuple%3D%7B%26quot%3B%26quot%3B%7D%29%3ATuple%28Int32%2CString%29-instance-method" class="tooltip">
-      <span>run_cmd(cmd : String, args : Tuple = {<span class="s">&quot;&quot;</span>}) : Tuple(Int32, String)</span>
-    run_cmd</a>, 
-    
-  
-    <a href="Utils.html#say_hey%28hostname%3AString%29-instance-method" class="tooltip">
+    <a href="Helpers.html#say_hey%28hostname%3AString%29-instance-method" class="tooltip">
       <span>say_hey(hostname : String)</span>
-    say_hey</a>, 
-    
-  
-    <a href="Utils.html#truncate%28text%3AString%2Clength%3D48%2Ctruncate_string%3D%26quot%3B...%26quot%3B%29%3AString-instance-method" class="tooltip">
-      <span>truncate(text : String, length = <span class="n">48</span>, truncate_string = <span class="s">&quot;...&quot;</span>) : String</span>
-    truncate</a>, 
-    
-  
-    <a href="Utils.html#write_file%28filename%3AString%2Ccontent%3AString%29-instance-method" class="tooltip">
-      <span>write_file(filename : String, content : String)</span>
-    write_file</a>
+    say_hey</a>
     
   
 
@@ -510,7 +459,7 @@ valid hostname, and snmpv3 credentials.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/lebogan/snob/blob/184c0e7ad676cbfbf6fe3fefbe4fb6110553a80e/src/snob.cr#L38" target="_blank">View source</a>]
+          [<a href="https://github.com/lebogan/snob/blob/3318c881ec6112583b3e3c02df80a1dfa15ffaa9/src/snob.cr#L46" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -535,7 +484,7 @@ valid hostname, and snmpv3 credentials.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/lebogan/snob/blob/184c0e7ad676cbfbf6fe3fefbe4fb6110553a80e/src/snob.cr#L62" target="_blank">View source</a>]
+          [<a href="https://github.com/lebogan/snob/blob/3318c881ec6112583b3e3c02df80a1dfa15ffaa9/src/snob.cr#L71" target="_blank">View source</a>]
         
       </div>
     </div>

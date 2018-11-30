@@ -22,9 +22,10 @@ require "./messages.cr"
 require "./reports.cr"
 require "./session.cr"
 require "./snmp.cr"
-require "./utils.cr"
+require "./helpers.cr"
 require "./version.cr"
 require "yaml"
+require "myutils"
 require "option_parser"
 require "secrets"
 
@@ -41,9 +42,10 @@ end
 # We have to rely on having net-snmp installed on our pc.
 # TODO: Bind the net-snmp c library to make this app portable.
 # TODO: Test, test, test!
+
 struct App
   include Reports
-  include Utils
+  include Helpers
   include Snmp
   include Config
   include Session
@@ -83,7 +85,8 @@ struct App
         mib_oid = case
                   when OIDLIST.has_key?(oid) then OIDLIST["#{oid}"]
                   when !oid.empty?           then oid
-                  else                            "system"
+                  else 
+                    "system"
                   end
       end
       parser.on("-d", "--dump", "Write output to file, raw only") { file_write = true }
@@ -109,7 +112,7 @@ struct App
     hostname = process_argv(ARGV)
 
     # Checks if host exists on this network.
-    status, result = run_cmd("ping", {"-c", "2", "#{hostname}"})
+    status, result = Myutils.run_cmd("ping", {"-c", "2", "#{hostname}"})
     abort ping_message(hostname) unless status == 0
 
     # Checks for existence of a config file and creates a dummy entry
@@ -129,7 +132,7 @@ struct App
       credentials = {hostname => config}.to_yaml.gsub("---", "") # => String
       print_chars('-', 40)
       puts "You entered: %s" % credentials
-      choice = agree?("Save these credentials(y/n)? ")
+      choice = Myutils.agree?("Save these credentials(y/n)? ")
       add_credentials(CONFIG_FILE, credentials) if choice
     end
 
@@ -147,7 +150,7 @@ struct App
 
     # Show your stuff
     if display_formatted
-      clear_screen
+      Myutils.clear_screen
       say_hey(hostname)
       table = {} of String => String # => Hash(String, String)
       format_table(results.split("\n"), table)
@@ -155,7 +158,7 @@ struct App
     else
       if file_write
         Dir.mkdir_p(OUT_PATH) unless Dir.exists?(OUT_PATH)
-        write_file(OUT_FILE, results)
+        Myutils.write_file(OUT_FILE, results)
       end
       display_raw_table(results.split("\n")) # => Array(String)
     end

@@ -4,6 +4,10 @@ shards:
     github: veelenga/ameba
     version: 0.8.1
 
+  myutils:
+    github: lebogan/myutils
+    version: 0.5.0
+
   secrets:
     github: faustinoaq/secrets
     version: 0.1.2

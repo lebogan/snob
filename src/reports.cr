@@ -23,7 +23,7 @@ module Reports
       puts SEPERATOR
       page_count += 1
       if page_count % FORMATTED_PAGE_SIZE == 0
-        choice = ask_char("\n -- press any key to continue or q to quit --\n\n")
+        choice = Myutils.ask_char("\n -- press any key to continue or q to quit --\n\n")
         choice == 'q' ? break : next
       end
     end
@@ -37,7 +37,7 @@ module Reports
       puts entry
       page_count += 1
       if page_count % RAW_PAGE_SIZE == 0
-        choice = ask_char("\n -- press any key to continue or q to quit --\n\n ")
+        choice = Myutils.ask_char("\n -- press any key to continue or q to quit --\n\n ")
         choice == 'q' ? break : next
       end
     end
@@ -75,7 +75,7 @@ module Reports
     results.each do |entry|
       if entry.split(/=/).size > 1
         label = format_label(entry)
-        info = truncate(entry.split(/=/)[1]).to_s
+        info = Myutils.truncate(entry.split(/=/)[1]).to_s
         table[label] = info
       end
     end
@@ -115,7 +115,7 @@ module Reports
   # -----------------+-------------------------------------------------
   # ```
   def list_oids(list : NamedTuple)
-    clear_screen
+    Myutils.clear_screen
     header = {"friendly name", "object identifier"}
     display_header("OIDs", header, "Included pre-defined object identifiers")
     display_table_info(list)

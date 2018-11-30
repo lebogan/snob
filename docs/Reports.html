@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Crystal Docs 0.26.1">
+<meta name="generator" content="Crystal Docs 0.27.0">
 
 
 <link href="css/style.css" rel="stylesheet" type="text/css">
@@ -21,7 +21,7 @@
 <div class="sidebar">
   <div class="sidebar-header">
     <div class="search-box">
-      <input type="search" class="search-input" placeholder="Search..." spellcheck="false">
+      <input type="search" class="search-input" placeholder="Search..." spellcheck="false" aria-label="Search">
     </div>
 
     <div class="repository-links">
@@ -43,6 +43,11 @@
   
   <li class=" " data-id="github.com/lebogan/snob/Config" data-name="config">
       <a href="Config.html">Config</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/lebogan/snob/Helpers" data-name="helpers">
+      <a href="Helpers.html">Helpers</a>
       
     </li>
   
@@ -86,11 +91,6 @@
       
     </li>
   
-  <li class=" " data-id="github.com/lebogan/snob/Utils" data-name="utils">
-      <a href="Utils.html">Utils</a>
-      
-    </li>
-  
 </ul>
 
   </div>
@@ -107,10 +107,6 @@
 
 
 
-
-  <h2>Overview</h2>
-
-  <p>Displays the results of a snmpwalk operation either raw or formatted.</p>
 
 
 
@@ -135,8 +131,8 @@
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/lebogan/snob/blob/184c0e7ad676cbfbf6fe3fefbe4fb6110553a80e/src/snob/reports.cr#L13" target="_blank">
-        snob/reports.cr
+      <a href="https://github.com/lebogan/snob/blob/3318c881ec6112583b3e3c02df80a1dfa15ffaa9/src/reports.cr#L17" target="_blank">
+        reports.cr
       </a>
     
     <br/>
@@ -177,7 +173,7 @@
       <li class="entry-summary">
         <a href="#display_table_info%28formatted_table%3AHash%7CNamedTuple%29-instance-method" class="signature"><strong>#display_table_info</strong>(formatted_table : Hash | NamedTuple)</a>
         
-          <div class="summary"><p>Displays the table information.</p></div>
+          <div class="summary"><p>Displays the formatted table information, removes quotes from info string variable.</p></div>
         
       </li>
     
@@ -239,7 +235,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/lebogan/snob/blob/184c0e7ad676cbfbf6fe3fefbe4fb6110553a80e/src/snob/reports.cr#L31" target="_blank">View source</a>]
+          [<a href="https://github.com/lebogan/snob/blob/3318c881ec6112583b3e3c02df80a1dfa15ffaa9/src/reports.cr#L48" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -257,7 +253,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/lebogan/snob/blob/184c0e7ad676cbfbf6fe3fefbe4fb6110553a80e/src/snob/reports.cr#L83" target="_blank">View source</a>]
+          [<a href="https://github.com/lebogan/snob/blob/3318c881ec6112583b3e3c02df80a1dfa15ffaa9/src/reports.cr#L34" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -275,7 +271,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/lebogan/snob/blob/184c0e7ad676cbfbf6fe3fefbe4fb6110553a80e/src/snob/reports.cr#L76" target="_blank">View source</a>]
+          [<a href="https://github.com/lebogan/snob/blob/3318c881ec6112583b3e3c02df80a1dfa15ffaa9/src/reports.cr#L98" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -288,12 +284,12 @@
         <a class="method-permalink" href="#display_table_info%28formatted_table%3AHash%7CNamedTuple%29-instance-method">#</a>
       </div>
       
-        <div class="doc"><p>Displays the table information.</p></div>
+        <div class="doc"><p>Displays the formatted table information, removes quotes from info string variable.</p></div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/lebogan/snob/blob/184c0e7ad676cbfbf6fe3fefbe4fb6110553a80e/src/snob/reports.cr#L15" target="_blank">View source</a>]
+          [<a href="https://github.com/lebogan/snob/blob/3318c881ec6112583b3e3c02df80a1dfa15ffaa9/src/reports.cr#L19" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -311,7 +307,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/lebogan/snob/blob/184c0e7ad676cbfbf6fe3fefbe4fb6110553a80e/src/snob/reports.cr#L64" target="_blank">View source</a>]
+          [<a href="https://github.com/lebogan/snob/blob/3318c881ec6112583b3e3c02df80a1dfa15ffaa9/src/reports.cr#L86" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -329,7 +325,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/lebogan/snob/blob/184c0e7ad676cbfbf6fe3fefbe4fb6110553a80e/src/snob/reports.cr#L40" target="_blank">View source</a>]
+          [<a href="https://github.com/lebogan/snob/blob/3318c881ec6112583b3e3c02df80a1dfa15ffaa9/src/reports.cr#L57" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -347,7 +343,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/lebogan/snob/blob/184c0e7ad676cbfbf6fe3fefbe4fb6110553a80e/src/snob/reports.cr#L52" target="_blank">View source</a>]
+          [<a href="https://github.com/lebogan/snob/blob/3318c881ec6112583b3e3c02df80a1dfa15ffaa9/src/reports.cr#L74" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -369,13 +365,13 @@ name             |object identifier
 =================+=================================================
 arp              |ipNetToPhysicalPhysAddress
 -----------------+-------------------------------------------------
-lldp             |1.0.8802.1.1.2.1.4.1.1.9
+lldp (switches)  |1.0.8802.1.1.2.1.4.1.1.9
 -----------------+-------------------------------------------------</code></pre></div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/lebogan/snob/blob/184c0e7ad676cbfbf6fe3fefbe4fb6110553a80e/src/snob/reports.cr#L110" target="_blank">View source</a>]
+          [<a href="https://github.com/lebogan/snob/blob/3318c881ec6112583b3e3c02df80a1dfa15ffaa9/src/reports.cr#L117" target="_blank">View source</a>]
         
       </div>
     </div>

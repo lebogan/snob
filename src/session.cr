@@ -24,10 +24,10 @@ module Session
   # when the credentials are not in the configuration file.
   def configure_session : Tuple(Hash(String, String))
     conf = {} of String => String
-    conf["user"] = ask("Enter security name: ")
+    conf["user"] = Myutils.ask("Enter security name: ")
     conf["auth"] = Secrets.gets prompt: "Enter authentication phrase: " 
     conf["priv"] = Secrets.gets prompt: "Enter privacy phrase: "
-    conf["crypto"] = ask("Crypto algorithm [AES/DES]: ").upcase
+    conf["crypto"] = Myutils.ask("Crypto algorithm [AES/DES]: ").upcase
     {conf}
   end
 end
