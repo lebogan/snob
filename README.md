@@ -104,12 +104,6 @@ Enter security name: <myname>
 Enter authentication phrase: <secret>
 Enter privacy phrase: <realsecret>
 Crypto algorithm [AES/DES]: <DES>
-You entered: 
-myserver:
-  user: myname
-  auth: secret
-  priv: realsecret
-  crypto: DES
 Save this session? <yes>
 
 ```
