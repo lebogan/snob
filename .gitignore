@@ -4,3 +4,4 @@
 /.shards/
 .*.sw?
 .ameba.yml
+tags

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Crystal Docs 0.27.0">
+<meta name="generator" content="Crystal Docs 0.28.0">
 
 
 <link href="css/style.css" rel="stylesheet" type="text/css">
@@ -35,6 +35,11 @@
 
   <div class="types-list">
     <ul>
+  
+  <li class=" " data-id="github.com/lebogan/snob/toplevel" data-name="top level namespace">
+      <a href="toplevel.html">Top Level Namespace</a>
+      
+    </li>
   
   <li class=" " data-id="github.com/lebogan/snob/App" data-name="app">
       <a href="App.html">App</a>
@@ -86,11 +91,6 @@
       
     </li>
   
-  <li class=" " data-id="github.com/lebogan/snob/Snob" data-name="snob">
-      <a href="Snob.html">Snob</a>
-      
-    </li>
-  
 </ul>
 
   </div>
@@ -107,12 +107,6 @@
 
 
 
-
-  <h2>Overview</h2>
-
-  <p>Defines general program helper methods. <strong>extend self</strong> allows these
-methods to be included in a program (class) and invoked without a namespace
-or just used as a namespace.</p>
 
 
 
@@ -144,7 +138,7 @@ or just used as a namespace.</p>
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/lebogan/snob/blob/3318c881ec6112583b3e3c02df80a1dfa15ffaa9/src/helpers.cr#L15" target="_blank">
+      <a href="https://github.com/lebogan/snob/blob/778dfe96823d5fce69dd1bb00920ebbb84ad2fdc/src/helpers.cr#L12" target="_blank">
         helpers.cr
       </a>
     
@@ -165,7 +159,7 @@ or just used as a namespace.</p>
       <li class="entry-summary">
         <a href="#print_chars%28character%3AChar%3D%26%2339%3B-%26%2339%3B%2Cnumber%3AInt32%3D20%29-instance-method" class="signature"><strong>#print_chars</strong>(character : Char = <span class="s">&#39;-&#39;</span>, number : Int32 = <span class="n">20</span>)</a>
         
-          <div class="summary"><p>Prints a line of characters for display, defaults to 20 dashes.</p></div>
+          <div class="summary"><p>Prints a line of characters for display formatting, defaults to 20 dashes.</p></div>
         
       </li>
     
@@ -173,6 +167,13 @@ or just used as a namespace.</p>
         <a href="#process_argv%28argv%29%3AString-instance-method" class="signature"><strong>#process_argv</strong>(argv) : String</a>
         
           <div class="summary"><p>Checks for hostname in ARGV</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#resolve_host%28host%29-instance-method" class="signature"><strong>#resolve_host</strong>(host)</a>
+        
+          <div class="summary"><p>Does a lookup of a host's ip address and returns it as a Socket::IPAddress object.</p></div>
         
       </li>
     
@@ -208,15 +209,15 @@ or just used as a namespace.</p>
         <a class="method-permalink" href="#print_chars%28character%3AChar%3D%26%2339%3B-%26%2339%3B%2Cnumber%3AInt32%3D20%29-instance-method">#</a>
       </div>
       
-        <div class="doc"><p>Prints a line of characters for display, defaults to 20 dashes.</p>
+        <div class="doc"><p>Prints a line of characters for display formatting, defaults to 20 dashes.</p>
 
-<pre><code><span class="t">Utils</span>.print_chars(<span class="s">&#39;*&#39;</span>, <span class="n">10</span>) <span class="c"># =&gt; &quot;**********&quot;</span>
-<span class="t">Utils</span>.print_chars          <span class="c"># =&gt; &quot;--------------------&quot;</span></code></pre></div>
+<pre><code><span class="t">Helpers</span>.print_chars(<span class="s">&#39;*&#39;</span>, <span class="n">10</span>) <span class="c"># =&gt; &quot;**********&quot;</span>
+<span class="t">Helpers</span>.print_chars          <span class="c"># =&gt; &quot;--------------------&quot;</span></code></pre></div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/lebogan/snob/blob/3318c881ec6112583b3e3c02df80a1dfa15ffaa9/src/helpers.cr#L53" target="_blank">View source</a>]
+          [<a href="https://github.com/lebogan/snob/blob/778dfe96823d5fce69dd1bb00920ebbb84ad2fdc/src/helpers.cr#L48" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -231,12 +232,35 @@ or just used as a namespace.</p>
       
         <div class="doc"><p>Checks for hostname in ARGV</p>
 
-<pre><code><span class="t">Utils</span>.process_argv(<span class="s">&quot;myhost&quot;</span>) <span class="c"># =&gt; &quot;myhost&quot;</span></code></pre></div>
+<pre><code><span class="t">Helpers</span>.process_argv(<span class="s">&quot;myhost&quot;</span>) <span class="c"># =&gt; &quot;myhost&quot;</span></code></pre></div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/lebogan/snob/blob/3318c881ec6112583b3e3c02df80a1dfa15ffaa9/src/helpers.cr#L36" target="_blank">View source</a>]
+          [<a href="https://github.com/lebogan/snob/blob/778dfe96823d5fce69dd1bb00920ebbb84ad2fdc/src/helpers.cr#L31" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="resolve_host(host)-instance-method">
+      <div class="signature">
+        
+        def <strong>resolve_host</strong>(host)
+
+        <a class="method-permalink" href="#resolve_host%28host%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Does a lookup of a host's ip address and returns it as a Socket::IPAddress
+object. Raises an error if the hostname doesn't exist or can't be resolved.
+Remove the ":7" part with <code>rstrip(":7")</code> to get just the ip address.</p>
+
+<pre><code><span class="t">Helpers</span>.resolve_host(<span class="s">&quot;example.com&quot;</span>)                   <span class="c"># =&gt; ip_address:7</span>
+<span class="t">Helpers</span>.resolve_host(<span class="s">&quot;example.com&quot;</span>).to_s.rstrip(<span class="s">&quot;:7&quot;</span>) <span class="c"># =&gt; ip_address</span></code></pre></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/lebogan/snob/blob/778dfe96823d5fce69dd1bb00920ebbb84ad2fdc/src/helpers.cr#L61" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -251,12 +275,12 @@ or just used as a namespace.</p>
       
         <div class="doc"><p>Says hello to <em>hostname</em>.</p>
 
-<pre><code><span class="t">Utils</span>.say_hey(<span class="s">&quot;myserver&quot;</span>) <span class="c"># =&gt; &quot;Hey, myserver!&quot;</span></code></pre></div>
+<pre><code><span class="t">Helpers</span>.say_hey(<span class="s">&quot;myserver&quot;</span>) <span class="c"># =&gt; &quot;Hey, myserver!&quot;</span></code></pre></div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/lebogan/snob/blob/3318c881ec6112583b3e3c02df80a1dfa15ffaa9/src/helpers.cr#L26" target="_blank">View source</a>]
+          [<a href="https://github.com/lebogan/snob/blob/778dfe96823d5fce69dd1bb00920ebbb84ad2fdc/src/helpers.cr#L21" target="_blank">View source</a>]
         
       </div>
     </div>

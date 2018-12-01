@@ -1,0 +1,60 @@
+.\" generated with Ronn/v0.7.3
+.\" http://github.com/rtomayko/ronn/tree/0.7.3
+.
+.TH "SNOB" "5" "June 2019" "0.16.5" "File Formats"
+.
+.SH "NAME"
+\fBsnob\fR \- snob configuration file
+.
+.SH "SYNOPSIS"
+The configuration file is YAML format and can be edited manually\.
+.
+.SH "DESCRIPTION"
+A first run will create a default YAML config file named \fB~/\.snob/snobrc\.yml\fR\. The directory\'s permissions are set to 0o700 (drwx\-\-\-\-\-\-) for added security\. The initial set of credentials is for a host named dummy\. Afterwards, if the host is not in the config file, you will be asked to enter credentials manually with the option to save them\.
+.
+.SH "CONFIG FILE"
+.
+.nf
+
+$ snob myserver
+Config file doesn\'t exist\. Create it? <yes>
+myserver is not in config file\. Configuring\.\.\.
+Enter security name: <myname>
+Enter authentication phrase: <secret>
+Enter privacy phrase: <real secret>
+Crypto algorithm [AES/DES]: <DES>
+Save this session? <yes>
+
+# /home/you/\.snob/snobrc\.yml
+\-\-\-
+dummy:
+  user: username
+  auth: auth passphrase
+  priv: priv passphrase
+  crypto: AES/DES
+
+myserver:
+  user: myname
+  auth: secret
+  priv: real secret
+  crypto: DES
+.
+.fi
+.
+.SH "SEE ALSO"
+snob(1)
+.
+.br
+snmpwalk(1)
+.
+.SH "AUTHOR"
+Lewis E\. Bogan
+.
+.SH "COPYRIGHT"
+Copyright (c) 2019 Lewis E\. Bogan \fIlewis\.bogan@comcast\.net\fR
+.
+.SH "LICENSE"
+This utility is available as open source under the terms of the
+.
+.br
+MIT License \fIhttp://opensource\.org/licenses/MIT\fR\.

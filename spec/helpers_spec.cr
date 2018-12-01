@@ -1,20 +1,14 @@
 require "./spec_helper"
-require "../src/snob/utils"
-require "../src/snob/messages"
+require "../src/helpers"
+require "../src/messages"
 
-include Utils
+include Helpers
 include Messages
 
 TEST_ARGV = ["test"]
 BLANK_ARGV = [] of String
 
-describe Utils do
-  describe "#truncate " do
-    it "returns a string with 10 characters" do
-      truncate("A truncated string ", 10).size.should eq(10)
-    end
-  end
-
+describe Helpers do
   describe "#process_argv" do
     it "returns a string when ARGV is given" do
       process_argv(TEST_ARGV).should be_a(String)
@@ -24,18 +18,6 @@ describe Utils do
   describe "#process_argv" do
     it "prompts for a string when no ARGV is given\n" do
       process_argv(BLANK_ARGV).should be_a(String)
-    end
-  end
-
-  describe "#run_cmd(cmd, args)" do
-    it "returns a tuple containing a status number and a string" do
-      run_cmd("ls", {"-l"}).should be_a(Tuple(Int32, String))
-    end
-  end
-
-  describe "#run_cmd(cmd)" do
-    it "returns a tuple containing a status number and a string" do
-      run_cmd("ls").should be_a(Tuple(Int32, String))
     end
   end
 

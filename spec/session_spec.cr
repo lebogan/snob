@@ -1,5 +1,5 @@
 require "./spec_helper"
-require "../src/snob/session.cr"
+require "../src/session.cr"
 require "secrets"
 
 describe Session do

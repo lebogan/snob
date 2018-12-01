@@ -1,8 +1,8 @@
 require "./spec_helper"
-require "../src/snob/utils"
-require "../src/snob/reports"
+require "../src/helpers"
+require "../src/reports"
 
-include Utils
+include Helpers
 include Reports
 
 describe Reports do

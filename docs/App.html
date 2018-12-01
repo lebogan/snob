@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Crystal Docs 0.27.0">
+<meta name="generator" content="Crystal Docs 0.28.0">
 
 
 <link href="css/style.css" rel="stylesheet" type="text/css">
@@ -35,6 +35,11 @@
 
   <div class="types-list">
     <ul>
+  
+  <li class=" " data-id="github.com/lebogan/snob/toplevel" data-name="top level namespace">
+      <a href="toplevel.html">Top Level Namespace</a>
+      
+    </li>
   
   <li class=" current" data-id="github.com/lebogan/snob/App" data-name="app">
       <a href="App.html">App</a>
@@ -86,11 +91,6 @@
       
     </li>
   
-  <li class=" " data-id="github.com/lebogan/snob/Snob" data-name="snob">
-      <a href="Snob.html">Snob</a>
-      
-    </li>
-  
 </ul>
 
   </div>
@@ -109,6 +109,11 @@
 
 
 
+
+  <h2>Overview</h2>
+
+  <p>This struct contains the main application. It checks for command line arguments,
+valid hostname, and snmpv3 credentials.</p>
 
 
 
@@ -143,7 +148,7 @@
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/lebogan/snob/blob/3318c881ec6112583b3e3c02df80a1dfa15ffaa9/src/snob.cr#L46" target="_blank">
+      <a href="https://github.com/lebogan/snob/blob/778dfe96823d5fce69dd1bb00920ebbb84ad2fdc/src/snob.cr#L45" target="_blank">
         snob.cr
       </a>
     
@@ -179,6 +184,11 @@
     
       <dt class="entry-const" id="OUT_PATH">
         <strong>OUT_PATH</strong> = <code><span class="t">File</span>.expand_path(<span class="s">&quot;~/tmp&quot;</span>)</code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="VERSION">
+        <strong>VERSION</strong> = <code>{{ (<span class="s">`shards version /vagrant/Projects/crystal/production/snob/src`</span>).chomp.stringify }}</code>
       </dt>
       
     
@@ -272,11 +282,6 @@
   <h3>Instance methods inherited from module <code><a href="Session.html">Session</a></code></h3>
   
   
-    <a href="Session.html#add_credentials%28config_file%3AString%2Ccredentials%3AString%29-instance-method" class="tooltip">
-      <span>add_credentials(config_file : String, credentials : String)</span>
-    add_credentials</a>, 
-    
-  
     <a href="Session.html#configure_session%3ATuple%28Hash%28String%2CString%29%29-instance-method" class="tooltip">
       <span>configure_session : Tuple(Hash(String, String))</span>
     configure_session</a>
@@ -343,6 +348,11 @@
     <a href="Helpers.html#process_argv%28argv%29%3AString-instance-method" class="tooltip">
       <span>process_argv(argv) : String</span>
     process_argv</a>, 
+    
+  
+    <a href="Helpers.html#resolve_host%28host%29-instance-method" class="tooltip">
+      <span>resolve_host(host)</span>
+    resolve_host</a>, 
     
   
     <a href="Helpers.html#say_hey%28hostname%3AString%29-instance-method" class="tooltip">
@@ -459,7 +469,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/lebogan/snob/blob/3318c881ec6112583b3e3c02df80a1dfa15ffaa9/src/snob.cr#L46" target="_blank">View source</a>]
+          [<a href="https://github.com/lebogan/snob/blob/778dfe96823d5fce69dd1bb00920ebbb84ad2fdc/src/snob.cr#L45" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -484,7 +494,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/lebogan/snob/blob/3318c881ec6112583b3e3c02df80a1dfa15ffaa9/src/snob.cr#L71" target="_blank">View source</a>]
+          [<a href="https://github.com/lebogan/snob/blob/778dfe96823d5fce69dd1bb00920ebbb84ad2fdc/src/snob.cr#L72" target="_blank">View source</a>]
         
       </div>
     </div>
