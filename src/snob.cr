@@ -113,8 +113,8 @@ struct App
     hostname = process_argv(ARGV)
 
     # Checks if host exists on this network.
-    status, result = Myutils.run_cmd("ping", {"-c", "2", "#{hostname}"})
-    abort ping_message(hostname) unless status == 0
+    status = Myutils.run_cmd("ping", {"-c", "2", "#{hostname}"})
+    abort ping_message(hostname) unless status[0] == 0
 
     # Checks for existence of a config file and creates a dummy entry
     # if the user answers yes.
