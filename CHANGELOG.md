@@ -1,5 +1,11 @@
 #CHANGELOG
 
+## 0.14.2 (2018-12-01)
+- Update for Crystal 0.27.0
+- Add myutils shard
+- General syntax cleanup
+- Update docs and tests
+
 ## 0.10.2 (2018-06-16)
 - Update for Crystal 0.25.0
 - Fixes an issue with secrets shard block arguments with loop statement:
