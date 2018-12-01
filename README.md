@@ -132,9 +132,9 @@ myserver:
 ## Development
 Please, see the DISCLAIMER below.  
 Check out the repo on GitHub at https://github.com/lebogan/snob.git  
-Developed using Crystal 0.24.2 on Fedora 27 workstation running under Vagrant v2.0.2
+Developed using Crystal 0.27.0 on Fedora 28 workstation running under Vagrant v2.2.0
 with VirtualBox 5.2 provider.  
-Tested on Fedora 26/27 and CentOS 7.  
+Tested on Fedora 26/27/28 and CentOS 7.  
 See README_UBUNTU.md for my tests on Ubuntu 14.04.
 
 ## Contributing
