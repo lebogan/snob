@@ -1,7 +1,7 @@
 # ===============================================================================
 #         FILE:  config.cr
 #        USAGE:  Internal
-#  DESCRIPTION:  Configuration.
+#  DESCRIPTION:  Defines configuration file methods.
 #       AUTHOR:  Lewis E. Bogan
 #      COMPANY:  Earthsea@Home
 #      CREATED:  2017-12-17 15:13
@@ -9,9 +9,7 @@
 # Distributed under terms of the MIT license.
 # ===============================================================================
 
-# Defines configuration file methods. **extend self** allows these
-# methods to be included in a program (class) and invoked without a namespace
-# or just used as a namespace.
+# Defines configuration file methods.
 module Config
   extend self
 

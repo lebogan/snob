@@ -35,13 +35,12 @@ class Object
   end
 end
 
-# This struct contains the main application. It checks for command line arguments,
-# valid hostname, and snmpv3 credentials.
-#
 # We have to rely on having net-snmp installed on our pc.
 # TODO: Bind the net-snmp c library to make this app portable.
 # TODO: Test, test, test!
 
+# This struct contains the main application. It checks for command line arguments,
+# valid hostname, and snmpv3 credentials.
 struct App
   include Reports
   include Helpers
@@ -70,7 +69,7 @@ struct App
 
   # Runs the main application.
   def run
-    mib_oid = ""
+    mib_oid = "system"
     display_formatted = false
     only_values = false
     file_write = false
@@ -87,7 +86,7 @@ struct App
                   when OIDLIST.has_key?(oid) then OIDLIST["#{oid}"]
                   when !oid.empty?           then oid
                   else
-                    "system"
+                    ""
                   end
       end
       parser.on("-d", "--dump", "Write output to file, raw only") { file_write = true }
@@ -132,21 +131,19 @@ struct App
       config = configure_session[0]                              # => Hash(String, NamedTuple)
       credentials = {hostname => config}.to_yaml.gsub("---", "") # => String
       print_chars('-', 40)
-      puts "You entered: %s" % credentials
       choice = Myutils.agree?("Save these credentials(y/n)? ")
-      add_credentials(CONFIG_FILE, credentials) if choice
+      Myutils.append_file(CONFIG_FILE, credentials) if choice
     end
 
     # Creates an Snmp session object and invokes the walk_mib3 method on the object,
     # host_session, using 'system' oid if the --mib flag is missing.
-    mib_oid = "system" if mib_oid.empty?
     host_session = Snmp.new(
       config["auth"].to_s,
       config["priv"].to_s,
       config["user"].to_s,
       config["crypto"].to_s.upcase) # => Snmp
-    format = only_values ? "vq" : "QUsT"
-    status, results = host_session.walk_mib3(hostname, mib_oid, format)
+    output_format = only_values ? "vq" : "QUsT"
+    status, results = host_session.walk_mib3(hostname, mib_oid, output_format)
     abort snmp_message(hostname, mib_oid) unless status == 0
 
     # Show your stuff

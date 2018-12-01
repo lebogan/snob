@@ -9,11 +9,11 @@
 # Distributed under terms of the MIT license.
 # ===============================================================================
 
-# Displays the results of a snmpwalk operation either raw or formatted.
 FORMATTED_PAGE_SIZE = 15
 RAW_PAGE_SIZE       = 30
 SEPERATOR           = "-------------------+-------------------------------------------------"
 
+# Displays the results of a snmpwalk operation either raw or formatted.
 module Reports
   # Displays the formatted table information, removes quotes from info string variable.
   def display_table_info(formatted_table : Hash | NamedTuple)
