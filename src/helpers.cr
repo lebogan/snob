@@ -1,7 +1,7 @@
 #===============================================================================
 #         FILE:  helpers.cr
 #        USAGE:  Internal
-#  DESCRIPTION:  General helper methods.
+#  DESCRIPTION:  Defines general program helper methods.
 #       AUTHOR:  Lewis E. Bogan
 #      COMPANY:  Earthsea@Home
 #      CREATED:  2018-11-30 14:10
@@ -9,18 +9,13 @@
 # Distributed under terms of the MIT license.
 #===============================================================================
 
-# Defines general program helper methods. **extend self** allows these
-# methods to be included in a program (class) and invoked without a namespace
-# or just used as a namespace.
 module Helpers
   extend self
-
-  # Displays prompt and cursor all on one line if prompt ends with a space,
 
   # Says hello to _hostname_.
   #
   # ```
-  # Utils.say_hey("myserver") # => "Hey, myserver!"
+  # Helpers.say_hey("myserver") # => "Hey, myserver!"
   # ```
   #
   def say_hey(hostname : String)
@@ -30,7 +25,7 @@ module Helpers
   # Checks for hostname in ARGV
   #
   # ```
-  # Utils.process_argv("myhost") # => "myhost"
+  # Helpers.process_argv("myhost") # => "myhost"
   # ```
   #
   def process_argv(argv) : String
@@ -43,11 +38,11 @@ module Helpers
     end
   end
 
-  # Prints a line of characters for display, defaults to 20 dashes.
+  # Prints a line of characters for display formatting, defaults to 20 dashes.
   #
   # ```
-  # Utils.print_chars('*', 10) # => "**********"
-  # Utils.print_chars          # => "--------------------"
+  # Helpers.print_chars('*', 10) # => "**********"
+  # Helpers.print_chars          # => "--------------------"
   # ```
   #
   def print_chars(character : Char = '-', number : Int32 = 20)

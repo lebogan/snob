@@ -23,7 +23,6 @@ require "./reports.cr"
 require "./session.cr"
 require "./snmp.cr"
 require "./helpers.cr"
-require "./version.cr"
 require "yaml"
 require "myutils"
 require "option_parser"
@@ -50,6 +49,8 @@ struct App
   include Config
   include Session
   include Messages
+
+  VERSION = {{ `shards version #{__DIR__}`.chomp.stringify }}
 
   OIDLIST = {arp:     "ipNetToPhysicalPhysAddress",
              lldp:    "1.0.8802.1.1.2.1.4.1.1.9",
@@ -85,7 +86,7 @@ struct App
         mib_oid = case
                   when OIDLIST.has_key?(oid) then OIDLIST["#{oid}"]
                   when !oid.empty?           then oid
-                  else 
+                  else
                     "system"
                   end
       end

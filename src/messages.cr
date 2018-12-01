@@ -26,7 +26,7 @@ module Messages
 
   def snob_version
     <<-VERSION
-    snob #{Snob::VERSION}
+    snob #{App::VERSION}
     Built using the Crystal programming language (#{Crystal::VERSION}).
     Distributed under the MIT License, http://opensource.org/licenses/MIT.
     VERSION
