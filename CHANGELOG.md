@@ -1,5 +1,8 @@
 #CHANGELOG
 
+## 0.14.3 (2019-02-04)
+- Update for Crystal 0.27.1
+
 ## 0.14.2 (2018-12-01)
 - Update for Crystal 0.27.0
 - Add myutils shard
