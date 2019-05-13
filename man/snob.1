@@ -1,0 +1,92 @@
+.\" generated with Ronn/v0.7.3
+.\" http://github.com/rtomayko/ronn/tree/0.7.3
+.
+.TH "SNOB" "1" "May 2019" "0.16.3" "User Commands"
+.
+.SH "NAME"
+\fBsnob\fR \- snmp network object browser
+.
+.SH "SYNOPSIS"
+\fBsnob\fR [OPTIONS] [HOST]
+.
+.SH "DESCRIPTION"
+\fBsnob\fR uses the snmpwalk utility to browse MIB objects on snmp\-enabled devices, such as, switches, routers, servers, etc\.
+.
+.P
+This utility is written specifically for snmp version 3 because of its security features\. Backwards compatibility to version 2c is not included at this time\. Sorry:(\.
+.
+.P
+The special \fB\-\-list\fR switch is included to provide easily remembered names for 1\.0\.8802\.1\.1\.2\.1\.4\.1\.1\.9 or ipNetToPhysicalPhysAddress or other cryptic looking OIDs\.
+.
+.P
+The output is raw by default\. In addition, a \-\-dump option is included for dumping the resulting output to a file, raw_dump\.txt, for later perusal\. A \-\-format option exists in an attempt to pretty\-print the output for display on screen\. The \-\-only\-values flag allows output to be used raw by another application like RRDTool for graphing trends when you know which OID you want\.
+.
+.SH "OPTIONS"
+.
+.nf
+
+\-l, \-\-list
+        displays some predefined OID\'s (Object IDentifiers)
+
+\-m OID, \-\-mib=OID
+        displays information for this OID
+        (default system)
+
+\-d, \-\-dump
+        writes output to a file, raw only
+
+\-f, \-\-formatted
+        displays output as a formatted table
+
+\-o, \-\-only\-values
+        displays values only (not OID = value)
+
+\-h, \-\-help
+        show this help
+
+\-v, \-\-version
+        show version
+.
+.fi
+.
+.SH "EXAMPLES"
+.
+.nf
+
+$ snob myserver
+sysDescr\.0 = Linux myserver 3\.10\.0\-957\.12\.1\.el7\.x86_64 #1 SMP Mon Apr 29 14:59:59 UTC 2019 x86_64
+sysObjectID\.0 = netSnmpAgentOIDs\.10
+sysUpTimeInstance = 9:0:58:49\.85
+sysContact\.0 = root
+sysName\.0 = myserver
+sysLocation\.0 = my space
+sysServices\.0 = 76
+sysORLastChange\.0 = 0:0:00:15\.09
+sysServices\.0 = 76
+sysORLastChange\.0 = 0:0:00:15\.09
+.
+.fi
+.
+.SH "FILES"
+~/\.snob/snobrc\.yml
+.
+.br
+~/tmp/raw_dump\.txt
+.
+.SH "SEE ALSO"
+snmpwalk(1)
+.
+.br
+snob(5)
+.
+.SH "AUTHOR"
+Lewis E\. Bogan
+.
+.SH "COPYRIGHT"
+Copyright (c) 2019 Lewis E\. Bogan \fIlewis\.bogan@comcast\.net\fR
+.
+.SH "LICENSE"
+This utility is available as open source under the terms of the
+.
+.br
+MIT License http://opensource\.org/licenses/MIT\.

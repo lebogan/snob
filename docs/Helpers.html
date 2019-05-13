@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Crystal Docs 0.27.0">
+<meta name="generator" content="Crystal Docs 0.28.0">
 
 
 <link href="css/style.css" rel="stylesheet" type="text/css">
@@ -35,6 +35,11 @@
 
   <div class="types-list">
     <ul>
+  
+  <li class=" " data-id="github.com/lebogan/snob/toplevel" data-name="top level namespace">
+      <a href="toplevel.html">Top Level Namespace</a>
+      
+    </li>
   
   <li class=" " data-id="github.com/lebogan/snob/App" data-name="app">
       <a href="App.html">App</a>
@@ -133,7 +138,7 @@
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/lebogan/snob/blob/1c781c72068748dc98ad9c95d692119ae8347c41/src/helpers.cr#L12" target="_blank">
+      <a href="https://github.com/lebogan/snob/blob/778dfe96823d5fce69dd1bb00920ebbb84ad2fdc/src/helpers.cr#L12" target="_blank">
         helpers.cr
       </a>
     
@@ -162,6 +167,13 @@
         <a href="#process_argv%28argv%29%3AString-instance-method" class="signature"><strong>#process_argv</strong>(argv) : String</a>
         
           <div class="summary"><p>Checks for hostname in ARGV</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#resolve_host%28host%29-instance-method" class="signature"><strong>#resolve_host</strong>(host)</a>
+        
+          <div class="summary"><p>Does a lookup of a host's ip address and returns it as a Socket::IPAddress object.</p></div>
         
       </li>
     
@@ -205,7 +217,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/lebogan/snob/blob/1c781c72068748dc98ad9c95d692119ae8347c41/src/helpers.cr#L48" target="_blank">View source</a>]
+          [<a href="https://github.com/lebogan/snob/blob/778dfe96823d5fce69dd1bb00920ebbb84ad2fdc/src/helpers.cr#L48" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -225,7 +237,30 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/lebogan/snob/blob/1c781c72068748dc98ad9c95d692119ae8347c41/src/helpers.cr#L31" target="_blank">View source</a>]
+          [<a href="https://github.com/lebogan/snob/blob/778dfe96823d5fce69dd1bb00920ebbb84ad2fdc/src/helpers.cr#L31" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="resolve_host(host)-instance-method">
+      <div class="signature">
+        
+        def <strong>resolve_host</strong>(host)
+
+        <a class="method-permalink" href="#resolve_host%28host%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Does a lookup of a host's ip address and returns it as a Socket::IPAddress
+object. Raises an error if the hostname doesn't exist or can't be resolved.
+Remove the ":7" part with <code>rstrip(":7")</code> to get just the ip address.</p>
+
+<pre><code><span class="t">Helpers</span>.resolve_host(<span class="s">&quot;example.com&quot;</span>)                   <span class="c"># =&gt; ip_address:7</span>
+<span class="t">Helpers</span>.resolve_host(<span class="s">&quot;example.com&quot;</span>).to_s.rstrip(<span class="s">&quot;:7&quot;</span>) <span class="c"># =&gt; ip_address</span></code></pre></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/lebogan/snob/blob/778dfe96823d5fce69dd1bb00920ebbb84ad2fdc/src/helpers.cr#L61" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -245,7 +280,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/lebogan/snob/blob/1c781c72068748dc98ad9c95d692119ae8347c41/src/helpers.cr#L21" target="_blank">View source</a>]
+          [<a href="https://github.com/lebogan/snob/blob/778dfe96823d5fce69dd1bb00920ebbb84ad2fdc/src/helpers.cr#L21" target="_blank">View source</a>]
         
       </div>
     </div>

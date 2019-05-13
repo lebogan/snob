@@ -29,22 +29,52 @@ flag allows output to be used raw by another application like RRDTool for graphi
 trends when you know which OID you want.
 
 ## Installation
-You need ___git___ to proceed. Get git! The install script can also update snob by
-pulling a fresh copy from github. Check out install.sh to see what the script
-is doing. See README_UBUNTU.md for my tests on Ubuntu 14.04.
+### Required
+Required utilities for nms (network management station):  
+- git
+- Install Crystal from the website, [crystal-lang](https://crystal-lang.org/docs/installation),
+to build the utility from source.
+- net-snmp  
+- net-snmp-utils  
+- snmp-mibs-downloader (Deb-based)
+
+### Preferred Installation <a name="preferred-installation"></a>
+A script, `install.sh`, is included to manage the installation process. It allows for
+installation of a pre compiled binary or building from source. It also allows for
+upgrading and uninstalling.
+
+Check out install.sh to see what the script is doing. See README_UBUNTU.md for my
+tests on Ubuntu.
 
 ```bash
 $ git clone https://github.com/lebogan/snob.git
 $ cd snob
 $ ./install.sh
 ```
-> #### Installation on Ubuntu
-> see README_UBUNTU for details.
 
-Required utilities for nms (network management station):  
--  git  
--  net-snmp  
--  net-snmp-utils  
+### Manual Installation (if you gotta!)
+A Makefile is included for compiling and installing the binary and man pages.
+Crystal is required to be preinstalled. The binary is copied to `/usr/local/bin`.
+The Makefile also provides for uninstalling and compliation cleanup. The compiled
+binary is in `./bin`. Make also builds and installs man pages as necessary to
+`/usr/local/share`.
+
+```bash
+$ git clone https://github.com/lebogan/snob.git
+$ cd snob
+$ shards install
+$ make clean
+$ make
+$ make test
+$ sudo make install
+```
+#### Deb-based (Debian) Distributions
+> The source will have to be recompiled with Crystal.  
+> From the website, [crystal-lang](https://crystal-lang.org/docs/installation/on_debian_and_ubuntu.html),
+> use the Debian and Ubuntu install.  
+> See [Preferred Installation](#preferred-installation)
+
+
 
 Configure your hosts to respond to snmp requests. See documentation at: 
 [net-snmp](http://net-snmp.sourceforge.net/docs/README.snmpv3.html)
@@ -128,14 +158,16 @@ myserver:
 ## TODO
 - [ ] Bind the net-snmp c library to make this app even more portable.
 - [X] Build a Ubuntu test environment, write installation instructions.
+- [X] Add a method to eliminate the need for external ping utility.
+- [X] Update the installation process/script with a Makefile.
 
 ## Development
 Please, see the DISCLAIMER below.  
 Check out the repo on GitHub at https://github.com/lebogan/snob.git  
-Developed using Crystal 0.27.0 on Fedora 28 workstation running under Vagrant v2.2.0
-with VirtualBox 5.2 provider.  
-Tested on Fedora 26/27/28 and CentOS 7.  
-See README_UBUNTU.md for my tests on Ubuntu 14.04.
+Developed using Crystal 0.28.0 on Fedora 28 workstation running under Vagrant v2.2.4
+with VirtualBox 6.0 provider.  
+Tested on Fedora /27/28 and CentOS 7.  
+See README_UBUNTU.md for my tests on Ubuntu 14.04 and 18.04.
 
 ## Contributing
 Please, see the DISCLAIMER below.

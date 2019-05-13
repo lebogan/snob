@@ -27,6 +27,7 @@ require "yaml"
 require "myutils"
 require "option_parser"
 require "secrets"
+require "socket"
 
 # Allows displaying object methods during development.
 class Object
@@ -112,8 +113,11 @@ struct App
     hostname = process_argv(ARGV)
 
     # Checks if host exists on this network.
-    status = Myutils.run_cmd("ping", {"-c", "2", "#{hostname}"})
-    abort ping_message(hostname) unless status[0] == 0
+    begin
+      resolve_host("#{hostname}")
+    rescue ex
+      abort ex.message
+    end
 
     # Checks for existence of a config file and creates a dummy entry
     # if the user answers yes.

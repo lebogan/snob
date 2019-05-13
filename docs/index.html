@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Crystal Docs 0.27.0">
+<meta name="generator" content="Crystal Docs 0.28.0">
 
 
 <link href="css/style.css" rel="stylesheet" type="text/css">
@@ -35,6 +35,11 @@
 
   <div class="types-list">
     <ul>
+  
+  <li class=" " data-id="github.com/lebogan/snob/toplevel" data-name="top level namespace">
+      <a href="toplevel.html">Top Level Namespace</a>
+      
+    </li>
   
   <li class=" " data-id="github.com/lebogan/snob/App" data-name="app">
       <a href="App.html">App</a>
@@ -124,20 +129,48 @@ trends when you know which OID you want.</p>
 
 <h2>Installation</h2>
 
-<p>You need ___git___ to proceed. Get git! The install script can also update snob by
-pulling a fresh copy from github. Check out install.sh to see what the script
-is doing. See README_UBUNTU.md for my tests on Ubuntu 14.04.</p>
+<h3>Required</h3>
+
+<p>Required utilities for nms (network management station):  </p>
+
+<ul><li>git</li><li>Install Crystal from the website, <a href="https://crystal-lang.org/docs/installation" target="_blank">crystal-lang</a>,
+to build the utility from source.</li><li>net-snmp  </li><li>net-snmp-utils  </li><li>snmp-mibs-downloader (Deb-based)</li></ul>
+
+<h3>Preferred Installation &lt;a name="preferred-installation">&lt;/a></h3>
+
+<p>A script, <code>install.sh</code>, is included to manage the installation process. It allows for
+installation of a pre compiled binary or building from source. It also allows for
+upgrading and uninstalling.</p>
+
+<p>Check out install.sh to see what the script is doing. See README_UBUNTU.md for my
+tests on Ubuntu 14.04.</p>
 
 <pre><code class="language-bash">$ git clone https://github.com/lebogan/snob.git
 $ cd snob
 $ ./install.sh</code></pre>
 
-<blockquote>#### Installation on Ubuntu
-> see README_UBUNTU for details.</blockquote>
+<h3>Manual Installation (if you gotta!)</h3>
 
-<p>Required utilities for nms (network management station):  </p>
+<p>A Makefile is included for compiling and installing the binary and man pages.
+Crystal is required to be preinstalled. The binary is copied to <code>/usr/local/bin</code>.
+The Makefile also provides for uninstalling and compliation cleanup. The compiled
+binary is in <code>./bin</code>. Make also builds and installs man pages as necessary to
+<code>/usr/local/share</code>.</p>
 
-<ul><li>git  </li><li>net-snmp  </li><li>net-snmp-utils  </li></ul>
+<pre><code class="language-bash">$ git clone https://github.com/lebogan/snob.git
+$ cd snob
+$ shards install
+$ make clean
+$ make
+$ make test
+$ sudo make install</code></pre>
+
+<h4>Deb-based (Debian) Distributions</h4>
+
+<blockquote>The source will have to be recompiled with Crystal.  
+> From the website, <a href="https://crystal-lang.org/docs/installation/on_debian_and_ubuntu.html" target="_blank">crystal-lang</a>,
+> use the Debian and Ubuntu install.  
+> See <a href="#preferred-installation" target="_blank">Preferred Installation</a></blockquote>
 
 <p>Configure your hosts to respond to snmp requests. See documentation at: 
 <a href="http://net-snmp.sourceforge.net/docs/README.snmpv3.html" target="_blank">net-snmp</a></p>
@@ -211,15 +244,15 @@ myserver:
 
 <h2>TODO</h2>
 
-<ul><li>[ ] Bind the net-snmp c library to make this app even more portable.</li><li>[X] Build a Ubuntu test environment, write installation instructions.</li></ul>
+<ul><li>[ ] Bind the net-snmp c library to make this app even more portable.</li><li>[X] Build a Ubuntu test environment, write installation instructions.</li><li>[ ] Add a method to eliminate the need for external ping utility.</li><li>[ ] Update the installation process/script with a Makefile.</li></ul>
 
 <h2>Development</h2>
 
 <p>Please, see the DISCLAIMER below.  
 Check out the repo on GitHub at https://github.com/lebogan/snob.git  
-Developed using Crystal 0.24.2 on Fedora 27 workstation running under Vagrant v2.0.2
+Developed using Crystal 0.27.0 on Fedora 28 workstation running under Vagrant v2.2.0
 with VirtualBox 5.2 provider.  
-Tested on Fedora 26/27 and CentOS 7.  
+Tested on Fedora 26/27/28 and CentOS 7.  
 See README_UBUNTU.md for my tests on Ubuntu 14.04.</p>
 
 <h2>Contributing</h2>

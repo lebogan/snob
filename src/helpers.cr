@@ -1,4 +1,4 @@
-#===============================================================================
+# ===============================================================================
 #         FILE:  helpers.cr
 #        USAGE:  Internal
 #  DESCRIPTION:  Defines general program helper methods.
@@ -7,7 +7,7 @@
 #      CREATED:  2018-11-30 14:10
 #    COPYRIGHT:  (C) 2018 Lewis E. Bogan <lewis.bogan@comcast.net>
 # Distributed under terms of the MIT license.
-#===============================================================================
+# ===============================================================================
 
 module Helpers
   extend self
@@ -47,5 +47,25 @@ module Helpers
   #
   def print_chars(character : Char = '-', number : Int32 = 20)
     puts "%s" % character * number
+  end
+
+  # Does a lookup of a host's ip address and returns it as a Socket::IPAddress
+  # object. Raises an error if the hostname doesn't exist or can't be resolved.
+  # Remove the ":7" part with `rstrip(":7")` to get just the ip address.
+  #
+  # ```
+  # Helpers.resolve_host("example.com")                   # => ip_address:7
+  # Helpers.resolve_host("example.com").to_s.rstrip(":7") # => ip_address
+  # ```
+  #
+  def resolve_host(host)
+    addrinfo = Socket::Addrinfo.resolve(
+      domain: host,
+      service: "echo",
+      type: Socket::Type::DGRAM,
+      protocol: Socket::Protocol::UDP,
+    ) # => Array(Socket::Addrinfo)
+
+    addrinfo.first?.try(&.ip_address)
   end
 end
