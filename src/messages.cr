@@ -24,12 +24,13 @@ module Messages
     BANNER
   end
 
-  def snob_version
-    <<-VERSION
-    snob #{App::VERSION}
-    Built using the Crystal programming language (#{Crystal::VERSION}).
-    Distributed under the MIT License, http://opensource.org/licenses/MIT.
-    VERSION
+  def copyright_message
+    <<-COPYRIGHT
+
+  Copyright (c) 2019 - #{Time.local.to_s("%Y")} Lewis E. Bogan
+  The MIT License (MIT); http://opensource.org/licences/MIT
+  creater, maintainer: lebogan <lewis.bogan@comcast.net>
+  COPYRIGHT
   end
 
   def ping_message(hostname : String)

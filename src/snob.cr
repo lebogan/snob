@@ -98,7 +98,8 @@ struct App
         exit 0
       end
       parser.on("-v", "--version", "Show version") do
-        puts snob_version
+        puts "snob v#{App::VERSION} [compiled with crystal #{Crystal::VERSION}] (#{Time.local.to_s("%Y-%m-%d")})"
+        puts copyright_message
         exit 0
       end
       parser.invalid_option do |flag|

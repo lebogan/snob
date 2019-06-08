@@ -1,7 +1,7 @@
 .POSIX:
 
 CRYSTAL = crystal
-CRFLAGS = --release --warnings all
+CRFLAGS = --release --warnings all --error-on-warnings
 SOURCES = src/*.cr
 
 NAME = snob
