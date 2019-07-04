@@ -50,23 +50,21 @@ struct App
   include Session
   include Messages
 
-  VERSION = {{ `shards version #{__DIR__}`.chomp.stringify }}
+  # OIDLIST = {arp:     "ipNetToPhysicalPhysAddress",
+  #           lldp:    "1.0.8802.1.1.2.1.4.1.1.9",
+  #           sys:     "system",
+  #           mem:     "memory",
+  #           dsk:     "dskTable",
+  #           ifdesc:  "ifDescr",
+  #           distro:  "ucdavis.7890.1.4",
+  #           temp:    "lmTempSensorsDevice",
+  #           hp_desc: "enterprises.11.2.14.11.1.2.4.1.4.1",
+  # } # => NamedTuple(Symbol, String...)
 
-  OIDLIST = {arp:     "ipNetToPhysicalPhysAddress",
-             lldp:    "1.0.8802.1.1.2.1.4.1.1.9",
-             sys:     "system",
-             mem:     "memory",
-             dsk:     "dskTable",
-             ifdesc:  "ifDescr",
-             distro:  "ucdavis.7890.1.4",
-             temp:    "lmTempSensorsDevice",
-             hp_desc: "enterprises.11.2.14.11.1.2.4.1.4.1",
-  } # => NamedTuple(Symbol, String...)
-
-  CONFIG_PATH = File.expand_path("~/.snob/")
-  CONFIG_FILE = File.expand_path("#{CONFIG_PATH}/snobrc.yml")
-  OUT_PATH    = File.expand_path("~/tmp")
-  OUT_FILE    = File.expand_path("#{OUT_PATH}/raw_dump.txt")
+  # CONFIG_PATH = File.expand_path("~/.snob/")
+  # CONFIG_FILE = File.expand_path("#{CONFIG_PATH}/snobrc.yml")
+  # OUT_PATH    = File.expand_path("~/tmp")
+  # OUT_FILE    = File.expand_path("#{OUT_PATH}/raw_dump.txt")
 
   # Runs the main application.
   def run
@@ -78,13 +76,13 @@ struct App
     OptionParser.parse! do |parser|
       parser.banner = banner_message
       parser.on("-l", "--list", "List some pre-defined OIDs") do
-        list_oids(OIDLIST)
+        list_oids(Config::OIDLIST)
         exit 0
       end
       parser.on("-m OID", "--mib=OID", "Display information for this oid
                                      (Default: system)") do |oid|
         mib_oid = case
-                  when OIDLIST.has_key?(oid) then OIDLIST["#{oid}"]
+                  when OIDLIST.has_key?(oid) then Config::OIDLIST["#{oid}"]
                   when !oid.empty?           then oid
                   else
                     ""
@@ -98,8 +96,8 @@ struct App
         exit 0
       end
       parser.on("-v", "--version", "Show version") do
-        puts "snob v#{App::VERSION} [compiled with crystal #{Crystal::VERSION}] (#{Time.local.to_s("%Y-%m-%d")})"
-        puts copyright_message
+        puts description # "snob v#{App::VERSION} [compiled with crystal #{Crystal::VERSION}] (#{Time.local.to_s("%Y-%m-%d")})"
+        # puts copyright_message
         exit 0
       end
       parser.invalid_option do |flag|
@@ -110,34 +108,24 @@ struct App
       end
     end
 
-    # Asks for a hostname if none is given on the command line.
-    hostname = process_argv(ARGV)
+    hostname = check_for_host
 
-    # Checks if host exists on this network.
-    begin
-      resolve_host("#{hostname}")
-    rescue ex
-      abort ex.message
-    end
-
-    # Checks for existence of a config file and creates a dummy entry
-    # if the user answers yes.
-    check_for_config(CONFIG_PATH, CONFIG_FILE)
+    check_for_config(Config::CONFIG_PATH, Config::CONFIG_FILE)
 
     # Checks for the existence of a valid config file and tests if host
     # is in it. Otherwise, asks for manual entry of credentials and
     # adds them to existing config file.
     # NOTE: {hostname => config} is a Hash(String => Hash(String, String))
-    if File.exists?(CONFIG_FILE) && fetch_config(CONFIG_FILE)["#{hostname}"]? != nil
-      config = fetch_config(CONFIG_FILE)["#{hostname}"] # => YAML::Any
+    if File.exists?(Config::CONFIG_FILE) && fetch_config(Config::CONFIG_FILE)["#{hostname}"]? != nil
+      config = fetch_config(Config::CONFIG_FILE)["#{hostname}"] # => YAML::Any
     else
       puts "'#{hostname}' is not in config file."
       print_chars('-', 40)
-      config = configure_session[0]                              # => Hash(String, NamedTuple)
+      config = configure_session                                 # [0]                              # => Hash(String, NamedTuple)
       credentials = {hostname => config}.to_yaml.gsub("---", "") # => String
       print_chars('-', 40)
       choice = Myutils.agree?("Save these credentials(y/n)? ")
-      Myutils.append_file(CONFIG_FILE, credentials) if choice
+      Myutils.append_file(Config::CONFIG_FILE, credentials) if choice
     end
 
     # Creates an Snmp session object and invokes the walk_mib3 method on the object,
@@ -160,7 +148,7 @@ struct App
       display_table(table, hostname, mib_oid)
     else
       if file_write
-        Dir.mkdir_p(OUT_PATH) unless Dir.exists?(OUT_PATH)
+        Dir.mkdir_p(Config::OUT_PATH) unless Dir.exists?(Config::OUT_PATH)
         Myutils.write_file(OUT_FILE, results)
       end
       display_raw_table(results.split("\n")) # => Array(String)

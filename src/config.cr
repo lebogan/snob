@@ -13,13 +13,29 @@
 module Config
   extend self
 
+  OIDLIST = {arp:     "ipNetToPhysicalPhysAddress",
+             lldp:    "1.0.8802.1.1.2.1.4.1.1.9",
+             sys:     "system",
+             mem:     "memory",
+             dsk:     "dskTable",
+             ifdesc:  "ifDescr",
+             distro:  "ucdavis.7890.1.4",
+             temp:    "lmTempSensorsDevice",
+             hp_desc: "enterprises.11.2.14.11.1.2.4.1.4.1",
+  } # => NamedTuple(Symbol, String...)
+
+  CONFIG_PATH = File.expand_path("~/.snob/")
+  CONFIG_FILE = File.expand_path("#{CONFIG_PATH}/snobrc.yml")
+  OUT_PATH    = File.expand_path("~/tmp")
+  OUT_FILE    = File.expand_path("#{OUT_PATH}/raw_dump.txt")
+
   # Checks for existance of a config file and creates a dummy entry
   #    if the user answers yes.
   def check_for_config(config_path : String, config_file : String)
     unless File.exists?(config_file)
       Dir.mkdir_p(config_path, 0o700)
-      conf = {"dummy" => {"user" => "username", "auth" => "auth passphrase",
-                          "priv" => "priv passphrase", "crypto" => "AES/DES"}}
+      conf = {"dummy" => {user: "username", auth: "auth passphrase",
+                          priv: "priv passphrase", crypto: "AES/DES"}}
       choice = Myutils.agree?("Config file doesn't exist. Create it(y/n)? ")
       build_config_file(config_file, conf) if choice
     end

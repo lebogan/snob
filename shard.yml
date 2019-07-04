@@ -1,8 +1,12 @@
 name: snob
-version: 0.16.5
+version: 0.16.7
 
 authors:
   - lebogan <lewis.bogan@comcast.net>
+ 
+crystal: 0.29.0
+
+license: MIT
 
 targets:
   snob:
@@ -17,7 +21,3 @@ dependencies:
     github: faustinoaq/secrets
   myutils:
     github: lebogan/myutils
- 
-crystal: 0.29.0
-
-license: MIT

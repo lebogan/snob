@@ -38,6 +38,24 @@ module Helpers
     end
   end
 
+  # Asks for a hostname if none is given on the command line.
+  #
+  # ```
+  # Helpers.check_for_host # => String
+  # ```
+  #
+  def check_for_host
+    hostname = process_argv(ARGV)
+
+    # Checks if host exists on this network.
+    begin
+      resolve_host("#{hostname}")
+      return hostname
+    rescue ex
+      abort ex.message
+    end
+  end
+
   # Prints a line of characters for display formatting, defaults to 20 dashes.
   #
   # ```

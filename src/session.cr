@@ -15,12 +15,14 @@ module Session
 
   # Prompts the user for host credentials. This method is typically invoked
   # when the credentials are not in the configuration file.
-  def configure_session : Tuple(Hash(String, String))
-    conf = {} of String => String
-    conf["user"] = Myutils.ask("Enter security name: ")
-    conf["auth"] = Secrets.gets prompt: "Enter authentication phrase: "
-    conf["priv"] = Secrets.gets prompt: "Enter privacy phrase: "
-    conf["crypto"] = Myutils.ask("Crypto algorithm [AES/DES]: ").upcase
-    {conf}
+  # ```
+  # configure_session # => NamedTuple(user: String, auth: String, priv: String, crypto: String)
+  # ```
+  #
+  def configure_session
+    {user:   Myutils.ask("Enter security name: "),
+     auth:   Secrets.gets(prompt: "Enter authentication phrase: "),
+     priv:   Secrets.gets(prompt: "Enter privacy phrase: "),
+     crypto: Myutils.ask("Crypto algorithm [AES/DES]: ").upcase}
   end
 end
