@@ -73,7 +73,7 @@ struct App
     only_values = false
     file_write = false
 
-    OptionParser.parse! do |parser|
+    OptionParser.parse do |parser|
       parser.banner = banner_message
       parser.on("-l", "--list", "List some pre-defined OIDs") do
         list_oids(Config::OIDLIST)
