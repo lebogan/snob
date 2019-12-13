@@ -3,7 +3,7 @@ require "yaml"
 require "myutils"
 require "../src/config"
 
-CONFIG_PATH = File.expand_path("#{ENV["HOME"]}/.snob")
+CONFIG_PATH = File.expand_path("#{ENV["HOME"]}/tmp/.snob")
 CONFIG_FILE = File.expand_path("#{CONFIG_PATH}/snobrc.yml")
 
 include Config
