@@ -1,10 +1,10 @@
 name: snob
-version: 0.16.9
+version: 0.17.0
 
 authors:
   - lebogan <lewis.bogan@comcast.net>
  
-crystal: 0.31.0
+crystal: 0.32.0
 
 license: MIT
 

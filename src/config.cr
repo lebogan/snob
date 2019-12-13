@@ -24,9 +24,9 @@ module Config
              hp_desc: "enterprises.11.2.14.11.1.2.4.1.4.1",
   } # => NamedTuple(Symbol, String...)
 
-  CONFIG_PATH = File.expand_path("~/.snob/")
+  CONFIG_PATH = File.expand_path("#{ENV["HOME"]}/.snob")
   CONFIG_FILE = File.expand_path("#{CONFIG_PATH}/snobrc.yml")
-  OUT_PATH    = File.expand_path("~/tmp")
+  OUT_PATH    = File.expand_path("#{ENV["HOME"]}/tmp")
   OUT_FILE    = File.expand_path("#{OUT_PATH}/raw_dump.txt")
 
   # Checks for existance of a config file and creates a dummy entry
