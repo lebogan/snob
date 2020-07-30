@@ -1,10 +1,10 @@
 name: snob
-version: 0.17.0
+version: 0.19.0
 
 authors:
   - lebogan <lewis.bogan@comcast.net>
  
-crystal: 0.32.0
+crystal: 0.35.1
 
 license: MIT
 
@@ -17,7 +17,11 @@ development_dependencies:
     github: veelenga/ameba
 
 dependencies:
+  term-spinner:
+    github: crystal-term/spinner  
+  term-prompt:
+    github: crystal-term/prompt
   secrets:
     github: faustinoaq/secrets
   myutils:
-    github: lebogan/myutils
+    git: git@earthforge.earthsea.local:lewisb/myutils.git
