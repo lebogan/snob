@@ -1,7 +1,8 @@
 .POSIX:
 
 CRYSTAL = crystal
-CRFLAGS = --release --warnings all --error-on-warnings
+CRFLAGS = --release --warnings all
+DEVFLAGS = --warnings all --error-on-warnings
 SOURCES = src/*.cr
 
 NAME = snob
@@ -15,6 +16,10 @@ all: bin/$(NAME)
 
 clean: phony
 	rm -f bin/$(NAME)
+
+dev: clean phony
+	@mkdir -p bin
+	$(CRYSTAL) build src/$(NAME).cr -o bin/$(NAME) $(DEVFLAGS)
 
 bin/$(NAME): $(SOURCES)
 	@mkdir -p bin

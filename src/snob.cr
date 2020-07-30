@@ -7,7 +7,7 @@
 #      OPTIONS:  ---
 # REQUIREMENTS:  net-snmp net-snmp-utils
 #         BUGS:  ---
-#        NOTES:  #
+#        NOTES:  #allow switch to edit config file
 #       AUTHOR:  Lewis E. Bogan
 #      COMPANY:  Earthsea@Home
 #      CREATED:  2017-11-10 10:19
@@ -31,6 +31,7 @@ require "myutils"
 require "option_parser"
 require "secrets"
 require "socket"
+require "term-prompt"
 
 # Allows displaying object methods during development.
 class Object
@@ -134,9 +135,10 @@ struct App
     # Creates an Snmp session object and invokes the walk_mib3 method on the object,
     # host_session, using 'system' oid if the --mib flag is missing.
     host_session = Snmp.new(
-      config["auth"].to_s,
-      config["priv"].to_s,
+      config["auth_pass"].to_s,
+      config["priv_pass"].to_s,
       config["user"].to_s,
+      config["auth"].to_s.upcase,
       config["crypto"].to_s.upcase) # => Snmp
     output_format = only_values ? "vq" : "QUsT"
     status, results = host_session.walk_mib3(hostname, mib_oid, output_format)

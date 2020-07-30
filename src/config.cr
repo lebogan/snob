@@ -12,6 +12,7 @@
 # Defines configuration file methods.
 module Config
   extend self
+  @@prompt = Term::Prompt.new
 
   OIDLIST = {arp:     "ipNetToPhysicalPhysAddress",
              lldp:    "1.0.8802.1.1.2.1.4.1.1.9",
@@ -34,9 +35,10 @@ module Config
   def check_for_config(config_path : String, config_file : String)
     unless File.exists?(config_file)
       Dir.mkdir_p(config_path, 0o700)
-      conf = {"dummy" => {user: "username", auth: "auth passphrase",
-                          priv: "priv passphrase", crypto: "AES/DES"}}
-      choice = Myutils.agree?("Config file doesn't exist. Create it(y/n)? ")
+      conf = {"dummy" => {user: "username", auth_pass: "auth passphrase",
+                          priv_pass: "priv passphrase", auth: "MD5/SHA",
+                          crypto: "AES/DES"}}
+      choice = @@prompt.yes?("Config file doesn't exist. Create it(Y/n)? ")
       build_config_file(config_file, conf) if choice
     end
   end

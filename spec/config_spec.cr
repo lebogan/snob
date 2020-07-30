@@ -15,4 +15,12 @@ describe Config do
       File.exists?(CONFIG_FILE).should be_true
     end
   end
+
+  describe "fetch_config" do
+    it "returns a YAML::Any object" do
+      Config.check_for_config(CONFIG_PATH, CONFIG_FILE)
+      config = fetch_config(Config::CONFIG_FILE)["dummy"] # => YAML::Any
+      config.should be_a(YAML::Any)
+    end
+  end
 end

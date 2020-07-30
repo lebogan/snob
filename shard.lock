@@ -1,14 +1,38 @@
-version: 1.0
+version: 2.0
 shards:
   ameba:
-    github: veelenga/ameba
-    version: 0.11.0
+    git: https://github.com/veelenga/ameba.git
+    version: 0.13.1
+
+  cor:
+    git: https://github.com/watzon/cor.git
+    version: 0.1.0+git.commit.9c9e51ac6168f3bd4fdc51d679b65de09ef76cac
 
   myutils:
-    github: lebogan/myutils
-    version: 0.5.3
+    git: git@earthforge.earthsea.local:lewisb/myutils.git
+    version: 0.8.0
 
   secrets:
-    github: faustinoaq/secrets
+    git: https://github.com/faustinoaq/secrets.git
     version: 0.1.2
+
+  term-cursor:
+    git: https://github.com/crystal-term/cursor.git
+    version: 0.1.0+git.commit.8805d5f686d153db92cf2ce3333433f8ed3708d0
+
+  term-prompt:
+    git: https://github.com/crystal-term/prompt.git
+    version: 0.1.0+git.commit.bf2b17f885a6c660aea0dda62b0b9da4343ab295
+
+  term-reader:
+    git: https://github.com/crystal-term/reader.git
+    version: 0.1.0+git.commit.e174733435c96c745bee31ac5c5d4def3ccf4285
+
+  term-screen:
+    git: https://github.com/crystal-term/screen.git
+    version: 0.1.0+git.commit.96a06e1ee015e38013822dc31288a46d35056ed2
+
+  term-spinner:
+    git: https://github.com/crystal-term/spinner.git
+    version: 0.1.0+git.commit.60350f9598335c559a8350d98fb2b9042e53290f
 

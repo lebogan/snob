@@ -29,8 +29,9 @@ module Helpers
   # ```
   #
   def process_argv(argv) : String
+    prompt = Term::Prompt.new
     if argv.empty?
-      hostname = Myutils.ask("Enter hostname: ")
+      hostname = prompt.ask("Enter hostname: ").to_s
       abort blank_host_message if hostname.blank?
       hostname
     else
@@ -50,10 +51,10 @@ module Helpers
     # Checks if host exists on this network.
     begin
       resolve_host("#{hostname}")
-      return hostname
     rescue ex
       abort ex.message
     end
+    hostname
   end
 
   # Prints a line of characters for display formatting, defaults to 20 dashes.
