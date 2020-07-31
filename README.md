@@ -1,10 +1,12 @@
 # snob (Snmp Network Object Browser)
 ## Introduction
 ***This utility is experimental, it will change radically as I learn more of the
-Crystal language, so use at your own risk!***
+Crystal language, so use at your own risk! There will be warts!***  
 
-**snob** is an attempt to rewrite my Ruby app [YASB](https://github.com/lebogan/yasb.git)
-in the Crystal programming language. The idea is to:
+[Please, see the DISCLAIMER below](#disclaimer)
+
+**snob** is a rewrite of my Ruby app [YASB](https://github.com/lebogan/yasb.git)
+in the Crystal programming language. It's basically a wrapper around snmpwalk. The idea is to:
 
 - have a somewhat easily distributable utility for
 probing network devices using snmpV3
@@ -29,22 +31,38 @@ flag allows output to be used raw by another application like RRDTool for graphi
 trends when you know which OID you want.
 
 ## Installation
+This covers Ubuntu (14 - 20). See notes below for other distros.  
+
 ### Required
 Required utilities for nms (network management station):  
-- git
+- git  
 - Install Crystal from the website, [crystal-lang](https://crystal-lang.org/docs/installation),
-to build the utility from source.
-- net-snmp  
-- net-snmp-utils  
-- snmp-mibs-downloader (Deb-based)
+to build the utility from source.  
+- snmp  
+- snmp-mibs-downloader  
+
+### Snmp configuration
+There is an excellant write up on snmp by Justin Ellingwood and Vadym Kalsin on the DigitalOcean website 
+[here](https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-an-snmp-daemon-and-client-on-ubuntu-18-04
+). They show how to configure a server and clients.  
+
+You need the snmp-mibs-downloader so you can refer to 
+mibs by colorful names like ___system___ instead of 1.3.6.1.... There is an entry in 
+`/etc/snmp/snmp.conf` that prevents that from happening. Comment out the line that
+contains `mibs:`
+```
+# As the snmp packages come without MIB files due to license reasons, loading
+# of MIBs is disabled by default. If you added the MIBs you can reenable
+# loading them by commenting out the following line.
+mibs :
+```
 
 ### Preferred Installation <a name="preferred-installation"></a>
 A script, `install.sh`, is included to manage the installation process. It allows for
 installation of a pre compiled binary or building from source. It also allows for
 upgrading and uninstalling.
 
-Check out install.sh to see what the script is doing. See README_UBUNTU.md for my
-tests on Ubuntu.
+Check out install.sh to see what the script is doing.  
 
 ```bash
 $ git clone https://github.com/lebogan/snob.git
@@ -65,34 +83,40 @@ $ cd snob
 $ shards install
 $ make clean
 $ make
-$ make test
 $ sudo make install
 ```
-#### Deb-based (Debian) Distributions
+#### RPM-based (RedHat) and other distributions
 > The source will have to be recompiled with Crystal.  
-> From the website, [crystal-lang](https://crystal-lang.org/docs/installation/on_debian_and_ubuntu.html),
-> use the Debian and Ubuntu install.  
+> From the website, [crystal-lang](https://crystal-lang.org/install/)  
 > See [Preferred Installation](#preferred-installation)
 
+#### Debian 9
+> Install Crystal [crystal-lang](https://crystal-lang.org/install/)  
+> Install git and curl   
+> Install libyaml-dev  
+> Install apt-transport-https, dirmngr  
+> For snmp, add to file: /etc/apt/sources.list  
 
-
-Configure your hosts to respond to snmp requests. See documentation at: 
-[net-snmp](http://net-snmp.sourceforge.net/docs/README.snmpv3.html)
+```text
+deb http://ftp.br.debian.org/debian/ wheezy main contrib non-free
+deb-src http://ftp.br.debian.org/debian/ wheezy main contrib non-free
+```
 
 ## Usage
 ```bash
 $ snob --help
 Usage: snob [OPTIONS] [HOST]
-Browse a host snmpv3 mib tree.
+Browse a host's snmpv3 mib tree.
 
 Prompts for HOST if not specified on the command-line. Also, prompts
-for security credentials if HOST is not in the config file, ~/.snob/snobrc.yml.
+for security credentials if HOST is not in the config file, snobrc.yml.
 
     -l, --list                       List some pre-defined OIDs
     -m OID, --mib=OID                Display information for this oid
                                      (Default: system)
     -d, --dump                       Write output to file, raw only
-    -f, --formatted                  Display formatted output
+    -e, --edit                       Edit global config file
+    -f, --formatted                  Display as formatted table
     -o, --only-values                Display values only (not OID = value)
     -h, --help                       Show this help
     -v, --version                    Show version
@@ -128,46 +152,46 @@ __dummy__. Afterwards, if the host is not in the config file, you will be asked
 to enter credentials manually with the option to save them.  
 ```
 $ snob myserver
-Config file doesn't exist. Create it? <yes>
-myserver is not in config file. Configuring...
+Config file doesn't exist. Create it(Y/n)? <Default: Yes>
+'myserver' is not in config file. Configuring...
+-----------------------------------------------
 Enter security name: <myname>
 Enter authentication phrase: <secret>
 Enter privacy phrase: <realsecret>
-Crypto algorithm [AES/DES]: <DES>
-Save this session? <yes>
-
+Authentication: [MD5/SHA]: Default: SHA
+Crypto algorithm [AES/DES]: Default: DES
+-----------------------------------------------
+Save these credentials(Y/n)? <Default: Yes>
 ```
 
 The config file is YAML format and can be edited manually.
 ```text
-# /home/vagrant/.snob/snobrc.yml
+# /home/<user>/.snob/snobrc.yml
 ---
 dummy:
   user: username
-  auth: auth passphrase
-  priv: priv passphrase
+  auth_pass: auth passphrase
+  priv_pass: priv passphrase
+  auth: MD5/SHA
   crypto: AES/DES
+
 
 myserver:
   user: myname
   auth: secret
   priv: realsecret
+  auth: MD5
   crypto: DES
 ```
 
 ## TODO
-- [ ] Bind the net-snmp c library to make this app even more portable.
-- [X] Build a Ubuntu test environment, write installation instructions.
-- [X] Add a method to eliminate the need for external ping utility.
-- [X] Update the installation process/script with a Makefile.
+- [X] Add ability to do on-the-fly editing of config file using default system editor.
+- [ ] Replace reliance on external snmpwalk to make this app even more portable.
 
 ## Development
-Please, see the DISCLAIMER below.  
+[Please, see the DISCLAIMER below](#disclaimer)  
 Check out the repo on GitHub at https://github.com/lebogan/snob.git  
-Developed using Crystal 0.28.0 on Fedora 28 workstation running under Vagrant v2.2.4
-with VirtualBox 6.0 provider.  
-Tested on Fedora /27/28 and CentOS 7.  
-See README_UBUNTU.md for my tests on Ubuntu 14.04 and 18.04.
+
 
 ## Contributing
 Please, see the DISCLAIMER below.
@@ -185,10 +209,10 @@ Please, see the DISCLAIMER below.
 This utility is available as open source under the terms of the
 [MIT License](http://opensource.org/licenses/MIT).
 
-## Disclaimer
+## Disclaimer <a name="disclaimer"></a>
 This utility was originally created for my personal use in my work as a network
-specialist. It was developed on a Fedora Workstation using Crystal 0.24.2. This has
-only been tested on Fedora 26/27 Workstation and CentOS 7 
+specialist. Developed using Crystal 0.35.1 on Ubuntu 18.04 workstation running under Vagrant v2.2.5 with VirtualBox 6.0 provider.  
+
 
 I am not a professional software developer nor do I pretend to be. I am a retired IT 
 network specialist and this is a hobby to keep me out of trouble. If you 

@@ -20,13 +20,6 @@ module Session
   # configure_session # => NamedTuple(user: String, auth: String, priv: String, crypto: String)
   # ```
   #
-  # def configure_session
-  #   {user:      Myutils.ask("Enter security name: "),
-  #    auth_pass: Secrets.gets(prompt: "Enter authentication phrase: "),
-  #    priv_pass: Secrets.gets(prompt: "Enter privacy phrase: "),
-  #    auth:      Myutils.ask("Authentication: [MD5/SHA]").upcase,
-  #    crypto:    Myutils.ask("Crypto algorithm [AES/DES]: ").upcase}
-  # end
   def configure_session
     {user:      @@prompt.ask("Enter security name: ", required: true).to_s,
      auth_pass: @@prompt.mask("Enter authentication phrase: ", required: true).to_s,

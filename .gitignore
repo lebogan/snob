@@ -1,7 +1,9 @@
 /doc/
 /lib/
-/bin/
+/bin/ameba*
+!./bin/snob
 /.shards/
 .*.sw?
+*.html
 .ameba.yml
 tags

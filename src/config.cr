@@ -51,6 +51,18 @@ module Config
     end
   end
 
+  # Adds new host to config file
+  def update_config_file(hostname : String)
+    puts "'#{hostname}' is not in config file. Configuring ..."
+    print_chars('-', 60)
+    config = configure_session                                 # [0]                              # => Hash(String, NamedTuple)
+    credentials = {hostname => config}.to_yaml.gsub("---", "") # => String
+    print_chars('-', 60)
+    choice = @@prompt.yes?("Save these credentials(Y/n)? ")
+    Util.append_file(Config::CONFIG_FILE, credentials) if choice
+    config
+  end
+
   # Parses a YAML configuration file.
   def fetch_config(config_file : String) : YAML::Any
     YAML.parse(File.read(config_file))

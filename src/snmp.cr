@@ -31,9 +31,9 @@ module Snmp
     # ```
     #
     def walk_mib3(hostname : String, oid : String, format : String) : Tuple(Int32, String)
-      Myutils.run_cmd("snmpwalk", {"-v3", "-u", "#{@user}", "-O#{format}", "-l", "authpriv",
-                                   "-a", "#{auth}", "-A", "#{@auth_pass}", "-x", "#{@crypto}", "-X",
-                                   "#{@priv_pass}", "#{hostname}", "#{oid}"}
+      Util.run_cmd("snmpwalk", {"-v3", "-u", "#{@user}", "-O#{format}", "-l", "authpriv",
+                                "-a", "#{auth}", "-A", "#{@auth_pass}", "-x", "#{@crypto}", "-X",
+                                "#{@priv_pass}", "#{hostname}", "#{oid}"}
       )
     end
   end

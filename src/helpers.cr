@@ -45,8 +45,8 @@ module Helpers
   # Helpers.check_for_host # => String
   # ```
   #
-  def check_for_host
-    hostname = process_argv(ARGV)
+  def check_for_host(argv)
+    hostname = process_argv(argv)
 
     # Checks if host exists on this network.
     begin
@@ -86,5 +86,18 @@ module Helpers
     ) # => Array(Socket::Addrinfo)
 
     addrinfo.first?.try(&.ip_address)
+  end
+
+  # Runs the editor indicated by ENV["EDITOR"], nano as default.
+  # Redirect the standard input, output and error IO of a process
+  # using the IO of the parent process, Process::Redirect::Inherit.
+  def edit_config_file(filename)
+    Process.run(
+      ENV.fetch("EDITOR", "nano"),
+      args: {"#{filename}"},
+      input: Process::Redirect::Inherit,
+      output: Process::Redirect::Inherit,
+      error: Process::Redirect::Inherit,
+    )
   end
 end

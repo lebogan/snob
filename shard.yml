@@ -1,5 +1,5 @@
 name: snob
-version: 0.19.0
+version: 0.21.0
 
 authors:
   - lebogan <lewis.bogan@comcast.net>
@@ -21,7 +21,3 @@ dependencies:
     github: crystal-term/spinner  
   term-prompt:
     github: crystal-term/prompt
-  secrets:
-    github: faustinoaq/secrets
-  myutils:
-    git: git@earthforge.earthsea.local:lewisb/myutils.git

@@ -28,8 +28,8 @@ show_menu()
   echo "--------------------------------------------------"
   echo "Installation script for snob utility"
   echo "--------------------------------------------------"
-  echo "1. Install supplied binary (Fedora only)"
-  echo "2. Update supplied binary from repo (Fedora only)"
+  echo "1. Install supplied binary (Ubuntu only)"
+  echo "2. Update supplied binary from repo (Ubuntu only)"
   echo "3. Build/install from source"
   echo "4. Update from git source"
   echo "5. Uninstall all (except data files)"
@@ -49,7 +49,7 @@ show_menu()
 
 install_binary()
 {
-sudo ln -s $(realpath ./snob) ${install_dir}/snob
+  sudo ln -s $(realpath ./bin/snob) ${install_dir}/snob
   finish_msg
 }
 
@@ -83,6 +83,10 @@ uninstall_all()
 {
   make clean
   sudo make uninstall
+  if [ -f "/usr/local/bin/snob" ];
+  then
+    sudo rm /usr/local/bin/snob
+  fi
 }
 
 setup()

@@ -23,7 +23,7 @@ module Reports
       puts SEPERATOR
       page_count += 1
       if page_count % FORMATTED_PAGE_SIZE == 0
-        choice = Myutils.ask_char("\n -- press any key to continue or q to quit --\n\n")
+        choice = Util.ask_char("\n -- press any key to continue or q to quit --\n\n")
         choice == 'q' ? break : next
       end
     end
@@ -37,7 +37,7 @@ module Reports
       puts entry
       page_count += 1
       if page_count % RAW_PAGE_SIZE == 0
-        choice = Myutils.ask_char("\n -- press any key to continue or q to quit --\n\n ")
+        choice = Util.ask_char("\n -- press any key to continue or q to quit --\n\n")
         choice == 'q' ? break : next
       end
     end
@@ -51,35 +51,6 @@ module Reports
     print_chars('-', 67)
     printf("%-18s | %s\n", header[0], header[1])
     print_chars('=', 67)
-  end
-
-  # Formats the label depending on which oid it represents.
-  def format_label(entry : String) : String
-    label = entry.split(/=/)[0].split(/\"/)
-    case
-    when label[0].includes?("ipNetToPhysicalPhysAddress") # arp table
-      label[-2].to_s
-    when label[0].includes?("iso.0.8802.1.1.2.1.4.1.1.9") # lldp
-      label[0].split(/\./)[-2..-1].join(".").to_s
-    when label[0].includes?("ucdavis.7890.1.4") # Linux distro
-      "Linux distro"
-    when label[0].includes?("enterprises.11.2.14.11.1.2.4.1.4.1") # hp_description
-      "hp switch desc"
-    else
-      label[0].to_s
-    end
-  end
-
-  # Formats the table into label and info.
-  def format_table(results : Array, table : Hash) : Hash(String, String)
-    results.each do |entry|
-      if entry.split(/=/).size > 1
-        label = format_label(entry)
-        info = Myutils.truncate(entry.split(/=/)[1]).to_s
-        table[label] = info
-      end
-    end
-    table # => Hash(String, String)
   end
 
   # Formats the appropriate oid header.
@@ -101,6 +72,35 @@ module Reports
     display_table_info(formatted_table)
   end
 
+  # Formats the table into label and info.
+  def format_table(results : Array, table : Hash) : Hash(String, String)
+    results.each do |entry|
+      if entry.split("=").size > 1
+        label = format_label(entry)
+        info = Util.truncate(entry.split("=")[1]).to_s
+        table[label] = info
+      end
+    end
+    table # => Hash(String, String)
+  end
+
+  # Formats the label depending on which oid it represents.
+  def format_label(entry : String) : String
+    label = entry.split("=")[0].split(/\"/)
+    case
+    when label[0].includes?("ipNetToPhysicalPhysAddress") # arp table
+      label[-2].to_s
+    when label[0].includes?("iso.0.8802.1.1.2.1.4.1.1.9") # lldp
+      label[0].split(/\./)[-2..-1].join(".").to_s
+    when label[0].includes?("ucdavis.7890.1.4") # Linux distro
+      "Linux distro"
+    when label[0].includes?("enterprises.11.2.14.11.1.2.4.1.4.1") # hp_description
+      "hp switch desc"
+    else
+      label[0].to_s
+    end
+  end
+
   # Lists some useful difficult-to-remember oids.
   #
   # ```text
@@ -115,7 +115,7 @@ module Reports
   # -----------------+-------------------------------------------------
   # ```
   def list_oids(list : NamedTuple)
-    Myutils.clear_screen
+    Util.clear_screen
     header = {"friendly name", "object identifier"}
     display_header("OIDs", header, "Included pre-defined object identifiers")
     display_table_info(list)

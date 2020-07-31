@@ -20,7 +20,7 @@ module Messages
     Time.unix(time).to_s("%Y-%m-%d")
   end
 
-  def description
+  def about
     <<-DOC
     snob v#{VERSION} [compiled with Crystal #{Crystal::VERSION}] (#{date})
 

@@ -8,14 +8,6 @@ shards:
     git: https://github.com/watzon/cor.git
     version: 0.1.0+git.commit.9c9e51ac6168f3bd4fdc51d679b65de09ef76cac
 
-  myutils:
-    git: git@earthforge.earthsea.local:lewisb/myutils.git
-    version: 0.8.0
-
-  secrets:
-    git: https://github.com/faustinoaq/secrets.git
-    version: 0.1.2
-
   term-cursor:
     git: https://github.com/crystal-term/cursor.git
     version: 0.1.0+git.commit.8805d5f686d153db92cf2ce3333433f8ed3708d0
