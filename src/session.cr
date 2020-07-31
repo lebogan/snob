@@ -12,6 +12,7 @@
 #  Defines session methods.
 module Session
   extend self
+  @@prompt = Term::Prompt.new
 
   # Prompts the user for host credentials. This method is typically invoked
   # when the credentials are not in the configuration file.
@@ -19,10 +20,18 @@ module Session
   # configure_session # => NamedTuple(user: String, auth: String, priv: String, crypto: String)
   # ```
   #
+  # def configure_session
+  #   {user:      Myutils.ask("Enter security name: "),
+  #    auth_pass: Secrets.gets(prompt: "Enter authentication phrase: "),
+  #    priv_pass: Secrets.gets(prompt: "Enter privacy phrase: "),
+  #    auth:      Myutils.ask("Authentication: [MD5/SHA]").upcase,
+  #    crypto:    Myutils.ask("Crypto algorithm [AES/DES]: ").upcase}
+  # end
   def configure_session
-    {user:   Myutils.ask("Enter security name: "),
-     auth:   Secrets.gets(prompt: "Enter authentication phrase: "),
-     priv:   Secrets.gets(prompt: "Enter privacy phrase: "),
-     crypto: Myutils.ask("Crypto algorithm [AES/DES]: ").upcase}
+    {user:      @@prompt.ask("Enter security name: ", required: true).to_s,
+     auth_pass: @@prompt.mask("Enter authentication phrase: ", required: true).to_s,
+     priv_pass: @@prompt.mask("Enter privacy phrase: ", required: true).to_s,
+     auth:      @@prompt.ask("Authentication: [MD5/SHA]", default: "SHA").to_s.upcase,
+     crypto:    @@prompt.ask("Crypto algorithm [AES/DES]: ", default: "AES").to_s.upcase}
   end
 end
