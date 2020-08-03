@@ -29,7 +29,6 @@ require "./helpers.cr"
 require "./util.cr"
 require "yaml"
 require "option_parser"
-require "secrets"
 require "socket"
 require "term-prompt"
 
