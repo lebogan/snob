@@ -89,7 +89,6 @@ class App
     display_formatted = false
     only_values = false
     file_write = false
-    hostname = check_for_host(arguments)
 
     OptionParser.parse do |parser|
       parser.banner = banner_message
@@ -124,6 +123,8 @@ class App
       parser.invalid_option { |flag| abort invalid_message(flag) }
       parser.missing_option { |flag| abort missing_message(flag) }
     end
+
+    hostname = check_for_host(arguments)
 
     # Checks for the existence of a valid config file and tests if host
     # is in it. Otherwise, asks for manual entry of credentials and
