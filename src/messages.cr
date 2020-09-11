@@ -13,16 +13,9 @@
 module Messages
   extend self
 
-  VERSION = {{ `shards version #{__DIR__}`.chomp.stringify }}
-
-  def date
-    time = {{ (env("SOURCE_DATE_EPOCH") || `date +%s`).to_i }}
-    Time.unix(time).to_s("%Y-%m-%d")
-  end
-
   def about
     <<-DOC
-    snob v#{VERSION} [compiled with Crystal #{Crystal::VERSION}] (#{date})
+    snob v#{VERSION} [compiled with Crystal #{Crystal::VERSION}] (#{Util.date})
 
     Copyright (c) 2019 - #{Time.local.to_s("%Y")} Lewis E. Bogan
     The MIT License (MIT); http://opensource.org/licences/MIT

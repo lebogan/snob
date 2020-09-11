@@ -1,7 +1,7 @@
 # @Author: Lewis E. Bogan
 # @Date:   2020-09-10 14:54:46
 # @Last Modified by:   Lewis E. Bogan
-# @Last Modified time: 2020-09-10 15:35:03
+# @Last Modified time: 2020-09-11 12:45:57
 #!/usr/bin/env bash
 RED='\033[0;31m'
 GREEN='\033[0;32m'
@@ -43,10 +43,10 @@ else
     kill -9 $pid
 fi
 
-echo -e "${GREEN}Build ${NAME} for RaspberryPi? Y/n${NC}"
+echo -e "${GREEN}Build ${NAME} for RaspberryPi? y/N${NC}"
 result="$(prompt)"
-if [ "${result}" == "n" ]; then
-    :
-else
+if [ "${result}" == "y" ]; then
     make raspi
+else
+    :
 fi

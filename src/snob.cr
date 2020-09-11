@@ -32,6 +32,23 @@ require "option_parser"
 require "socket"
 require "term-prompt"
 
+OIDLIST = {arp:     "ipNetToPhysicalPhysAddress",
+           lldp:    "1.0.8802.1.1.2.1.4.1.1.9",
+           sys:     "system",
+           mem:     "memory",
+           dsk:     "dskTable",
+           ifdesc:  "ifDescr",
+           distro:  "ucdavis.7890.1.4",
+           temp:    "lmTempSensorsDevice",
+           hp_desc: "enterprises.11.2.14.11.1.2.4.1.4.1",
+} # => NamedTuple(Symbol, String...)
+
+CONFIG_PATH = File.expand_path("#{ENV["HOME"]}/.snob")
+CONFIG_FILE = File.expand_path("#{CONFIG_PATH}/snobrc.yml")
+OUT_PATH    = File.expand_path("#{ENV["HOME"]}/tmp")
+OUT_FILE    = File.expand_path("#{OUT_PATH}/raw_dump.txt")
+VERSION     = {{ `shards version #{__DIR__}`.chomp.stringify }}
+
 # Allows displaying object methods during development.
 class Object
   macro methods
@@ -43,9 +60,9 @@ end
 # TODO: Bind the net-snmp c library to make this app portable.
 # TODO: Test, test, test!
 
-# This struct contains the main application. It checks for command line arguments,
+# This class contains the main application. It checks for command line arguments,
 # valid hostname, and snmpv3 credentials.
-struct App
+class App
   include Reports
   include Helpers
   include Snmp
@@ -72,17 +89,18 @@ struct App
     display_formatted = false
     only_values = false
     file_write = false
+    hostname = check_for_host(arguments)
 
     OptionParser.parse do |parser|
       parser.banner = banner_message
       parser.on("-l", "--list", "List some pre-defined OIDs") do
-        list_oids(Config::OIDLIST)
+        list_oids(OIDLIST)
         exit 0
       end
       parser.on("-m OID", "--mib=OID", "Display information for this oid
                                      (Default: system)") do |oid|
         mib_oid = case
-                  when OIDLIST.has_key?(oid) then Config::OIDLIST["#{oid}"]
+                  when OIDLIST.has_key?(oid) then OIDLIST["#{oid}"]
                   when !oid.empty?           then oid
                   else
                     ""
@@ -107,28 +125,19 @@ struct App
       parser.missing_option { |flag| abort missing_message(flag) }
     end
 
-    hostname = check_for_host(arguments)
-
-    check_for_config(Config::CONFIG_PATH, Config::CONFIG_FILE)
-
     # Checks for the existence of a valid config file and tests if host
     # is in it. Otherwise, asks for manual entry of credentials and
     # adds them to existing config file.
-    # NOTE: {hostname => config} is a Hash(String => Hash(String, String))
-    if File.exists?(Config::CONFIG_FILE) && fetch_config(Config::CONFIG_FILE)["#{hostname}"]? != nil
-      config = fetch_config(Config::CONFIG_FILE)["#{hostname}"] # => YAML::Any
+    check_for_config(CONFIG_PATH, CONFIG_FILE)
+    if File.exists?(CONFIG_FILE) && check_credentials(CONFIG_FILE)["#{hostname}"]? != nil
+      creds = fetch_credentials(CONFIG_FILE, "#{hostname}") # => NamedTuple(Symbol, String...)
     else
-      config = update_config_file(hostname)
+      creds = update_config_file(hostname)
     end
 
     # Creates an Snmp session object and invokes the walk_mib3 method on the object,
     # host_session, using 'system' oid if the --mib flag is missing.
-    host_session = Snmp.new(
-      config["auth_pass"].to_s,
-      config["priv_pass"].to_s,
-      config["user"].to_s,
-      config["auth"].to_s.upcase,
-      config["crypto"].to_s.upcase) # => Snmp
+    host_session = Snmp.new(creds[:user], creds[:auth_pass], creds[:priv_pass], creds[:auth], creds[:crypto])
     output_format = only_values ? "vq" : "QUsT"
     status, results = host_session.walk_mib3(hostname, mib_oid, output_format)
     abort snmp_message(hostname, mib_oid) unless status == 0
@@ -136,16 +145,12 @@ struct App
     # Show your stuff
     case
     when display_formatted
-      Util.clear_screen
-      say_hey(hostname)
-      table = {} of String => String # => Hash(String, String)
-      format_table(results.split("\n"), table)
-      display_table(table, hostname, mib_oid)
+      show_formatted(hostname, results, mib_oid)
     when file_write
-      Dir.mkdir_p(Config::OUT_PATH) unless Dir.exists?(Config::OUT_PATH)
+      Dir.mkdir_p(OUT_PATH) unless Dir.exists?(OUT_PATH)
       Util.write_file(OUT_FILE, results)
     else
-      display_raw_table(results.split("\n")) # => Array(String)
+      show_raw(results)
     end
   end
 end

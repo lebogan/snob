@@ -11,8 +11,8 @@
 
 # Defines the Snmp object and forms the **walk_mib3** command string.
 module Snmp
-  struct Snmp
-    property :auth_pass, :priv_pass, :user, :auth, :crypto
+  class Snmp
+    property :user, :auth_pass, :priv_pass, :auth, :crypto
 
     # Creates a new Snmp object for a walk session.
     #
@@ -20,7 +20,7 @@ module Snmp
     # Snmp.new(args...) # => Snmp
     # ```
     #
-    def initialize(@auth_pass : String, @priv_pass : String, @user : String,
+    def initialize(@user : String, @auth_pass : String, @priv_pass : String,
                    @auth : String, @crypto : String)
     end
 

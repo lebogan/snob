@@ -14,22 +14,6 @@ module Config
   extend self
   @@prompt = Term::Prompt.new
 
-  OIDLIST = {arp:     "ipNetToPhysicalPhysAddress",
-             lldp:    "1.0.8802.1.1.2.1.4.1.1.9",
-             sys:     "system",
-             mem:     "memory",
-             dsk:     "dskTable",
-             ifdesc:  "ifDescr",
-             distro:  "ucdavis.7890.1.4",
-             temp:    "lmTempSensorsDevice",
-             hp_desc: "enterprises.11.2.14.11.1.2.4.1.4.1",
-  } # => NamedTuple(Symbol, String...)
-
-  CONFIG_PATH = File.expand_path("#{ENV["HOME"]}/.snob")
-  CONFIG_FILE = File.expand_path("#{CONFIG_PATH}/snobrc.yml")
-  OUT_PATH    = File.expand_path("#{ENV["HOME"]}/tmp")
-  OUT_FILE    = File.expand_path("#{OUT_PATH}/raw_dump.txt")
-
   # Checks for existance of a config file and creates a dummy entry
   #    if the user answers yes.
   def check_for_config(config_path : String, config_file : String)
@@ -59,12 +43,18 @@ module Config
     credentials = {hostname => config}.to_yaml.gsub("---", "") # => String
     print_chars('-', 60)
     choice = @@prompt.yes?("Save these credentials(Y/n)? ")
-    Util.append_file(Config::CONFIG_FILE, credentials) if choice
+    Util.append_file(CONFIG_FILE, credentials) if choice
     config
   end
 
-  # Parses a YAML configuration file.
-  def fetch_config(config_file : String) : YAML::Any
+  def check_credentials(config_file : String) : YAML::Any
     YAML.parse(File.read(config_file))
+  end
+
+  def fetch_credentials(config_file : String, hostname : String)
+    creds = YAML.parse(File.read(config_file))[hostname]
+    {user: creds["user"].to_s, auth_pass: creds["auth_pass"].to_s,
+     priv_pass: creds["priv_pass"].to_s, auth: creds["auth"].to_s,
+     crypto: creds["crypto"].to_s}
   end
 end

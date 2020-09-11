@@ -10,21 +10,85 @@
 # ===============================================================================
 
 FORMATTED_PAGE_SIZE = 15
-RAW_PAGE_SIZE       = 30
+RAW_PAGE_SIZE       = 20
 SEPERATOR           = "-------------------+-------------------------------------------------"
 
 # Displays the results of a snmpwalk operation either raw or formatted.
 module Reports
+  @@prompt = Term::Prompt.new
+
+  # Prints a line of characters for display formatting, defaults to 20 dashes.
+  #
+  # ```
+  # Helpers.print_chars('*', 10) # => "**********"
+  # Helpers.print_chars          # => "--------------------"
+  # ```
+  #
+  def print_chars(character : Char = '-', number : Int32 = 20)
+    puts "%s" % character * number
+  end
+
+  # Truncates a _text_ string longer than _length_ characters and prints
+  # a _truncate_ _string_ (defaults to '...') in place of the removed text.
+  # Defaults to # 48 characters.
+  #
+  # ```
+  # Myutils.truncate("hello, world", 10, "...") # => hello, ...
+  # ```
+  #
+  def truncate(text : String, length = 48, trunc_string = "...") : String
+    text.size > length ? "#{text[0...length - trunc_string.size]}#{trunc_string}" : text
+  end
+
+  # Capitalizes only the first word in a string, leaving the rest untouched. This
+  # preserves the words I want capitalized intentionally.
+  #
+  # ```
+  # Myutils.capitalize!("my dog has Fleas") # => "My dog has Fleas"
+  # ```
+  def capitalize!(string : String) : String
+    String.build { |str| str << string[0].upcase << string[1..string.size] }
+  end
+
+  # Adds a period to the end of a string if no terminating punctuation (?, !, .)
+  # is present.
+  #
+  # ```
+  # Myutils.punctuate!("let's end this")  # => "let's end this."
+  # Myutils.punctuate!("let's end this!") # => "let's end this!"
+  # Myutils.punctuate!("let's end this?") # => "let's end this?"
+  # ```
+  def punctuate!(string : String) : String
+    case string
+    when .ends_with?('.'), .ends_with?('?'), .ends_with?('!')
+      string
+    else
+      string.insert(-1, '.')
+    end
+  end
+
+  def show_formatted(hostname, results, mib_oid)
+    Util.clear_screen
+    say_hey(hostname)
+    table = {} of String => String # => Hash(String, String)
+    format_table(results.split("\n"), table)
+    display_table(table, hostname, mib_oid)
+  end
+
+  def show_raw(results)
+    Util.clear_screen
+    display_raw_table(results.split("\n")) # => Array(String)
+  end
+
   # Displays the formatted table information, removes quotes from info string variable.
-  def display_table_info(formatted_table : Hash | NamedTuple)
+  def display_formatted_table(formatted_table : Hash | NamedTuple)
     page_count = 1
     formatted_table.each do |label, info|
       printf("%-18s |%s\n", label, info.delete("\""))
       puts SEPERATOR
       page_count += 1
       if page_count % FORMATTED_PAGE_SIZE == 0
-        choice = Util.ask_char("\n -- press any key to continue or q to quit --\n\n")
-        choice == 'q' ? break : next
+        @@prompt.yes?("Continue?") ? next : break
       end
     end
     puts "\n"
@@ -37,8 +101,7 @@ module Reports
       puts entry
       page_count += 1
       if page_count % RAW_PAGE_SIZE == 0
-        choice = Util.ask_char("\n -- press any key to continue or q to quit --\n\n")
-        choice == 'q' ? break : next
+        @@prompt.yes?("Continue?") ? next : break
       end
     end
     puts "\n\n"
@@ -69,7 +132,7 @@ module Reports
   def display_table(formatted_table : Hash, hostname : String, oid : String)
     header = format_header(oid) # => Tuple(String, String, String)
     display_header(hostname, header, oid)
-    display_table_info(formatted_table)
+    display_formatted_table(formatted_table)
   end
 
   # Formats the table into label and info.
@@ -77,7 +140,7 @@ module Reports
     results.each do |entry|
       if entry.split("=").size > 1
         label = format_label(entry)
-        info = Util.truncate(entry.split("=")[1]).to_s
+        info = truncate(entry.split("=")[1]).to_s
         table[label] = info
       end
     end
@@ -118,6 +181,6 @@ module Reports
     Util.clear_screen
     header = {"friendly name", "object identifier"}
     display_header("OIDs", header, "Included pre-defined object identifiers")
-    display_table_info(list)
+    display_formatted_table(list)
   end
 end

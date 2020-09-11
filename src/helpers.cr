@@ -22,52 +22,6 @@ module Helpers
     puts "Hey #{hostname}!"
   end
 
-  # Checks for hostname in ARGV
-  #
-  # ```
-  # Helpers.process_argv("myhost") # => "myhost"
-  # ```
-  #
-  def process_argv(argv) : String
-    prompt = Term::Prompt.new
-    if argv.empty?
-      hostname = prompt.ask("Enter hostname: ").to_s
-      abort blank_host_message if hostname.blank?
-      hostname
-    else
-      argv[0]
-    end
-  end
-
-  # Asks for a hostname if none is given on the command line.
-  #
-  # ```
-  # Helpers.check_for_host # => String
-  # ```
-  #
-  def check_for_host(argv)
-    hostname = process_argv(argv)
-
-    # Checks if host exists on this network.
-    begin
-      resolve_host("#{hostname}")
-    rescue ex
-      abort ex.message
-    end
-    hostname
-  end
-
-  # Prints a line of characters for display formatting, defaults to 20 dashes.
-  #
-  # ```
-  # Helpers.print_chars('*', 10) # => "**********"
-  # Helpers.print_chars          # => "--------------------"
-  # ```
-  #
-  def print_chars(character : Char = '-', number : Int32 = 20)
-    puts "%s" % character * number
-  end
-
   # Does a lookup of a host's ip address and returns it as a Socket::IPAddress
   # object. Raises an error if the hostname doesn't exist or can't be resolved.
   # Remove the ":7" part with `rstrip(":7")` to get just the ip address.

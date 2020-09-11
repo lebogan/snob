@@ -8,6 +8,8 @@
 #    COPYRIGHT:  (C) 2017 Lewis E. Bogan <lewis.bogan@comcast.net>
 # Distributed under terms of the MIT license.
 # ===============================================================================
+record V3Credentials, user : String, auth_pass : String, priv_pass : String,
+  auth : String, crypto : String
 
 #  Defines session methods.
 module Session
@@ -21,10 +23,15 @@ module Session
   # ```
   #
   def configure_session
-    {user:      @@prompt.ask("Enter security name: ", required: true).to_s,
-     auth_pass: @@prompt.mask("Enter authentication phrase: ", required: true).to_s,
-     priv_pass: @@prompt.mask("Enter privacy phrase: ", required: true).to_s,
-     auth:      @@prompt.ask("Authentication: [MD5/SHA]", default: "SHA").to_s.upcase,
-     crypto:    @@prompt.ask("Crypto algorithm [AES/DES]: ", default: "AES").to_s.upcase}
+    creds = V3Credentials.new(
+      @@prompt.ask("Enter security name: ", required: true).to_s,
+      @@prompt.mask("Enter authentication phrase: ", required: true).to_s,
+      @@prompt.mask("Enter privacy phrase: ", required: true).to_s,
+      @@prompt.ask("Authentication: [MD5/SHA]", default: "SHA").to_s.upcase,
+      @@prompt.ask("Crypto algorithm [AES/DES]: ", default: "AES").to_s.upcase
+    )
+
+    {user: creds.user, auth_pass: creds.auth_pass, priv_pass: creds.priv_pass,
+     auth: creds.auth, crypto: creds.crypto}
   end
 end

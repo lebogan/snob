@@ -9,6 +9,11 @@
 # Distributed under terms of the MIT license.
 # ===============================================================================
 module Util
+  def self.date
+    time = {{ (env("SOURCE_DATE_EPOCH") || `date +%s`).to_i }}
+    Time.unix(time).to_s("%Y-%m-%d")
+  end
+
   # Displays prompt and cursor all on one line if prompt ends with a space,
   # otherwise displays prompt string, a newline, and then the cursor.
   #
@@ -86,43 +91,39 @@ module Util
     File.open(filename, "a") { |file| file.puts content }
   end
 
-  # Truncates a _text_ string longer than _length_ characters and prints
-  # a _truncate_ _string_ (defaults to '...') in place of the removed text.
-  # Defaults to # 48 characters.
+  # Checks for hostname in ARGV
   #
   # ```
-  # Myutils.truncate("hello, world", 10, "...") # => hello, ...
+  # Helpers.process_argv("myhost") # => "myhost"
   # ```
   #
-  def self.truncate(text : String, length = 48, trunc_string = "...") : String
-    text.size > length ? "#{text[0...length - trunc_string.size]}#{trunc_string}" : text
-  end
-
-  # Capitalizes only the first word in a string, leaving the rest untouched. This
-  # preserves the words I want capitalized intentionally.
-  #
-  # ```
-  # Myutils.capitalize!("my dog has Fleas") # => "My dog has Fleas"
-  # ```
-  def self.capitalize!(string : String) : String
-    String.build { |str| str << string[0].upcase << string[1..string.size] }
-  end
-
-  # Adds a period to the end of a string if no terminating punctuation (?, !, .)
-  # is present.
-  #
-  # ```
-  # Myutils.punctuate!("let's end this")  # => "let's end this."
-  # Myutils.punctuate!("let's end this!") # => "let's end this!"
-  # Myutils.punctuate!("let's end this?") # => "let's end this?"
-  # ```
-  def self.punctuate!(string : String) : String
-    case string
-    when .ends_with?('.'), .ends_with?('?'), .ends_with?('!')
-      string
+  def process_argv(argv) : String
+    prompt = Term::Prompt.new
+    if argv.empty?
+      hostname = prompt.ask("Enter hostname: ").to_s
+      abort blank_host_message if hostname.blank?
+      hostname
     else
-      string.insert(-1, '.')
+      argv[0]
     end
+  end
+
+  # Asks for a hostname if none is given on the command line.
+  #
+  # ```
+  # Helpers.check_for_host # => String
+  # ```
+  #
+  def check_for_host(argv)
+    hostname = process_argv(argv)
+
+    # Checks if host exists on this network.
+    begin
+      resolve_host("#{hostname}")
+    rescue ex
+      abort ex.message
+    end
+    hostname
   end
 
   # Runs a system-level command and returns a Tuple(Int32, String) containing
