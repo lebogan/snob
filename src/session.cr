@@ -13,25 +13,28 @@ record V3Credentials, user : String, auth_pass : String, priv_pass : String,
 
 #  Defines session methods.
 module Session
-  extend self
-  @@prompt = Term::Prompt.new
+  class V3Session
+    def initialize
+      @prompt = Term::Prompt.new
+    end
 
-  # Prompts the user for host credentials. This method is typically invoked
-  # when the credentials are not in the configuration file.
-  # ```
-  # configure_session # => NamedTuple(user: String, auth: String, priv: String, crypto: String)
-  # ```
-  #
-  def configure_session
-    creds = V3Credentials.new(
-      @@prompt.ask("Enter security name: ", required: true).to_s,
-      @@prompt.mask("Enter authentication phrase: ", required: true).to_s,
-      @@prompt.mask("Enter privacy phrase: ", required: true).to_s,
-      @@prompt.ask("Authentication: [MD5/SHA]", default: "SHA").to_s.upcase,
-      @@prompt.ask("Crypto algorithm [AES/DES]: ", default: "AES").to_s.upcase
-    )
+    # Prompts the user for host credentials. This method is typically invoked
+    # when the credentials are not in the configuration file.
+    # ```
+    # configure_session # => NamedTuple(user: String, auth: String, priv: String, crypto: String)
+    # ```
+    #
+    def configure_session
+      creds = V3Credentials.new(
+        @prompt.ask("Enter security name: ", required: true).to_s,
+        @prompt.mask("Enter authentication phrase: ", required: true).to_s,
+        @prompt.mask("Enter privacy phrase: ", required: true).to_s,
+        @prompt.ask("Authentication: [MD5/SHA]", default: "SHA").to_s.upcase,
+        @prompt.ask("Crypto algorithm [AES/DES]: ", default: "AES").to_s.upcase
+      )
 
-    {user: creds.user, auth_pass: creds.auth_pass, priv_pass: creds.priv_pass,
-     auth: creds.auth, crypto: creds.crypto}
+      {user: creds.user, auth_pass: creds.auth_pass, priv_pass: creds.priv_pass,
+       auth: creds.auth, crypto: creds.crypto}
+    end
   end
 end

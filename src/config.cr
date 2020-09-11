@@ -39,8 +39,8 @@ module Config
   def update_config_file(hostname : String)
     puts "'#{hostname}' is not in config file. Configuring ..."
     print_chars('-', 60)
-    config = configure_session                                 # [0]                              # => Hash(String, NamedTuple)
-    credentials = {hostname => config}.to_yaml.gsub("---", "") # => String
+    config = Session::V3Session.new.configure_session
+    credentials = {hostname => config}.to_yaml.gsub("---", "")
     print_chars('-', 60)
     choice = @@prompt.yes?("Save these credentials(Y/n)? ")
     Util.append_file(CONFIG_FILE, credentials) if choice
