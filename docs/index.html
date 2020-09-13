@@ -1,20 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Crystal Docs 0.28.0">
+<meta name="generator" content="Crystal Docs 0.34.0">
+<meta name="crystal_docs.project_version" content="raspi-dev">
+<meta name="crystal_docs.project_name" content="snob">
 
 
-<link href="css/style.css" rel="stylesheet" type="text/css">
-
+<link href="css/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="js/doc.js"></script>
-<script type="text/javascript">
-  CrystalDoc.base_path = "";
-</script>
 
-  <meta id="repository-name" content="github.com/lebogan/snob">
-  <title>README - github.com/lebogan/snob</title>
+<svg class="hidden">
+  <symbol id="octicon-link" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+  </symbol>
+</svg>
+
+  <meta id="repository-name" content="snob">
+  <title>snob raspi-dev</title>
+  <script type="text/javascript">
+  CrystalDocs.base_path = "";
+  </script>
 </head>
 <body>
 
@@ -24,8 +31,16 @@
       <input type="search" class="search-input" placeholder="Search..." spellcheck="false" aria-label="Search">
     </div>
 
-    <div class="repository-links">
-      <a href="index.html">README</a>
+    <div class="project-summary">
+      <h1 class="project-name">
+        <a href="index.html">
+          snob
+        </a>
+      </h1>
+
+      <span class="project-version">
+        raspi-dev
+      </span>
     </div>
   </div>
 
@@ -36,58 +51,78 @@
   <div class="types-list">
     <ul>
   
-  <li class=" " data-id="github.com/lebogan/snob/toplevel" data-name="top level namespace">
+  <li class=" " data-id="snob/toplevel" data-name="top level namespace">
       <a href="toplevel.html">Top Level Namespace</a>
       
     </li>
   
-  <li class=" " data-id="github.com/lebogan/snob/App" data-name="app">
+  <li class=" " data-id="snob/App" data-name="app">
       <a href="App.html">App</a>
       
     </li>
   
-  <li class=" " data-id="github.com/lebogan/snob/Config" data-name="config">
+  <li class=" " data-id="snob/Config" data-name="config">
       <a href="Config.html">Config</a>
       
     </li>
   
-  <li class=" " data-id="github.com/lebogan/snob/Helpers" data-name="helpers">
+  <li class=" " data-id="snob/Helpers" data-name="helpers">
       <a href="Helpers.html">Helpers</a>
       
     </li>
   
-  <li class=" " data-id="github.com/lebogan/snob/Messages" data-name="messages">
+  <li class=" " data-id="snob/Messages" data-name="messages">
       <a href="Messages.html">Messages</a>
       
     </li>
   
-  <li class=" " data-id="github.com/lebogan/snob/Object" data-name="object">
+  <li class=" " data-id="snob/Object" data-name="object">
       <a href="Object.html">Object</a>
       
     </li>
   
-  <li class=" " data-id="github.com/lebogan/snob/Reports" data-name="reports">
+  <li class=" " data-id="snob/Reports" data-name="reports">
       <a href="Reports.html">Reports</a>
       
     </li>
   
-  <li class=" " data-id="github.com/lebogan/snob/Session" data-name="session">
+  <li class="parent " data-id="snob/Session" data-name="session">
       <a href="Session.html">Session</a>
+      
+        <ul>
+  
+  <li class=" " data-id="snob/Session/V3Session" data-name="session::v3session">
+      <a href="Session/V3Session.html">V3Session</a>
       
     </li>
   
-  <li class="parent " data-id="github.com/lebogan/snob/Snmp" data-name="snmp">
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="snob/Snmp" data-name="snmp">
       <a href="Snmp.html">Snmp</a>
       
         <ul>
   
-  <li class=" " data-id="github.com/lebogan/snob/Snmp/Snmp" data-name="snmp::snmp">
+  <li class=" " data-id="snob/Snmp/Snmp" data-name="snmp::snmp">
       <a href="Snmp/Snmp.html">Snmp</a>
       
     </li>
   
 </ul>
 
+      
+    </li>
+  
+  <li class=" " data-id="snob/Util" data-name="util">
+      <a href="Util.html">Util</a>
+      
+    </li>
+  
+  <li class=" " data-id="snob/V3Credentials" data-name="v3credentials">
+      <a href="V3Credentials.html">V3Credentials</a>
       
     </li>
   
@@ -98,15 +133,25 @@
 
 
 <div class="main-content">
-<h1>snob (Snmp Network Object Browser)</h1>
+<h1><a id="snob-snmp-network-object-browser" class="anchor" href="#snob-snmp-network-object-browser">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>snob (Snmp Network Object Browser)</h1>
 
-<h2>Introduction</h2>
+<h2><a id="introduction" class="anchor" href="#introduction">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Introduction</h2>
 
 <p>*<strong>This utility is experimental, it will change radically as I learn more of the
-Crystal language, so use at your own risk!</strong>*</p>
+Crystal language, so use at your own risk! There will be warts!</strong>*  </p>
 
-<p><strong>snob</strong> is an attempt to rewrite my Ruby app <a href="https://github.com/lebogan/yasb.git" target="_blank">YASB</a>
-in the Crystal programming language. The idea is to:</p>
+<p><a href="#disclaimer" target="_blank">Please, see the DISCLAIMER below</a></p>
+
+<p><strong>snob</strong> is a rewrite of my Ruby app <a href="https://github.com/lebogan/yasb.git" target="_blank">YASB</a>
+in the Crystal programming language. It's basically a wrapper around snmpwalk. The idea is to:</p>
 
 <ul><li>have a somewhat easily distributable utility for
 probing network devices using snmpV3</li><li>share this utility with colleagues without them having to install some
@@ -127,31 +172,69 @@ exists in an attempt to pretty-print the output for display on screen. The --onl
 flag allows output to be used raw by another application like RRDTool for graphing 
 trends when you know which OID you want.</p>
 
-<h2>Installation</h2>
+<h2><a id="installation" class="anchor" href="#installation">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Installation</h2>
 
-<h3>Required</h3>
+<p>This covers Ubuntu (14 - 20). See notes below for other distros.  </p>
+
+<h3><a id="required" class="anchor" href="#required">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Required</h3>
 
 <p>Required utilities for nms (network management station):  </p>
 
-<ul><li>git</li><li>Install Crystal from the website, <a href="https://crystal-lang.org/docs/installation" target="_blank">crystal-lang</a>,
-to build the utility from source.</li><li>net-snmp  </li><li>net-snmp-utils  </li><li>snmp-mibs-downloader (Deb-based)</li></ul>
+<ul><li>git  </li><li>Install Crystal from the website, <a href="https://crystal-lang.org/docs/installation" target="_blank">crystal-lang</a>,
+to build the utility from source.  </li><li>snmp  </li><li>snmp-mibs-downloader  </li></ul>
 
-<h3>Preferred Installation &lt;a name="preferred-installation">&lt;/a></h3>
+<h3><a id="snmp-configuration" class="anchor" href="#snmp-configuration">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Snmp configuration</h3>
+
+<p>There is an excellant write up on snmp by Justin Ellingwood and Vadym Kalsin on the DigitalOcean website 
+<a href="https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-an-snmp-daemon-and-client-on-ubuntu-18-04
+" target="_blank">here</a>. They show how to configure a server and clients.  </p>
+
+<p>You need the snmp-mibs-downloader so you can refer to 
+mibs by colorful names like ___system___ instead of 1.3.6.1.... There is an entry in 
+<code>/etc/snmp/snmp.conf</code> that prevents that from happening. Comment out the line that
+contains <code>mibs:</code></p>
+
+<pre><code><span class="c"># As the snmp packages come without MIB files due to license reasons, loading</span>
+<span class="c"># of MIBs is disabled by default. If you added the MIBs you can reenable</span>
+<span class="c"># loading them by commenting out the following line.</span>
+mibs :</code></pre>
+
+<h3><a id="preferred-installation-a-namepreferred-installationa" class="anchor" href="#preferred-installation-a-namepreferred-installationa">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Preferred Installation &lt;a name="preferred-installation">&lt;/a></h3>
 
 <p>A script, <code>install.sh</code>, is included to manage the installation process. It allows for
 installation of a pre compiled binary or building from source. It also allows for
-upgrading and uninstalling.</p>
+upgrading and uninstalling. See the additional notes for <a href="#rpibuild" target="_blank">Raspberry Pi 4</a>.</p>
 
-<p>Check out install.sh to see what the script is doing. See README_UBUNTU.md for my
-tests on Ubuntu 14.04.</p>
+<p>Check out install.sh to see what the script is doing.  </p>
 
 <pre><code class="language-bash">$ git clone https://github.com/lebogan/snob.git
 $ cd snob
 $ ./install.sh</code></pre>
 
-<h3>Manual Installation (if you gotta!)</h3>
+<h3><a id="manual-installation-if-you-gotta" class="anchor" href="#manual-installation-if-you-gotta">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Manual Installation (if you gotta!)</h3>
 
-<p>A Makefile is included for compiling and installing the binary and man pages.
+<p>___Note: not for Raspberry Pi!___  
+A Makefile is included for compiling and installing the binary and man pages.
 Crystal is required to be preinstalled. The binary is copied to <code>/usr/local/bin</code>.
 The Makefile also provides for uninstalling and compliation cleanup. The compiled
 binary is in <code>./bin</code>. Make also builds and installs man pages as necessary to
@@ -162,33 +245,53 @@ $ cd snob
 $ shards install
 $ make clean
 $ make
-$ make test
 $ sudo make install</code></pre>
 
-<h4>Deb-based (Debian) Distributions</h4>
+<h4><a id="rpm-based-red-hat-and-other-distributions" class="anchor" href="#rpm-based-red-hat-and-other-distributions">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>RPM-based (RedHat) and other distributions</h4>
 
 <blockquote>The source will have to be recompiled with Crystal.  
-> From the website, <a href="https://crystal-lang.org/docs/installation/on_debian_and_ubuntu.html" target="_blank">crystal-lang</a>,
-> use the Debian and Ubuntu install.  
+> From the website, <a href="https://crystal-lang.org/install/" target="_blank">crystal-lang</a>  
 > See <a href="#preferred-installation" target="_blank">Preferred Installation</a></blockquote>
 
-<p>Configure your hosts to respond to snmp requests. See documentation at: 
-<a href="http://net-snmp.sourceforge.net/docs/README.snmpv3.html" target="_blank">net-snmp</a></p>
+<h4><a id="debian-9" class="anchor" href="#debian-9">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Debian 9</h4>
 
-<h2>Usage</h2>
+<blockquote>Install Crystal <a href="https://crystal-lang.org/install/" target="_blank">crystal-lang</a>  
+> Install git and curl   
+> Install libyaml-dev  
+> Install apt-transport-https, dirmngr  
+> For snmp, add to file: /etc/apt/sources.list
+><code></code><code>text
+>deb http://ftp.br.debian.org/debian/ wheezy main contrib non-free
+>deb-src http://ftp.br.debian.org/debian/ wheezy main contrib non-free
+></code><code></code></blockquote>
+
+<h2><a id="usage" class="anchor" href="#usage">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Usage</h2>
 
 <pre><code class="language-bash">$ snob --help
 Usage: snob [OPTIONS] [HOST]
-Browse a host snmpv3 mib tree.
+Browse a host's snmpv3 mib tree.
 
 Prompts for HOST if not specified on the command-line. Also, prompts
-for security credentials if HOST is not in the config file, ~/.snob/snobrc.yml.
+for security credentials if HOST is not in the config file, snobrc.yml.
 
     -l, --list                       List some pre-defined OIDs
     -m OID, --mib=OID                Display information for this oid
                                      (Default: system)
     -d, --dump                       Write output to file, raw only
-    -f, --formatted                  Display formatted output
+    -e, --edit                       Edit global config file
+    -f, --formatted                  Display as formatted table
     -o, --only-values                Display values only (not OID = value)
     -h, --help                       Show this help
     -v, --version                    Show version
@@ -216,7 +319,11 @@ distro           |ucdavis.7890.1.4
 temp             |lmTempSensorsDevice
 -----------------+-------------------------------------------------</code></pre>
 
-<h2>Config file</h2>
+<h2><a id="config-file" class="anchor" href="#config-file">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Config file</h2>
 
 <p>A first run will create a default YAML config file named <strong>~/.snob/snobrc.yml</strong>
 if it doesn't already exist. The directory's permissions are set to 0o700
@@ -228,58 +335,97 @@ to enter credentials manually with the option to save them.  </p>
 
 <p>The config file is YAML format and can be edited manually.</p>
 
-<pre><code class="language-text"># /home/vagrant/.snob/snobrc.yml
+<pre><code class="language-text"># /home/&lt;user>/.snob/snobrc.yml
 ---
 dummy:
   user: username
-  auth: auth passphrase
-  priv: priv passphrase
+  auth_pass: auth passphrase
+  priv_pass: priv passphrase
+  auth: MD5/SHA
   crypto: AES/DES
+
 
 myserver:
   user: myname
   auth: secret
   priv: realsecret
+  auth: MD5
   crypto: DES</code></pre>
 
-<h2>TODO</h2>
+<h2><a id="todo" class="anchor" href="#todo">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>TODO</h2>
 
-<ul><li>[ ] Bind the net-snmp c library to make this app even more portable.</li><li>[X] Build a Ubuntu test environment, write installation instructions.</li><li>[ ] Add a method to eliminate the need for external ping utility.</li><li>[ ] Update the installation process/script with a Makefile.</li></ul>
+<ul><li>[X] Add ability to do on-the-fly editing of config file using default system editor.</li><li>[ ] Replace reliance on external snmpwalk to make this app even more portable.  </li><li>[ ] Add build for Raspberry Pi Model 4</li></ul>
 
-<h2>Development</h2>
+<h2><a id="development" class="anchor" href="#development">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Development</h2>
 
-<p>Please, see the DISCLAIMER below.  
-Check out the repo on GitHub at https://github.com/lebogan/snob.git  
-Developed using Crystal 0.27.0 on Fedora 28 workstation running under Vagrant v2.2.0
-with VirtualBox 5.2 provider.  
-Tested on Fedora 26/27/28 and CentOS 7.  
-See README_UBUNTU.md for my tests on Ubuntu 14.04.</p>
+<p><a href="#disclaimer" target="_blank">Please, see the DISCLAIMER below</a>  
+Check out the repo on GitHub at https://github.com/lebogan/snob.git  </p>
 
-<h2>Contributing</h2>
+<h2><a id="contributing" class="anchor" href="#contributing">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Contributing</h2>
 
 <p>Please, see the DISCLAIMER below.</p>
 
 <ol><li>Fork it ( https://github.com/[your-github-name]/snob/fork )</li><li>Create your feature branch (git checkout -b my-new-feature)</li><li>Commit your changes (git commit -am 'Add some feature')</li><li>Push to the branch (git push origin my-new-feature)</li><li>Create a new Pull Request</li></ol>
 
-<h2>Contributors</h2>
+<h2><a id="contributors" class="anchor" href="#contributors">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Contributors</h2>
 
 <ul><li><a href="https://github.com/lebogan/snob.git" target="_blank">lebogan</a> - creator, maintainer</li></ul>
 
-<h2>License</h2>
+<h2><a id="license" class="anchor" href="#license">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>License</h2>
 
 <p>This utility is available as open source under the terms of the
 <a href="http://opensource.org/licenses/MIT" target="_blank">MIT License</a>.</p>
 
-<h2>Disclaimer</h2>
+<h2><a id="disclaimer-a-namedisclaimera" class="anchor" href="#disclaimer-a-namedisclaimera">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Disclaimer &lt;a name="disclaimer">&lt;/a></h2>
 
 <p>This utility was originally created for my personal use in my work as a network
-specialist. It was developed on a Fedora Workstation using Crystal 0.24.2. This has
-only been tested on Fedora 26/27 Workstation and CentOS 7 </p>
+specialist. Developed using Crystal 0.35.1 on Ubuntu 18.04 virtual workstation running under Vagrant v2.2.5 with VirtualBox 6.0 provider.  </p>
 
 <p>I am not a professional software developer nor do I pretend to be. I am a retired IT 
 network specialist and this is a hobby to keep me out of trouble. If you 
 use this application and it doesn't work the way you would want, feel free to 
 fork it and modify it to your liking. Fork on GitHub at https://github.com/lebogan/snob.git</p>
+
+<h3><a id="raspberry-pi-raspberry-pi-os-raspian-10a-namerpibuilda" class="anchor" href="#raspberry-pi-raspberry-pi-os-raspian-10a-namerpibuilda">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Raspberry Pi (Raspberry Pi OS, Raspian 10)&lt;a name="rpibuild">&lt;/a></h3>
+
+<p>See <a href="#preferred-installation" target="_blank">Preferred Installation</a>. The binary has to be cross-compiled for the ARMv7 architecture.  </p>
+
+<p>I have tested on a Raspberry Pi 4 Model B Rev 1.1 ARMv7 (4gb) running Raspian 10 and Crystal 0.33.1 and a Raspberry Pi 4 Model B Rev 1.4 ARMv7 (8gb) running Raspian 10, no llvm, no Crystal. Both work well.</p>
+
+<blockquote>An object file, <code>snob.o</code> is included to aid in the cross-compiling effort.
+> These files are required: <code>libpcre3-dev, libgc-dev, libyaml-dev, libreadline-dev, libevent-dev</code>.
+> The install script will build a file, <code>libcrystal.a</code> and then build the binary
+> from the object file.  
+> For the snmp stuff, <code>snmp, snmpd, snmp-mibs-downloader, libsnmp-dev</code>, are needed.
+> In addition, the <code>mibs:</code> line in <code>/etc/snmp/snmp.conf</code> needs to be commented out.</blockquote>
 </div>
 </body>
 </html>

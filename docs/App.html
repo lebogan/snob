@@ -1,20 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Crystal Docs 0.28.0">
+<meta name="generator" content="Crystal Docs 0.34.0">
+<meta name="crystal_docs.project_version" content="raspi-dev">
+<meta name="crystal_docs.project_name" content="snob">
 
 
-<link href="css/style.css" rel="stylesheet" type="text/css">
-
+<link href="css/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="js/doc.js"></script>
-<script type="text/javascript">
-  CrystalDoc.base_path = "";
-</script>
 
-  <meta id="repository-name" content="github.com/lebogan/snob">
-  <title>App - github.com/lebogan/snob</title>
+<svg class="hidden">
+  <symbol id="octicon-link" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+  </symbol>
+</svg>
+
+  <meta id="repository-name" content="snob">
+  <title>App - snob raspi-dev</title>
+  <script type="text/javascript">
+    CrystalDocs.base_path = "";
+  </script>
 </head>
 <body>
 
@@ -24,8 +31,16 @@
       <input type="search" class="search-input" placeholder="Search..." spellcheck="false" aria-label="Search">
     </div>
 
-    <div class="repository-links">
-      <a href="index.html">README</a>
+    <div class="project-summary">
+      <h1 class="project-name">
+        <a href="index.html">
+          snob
+        </a>
+      </h1>
+
+      <span class="project-version">
+        raspi-dev
+      </span>
     </div>
   </div>
 
@@ -36,58 +51,78 @@
   <div class="types-list">
     <ul>
   
-  <li class=" " data-id="github.com/lebogan/snob/toplevel" data-name="top level namespace">
+  <li class=" " data-id="snob/toplevel" data-name="top level namespace">
       <a href="toplevel.html">Top Level Namespace</a>
       
     </li>
   
-  <li class=" current" data-id="github.com/lebogan/snob/App" data-name="app">
+  <li class=" current" data-id="snob/App" data-name="app">
       <a href="App.html">App</a>
       
     </li>
   
-  <li class=" " data-id="github.com/lebogan/snob/Config" data-name="config">
+  <li class=" " data-id="snob/Config" data-name="config">
       <a href="Config.html">Config</a>
       
     </li>
   
-  <li class=" " data-id="github.com/lebogan/snob/Helpers" data-name="helpers">
+  <li class=" " data-id="snob/Helpers" data-name="helpers">
       <a href="Helpers.html">Helpers</a>
       
     </li>
   
-  <li class=" " data-id="github.com/lebogan/snob/Messages" data-name="messages">
+  <li class=" " data-id="snob/Messages" data-name="messages">
       <a href="Messages.html">Messages</a>
       
     </li>
   
-  <li class=" " data-id="github.com/lebogan/snob/Object" data-name="object">
+  <li class=" " data-id="snob/Object" data-name="object">
       <a href="Object.html">Object</a>
       
     </li>
   
-  <li class=" " data-id="github.com/lebogan/snob/Reports" data-name="reports">
+  <li class=" " data-id="snob/Reports" data-name="reports">
       <a href="Reports.html">Reports</a>
       
     </li>
   
-  <li class=" " data-id="github.com/lebogan/snob/Session" data-name="session">
+  <li class="parent " data-id="snob/Session" data-name="session">
       <a href="Session.html">Session</a>
+      
+        <ul>
+  
+  <li class=" " data-id="snob/Session/V3Session" data-name="session::v3session">
+      <a href="Session/V3Session.html">V3Session</a>
       
     </li>
   
-  <li class="parent " data-id="github.com/lebogan/snob/Snmp" data-name="snmp">
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="snob/Snmp" data-name="snmp">
       <a href="Snmp.html">Snmp</a>
       
         <ul>
   
-  <li class=" " data-id="github.com/lebogan/snob/Snmp/Snmp" data-name="snmp::snmp">
+  <li class=" " data-id="snob/Snmp/Snmp" data-name="snmp::snmp">
       <a href="Snmp/Snmp.html">Snmp</a>
       
     </li>
   
 </ul>
 
+      
+    </li>
+  
+  <li class=" " data-id="snob/Util" data-name="util">
+      <a href="Util.html">Util</a>
+      
+    </li>
+  
+  <li class=" " data-id="snob/V3Credentials" data-name="v3credentials">
+      <a href="V3Credentials.html">V3Credentials</a>
       
     </li>
   
@@ -100,40 +135,56 @@
 <div class="main-content">
 <h1 class="type-name">
 
-  <span class="kind">struct</span> App
+  <span class="kind">class</span> App
 
 </h1>
 
 
-  <ul class="superclass-hierarchy"><li class="superclass"><a href="App.html">App</a></li><li class="superclass">Struct</li><li class="superclass">Value</li><li class="superclass"><a href="Object.html">Object</a></li></ul>
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="App.html">App</a></li><li class="superclass">Reference</li><li class="superclass"><a href="Object.html">Object</a></li></ul>
 
 
 
 
-  <h2>Overview</h2>
+  <h2>
+    <a id="overview" class="anchor" href="#overview">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Overview
+  </h2>
 
-  <p>This struct contains the main application. It checks for command line arguments,
+  <p>This class contains the main application. It checks for command line arguments,
 valid hostname, and snmpv3 credentials.</p>
 
 
 
 
 
-  <h2>Included Modules</h2>
+  <h2>
+    <a id="included-modules" class="anchor" href="#included-modules">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Included Modules
+  </h2>
   <ul class="other-types-list">
-  
-    <li class="other-type"><a href="Config.html">Config</a></li>
-  
-    <li class="other-type"><a href="Helpers.html">Helpers</a></li>
-  
-    <li class="other-type"><a href="Messages.html">Messages</a></li>
-  
-    <li class="other-type"><a href="Reports.html">Reports</a></li>
-  
-    <li class="other-type"><a href="Session.html">Session</a></li>
-  
-    <li class="other-type"><a href="Snmp.html">Snmp</a></li>
-  
+    
+      <li class="other-type"><a href="Config.html">Config</a></li>
+    
+      <li class="other-type"><a href="Helpers.html">Helpers</a></li>
+    
+      <li class="other-type"><a href="Messages.html">Messages</a></li>
+    
+      <li class="other-type"><a href="Reports.html">Reports</a></li>
+    
+      <li class="other-type"><a href="Session.html">Session</a></li>
+    
+      <li class="other-type"><a href="Snmp.html">Snmp</a></li>
+    
+      <li class="other-type"><a href="Util.html">Util</a></li>
+    
   </ul>
 
 
@@ -145,62 +196,34 @@ valid hostname, and snmpv3 credentials.</p>
 
 
 
-  <h2>Defined in:</h2>
+  <h2>
+    <a id="defined-in" class="anchor" href="#defined-in">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Defined in:
+  </h2>
   
-    
-      <a href="https://github.com/lebogan/snob/blob/778dfe96823d5fce69dd1bb00920ebbb84ad2fdc/src/snob.cr#L45" target="_blank">
-        snob.cr
-      </a>
-    
-    <br/>
-  
 
 
 
-  
-    <h2>Constant Summary</h2>
-  
-  <dl>
-    
-      <dt class="entry-const" id="CONFIG_FILE">
-        <strong>CONFIG_FILE</strong> = <code><span class="t">File</span>.expand_path(<span class="s">&quot;</span><span class="i">#{</span><span class="t">CONFIG_PATH</span><span class="i">}</span><span class="s">/snobrc.yml&quot;</span>)</code>
-      </dt>
-      
-    
-      <dt class="entry-const" id="CONFIG_PATH">
-        <strong>CONFIG_PATH</strong> = <code><span class="t">File</span>.expand_path(<span class="s">&quot;~/.snob/&quot;</span>)</code>
-      </dt>
-      
-    
-      <dt class="entry-const" id="OIDLIST">
-        <strong>OIDLIST</strong> = <code>{arp: <span class="s">&quot;ipNetToPhysicalPhysAddress&quot;</span>, lldp: <span class="s">&quot;1.0.8802.1.1.2.1.4.1.1.9&quot;</span>, sys: <span class="s">&quot;system&quot;</span>, mem: <span class="s">&quot;memory&quot;</span>, dsk: <span class="s">&quot;dskTable&quot;</span>, ifdesc: <span class="s">&quot;ifDescr&quot;</span>, distro: <span class="s">&quot;ucdavis.7890.1.4&quot;</span>, temp: <span class="s">&quot;lmTempSensorsDevice&quot;</span>, hp_desc: <span class="s">&quot;enterprises.11.2.14.11.1.2.4.1.4.1&quot;</span>}</code>
-      </dt>
-      
-    
-      <dt class="entry-const" id="OUT_FILE">
-        <strong>OUT_FILE</strong> = <code><span class="t">File</span>.expand_path(<span class="s">&quot;</span><span class="i">#{</span><span class="t">OUT_PATH</span><span class="i">}</span><span class="s">/raw_dump.txt&quot;</span>)</code>
-      </dt>
-      
-    
-      <dt class="entry-const" id="OUT_PATH">
-        <strong>OUT_PATH</strong> = <code><span class="t">File</span>.expand_path(<span class="s">&quot;~/tmp&quot;</span>)</code>
-      </dt>
-      
-    
-      <dt class="entry-const" id="VERSION">
-        <strong>VERSION</strong> = <code>{{ (<span class="s">`shards version /vagrant/Projects/crystal/production/snob/src`</span>).chomp.stringify }}</code>
-      </dt>
-      
-    
-  </dl>
 
 
-
-  <h2>Constructors</h2>
+  <h2>
+    <a id="constructors" class="anchor" href="#constructors">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Constructors
+  </h2>
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#new-class-method" class="signature"><strong>.new</strong></a>
+        <a href="#new(arguments:Array(String))-class-method" class="signature"><strong>.new</strong>(arguments : Array(String))</a>
+        
+          <div class="summary"><p>Creates a <em>new</em> method for App class.</p></div>
         
       </li>
     
@@ -208,9 +231,35 @@ valid hostname, and snmpv3 credentials.</p>
 
 
 
+  <h2>
+    <a id="class-method-summary" class="anchor" href="#class-method-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Class Method Summary
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#run(arguments=ARGV)-class-method" class="signature"><strong>.run</strong>(arguments = <span class="t">ARGV</span>)</a>
+        
+          <div class="summary"><p>Processes command-line argments via ARGV.</p></div>
+        
+      </li>
+    
+  </ul>
 
 
-  <h2>Instance Method Summary</h2>
+
+  <h2>
+    <a id="instance-method-summary" class="anchor" href="#instance-method-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Summary
+  </h2>
   <ul class="list-summary">
     
       <li class="entry-summary">
@@ -230,8 +279,81 @@ valid hostname, and snmpv3 credentials.</p>
   
     
 
+  <h3>Instance methods inherited from module <code><a href="Util.html">Util</a></code></h3>
+  
+  
+    <a href="Util.html#check_for_host(argv)-instance-method" class="tooltip">
+      <span>check_for_host(argv)</span>
+    check_for_host</a>, 
+    
+  
+    <a href="Util.html#process_argv(argv):String-instance-method" class="tooltip">
+      <span>process_argv(argv) : String</span>
+    process_argv</a>
+    
+  
+
+
+    
+
+
+    
+
+  <h3>Class methods inherited from module <code><a href="Util.html">Util</a></code></h3>
+  
+  
+    <a href="Util.html#append_file(filename:String,content:String)-class-method" class="tooltip">
+      <span>append_file(filename : String, content : String)</span>
+    append_file</a>, 
+    
+  
+    <a href="Util.html#ask_char(*args):Char?-class-method" class="tooltip">
+      <span>ask_char(*args) : Char?</span>
+    ask_char</a>, 
+    
+  
+    <a href="Util.html#clear_screen-class-method" class="tooltip">
+      <span>clear_screen</span>
+    clear_screen</a>, 
+    
+  
+    <a href="Util.html#date-class-method" class="tooltip">
+      <span>date</span>
+    date</a>, 
+    
+  
+    <a href="Util.html#prompt_msg(prompt:Tuple)-class-method" class="tooltip">
+      <span>prompt_msg(prompt : Tuple)</span>
+    prompt_msg</a>, 
+    
+  
+    <a href="Util.html#read_file(filename:String):Array(String)-class-method" class="tooltip">
+      <span>read_file(filename : String) : Array(String)</span>
+    read_file</a>, 
+    
+  
+    <a href="Util.html#run_cmd(cmd:String,args:Tuple=%7B&quot;&quot;%7D):Tuple(Int32,String)-class-method" class="tooltip">
+      <span>run_cmd(cmd : String, args : Tuple = {<span class="s">&quot;&quot;</span>}) : Tuple(Int32, String)<br/>run_cmd(cmd : String, args : Array = [<span class="s">&quot;&quot;</span>]) : Tuple(Int32, String)</span>
+    run_cmd</a>, 
+    
+  
+    <a href="Util.html#write_file(filename:String,content:String)-class-method" class="tooltip">
+      <span>write_file(filename : String, content : String)</span>
+    write_file</a>
+    
+  
+
+
+  
+    
+
   <h3>Instance methods inherited from module <code><a href="Messages.html">Messages</a></code></h3>
   
+  
+    <a href="Messages.html#about-instance-method" class="tooltip">
+      <span>about</span>
+    about</a>, 
+    
   
     <a href="Messages.html#banner_message-instance-method" class="tooltip">
       <span>banner_message</span>
@@ -243,29 +365,29 @@ valid hostname, and snmpv3 credentials.</p>
     blank_host_message</a>, 
     
   
-    <a href="Messages.html#invalid_message%28flag%3AString%29-instance-method" class="tooltip">
+    <a href="Messages.html#copyright_message-instance-method" class="tooltip">
+      <span>copyright_message</span>
+    copyright_message</a>, 
+    
+  
+    <a href="Messages.html#invalid_message(flag:String)-instance-method" class="tooltip">
       <span>invalid_message(flag : String)</span>
     invalid_message</a>, 
     
   
-    <a href="Messages.html#missing_message%28flag%3AString%29-instance-method" class="tooltip">
+    <a href="Messages.html#missing_message(flag:String)-instance-method" class="tooltip">
       <span>missing_message(flag : String)</span>
     missing_message</a>, 
     
   
-    <a href="Messages.html#ping_message%28hostname%3AString%29-instance-method" class="tooltip">
+    <a href="Messages.html#ping_message(hostname:String)-instance-method" class="tooltip">
       <span>ping_message(hostname : String)</span>
     ping_message</a>, 
     
   
-    <a href="Messages.html#snmp_message%28hostname%3AString%2Cmib_oid%3AString%29-instance-method" class="tooltip">
+    <a href="Messages.html#snmp_message(hostname:String,mib_oid:String)-instance-method" class="tooltip">
       <span>snmp_message(hostname : String, mib_oid : String)</span>
-    snmp_message</a>, 
-    
-  
-    <a href="Messages.html#snob_version-instance-method" class="tooltip">
-      <span>snob_version</span>
-    snob_version</a>
+    snmp_message</a>
     
   
 
@@ -278,15 +400,6 @@ valid hostname, and snmpv3 credentials.</p>
 
   
     
-
-  <h3>Instance methods inherited from module <code><a href="Session.html">Session</a></code></h3>
-  
-  
-    <a href="Session.html#configure_session%3ATuple%28Hash%28String%2CString%29%29-instance-method" class="tooltip">
-      <span>configure_session : Tuple(Hash(String, String))</span>
-    configure_session</a>
-    
-  
 
 
     
@@ -301,19 +414,29 @@ valid hostname, and snmpv3 credentials.</p>
   <h3>Instance methods inherited from module <code><a href="Config.html">Config</a></code></h3>
   
   
-    <a href="Config.html#build_config_file%28config_file%3AString%2Cconf%3AHash%29-instance-method" class="tooltip">
+    <a href="Config.html#build_config_file(config_file:String,conf:Hash)-instance-method" class="tooltip">
       <span>build_config_file(config_file : String, conf : Hash)</span>
     build_config_file</a>, 
     
   
-    <a href="Config.html#check_for_config%28config_path%3AString%2Cconfig_file%3AString%29-instance-method" class="tooltip">
+    <a href="Config.html#check_credentials(config_file:String):YAML::Any-instance-method" class="tooltip">
+      <span>check_credentials(config_file : String) : YAML::Any</span>
+    check_credentials</a>, 
+    
+  
+    <a href="Config.html#check_for_config(config_path:String,config_file:String)-instance-method" class="tooltip">
       <span>check_for_config(config_path : String, config_file : String)</span>
     check_for_config</a>, 
     
   
-    <a href="Config.html#fetch_config%28config_file%3AString%29%3AYAML%3A%3AAny-instance-method" class="tooltip">
-      <span>fetch_config(config_file : String) : YAML::Any</span>
-    fetch_config</a>
+    <a href="Config.html#fetch_credentials(config_file:String,hostname:String)-instance-method" class="tooltip">
+      <span>fetch_credentials(config_file : String, hostname : String)</span>
+    fetch_credentials</a>, 
+    
+  
+    <a href="Config.html#update_config_file(hostname:String)-instance-method" class="tooltip">
+      <span>update_config_file(hostname : String)</span>
+    update_config_file</a>
     
   
 
@@ -340,22 +463,17 @@ valid hostname, and snmpv3 credentials.</p>
   <h3>Instance methods inherited from module <code><a href="Helpers.html">Helpers</a></code></h3>
   
   
-    <a href="Helpers.html#print_chars%28character%3AChar%3D%26%2339%3B-%26%2339%3B%2Cnumber%3AInt32%3D20%29-instance-method" class="tooltip">
-      <span>print_chars(character : Char = <span class="s">&#39;-&#39;</span>, number : Int32 = <span class="n">20</span>)</span>
-    print_chars</a>, 
+    <a href="Helpers.html#edit_config_file(filename)-instance-method" class="tooltip">
+      <span>edit_config_file(filename)</span>
+    edit_config_file</a>, 
     
   
-    <a href="Helpers.html#process_argv%28argv%29%3AString-instance-method" class="tooltip">
-      <span>process_argv(argv) : String</span>
-    process_argv</a>, 
-    
-  
-    <a href="Helpers.html#resolve_host%28host%29-instance-method" class="tooltip">
+    <a href="Helpers.html#resolve_host(host)-instance-method" class="tooltip">
       <span>resolve_host(host)</span>
     resolve_host</a>, 
     
   
-    <a href="Helpers.html#say_hey%28hostname%3AString%29-instance-method" class="tooltip">
+    <a href="Helpers.html#say_hey(hostname:String)-instance-method" class="tooltip">
       <span>say_hey(hostname : String)</span>
     say_hey</a>
     
@@ -374,56 +492,76 @@ valid hostname, and snmpv3 credentials.</p>
   <h3>Instance methods inherited from module <code><a href="Reports.html">Reports</a></code></h3>
   
   
-    <a href="Reports.html#display_header%28hostname%3AString%2Cheader%3ATuple%2Coid%3AString%29-instance-method" class="tooltip">
+    <a href="Reports.html#capitalize!(string:String):String-instance-method" class="tooltip">
+      <span>capitalize!(string : String) : String</span>
+    capitalize!</a>, 
+    
+  
+    <a href="Reports.html#display_formatted_table(formatted_table:Hash%7CNamedTuple)-instance-method" class="tooltip">
+      <span>display_formatted_table(formatted_table : Hash | NamedTuple)</span>
+    display_formatted_table</a>, 
+    
+  
+    <a href="Reports.html#display_header(hostname:String,header:Tuple,oid:String)-instance-method" class="tooltip">
       <span>display_header(hostname : String, header : Tuple, oid : String)</span>
     display_header</a>, 
     
   
-    <a href="Reports.html#display_raw_table%28table%3AArray%28String%29%29-instance-method" class="tooltip">
+    <a href="Reports.html#display_raw_table(table:Array(String))-instance-method" class="tooltip">
       <span>display_raw_table(table : Array(String))</span>
     display_raw_table</a>, 
     
   
-    <a href="Reports.html#display_table%28formatted_table%3AHash%2Chostname%3AString%2Coid%3AString%29-instance-method" class="tooltip">
+    <a href="Reports.html#display_table(formatted_table:Hash,hostname:String,oid:String)-instance-method" class="tooltip">
       <span>display_table(formatted_table : Hash, hostname : String, oid : String)</span>
     display_table</a>, 
     
   
-    <a href="Reports.html#display_table_info%28formatted_table%3AHash%7CNamedTuple%29-instance-method" class="tooltip">
-      <span>display_table_info(formatted_table : Hash | NamedTuple)</span>
-    display_table_info</a>, 
-    
-  
-    <a href="Reports.html#format_header%28oid%3AString%29%3ATuple%28String%2CString%29-instance-method" class="tooltip">
+    <a href="Reports.html#format_header(oid:String):Tuple(String,String)-instance-method" class="tooltip">
       <span>format_header(oid : String) : Tuple(String, String)</span>
     format_header</a>, 
     
   
-    <a href="Reports.html#format_label%28entry%3AString%29%3AString-instance-method" class="tooltip">
+    <a href="Reports.html#format_label(entry:String):String-instance-method" class="tooltip">
       <span>format_label(entry : String) : String</span>
     format_label</a>, 
     
   
-    <a href="Reports.html#format_table%28results%3AArray%2Ctable%3AHash%29%3AHash%28String%2CString%29-instance-method" class="tooltip">
+    <a href="Reports.html#format_table(results:Array,table:Hash):Hash(String,String)-instance-method" class="tooltip">
       <span>format_table(results : Array, table : Hash) : Hash(String, String)</span>
     format_table</a>, 
     
   
-    <a href="Reports.html#list_oids%28list%3ANamedTuple%29-instance-method" class="tooltip">
+    <a href="Reports.html#list_oids(list:NamedTuple)-instance-method" class="tooltip">
       <span>list_oids(list : NamedTuple)</span>
-    list_oids</a>
+    list_oids</a>, 
     
   
-
-
+    <a href="Reports.html#print_chars(character:Char=&#39;-&#39;,number:Int32=20)-instance-method" class="tooltip">
+      <span>print_chars(character : Char = <span class="s">&#39;-&#39;</span>, number : Int32 = <span class="n">20</span>)</span>
+    print_chars</a>, 
     
-
-
-    
-
-
   
+    <a href="Reports.html#punctuate!(string:String):String-instance-method" class="tooltip">
+      <span>punctuate!(string : String) : String</span>
+    punctuate!</a>, 
     
+  
+    <a href="Reports.html#show_formatted(hostname,results,mib_oid)-instance-method" class="tooltip">
+      <span>show_formatted(hostname, results, mib_oid)</span>
+    show_formatted</a>, 
+    
+  
+    <a href="Reports.html#show_raw(results)-instance-method" class="tooltip">
+      <span>show_raw(results)</span>
+    show_raw</a>, 
+    
+  
+    <a href="Reports.html#truncate(text:String,length=48,trunc_string=&quot;...&quot;):String-instance-method" class="tooltip">
+      <span>truncate(text : String, length = <span class="n">48</span>, trunc_string = <span class="s">&quot;...&quot;</span>) : String</span>
+    truncate</a>
+    
+  
 
 
     
@@ -456,20 +594,30 @@ valid hostname, and snmpv3 credentials.</p>
 </div>
 
 
-  <h2>Constructor Detail</h2>
+  <h2>
+    <a id="constructor-detail" class="anchor" href="#constructor-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Constructor Detail
+  </h2>
   
-    <div class="entry-detail" id="new-class-method">
+    <div class="entry-detail" id="new(arguments:Array(String))-class-method">
       <div class="signature">
         
-        def self.<strong>new</strong>
+        def self.<strong>new</strong>(arguments : Array(String))
 
-        <a class="method-permalink" href="#new-class-method">#</a>
+        <a class="method-permalink" href="#new(arguments:Array(String))-class-method">#</a>
       </div>
+      
+        <div class="doc">
+          
+          <p>Creates a <em>new</em> method for App class.</p>
+        </div>
       
       <br/>
       <div>
-        
-          [<a href="https://github.com/lebogan/snob/blob/778dfe96823d5fce69dd1bb00920ebbb84ad2fdc/src/snob.cr#L45" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -477,9 +625,45 @@ valid hostname, and snmpv3 credentials.</p>
 
 
 
+  <h2>
+    <a id="class-method-detail" class="anchor" href="#class-method-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Class Method Detail
+  </h2>
+  
+    <div class="entry-detail" id="run(arguments=ARGV)-class-method">
+      <div class="signature">
+        
+        def self.<strong>run</strong>(arguments = <span class="t">ARGV</span>)
+
+        <a class="method-permalink" href="#run(arguments=ARGV)-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Processes command-line argments via ARGV.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
 
 
-  <h2>Instance Method Detail</h2>
+
+  <h2>
+    <a id="instance-method-detail" class="anchor" href="#instance-method-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Detail
+  </h2>
   
     <div class="entry-detail" id="run-instance-method">
       <div class="signature">
@@ -489,12 +673,13 @@ valid hostname, and snmpv3 credentials.</p>
         <a class="method-permalink" href="#run-instance-method">#</a>
       </div>
       
-        <div class="doc"><p>Runs the main application.</p></div>
+        <div class="doc">
+          
+          <p>Runs the main application.</p>
+        </div>
       
       <br/>
       <div>
-        
-          [<a href="https://github.com/lebogan/snob/blob/778dfe96823d5fce69dd1bb00920ebbb84ad2fdc/src/snob.cr#L72" target="_blank">View source</a>]
         
       </div>
     </div>

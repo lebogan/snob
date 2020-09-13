@@ -39,6 +39,9 @@ trends when you know which OID you want.
 -o, --only-values
         displays values only (not OID = value)
 
+-e, --edit
+        edits global config file using default editor
+
 -h, --help     
         show this help  
 

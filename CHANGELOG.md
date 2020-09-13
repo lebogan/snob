@@ -1,4 +1,11 @@
 #CHANGELOG
+## 1.0.1-pre(2020-09-13)
+- Update for Crystal 0.35.1 pending 1.0.0
+- Add install for Raspberry Pi Model 4
+- Integrate methods from myutils
+- Add term-spinner and term-prompt shards for user interaction
+- Allow application to invoke default editor on global config file
+- Update docs
 
 ## 0.14.3 (2019-02-04)
 - Update for Crystal 0.27.1

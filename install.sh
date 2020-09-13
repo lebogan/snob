@@ -84,6 +84,12 @@ update_source() {
     echo "${name} updated from source"
 }
 
+install_libs() {
+    echo installing $1
+    shift
+    sudo apt install -y "$@" > /dev/null 2>&1
+}
+
 build_libcrystal_a() {
     cd bin
     wget https://raw.githubusercontent.com/crystal-lang/crystal/master/src/ext/sigfault.c
@@ -97,6 +103,7 @@ build_raspi() {
     git stash
     git pull
     make clean
+    install_libs "Additional libraries" libpcre3-dev libevent-dev libgc-dev libyaml-dev libreadline-dev
     if [ ! -f "bin/libcrystal.a" ]; then
         build_libcrystal_a
     fi

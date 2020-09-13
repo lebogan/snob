@@ -60,7 +60,7 @@ mibs :
 ### Preferred Installation <a name="preferred-installation"></a>
 A script, `install.sh`, is included to manage the installation process. It allows for
 installation of a pre compiled binary or building from source. It also allows for
-upgrading and uninstalling.
+upgrading and uninstalling. See the additional notes for [Raspberry Pi 4](#rpibuild).
 
 Check out install.sh to see what the script is doing.  
 
@@ -71,6 +71,7 @@ $ ./install.sh
 ```
 
 ### Manual Installation (if you gotta!)
+___Note: not for Raspberry Pi!___  
 A Makefile is included for compiling and installing the binary and man pages.
 Crystal is required to be preinstalled. The binary is copied to `/usr/local/bin`.
 The Makefile also provides for uninstalling and compliation cleanup. The compiled
@@ -95,12 +96,12 @@ $ sudo make install
 > Install git and curl   
 > Install libyaml-dev  
 > Install apt-transport-https, dirmngr  
-> For snmp, add to file: /etc/apt/sources.list  
+> For snmp, add to file: /etc/apt/sources.list
+>```text
+>deb http://ftp.br.debian.org/debian/ wheezy main contrib non-free
+>deb-src http://ftp.br.debian.org/debian/ wheezy main contrib non-free
+>```
 
-```text
-deb http://ftp.br.debian.org/debian/ wheezy main contrib non-free
-deb-src http://ftp.br.debian.org/debian/ wheezy main contrib non-free
-```
 
 ## Usage
 ```bash
@@ -186,7 +187,8 @@ myserver:
 
 ## TODO
 - [X] Add ability to do on-the-fly editing of config file using default system editor.
-- [ ] Replace reliance on external snmpwalk to make this app even more portable.
+- [ ] Replace reliance on external snmpwalk to make this app even more portable.  
+- [ ] Add build for Raspberry Pi Model 4
 
 ## Development
 [Please, see the DISCLAIMER below](#disclaimer)  
@@ -211,10 +213,22 @@ This utility is available as open source under the terms of the
 
 ## Disclaimer <a name="disclaimer"></a>
 This utility was originally created for my personal use in my work as a network
-specialist. Developed using Crystal 0.35.1 on Ubuntu 18.04 workstation running under Vagrant v2.2.5 with VirtualBox 6.0 provider.  
+specialist. Developed using Crystal 0.35.1 on Ubuntu 18.04 virtual workstation running under Vagrant v2.2.5 with VirtualBox 6.0 provider.  
 
 
 I am not a professional software developer nor do I pretend to be. I am a retired IT 
 network specialist and this is a hobby to keep me out of trouble. If you 
 use this application and it doesn't work the way you would want, feel free to 
 fork it and modify it to your liking. Fork on GitHub at https://github.com/lebogan/snob.git
+
+### Raspberry Pi (Raspberry Pi OS, Raspian 10)<a name="rpibuild"></a>
+See [Preferred Installation](#preferred-installation). The binary has to be cross-compiled for the ARMv7 architecture.  
+
+I have tested on a Raspberry Pi 4 Model B Rev 1.1 ARMv7 (4gb) running Raspian 10 and Crystal 0.33.1 and a Raspberry Pi 4 Model B Rev 1.4 ARMv7 (8gb) running Raspian 10, no llvm, no Crystal. Both work well.
+
+> An object file, `snob.o` is included to aid in the cross-compiling effort.
+> These files are required: `libpcre3-dev, libgc-dev, libyaml-dev, libreadline-dev, libevent-dev`.
+> The install script will build a file, `libcrystal.a` and then build the binary
+> from the object file.  
+> For the snmp stuff, `snmp, snmpd, snmp-mibs-downloader, libsnmp-dev`, are needed.
+> In addition, the `mibs:` line in `/etc/snmp/snmp.conf` needs to be commented out.
