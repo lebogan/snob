@@ -12,11 +12,9 @@
 #      COMPANY:  Earthsea@Home
 #      CREATED:  2017-11-10 10:19
 #    COPYRIGHT:  (C) 2017-2020 Lewis E. Bogan <lewis.bogan@comcast.net>
-#    GIT REPOS:  earthforge, devforge, GitHub, BitBucket
+#    GIT REPOS:  earthforge, GitHub
 #             :  git remote add origin git@earthforge.earthsea.local:lewisb/snob.git
-#             :  git remote set-url --add --push origin ssh://devforge/var/lib/git/repos/snob.git
 #             :  git remote set-url --add --push origin git@github.com:lebogan/snob.git
-#             :  git remote set-url --add --push origin git@bitbucket.org:lebogan/snob.git
 #             :  git push -u origin master
 # Distributed under terms of the MIT license.
 # ===============================================================================
