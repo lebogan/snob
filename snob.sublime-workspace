@@ -1,0 +1,831 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"add",
+				"add_help"
+			],
+			[
+				"house",
+				"house_doc"
+			],
+			[
+				"po",
+				"poll_all_hosts"
+			],
+			[
+				"dis",
+				"display_header"
+			],
+			[
+				"Poll",
+				"Polling"
+			],
+			[
+				"l",
+				"libcrystal"
+			],
+			[
+				"lib",
+				"libcrystal"
+			],
+			[
+				"Disc",
+				"Discovering"
+			],
+			[
+				"ba",
+				"backup"
+			],
+			[
+				"be",
+				"be_falsey"
+			],
+			[
+				"file",
+				"filename"
+			],
+			[
+				"d",
+				"dispay_header"
+			],
+			[
+				"run",
+				"run_cmd"
+			],
+			[
+				"Star",
+				"StartVmCommand"
+			],
+			[
+				"VB",
+				"VBOX_HOST"
+			],
+			[
+				"A",
+				"ANSIBLE_HOST"
+			],
+			[
+				"comm",
+				"command"
+			],
+			[
+				"S",
+				"ShowVmInfoCommand"
+			],
+			[
+				"C",
+				"Command"
+			],
+			[
+				"loc",
+				"local_host_helpers"
+			],
+			[
+				"h",
+				"helper"
+			],
+			[
+				"vb",
+				"vbox_helpers"
+			],
+			[
+				"un",
+				"uninstall_all"
+			],
+			[
+				"pol",
+				"poll_device"
+			],
+			[
+				"ru",
+				"run_menu_option"
+			],
+			[
+				"Me",
+				"MessageBase"
+			],
+			[
+				"H",
+				"Housekeeping"
+			],
+			[
+				"command",
+				"Command"
+			],
+			[
+				"ut",
+				"until\tuntil ... end"
+			],
+			[
+				"Disco",
+				"discovery"
+			],
+			[
+				"host",
+				"host"
+			],
+			[
+				"c",
+				"c_src"
+			],
+			[
+				"us",
+				"user"
+			],
+			[
+				"p",
+				"placeholder"
+			],
+			[
+				"build",
+				"build_raspi"
+			],
+			[
+				"cr",
+				"cross-compile"
+			],
+			[
+				"CR",
+				"CRYSTAL"
+			],
+			[
+				"sr",
+				"SRC_SOURCES"
+			],
+			[
+				"ge",
+				"gets_to_end"
+			],
+			[
+				"Fi",
+				"FileStorage"
+			],
+			[
+				"en",
+				"envar_name"
+			],
+			[
+				"net",
+				"netlog_db"
+			],
+			[
+				"U",
+				"Ubuntu"
+			],
+			[
+				"ke",
+				"keypress"
+			],
+			[
+				"N",
+				"NAME"
+			],
+			[
+				"to",
+				"to_s"
+			],
+			[
+				"ch",
+				"check_env"
+			],
+			[
+				"env",
+				"env_setup"
+			],
+			[
+				"he",
+				"hexstring"
+			],
+			[
+				"get_unsigned",
+				"get_unsigned32"
+			],
+			[
+				"get_unsi",
+				"get_unsigned32"
+			],
+			[
+				"ph",
+				"phys_address"
+			],
+			[
+				"if",
+				"ifIndex"
+			],
+			[
+				"ta",
+				"tag_class"
+			],
+			[
+				"t",
+				"to_f"
+			],
+			[
+				"req",
+				"require"
+			],
+			[
+				"tag",
+				"tag_number"
+			],
+			[
+				"pr",
+				"process_v3_args"
+			],
+			[
+				"wa",
+				"walk3"
+			],
+			[
+				"walk",
+				"walk3"
+			],
+			[
+				"con",
+				"config_file"
+			],
+			[
+				"config",
+				"config_file"
+			],
+			[
+				"fe",
+				"fetch_config"
+			],
+			[
+				"edit",
+				"edit_config"
+			],
+			[
+				"ter",
+				"term_stuff"
+			],
+			[
+				"get",
+				"get_string"
+			],
+			[
+				"M",
+				"MyException"
+			],
+			[
+				"auth",
+				"authentication"
+			],
+			[
+				"aut",
+				"auth_protocol"
+			],
+			[
+				"ath",
+				"authentication"
+			],
+			[
+				"sn",
+				"snmp"
+			],
+			[
+				"show",
+				"show_ping_results"
+			],
+			[
+				"snmpv",
+				"snmpv2c"
+			],
+			[
+				"git",
+				"github"
+			],
+			[
+				"log",
+				"log_file"
+			],
+			[
+				"pro",
+				"prompt"
+			],
+			[
+				"conf",
+				"config_file"
+			],
+			[
+				"as",
+				"as_s"
+			],
+			[
+				"dir",
+				"directory"
+			],
+			[
+				"sh",
+				"show_wait_spinner"
+			],
+			[
+				"user",
+				"user_input"
+			],
+			[
+				"in",
+				"includes"
+			],
+			[
+				"ins",
+				"install_ssh_key"
+			],
+			[
+				"sev",
+				"severities"
+			],
+			[
+				"hos",
+				"host_reachable"
+			],
+			[
+				"disc",
+				"discovery"
+			],
+			[
+				"add_",
+				"add_device"
+			],
+			[
+				"co",
+				"community"
+			],
+			[
+				"del",
+				"delete_device"
+			],
+			[
+				"cmd",
+				"cmd_string"
+			],
+			[
+				"fet",
+				"fetch_credentials"
+			],
+			[
+				"re",
+				"require"
+			],
+			[
+				"u",
+				"upcase"
+			],
+			[
+				"rem",
+				"remove"
+			],
+			[
+				"bas",
+				"bash_aliases"
+			],
+			[
+				"cop",
+				"copy_files"
+			],
+			[
+				"read",
+				"read_email"
+			],
+			[
+				"Log",
+				"Logger"
+			],
+			[
+				"Lo",
+				"Logger"
+			],
+			[
+				"te",
+				"template_vars"
+			],
+			[
+				"eart",
+				"earthforge"
+			],
+			[
+				"DE",
+				"DEVFLAGS"
+			],
+			[
+				"par",
+				"parse"
+			],
+			[
+				"ti",
+				"timestamp"
+			],
+			[
+				"T",
+				"Time"
+			],
+			[
+				"b",
+				"be_a"
+			],
+			[
+				"do",
+				"done"
+			],
+			[
+				"com",
+				"completed_at"
+			],
+			[
+				"I",
+				"Int32"
+			],
+			[
+				"wee",
+				"weekly_report_file"
+			],
+			[
+				"da",
+				"daily_report_file"
+			],
+			[
+				"rep",
+				"report_file"
+			],
+			[
+				"rea",
+				"read_file"
+			],
+			[
+				"cl",
+				"clear_screen"
+			],
+			[
+				"st",
+				"stringify"
+			],
+			[
+				"app",
+				"app_name"
+			],
+			[
+				"a",
+				"app_name"
+			],
+			[
+				"E",
+				"ENV"
+			],
+			[
+				"ma",
+				"mandir"
+			],
+			[
+				"inst",
+				"install_dir"
+			]
+		]
+	},
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"",
+				"Package Control: Remove Package"
+			],
+			[
+				"Ter",
+				"Terminus: Open Default Shell in Panel"
+			],
+			[
+				"termin",
+				"Terminus: List Shells"
+			],
+			[
+				"view",
+				"Terminal View: Open Bash Terminal"
+			],
+			[
+				"vi",
+				"Markdown Preview: Preview in Browser"
+			],
+			[
+				"ter",
+				"Terminal View: Open Bash Terminal"
+			],
+			[
+				"termina",
+				"Terminal View: Open Bash Terminal"
+			],
+			[
+				"temp",
+				"Tmpl: Create project-specific"
+			],
+			[
+				"m",
+				"Markdown Preview: Preview in Browser"
+			],
+			[
+				"mar",
+				"Markdown Preview: Preview in Browser"
+			],
+			[
+				"open",
+				"Terminus: Open Default Shell in Panel"
+			],
+			[
+				"close",
+				"Terminus: Close"
+			],
+			[
+				"the",
+				"Terminus Utilities: Select Theme"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"op",
+				"Terminus: Open Default Shell in Tab (View)"
+			],
+			[
+				"dis",
+				"Package Control: Discover Packages"
+			],
+			[
+				"disc",
+				"Package Control: Discover Packages"
+			],
+			[
+				"Termin",
+				"Terminus: Open Default Shell in Panel"
+			],
+			[
+				"Package Control",
+				"Package Control: Install Package"
+			],
+			[
+				"Pa",
+				"Package Control: Remove Package"
+			],
+			[
+				"Pac",
+				"Package Control: Remove Package"
+			],
+			[
+				"View Inte",
+				"Terminus: Open Default Shell in Tab (View)"
+			],
+			[
+				"P",
+				"Package Control: Install Package"
+			],
+			[
+				"Theme",
+				"UI: Select Color Scheme"
+			],
+			[
+				"M",
+				"Markdown Preview: Preview in Browser"
+			],
+			[
+				"markd",
+				"MarkdownLivePreview: Open Preview"
+			],
+			[
+				"MarkdownLivePreview: Open Preview",
+				"MarkdownLivePreview: Open Settings"
+			],
+			[
+				"MarkdownLivePreview:",
+				"MarkdownLivePreview: Open Settings"
+			],
+			[
+				"Package I",
+				"Package Control: Install Package"
+			],
+			[
+				"pack",
+				"Package Control: List Packages"
+			],
+			[
+				"package ",
+				"Package Control: List Packages"
+			],
+			[
+				"mark",
+				"Markdown Preview: Preview in Browser"
+			],
+			[
+				"Pack",
+				"Package Control: Install Package"
+			],
+			[
+				":w",
+				":w - Save"
+			],
+			[
+				"Install",
+				"Package Control: Install Package"
+			],
+			[
+				"Package",
+				"Install Package Control"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 350.0,
+		"history":
+		[
+			"ls"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/home/vagrant/projects/production/crystal/backup/.gitignore",
+		"/home/lewisb/projects/production/crystal/raptor/shard.yml",
+		"/home/lewisb/projects/production/crystal/raptor/src/actions.cr",
+		"/home/lewisb/projects/production/crystal/raptor/src/raptor.cr",
+		"/home/lewisb/projects/production/crystal/raptor/src/messages.cr",
+		"/home/lewisb/projects/production/crystal/raptor/src/extras.cr",
+		"/home/lewisb/projects/production/crystal/raptor/src/menus.cr",
+		"/home/lewisb/projects/production/crystal/raptor/src/commands.cr",
+		"/home/lewisb/projects/production/crystal/raptor/src/utils.cr",
+		"/run/user/1000/gvfs/sftp:host=mbutu/home/lewisb/tmp/snmpd.conf",
+		"/home/lewisb/projects/production/crystal/raptor/install.sh",
+		"/home/lewisb/projects/production/crystal/raptor/dev.sh",
+		"/home/lewisb/projects/production/crystal/raptor/Makefile",
+		"/home/lewisb/projects/production/crystal/raptor/.gitignore",
+		"/home/lewisb/projects/production/crystal/raptor/rpibuild.sh",
+		"/home/lewisb/projects/production/crystal/raptor/README.md",
+		"/home/lewisb/projects/production/crystal/raptor/raptor.sublime-project",
+		"/home/lewisb/projects/production/crystal/backup/src/config.cr",
+		"/home/lewisb/projects/production/crystal/backup/src/work.cr",
+		"/home/lewisb/projects/production/crystal/backup/src/util.cr",
+		"/home/lewisb/projects/production/crystal/backup/src/cli.cr",
+		"/home/lewisb/projects/production/crystal/backup/shard.yml",
+		"/home/lewisb/projects/production/crystal/backup/src/backup.cr",
+		"/home/lewisb/projects/production/crystal/backup/src/messages.cr",
+		"/home/lewisb/projects/production/crystal/backup/install.sh",
+		"/home/lewisb/projects/production/crystal/backup/dev.sh",
+		"/home/lewisb/projects/production/crystal/backup/Makefile",
+		"/home/lewisb/projects/production/crystal/backup/shard.lock",
+		"/home/lewisb/projects/production/crystal/backup/lib/.shards.info",
+		"/home/lewisb/projects/production/crystal/backup/spec/backup_spec.cr",
+		"/home/lewisb/projects/production/crystal/myasmcr/src/vbox_helpers.cr",
+		"/home/lewisb/projects/production/crystal/myasmcr/shard.yml",
+		"/home/lewisb/projects/production/crystal/myasmcr/src/helpers.cr",
+		"/home/lewisb/projects/production/crystal/myasmcr/src/myasmcr.cr",
+		"/home/lewisb/projects/production/crystal/myasmcr/src/util.cr",
+		"/home/lewisb/projects/production/crystal/myasmcr/spec/helpers_spec.cr",
+		"/home/lewisb/projects/production/crystal/myasmcr/spec/spec_helper.cr",
+		"/home/lewisb/projects/production/crystal/myasmcr/src/config.cr",
+		"/home/lewisb/projects/production/crystal/myasmcr/src/menu_helpers.cr",
+		"/home/lewisb/projects/production/crystal/myasmcr/dev.sh",
+		"/home/lewisb/projects/production/crystal/myasmcr/install.sh",
+		"/home/lewisb/projects/production/crystal/myasmcr/src/menus.cr",
+		"/home/lewisb/projects/production/crystal/myasmcr/src/messages.cr",
+		"/home/lewisb/projects/production/crystal/myasmcr/Makefile",
+		"/home/lewisb/projects/production/crystal/myasmcr/src/localhost_helpers.cr",
+		"/home/lewisb/projects/production/crystal/myasmcr/src/commands.cr"
+	],
+	"find":
+	{
+		"height": 39.0
+	},
+	"find_in_files":
+	{
+		"height": 146.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": false,
+		"use_buffer2": false,
+		"use_gitignore": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"incremental_find":
+	{
+		"height": 39.0
+	},
+	"input":
+	{
+		"height": 56.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.SublimeLinter":
+	{
+		"height": 0.0
+	},
+	"output.find_results":
+	{
+		"height": 191.0
+	},
+	"pinned_build_system": "",
+	"replace":
+	{
+		"height": 74.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"settings":
+	{
+	},
+	"show_minimap": false,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 284.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

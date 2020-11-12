@@ -1,0 +1,21 @@
+{
+	"build_systems":
+	[
+		{
+			"name": "Development",
+			"shell_cmd": "make dev",
+			"working_dir": "${project_path:${folder}}"
+		},
+		{
+			"name": "Production",
+			"shell_cmd": "make prod",
+			"working_dir": "${project_path:${folder}}"
+		}
+	],
+	"folders":
+	[
+		{
+			"path": "."
+		}
+	]
+}
