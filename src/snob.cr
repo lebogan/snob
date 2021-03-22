@@ -122,13 +122,18 @@ class App
       parser.missing_option { |flag| abort missing_message(flag) }
     end
 
-    hostname = check_for_host(arguments)
+    # hostname = check_for_host(arguments)
 
     # Checks for the existence of a valid config file and tests if host
     # is in it. Otherwise, asks for manual entry of credentials and
     # adds them to existing config file.
-    check_for_config(CONFIG_PATH, CONFIG_FILE)
-    if File.exists?(CONFIG_FILE) && check_credentials(CONFIG_FILE)["#{hostname}"]? != nil
+    unless File.exists?(CONFIG_FILE)
+      build_default_config(CONFIG_PATH, CONFIG_FILE)
+    end
+
+    hostname = check_for_host(arguments)
+
+    if check_credentials(CONFIG_FILE)["#{hostname}"]? != nil
       creds = fetch_credentials(CONFIG_FILE, "#{hostname}") # => NamedTuple(Symbol, String...)
     else
       creds = update_config_file(hostname)

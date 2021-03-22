@@ -1,17 +1,27 @@
-snob(5) - snob configuration file
-==============================
-## SYNOPSIS
+= snob(5)
+Lewis E. Bogan
+:doctype: manpage
+:man source: snob {shards_version}
+:man manual: Snob Config File Format
+:man-linkstyle: pass:[blue R < >]
+:shards_version: {shards_version}
+
+== name
+snobrc.yml - snob configuration file
+
+== synopsis
 The configuration file is YAML format and can be edited manually.
 
-## DESCRIPTION
-A first run will create a default YAML config file named `~/.snob/snobrc.yml`.
+== description
+A first run will create a default YAML config file named _.snob/snobrc.yml_.
 The directory's permissions are set to 0o700 (drwx------) for added security.
 The initial set of credentials is for a host named dummy. Afterwards, if the
 host is not in the config file, you will be asked to enter credentials manually
 with the option to save them.  
 
-## CONFIG FILE
-```
+== config file
+[source,text]
+----
 $ snob myserver  
 Config file doesn't exist. Create it? <yes>  
 myserver is not in config file. Configuring...  
@@ -34,18 +44,7 @@ myserver:
   auth: secret
   priv: real secret
   crypto: DES
-```
+----
 
-## SEE ALSO
-snob(1)  
-snmpwalk(1)  
-
-## AUTHOR
-Lewis E. Bogan
-
-## COPYRIGHT
-Copyright (c) 2019 Lewis E. Bogan <lewis.bogan@comcast.net>
-
-## LICENSE
-This utility is available as open source under the terms of the  
-MIT License <http://opensource.org/licenses/MIT>.
+== see also
+snob(1), snmpwalk(1)  

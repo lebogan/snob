@@ -1,95 +1,135 @@
-.\" generated with Ronn/v0.7.3
-.\" http://github.com/rtomayko/ronn/tree/0.7.3
-.
-.TH "SNOB" "1" "September 2020" "1.0.1-pre" "User Commands"
-.
+'\" t
+.\"     Title: snob
+.\"    Author: Lewis E. Bogan
+.\" Generator: Asciidoctor 2.0.12
+.\"      Date: 2021-03-22
+.\"    Manual: Snob Manual
+.\"    Source: snob 1.0.0
+.\"  Language: English
+.\"
+.TH "SNOB" "1" "2021-03-22" "snob 1.0.0" "Snob Manual"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
 .SH "NAME"
-\fBsnob\fR \- snmp network object browser
-.
+snob \- snmp network object browser
 .SH "SYNOPSIS"
-\fBsnob\fR [OPTIONS] [HOST]
-.
+.sp
+\fBsnob\fP [OPTIONS] [HOST]
 .SH "DESCRIPTION"
-\fBsnob\fR uses the snmpwalk utility to browse MIB objects on snmp\-enabled devices, such as, switches, routers, servers, etc\.
-.
-.P
-This utility is written specifically for snmp version 3 because of its security features\. Backwards compatibility to version 2c is not included at this time\. Sorry:(\.
-.
-.P
-The special \fB\-\-list\fR switch is included to provide easily remembered names for 1\.0\.8802\.1\.1\.2\.1\.4\.1\.1\.9 or ipNetToPhysicalPhysAddress or other cryptic looking OIDs\.
-.
-.P
-The output is raw by default\. In addition, a \-\-dump option is included for dumping the resulting output to a file, raw_dump\.txt, for later perusal\. A \-\-format option exists in an attempt to pretty\-print the output for display on screen\. The \-\-only\-values flag allows output to be used raw by another application like RRDTool for graphing trends when you know which OID you want\.
-.
+.sp
+\fBsnob\fP uses the snmpwalk utility to browse MIB objects on snmp\-enabled devices, such as,
+switches, routers, servers, etc.
+.sp
+This utility is written specifically for snmp version 3 because of
+its security features. Backwards compatibility to version 2c is not included
+at this time. Sorry:(.
+.sp
+The special \fB\-\-list\fP switch is included to provide easily remembered names for
+1.0.8802.1.1.2.1.4.1.1.9 or ipNetToPhysicalPhysAddress or other cryptic looking
+OIDs.
+.sp
+The output is raw by default. In addition, a \fB\-\-dump\fP option is included for dumping
+the resulting output to a file, raw_dump.txt, for later perusal. A \fB\-\-format\fP option
+exists in an attempt to pretty\-print the output for display on screen. The \fB\-\-only\-values\fP
+flag allows output to be used raw by another application like RRDTool for graphing
+trends when you know which OID you want.
+.sp
+For ease of use, a \fB\-\-edit\fP option is included.
 .SH "OPTIONS"
-.
-.nf
-
-\-l, \-\-list
-        displays some predefined OID\'s (Object IDentifiers)
-
-\-m OID, \-\-mib=OID
-        displays information for this OID
-        (default system)
-
-\-d, \-\-dump
-        writes output to a file, raw only
-
-\-f, \-\-formatted
-        displays output as a formatted table
-
-\-o, \-\-only\-values
-        displays values only (not OID = value)
-
-\-e, \-\-edit
-        edits global config file using default editor
-
+.sp
+\fB\-l, \-\-list\fP
+.RS 4
+displays some predefined OID\(cqs (Object IDentifiers)
+.RE
+.sp
+\fB\-m OID, \-\-mib\fP=\fIOID\fP
+.RS 4
+displays information for this OID
+(default system)
+.RE
+.sp
+\fB\-d, \-\-dump\fP
+.RS 4
+writes output to a file, raw only
+.RE
+.sp
+\fB\-f, \-\-formatted\fP
+.RS 4
+displays output as a formatted table
+.RE
+.sp
+\fB\-o, \-\-only\-values\fP
+.RS 4
+displays values only (not OID = value)
+.RE
+.sp
+\fB\-e, \-\-edit\fP
+.RS 4
+edits global config file using default editor specified by the \fIEDITOR\fP
+environment variable.
+.RE
+.SH "GENERAL OPTIONS"
+.sp
 \-h, \-\-help
-        show this help
-
+show this help
+.sp
 \-v, \-\-version
-        show version
-.
-.fi
-.
+show version
 .SH "EXAMPLES"
-.
+.sp
+.if n .RS 4
 .nf
-
+.fam C
 $ snob myserver
-sysDescr\.0 = Linux myserver 3\.10\.0\-957\.12\.1\.el7\.x86_64 #1 SMP Mon Apr 29 14:59:59 UTC 2019 x86_64
-sysObjectID\.0 = netSnmpAgentOIDs\.10
-sysUpTimeInstance = 9:0:58:49\.85
-sysContact\.0 = root
-sysName\.0 = myserver
-sysLocation\.0 = my space
-sysServices\.0 = 76
-sysORLastChange\.0 = 0:0:00:15\.09
-sysServices\.0 = 76
-sysORLastChange\.0 = 0:0:00:15\.09
-.
+sysDescr.0 = Linux myserver 3.10.0\-957.12.1.el7.x86_64 #1 SMP Mon Apr 29 14:59:59 UTC 2019 x86_64
+sysObjectID.0 = netSnmpAgentOIDs.10
+sysUpTimeInstance = 9:0:58:49.85
+sysContact.0 = root
+sysName.0 = myserver
+sysLocation.0 = my space
+sysServices.0 = 76
+sysORLastChange.0 = 0:0:00:15.09
+sysServices.0 = 76
+sysORLastChange.0 = 0:0:00:15.09
+.fam
 .fi
-.
+.if n .RE
 .SH "FILES"
-~/\.snob/snobrc\.yml
-.
+.sp
+.B snob/snobrc.yml::
 .br
-~/tmp/raw_dump\.txt
-.
+Main configuration file.
+~/tmp/raw_dump.txt::
+Unformatted dump of tree data.
 .SH "SEE ALSO"
-snmpwalk(1)
-.
-.br
-snob(5)
-.
-.SH "AUTHOR"
-Lewis E\. Bogan
-.
+.sp
+snmpwalk(1), snob(5)
 .SH "COPYRIGHT"
-Copyright (c) 2019 Lewis E\. Bogan \fIlewis\.bogan@comcast\.net\fR
-.
-.SH "LICENSE"
-This utility is available as open source under the terms of the
-.
+.sp
+Copyright \(co 2021 Lewis E. Bogan.
 .br
-MIT License http://opensource\.org/licenses/MIT\.
+.sp
+.URL "http://opensource.org/licenses/MIT" "License MIT" ""
+.sp
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+.SH "AUTHOR"
+.sp
+Lewis E. Bogan

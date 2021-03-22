@@ -48,7 +48,8 @@ uninstall: ## Remove the application
 	rm -f "$(MANDIR)/man5/$(NAME).5"
 
 .PHONY: update
-update: shard.lock ## Update shards
+update: ## Update shards
+	$(SHARDS) update
 
 .PHONY: test
 test: ## Run test suite
@@ -65,15 +66,15 @@ format: ## Apply source code formatting
 format: $(SRC_SOURCES) $(SPEC_SOURCES)
 	$(CRYSTAL) tool format src spec
 
-docs: ## Generate API docs
-docs: $(SRC_SOURCES) lib
-	$(CRYSTAL) docs -o docs
+.PHONY: man
+man: ## Generate manual pages
+man: 
+	@./mkman.sh
 
-lib: shard.lock
-	$(SHARDS) install
-
-shard.lock: shard.yml
-	$(SHARDS) update
+.PHONY: docs
+docs: ## Generate readme in epub and pdf formats
+docs:
+	@./mkdocs.sh
 
 .PHONY: clean
 clean: ## Remove application binary

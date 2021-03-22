@@ -14,17 +14,14 @@ module Config
   extend self
   @@prompt = Term::Prompt.new
 
-  # Checks for existance of a config file and creates a dummy entry
-  #    if the user answers yes.
-  def check_for_config(config_path : String, config_file : String)
-    unless File.exists?(config_file)
-      Dir.mkdir_p(config_path, 0o700)
-      conf = {"dummy" => {user: "username", auth_pass: "auth passphrase",
-                          priv_pass: "priv passphrase", auth: "MD5/SHA",
-                          crypto: "AES/DES"}}
-      choice = @@prompt.yes?("Config file doesn't exist. Create it(Y/n)? ")
-      build_config_file(config_file, conf) if choice
-    end
+  # Creates a dummy entry.
+  def build_default_config(config_path : String, config_file : String)
+    Dir.mkdir_p(config_path, 0o700)
+    conf = {"dummy" => {user: "username", auth_pass: "auth passphrase",
+                        priv_pass: "priv passphrase", auth: "MD5/SHA",
+                        crypto: "AES/DES"}}
+    choice = @@prompt.yes?("Config file doesn't exist. Create it(Y/n)? ")
+    build_config_file(config_file, conf) if choice
   end
 
   # Creates a new config file.

@@ -1,4 +1,8 @@
 #CHANGELOG
+## 1.0.0(2021-03-22)
+- Update for Crystal 1.0.0
+- Update man pages for Ascidoc format
+
 ## 1.0.1-pre(2020-09-13)
 - Update for Crystal 0.35.1 pending 1.0.0
 - Add install for Raspberry Pi Model 4

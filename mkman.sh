@@ -1,5 +1,3 @@
-version=`shards version`
-date=`date +"%Y-%m-%d"`
-ronn --organization="${version}" --manual="User Commands" --date=$date man/snob.1.ronn
-ronn --organization="${version}" --manual="File Formats" --date=$date man/snob.5.ronn
-
+# #!/usr/bin/env bash
+asciidoctor -a shards_version=$(shards version) -b manpage -D man docs/snob.1.adoc
+asciidoctor -a shards_version=$(shards version) -b manpage -D man docs/snob.5.adoc

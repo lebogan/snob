@@ -3,13 +3,34 @@
 	[
 		{
 			"name": "Development",
-			"shell_cmd": "make dev",
-			"working_dir": "${project_path:${folder}}"
+			"working_dir": "${project_path:${folder}}",
+	    "shell_cmd": "make dev",
 		},
 		{
 			"name": "Production",
-			"shell_cmd": "make prod",
-			"working_dir": "${project_path:${folder}}"
+			"working_dir": "${project_path:${folder}}",
+	    "shell_cmd": "make prod",
+
+		},
+		{
+      "name": "AsciiDoc-MakeMan",
+      "working_dir": "${project_path:${folder}}",
+	    "shell_cmd": "make man",
+		},
+		{
+      "name": "AsciiDoc-PDF",
+      "working_dir": "${project_path:${folder}}",
+	    "shell_cmd": "asciidoctor -r asciidoctor-pdf -b pdf -R docs ${file}",
+		},
+		{
+      "name": "AsciiDoc-EPUB",
+      "working_dir": "${project_path:${folder}}",
+	    "shell_cmd": "asciidoctor -r asciidoctor-epub3 -b epub3 -R docs ${file}",
+		},
+				{
+      "name": "AsciiDoc-MAN",
+      "working_dir": "${project_path:${folder}}",
+	    "shell_cmd": "asciidoctor -a shards_version=`shards version` -b manpage -R docs -D man ${file}",
 		}
 	],
 	"folders":
@@ -17,5 +38,5 @@
 		{
 			"path": "."
 		}
-	]
+	],
 }
