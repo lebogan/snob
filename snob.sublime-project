@@ -27,6 +27,11 @@
       "working_dir": "${project_path:${folder}}",
 	    "shell_cmd": "asciidoctor -r asciidoctor-epub3 -b epub3 -R docs ${file}",
 		},
+		{
+      "name": "AsciiDoc-HTML5",
+      "working_dir": "${project_path:${folder}}",
+	    "shell_cmd": "asciidoctor -b html5 -R docs -D docs ${file}",
+		},
 				{
       "name": "AsciiDoc-MAN",
       "working_dir": "${project_path:${folder}}",

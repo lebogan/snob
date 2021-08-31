@@ -2,7 +2,7 @@ version: 2.0
 shards:
   ameba:
     git: https://github.com/veelenga/ameba.git
-    version: 0.13.1
+    version: 0.14.3
 
   cor:
     git: https://github.com/watzon/cor.git
@@ -23,8 +23,4 @@ shards:
   term-screen:
     git: https://github.com/crystal-term/screen.git
     version: 0.1.0+git.commit.96a06e1ee015e38013822dc31288a46d35056ed2
-
-  term-spinner:
-    git: https://github.com/crystal-term/spinner.git
-    version: 0.1.0+git.commit.60350f9598335c559a8350d98fb2b9042e53290f
 

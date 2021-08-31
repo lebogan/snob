@@ -5,7 +5,7 @@
 #       AUTHOR:  Lewis E. Bogan
 #      COMPANY:  Earthsea@Home
 #      CREATED:  2017-12-17 15:26
-#    COPYRIGHT:  (C) 2017 Lewis E. Bogan <lewis.bogan@comcast.net>
+#    COPYRIGHT:  (C) 2021 Lewis E. Bogan <lewis.bogan@comcast.net>
 # Distributed under terms of the MIT license.
 # ===============================================================================
 

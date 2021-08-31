@@ -1,9 +1,10 @@
 /doc/
 /lib/
 /bin/ameba*
-!./bin/snob
+!./bin/snob*
 /.shards/
 .*.sw?
 *.html
 .ameba.yml
 tags
+snob.sublime-workspace

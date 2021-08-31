@@ -1,3 +1,3 @@
 require "spec"
-require "myutils"
+# require "myutils"
 require "term-prompt"

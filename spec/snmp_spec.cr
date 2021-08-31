@@ -1,5 +1,6 @@
 require "./spec_helper"
 require "../src/snmp"
+require "../src/util"
 
 host_session = Snmp::Snmp.new("auth_pass", "priv_pass", "test_user",
   "auth", "crypto")

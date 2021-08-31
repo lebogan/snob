@@ -1,7 +1,11 @@
 #CHANGELOG
-## 1.0.0(2021-03-22)
-- Update for Crystal 1.0.0
+## 1.0.1(2021-09-01)
+- Update for Crystal 1.1.1
+- Update install script to include more distros
 - Update man pages for Ascidoc format
+- Move shell scripts to scripts/
+- Add cross-compiled object files for RaspberryPi, Centos, Debian
+- Fix tests
 
 ## 1.0.1-pre(2020-09-13)
 - Update for Crystal 0.35.1 pending 1.0.0

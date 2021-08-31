@@ -5,7 +5,7 @@
 #       AUTHOR:  Lewis E. Bogan
 #      COMPANY:  Earthsea@Home
 #      CREATED:  2017-12-17 15:13
-#    COPYRIGHT:  (C) 2017 Lewis E. Bogan <lewis.bogan@comcast.net>
+#    COPYRIGHT:  (C) 2021 Lewis E. Bogan <lewis.bogan@comcast.net>
 # Distributed under terms of the MIT license.
 # ===============================================================================
 
@@ -34,7 +34,6 @@ module Config
 
   # Adds new host to config file
   def update_config_file(hostname : String)
-    puts "'#{hostname}' is not in config file. Configuring ..."
     print_chars('-', 60)
     config = Session::V3Session.new.configure_session
     credentials = {hostname => config}.to_yaml.gsub("---", "")

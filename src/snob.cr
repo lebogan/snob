@@ -11,7 +11,7 @@
 #       AUTHOR:  Lewis E. Bogan
 #      COMPANY:  Earthsea@Home
 #      CREATED:  2017-11-10 10:19
-#    COPYRIGHT:  (C) 2017-2020 Lewis E. Bogan <lewis.bogan@comcast.net>
+#    COPYRIGHT:  (C) 2017-2021 Lewis E. Bogan <lewis.bogan@comcast.net>
 #    GIT REPOS:  earthforge, GitHub
 #             :  git remote add origin git@earthforge.earthsea.local:lewisb/snob.git
 #             :  git remote set-url --add --push origin git@github.com:lebogan/snob.git
@@ -122,8 +122,6 @@ class App
       parser.missing_option { |flag| abort missing_message(flag) }
     end
 
-    # hostname = check_for_host(arguments)
-
     # Checks for the existence of a valid config file and tests if host
     # is in it. Otherwise, asks for manual entry of credentials and
     # adds them to existing config file.
@@ -136,6 +134,7 @@ class App
     if check_credentials(CONFIG_FILE)["#{hostname}"]? != nil
       creds = fetch_credentials(CONFIG_FILE, "#{hostname}") # => NamedTuple(Symbol, String...)
     else
+      puts "'#{hostname}' is not in config file. Configuring ..."
       creds = update_config_file(hostname)
     end
 

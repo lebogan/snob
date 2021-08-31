@@ -1,10 +1,10 @@
 name: snob
-version: 1.0.0
+version: 1.0.1
 
 authors:
   - lebogan <lewis.bogan@comcast.net>
  
-crystal: 1.0.0
+crystal: 1.1.1
 
 license: MIT
 
@@ -17,7 +17,5 @@ development_dependencies:
     github: veelenga/ameba
 
 dependencies:
-  term-spinner:
-    github: crystal-term/spinner  
   term-prompt:
     github: crystal-term/prompt

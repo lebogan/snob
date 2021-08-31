@@ -5,7 +5,7 @@
 #       AUTHOR:  Lewis E. Bogan
 #      COMPANY:  Earthsea@Home
 #      CREATED:  2017-12-16 13:29
-#    COPYRIGHT:  (C) 2017 Lewis E. Bogan <lewis.bogan@comcast.net>
+#    COPYRIGHT:  (C) 2021 Lewis E. Bogan <lewis.bogan@comcast.net>
 # Distributed under terms of the MIT license.
 # ===============================================================================
 
@@ -20,8 +20,8 @@ module Reports
   # Prints a line of characters for display formatting, defaults to 20 dashes.
   #
   # ```
-  # Helpers.print_chars('*', 10) # => "**********"
-  # Helpers.print_chars          # => "--------------------"
+  # Reports.print_chars('*', 10) # => "**********"
+  # Reports.print_chars          # => "--------------------"
   # ```
   #
   def print_chars(character : Char = '-', number : Int32 = 20)
@@ -33,7 +33,7 @@ module Reports
   # Defaults to # 48 characters.
   #
   # ```
-  # Myutils.truncate("hello, world", 10, "...") # => hello, ...
+  # Reports.truncate("hello, world", 10, "...") # => hello, ...
   # ```
   #
   def truncate(text : String, length = 48, trunc_string = "...") : String
@@ -44,7 +44,7 @@ module Reports
   # preserves the words I want capitalized intentionally.
   #
   # ```
-  # Myutils.capitalize!("my dog has Fleas") # => "My dog has Fleas"
+  # Reports.capitalize!("my dog has Fleas") # => "My dog has Fleas"
   # ```
   def capitalize!(string : String) : String
     String.build { |str| str << string[0].upcase << string[1..string.size] }
@@ -54,9 +54,9 @@ module Reports
   # is present.
   #
   # ```
-  # Myutils.punctuate!("let's end this")  # => "let's end this."
-  # Myutils.punctuate!("let's end this!") # => "let's end this!"
-  # Myutils.punctuate!("let's end this?") # => "let's end this?"
+  # Reports.punctuate!("let's end this")  # => "let's end this."
+  # Reports.punctuate!("let's end this!") # => "let's end this!"
+  # Reports.punctuate!("let's end this?") # => "let's end this?"
   # ```
   def punctuate!(string : String) : String
     case string

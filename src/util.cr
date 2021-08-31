@@ -5,7 +5,7 @@
 #       AUTHOR:  Lewis E. Bogan
 #      COMPANY:  Earthsea@Home
 #      CREATED:  2020-07-31 17:45
-#    COPYRIGHT:  (C) 2020 Lewis E. Bogan <lewis.bogan@comcast.net>
+#    COPYRIGHT:  (C) 2021 Lewis E. Bogan <lewis.bogan@comcast.net>
 # Distributed under terms of the MIT license.
 # ===============================================================================
 module Util
@@ -33,7 +33,7 @@ module Util
   # and other single character prompts.
   #
   # ```
-  # Myutils.ask_char("press 'q' to quit ") # => 'q'
+  # Util.ask_char("press 'q' to quit ") # => 'q'
   # ```
   #
   # ```text
@@ -54,7 +54,7 @@ module Util
   # ```
   #
   # ```text
-  # Myutils.clear_screen # => "\e[2J\e[1;1H]]"
+  # Util.clear_screen # => "\e[2J\e[1;1H]]"
   # ```
   #
   def self.clear_screen
@@ -64,7 +64,7 @@ module Util
   # Returns an array containing the contents of _filename_.
   #
   # ```
-  # Myutils.read_file("./src/spec_helper.cr") # => Array(String)
+  # Util.read_file("./src/spec_helper.cr") # => Array(String)
   # ```
   #
   def self.read_file(filename : String) : Array(String)
@@ -74,27 +74,27 @@ module Util
   # Opens _filename_ for writing. Creates it if it doesn't exist. Overwrites _content_.
   #
   # ```
-  # Myutils.write_file("path/test.txt", "Testing 1, 2, 3.")
+  # Util.write_file("path/test.txt", "Testing 1, 2, 3.")
   # ```
   #
   def self.write_file(filename : String, content : String)
-    File.open(filename, "w") { |file| file.puts content }
+    File.open(filename, "w", &.puts(content))
   end
 
   # Opens _filename_ for appending _content_.
   #
   # ```
-  # Myutils.append_file("path/test.txt", "Testing 1, 2, 3.")
+  # Util.append_file("path/test.txt", "Testing 1, 2, 3.")
   # ```
   #
   def self.append_file(filename : String, content : String)
-    File.open(filename, "a") { |file| file.puts content }
+    File.open(filename, "a", &.puts(content))
   end
 
   # Checks for hostname in ARGV
   #
   # ```
-  # Helpers.process_argv("myhost") # => "myhost"
+  # Util.process_argv("myhost") # => "myhost"
   # ```
   #
   def process_argv(argv) : String
@@ -111,7 +111,7 @@ module Util
   # Asks for a hostname if none is given on the command line.
   #
   # ```
-  # Helpers.check_for_host # => String
+  # Util.check_for_host # => String
   # ```
   #
   def check_for_host(argv)
@@ -130,13 +130,13 @@ module Util
   # status, and command output or error. If _args_ is missing, it defaults to "".
   #
   # ```
-  # status, result = Myutils.run_cmd("ls", {"-l", "-s"}) # => 0, listing
+  # status, result = Util.run_cmd("ls", {"-l", "-s"}) # => 0, listing
   #
-  # status, result = Myutils.run_cmd("ls", {"-ls"}) # => 0, listing
+  # status, result = Util.run_cmd("ls", {"-ls"}) # => 0, listing
   #
-  # status, result = Myutils.run_cmd("ls", ["-ls"]) # => 0, listing
+  # status, result = Util.run_cmd("ls", ["-ls"]) # => 0, listing
   #
-  # status, result = Myutils.run_cmd("junk") # => 1, error-message about missing cmd.
+  # status, result = Util.run_cmd("junk") # => 1, error-message about missing cmd.
   # ```
   #
   def self.run_cmd(cmd : String, args : Tuple = {""}) : Tuple(Int32, String)
