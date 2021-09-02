@@ -9,7 +9,7 @@ Lewis E. Bogan
 :shards_version: {shards_version}
 
 == name
-snob - snmp network object browser
+snob - snob network object browser
 
 == synopsis
 *snob* [OPTIONS] [HOST]
@@ -32,7 +32,7 @@ exists in an attempt to pretty-print the output for display on screen. The *--on
 flag allows output to be used raw by another application like RRDTool for graphing 
 trends when you know which OID you want.
 
-For ease of use, a *--edit* option is included.
+For ease of use, a *--edit* option is included for editing the config file.
 
 == options
 *-l, --list*::
@@ -78,10 +78,12 @@ sysORLastChange.0 = 0:0:00:15.09
 ----
 
 == files
-.snob/snobrc.yml::
-Main configuration file.
-~/tmp/raw_dump.txt::
+pass:[~/.snob/snobrc.yml]::
+Main configuration file located in the user's home directory.
+
+pass:[~/tmp/raw_dump.txt]::
 Unformatted dump of tree data.
+
 
 == see also
 snmpwalk(1), snob(5)

@@ -67,13 +67,13 @@ install: ## Install the application to /usr/local/bin
 	$(INSTALL) -m 0755 -d "$(BINDIR)" "$(MANDIR)/man1" "$(MANDIR)/man5"
 	$(INSTALL) -m 0755 bin/$(NAME) "$(BINDIR)"
 	$(INSTALL) -m 0644 man/$(NAME).1 "$(MANDIR)/man1"
-	$(INSTALL) -m 0644 man/$(NAME).yml.5 "$(MANDIR)/man5"
+	$(INSTALL) -m 0644 man/$(NAME)rc.yml.5 "$(MANDIR)/man5"
 
 .PHONY: uninstall
 uninstall: ## Remove the application
 	rm -f "$(BINDIR)/$(NAME)"
 	rm -f "$(MANDIR)/man1/$(NAME).1"
-	rm -f "$(MANDIR)/man5/$(NAME).yml.5"
+	rm -f "$(MANDIR)/man5/$(NAME)rc.yml.5"
 
 .PHONY: update
 update: ## Update shards

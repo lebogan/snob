@@ -2,12 +2,12 @@
 .\"     Title: snob
 .\"    Author: Lewis E. Bogan
 .\" Generator: Asciidoctor 2.0.16
-.\"      Date: 2021-03-22
+.\"      Date: 2021-09-02
 .\"    Manual: Snob Manual
 .\"    Source: snob 1.0.1
 .\"  Language: English
 .\"
-.TH "SNOB" "1" "2021-03-22" "snob 1.0.1" "Snob Manual"
+.TH "SNOB" "1" "2021-09-02" "snob 1.0.1" "Snob Manual"
 .ie \n(.g .ds Aq \(aq
 .el       .ds Aq '
 .ss \n[.ss] 0
@@ -28,7 +28,7 @@
 .  LINKSTYLE blue R < >
 .\}
 .SH "NAME"
-snob \- snmp network object browser
+snob \- snob network object browser
 .SH "SYNOPSIS"
 .sp
 \fBsnob\fP [OPTIONS] [HOST]
@@ -51,7 +51,7 @@ exists in an attempt to pretty\-print the output for display on screen. The \fB\
 flag allows output to be used raw by another application like RRDTool for graphing
 trends when you know which OID you want.
 .sp
-For ease of use, a \fB\-\-edit\fP option is included.
+For ease of use, a \fB\-\-edit\fP option is included for editing the config file.
 .SH "OPTIONS"
 .sp
 \fB\-l, \-\-list\fP
@@ -113,11 +113,15 @@ sysORLastChange.0 = 0:0:00:15.09
 .if n .RE
 .SH "FILES"
 .sp
-.B snob/snobrc.yml::
-.br
-Main configuration file.
-~/tmp/raw_dump.txt::
+~/.snob/snobrc.yml
+.RS 4
+Main configuration file located in the user\(cqs home directory.
+.RE
+.sp
+~/tmp/raw_dump.txt
+.RS 4
 Unformatted dump of tree data.
+.RE
 .SH "SEE ALSO"
 .sp
 snmpwalk(1), snob(5)
