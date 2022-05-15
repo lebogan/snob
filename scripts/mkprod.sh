@@ -56,7 +56,9 @@ spin() {
 #   $@
 #===============================================================================
 build_prod() {
-  echo "${yellow}Building bin/${name}...${normal}"
+  #echo "${yellow}Building bin/${name}...${normal}"
+  echo "${yellow}Building $1...${normal}"
+  shift
   while [[ "$#" -gt "0" ]]; do
     if make "$1"; then
       echo "${green}Finished building $1.${normal}"
@@ -77,4 +79,11 @@ if [[ ! -d bin ]]; then
   mkdir bin
 fi
 
-build_prod prod man docs raspi3 raspi4 raspi64 centos debian
+build_prod ${name} prod
+build_prod "Man pages" man
+build_prod "Extra docs" docs
+build_prod "Raspi3 object" raspi3
+build_prod "Raspi 4 object" raspi4
+build_prod "Raspi64 object" raspi64
+build_prod "Centos object" centos
+build_prod "Debian object" debian

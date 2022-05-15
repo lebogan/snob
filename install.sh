@@ -108,8 +108,9 @@ WARNING
   else
     sudo ln -s "$(realpath ./bin/snob) ${install_dir}/snob"
     sudo install -m 0755 -d ${mandir}/man1
+    sudo install -m 0755 -d ${mandir}/man5
     sudo install -m 0644 man/${name}.1 ${mandir}/man1
-    sudo install -m 0644 man/${name}.5 ${mandir}/man1
+    sudo install -m 0644 man/${name}rc.yml.5 ${mandir}/man5
     install_snmp
     finish_msg
   fi

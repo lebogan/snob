@@ -1,4 +1,3 @@
-/doc/
 /lib/
 /bin/ameba*
 !./bin/snob*
@@ -7,4 +6,5 @@
 *.html
 .ameba.yml
 tags
+snob
 snob.sublime-workspace

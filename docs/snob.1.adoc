@@ -35,6 +35,16 @@ trends when you know which OID you want.
 For ease of use, a *--edit* option is included for editing the config file.
 
 == options
+*-d, --dump*::
+        writes output to a file, raw only by default
+
+*-e, --edit*::
+        edits global config file using default editor specified by the _EDITOR_
+        environment variable.
+
+*-f, --formatted*::
+        displays output as a formatted table
+
 *-l, --list*::
         displays some predefined OID's (Object IDentifiers)
 
@@ -42,24 +52,14 @@ For ease of use, a *--edit* option is included for editing the config file.
         displays information for this OID
         (default system)
 
-*-d, --dump*::
-        writes output to a file, raw only
-
-*-f, --formatted*::
-        displays output as a formatted table
-
 *-o, --only-values*::
         displays values only (not OID = value)
 
-*-e, --edit*::
-        edits global config file using default editor specified by the _EDITOR_
-        environment variable.
-
 == general options
--h, --help     
+*-h, --help*::
         show this help  
 
--v, --version  
+*-v, --version*::
         show version  
 
 == examples
@@ -86,7 +86,7 @@ Unformatted dump of tree data.
 
 
 == see also
-snmpwalk(1), snob(5)
+snmpwalk(1), snobrc.yml(5)
 
 == copyright
 Copyright (C) {localyear} {author}. +

@@ -31,7 +31,15 @@ module Messages
     Prompts for HOST if not specified on the command-line. Also, prompts
     for security credentials if HOST is not in the config file, snobrc.yml.
 
+    Options:
     BANNER
+  end
+
+  def usage_message
+    <<-USAGE
+    Usage: snob [OPTIONS] [HOST]
+    See snob --help or man page for more information.
+    USAGE
   end
 
   def copyright_message

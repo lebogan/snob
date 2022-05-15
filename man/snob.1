@@ -1,13 +1,13 @@
 '\" t
 .\"     Title: snob
 .\"    Author: Lewis E. Bogan
-.\" Generator: Asciidoctor 2.0.16
-.\"      Date: 2021-09-02
+.\" Generator: Asciidoctor 2.0.17
+.\"      Date: 2022-05-16
 .\"    Manual: Snob Manual
-.\"    Source: snob 1.0.1
+.\"    Source: snob 1.1.0
 .\"  Language: English
 .\"
-.TH "SNOB" "1" "2021-09-02" "snob 1.0.1" "Snob Manual"
+.TH "SNOB" "1" "2022-05-16" "snob 1.1.0" "Snob Manual"
 .ie \n(.g .ds Aq \(aq
 .el       .ds Aq '
 .ss \n[.ss] 0
@@ -54,6 +54,22 @@ trends when you know which OID you want.
 For ease of use, a \fB\-\-edit\fP option is included for editing the config file.
 .SH "OPTIONS"
 .sp
+\fB\-d, \-\-dump\fP
+.RS 4
+writes output to a file, raw only by default
+.RE
+.sp
+\fB\-e, \-\-edit\fP
+.RS 4
+edits global config file using default editor specified by the \fIEDITOR\fP
+environment variable.
+.RE
+.sp
+\fB\-f, \-\-formatted\fP
+.RS 4
+displays output as a formatted table
+.RE
+.sp
 \fB\-l, \-\-list\fP
 .RS 4
 displays some predefined OID\(cqs (Object IDentifiers)
@@ -65,33 +81,21 @@ displays information for this OID
 (default system)
 .RE
 .sp
-\fB\-d, \-\-dump\fP
-.RS 4
-writes output to a file, raw only
-.RE
-.sp
-\fB\-f, \-\-formatted\fP
-.RS 4
-displays output as a formatted table
-.RE
-.sp
 \fB\-o, \-\-only\-values\fP
 .RS 4
 displays values only (not OID = value)
 .RE
-.sp
-\fB\-e, \-\-edit\fP
-.RS 4
-edits global config file using default editor specified by the \fIEDITOR\fP
-environment variable.
-.RE
 .SH "GENERAL OPTIONS"
 .sp
-\-h, \-\-help
+\fB\-h, \-\-help\fP
+.RS 4
 show this help
+.RE
 .sp
-\-v, \-\-version
+\fB\-v, \-\-version\fP
+.RS 4
 show version
+.RE
 .SH "EXAMPLES"
 .sp
 .if n .RS 4
@@ -124,10 +128,10 @@ Unformatted dump of tree data.
 .RE
 .SH "SEE ALSO"
 .sp
-snmpwalk(1), snob(5)
+snmpwalk(1), snobrc.yml(5)
 .SH "COPYRIGHT"
 .sp
-Copyright \(co 2021 Lewis E. Bogan.
+Copyright \(co 2022 Lewis E. Bogan.
 .br
 .sp
 .URL "http://opensource.org/licenses/MIT" "License MIT" ""

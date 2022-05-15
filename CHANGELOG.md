@@ -1,4 +1,9 @@
 #CHANGELOG
+## 1.1.0(2022-05-15)
+- Update for Crystal 1.4.1
+- Move main application into a separate _cli_ file for management purposes
+- Update man pages
+
 ## 1.0.1(2021-09-01)
 - Update for Crystal 1.1.1
 - Update install script to include more distros
