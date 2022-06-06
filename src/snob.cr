@@ -40,7 +40,8 @@ CONFIG_PATH = File.expand_path("#{ENV["HOME"]}/.snob")
 CONFIG_FILE = File.expand_path("#{CONFIG_PATH}/snobrc.yml")
 OUT_PATH    = File.expand_path("#{ENV["HOME"]}/tmp")
 OUT_FILE    = File.expand_path("#{OUT_PATH}/raw_dump.txt")
-VERSION     = {{ `shards version #{__DIR__}`.chomp.stringify }}
+VERSION     = {{ `shards version #{__DIR__}`.chomp.downcase.stringify }}
+PROMPT      = Term::Prompt.new
 
 # Allows displaying object methods during development.
 class Object

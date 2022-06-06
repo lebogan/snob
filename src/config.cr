@@ -12,7 +12,6 @@
 # Defines configuration file methods.
 module Config
   extend self
-  @@prompt = Term::Prompt.new
 
   # Creates a dummy entry.
   def build_default_config(config_path : String, config_file : String)
@@ -20,8 +19,7 @@ module Config
     conf = {"dummy" => {user: "username", auth_pass: "auth passphrase",
                         priv_pass: "priv passphrase", auth: "MD5/SHA",
                         crypto: "AES/DES"}}
-    choice = @@prompt.yes?("Config file doesn't exist. Create it(Y/n)? ")
-    build_config_file(config_file, conf) if choice
+    build_config_file(config_file, conf)
   end
 
   # Creates a new config file.
@@ -30,6 +28,9 @@ module Config
       file.puts "# #{config_file}"
       YAML.dump(conf, file)
     end
+  rescue ex
+    puts "Error encountered: #{ex.message}"
+    exit 1
   end
 
   # Adds new host to config file
@@ -38,7 +39,7 @@ module Config
     config = Session::V3Session.new.configure_session
     credentials = {hostname => config}.to_yaml.gsub("---", "")
     print_chars('-', 60)
-    choice = @@prompt.yes?("Save these credentials(Y/n)? ")
+    choice = PROMPT.yes?("Save these credentials? ")
     Util.append_file(CONFIG_FILE, credentials) if choice
     config
   end

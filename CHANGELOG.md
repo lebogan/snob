@@ -1,4 +1,9 @@
 #CHANGELOG
+## 1.1.1(2022-09-27)
+- Update for Crystal 1.5.1
+- Update references to Centos to generic Redhat to reflect the demise of the
+  community project. This mainly impacts Makefile and shell scripts.
+
 ## 1.1.0(2022-05-15)
 - Update for Crystal 1.4.1
 - Move main application into a separate _cli_ file for management purposes

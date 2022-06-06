@@ -15,8 +15,8 @@ DEVFLAGS := --warnings all --error-on-warnings## Development build flags
 RASPI64FLAGS := --cross-compile --target "aarch64-unknown-linux-gnu" --release## Rpi Ubuntu production build flags
 RASPI4FLAGS := --cross-compile --target "armv7l-unknown-linux-gnueabihf" --release## Rpi production build flags
 RASPI3FLAGS := --cross-compile --target "armv6k-unknown-linux-gnueabihf" --release## Rpi production build flags
-CENTOSFLAGS := --cross-compile --target "x86_64-unknown-linux-gnu" --release## Centos production build flags
-DEBIANFLAGS := --cross-compile --target "x86_64-pc-linux-gnu" --release## Centos production build flags
+REDHATFLAGS := --cross-compile --target "x86_64-unknown-linux-gnu" --release## Redhat production build flags
+DEBIANFLAGS := --cross-compile --target "x86_64-pc-linux-gnu" --release## Redhat production build flags
 PREFIX := /usr/local## Install root directory
 BINDIR := $(PREFIX)/bin## Install directory
 MANDIR := $(PREFIX)/share/man## Man page directory
@@ -50,11 +50,11 @@ raspi3: $(OBJECT_SOURCES) $(SRC_SOURCES)
 	@$(CRYSTAL) build src/snob.cr -o bin/snob-rpi3 $(RASPI3FLAGS) | tee scripts/rpibuild3.sh
 	@sed -i -e "s|-o bin/snob-rpi3|-o bin/snob|g" scripts/rpibuild3.sh
 
-.PHONY: centos
-centos: ## Build the object file and compile script for rpm-based architectures
-centos: $(OBJECT_SOURCES) $(SRC_SOURCES)
-	@$(CRYSTAL) build src/$(NAME).cr -o bin/$(NAME)-centos $(CENTOSFLAGS) | tee scripts/centosbuild.sh
-	@sed -i -e "s|-o bin/snob-centos|-o bin/snob|g" scripts/centosbuild.sh
+.PHONY: redhat
+redhat: ## Build the object file and compile script for rpm-based architectures
+redhat: $(OBJECT_SOURCES) $(SRC_SOURCES)
+	@$(CRYSTAL) build src/$(NAME).cr -o bin/$(NAME)-redhat $(REDHATFLAGS) | tee scripts/redhatbuild.sh
+	@sed -i -e "s|-o bin/snob-redhat|-o bin/snob|g" scripts/redhatbuild.sh
 
 .PHONY: debian
 debian: ## Build the object file and compile script for deb-based architectures

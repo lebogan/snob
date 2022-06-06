@@ -79,7 +79,7 @@ struct App
     # is in it. Otherwise, asks for manual entry of credentials and
     # adds them to existing config file.
     unless File.exists?(CONFIG_FILE)
-      build_default_config(CONFIG_PATH, CONFIG_FILE)
+      Config.build_default_config(CONFIG_PATH, CONFIG_FILE)
     end
 
     hostname = check_for_host(arguments)

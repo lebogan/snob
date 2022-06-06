@@ -15,8 +15,6 @@ SEPERATOR           = "-------------------+-------------------------------------
 
 # Displays the results of a snmpwalk operation either raw or formatted.
 module Reports
-  @@prompt = Term::Prompt.new
-
   # Prints a line of characters for display formatting, defaults to 20 dashes.
   #
   # ```
@@ -88,7 +86,7 @@ module Reports
       puts SEPERATOR
       page_count += 1
       if page_count % FORMATTED_PAGE_SIZE == 0
-        @@prompt.yes?("Continue?") ? next : break
+        PROMPT.yes?("Continue?") ? next : break
       end
     end
     puts "\n"
@@ -101,7 +99,7 @@ module Reports
       puts entry
       page_count += 1
       if page_count % RAW_PAGE_SIZE == 0
-        @@prompt.yes?("Continue?") ? next : break
+        PROMPT.yes?("Continue?") ? next : break
       end
     end
     puts "\n\n"

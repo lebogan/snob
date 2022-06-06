@@ -37,7 +37,7 @@ flag allows output to be used raw by another application like RRDTool for graphi
 trends when you know which OID you want.
 
 == Installation
-This covers Ubuntu (14 - 20). See notes below for other distros.  
+This covers Ubuntu (14 - 22). See notes below for other distros.
 
 === Required
 Required utilities for nms (network management station):  
@@ -45,7 +45,7 @@ Required utilities for nms (network management station):
 * git
 * Install Crystal from the website, [crystal-lang](https://crystal-lang.org/docs/installation),
 to build the utility from source.  
-* snmpd
+* snmp
 * libsnmp-dev
 * snmp-mibs-downloader
 
@@ -129,13 +129,16 @@ Browse a host's snmpv3 mib tree.
 Prompts for HOST if not specified on the command-line. Also, prompts
 for security credentials if HOST is not in the config file, snobrc.yml.
 
+Options:
     -l, --list                       List some pre-defined OIDs
     -m OID, --mib=OID                Display information for this oid
-                                     (Default: system)
-    -d, --dump                       Write output to file, raw only
+                                                                          (Default: system)
+    -d, --dump                       Write output to file, raw only by default
     -e, --edit                       Edit global config file
     -f, --formatted                  Display as formatted table
     -o, --only-values                Display values only (not OID = value)
+
+General options:
     -h, --help                       Show this help
     -v, --version                    Show version
 
@@ -236,7 +239,8 @@ http://opensource.org/licenses/MIT[MIT License].
 == Usage Disclaimer
 This utility was originally created for my personal use in my work as a network
 specialist. Developed around 2017 using Crystal 0.21.0 on Ubuntu 14.04 virtual workstation running under Vagrant with VirtualBox provider.  I have since upgraded to Ubuntu 20.04LTS and
-Crystal 1.1.1 with upgrades to Vagrant and VirtualBox. Tested on RaspberryPi(Buster 10), CentOS 8, and Debian 10.
+Crystal 1.5.1 with upgrades to Vagrant and VirtualBox. Tested on RaspberryPi(Buster 10),
+RaspberryPi(Ubuntu 20.04 server), CentOS 8, and Debian 10, Ubuntu 22.04 server.
 
 
 I am not a professional software developer nor do I pretend to be. I am a retired IT 

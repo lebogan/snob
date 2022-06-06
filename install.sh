@@ -67,8 +67,8 @@ show_menu() {
   echo "d. Update from git source (except RaspberryPi)"
   echo "e. Install binary for RaspberryPi 4 (armv7l)"
   echo "f. Install binary for RaspberryPi 3 (armv6k)"
-  echo "g. Install binary for Centos/RedHat"
-  echo "h. Install binary for Debian/Ubuntu/Mint"
+  echo "g. Install binary for RedHat-based distros"
+  echo "h. Install binary for Debian-based distros"
   echo "i. Install binary for RaspberryPi (aarch64)"
   echo "j. Uninstall all (except data files)"
   echo "q. Quit"
@@ -82,7 +82,7 @@ show_menu() {
   "d") update_source ;;
   "e") build_raspi4 ;;
   "f") build_raspi3 ;;
-  "g") build_centos ;;
+  "g") build_redhat ;;
   "h") build_debian ;;
   "i") build_aarch64 ;;
   "j") uninstall_all ;;
@@ -177,7 +177,7 @@ install_snmp() {
       sudo sed -i -e "s/mibs :/#mibs :/" /etc/snmp/snmp.conf
     fi
     ;;
-  centos)
+  centos | rocky | almalinux)
     sudo dnf install -y snmp snmp-mibs-downloader >/dev/null 2>&1
     ;;
   *)
@@ -272,13 +272,13 @@ build_raspi3() {
 # Arguments:
 #   None
 #===============================================================================
-build_centos() {
+build_redhat() {
   git stash
   git pull
   make clean
   install_snmp
   install_rpm_libs gcc make readline-devel pcre-devel gc-devel libevent-devel
-  bash scripts/centosbuild.sh
+  bash scripts/redhatbuild.sh
   sudo make install
   finish_msg
 }
