@@ -1,4 +1,7 @@
 #CHANGELOG
+## 1.1.2(2022-10-16)
+- Update for Crystal 1.6.0
+
 ## 1.1.1(2022-09-27)
 - Update for Crystal 1.5.1
 - Update references to Centos to generic Redhat to reflect the demise of the

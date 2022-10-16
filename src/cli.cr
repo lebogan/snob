@@ -93,7 +93,8 @@ struct App
 
     # Creates an Snmp session object and invokes the walk_mib3 method on the object,
     # host_session, using 'system' oid if the --mib flag is missing.
-    host_session = Snmp.new(creds[:user], creds[:auth_pass], creds[:priv_pass], creds[:auth], creds[:crypto])
+    host_session = Snmp.new(creds[:user], creds[:auth_pass], creds[:priv_pass],
+      creds[:auth], creds[:crypto])
     output_format = defaults["only_values"] ? "vq" : "QUsT"
     status, results = host_session.walk_mib3(hostname, mib_oid, output_format)
     abort snmp_message(hostname, mib_oid) unless status == 0
