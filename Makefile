@@ -87,7 +87,7 @@ test: $(SRC_SOURCES) $(SPEC_SOURCES)
 .PHONY: check
 check: $(SRC_SOURCES)
 check: ## Run code analysis checker
-	@bin/ameba --all --gen-config
+	@CRYSTAL_WORKERS=2 ameba --all --gen-config
 
 .PHONY: format
 format: ## Apply source code formatting

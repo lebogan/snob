@@ -1,9 +1,5 @@
 version: 2.0
 shards:
-  ameba:
-    git: https://github.com/veelenga/ameba.git
-    version: 1.2.0
-
   cor:
     git: https://github.com/watzon/cor.git
     version: 0.1.0+git.commit.9c9e51ac6168f3bd4fdc51d679b65de09ef76cac
@@ -22,11 +18,11 @@ shards:
 
   term-reader:
     git: https://github.com/crystal-term/reader.git
-    version: 0.1.0+git.commit.e174733435c96c745bee31ac5c5d4def3ccf4285
+    version: 0.1.0+git.commit.cd022d4d4628e5d9de47e669a770ccb7df412863
 
   term-screen:
     git: https://github.com/crystal-term/screen.git
-    version: 0.1.0+git.commit.b3a57931b529d60f4e626913feef21b30a6e697a
+    version: 0.1.0+git.commit.ea51ee8d1f6c286573c41a7e784d31c80af7b9bb
 
   term-spinner:
     git: https://github.com/crystal-term/spinner.git

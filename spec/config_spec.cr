@@ -7,7 +7,7 @@ CONFIG_PATH = File.expand_path("#{ENV["HOME"]}/.snob")
 CONFIG_FILE = File.expand_path("#{CONFIG_PATH}/snobrc.yml")
 
 include Config
-include Reports
+# include Reports
 
 describe Config do
   describe "#build_default_config" do
@@ -22,6 +22,7 @@ describe Config do
       config = fetch_credentials(CONFIG_FILE, "dummy")
       config.should be_a(NamedTuple(user: String, auth_pass: String, priv_pass: String,
         auth: String, crypto: String))
+      puts config.class
     end
   end
 

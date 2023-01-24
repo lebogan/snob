@@ -1,4 +1,7 @@
 #CHANGELOG
+## 1.1.3(2023-01-24)
+- Update for Crystal 1.7.2
+
 ## 1.1.2(2022-10-16)
 - Update for Crystal 1.6.0
 

@@ -4,6 +4,58 @@
 		"selected_items":
 		[
 			[
+				"C",
+				"CONFIG_FILE"
+			],
+			[
+				"def",
+				"defaults"
+			],
+			[
+				"de",
+				"defaults"
+			],
+			[
+				"di",
+				"display_formatted"
+			],
+			[
+				"d",
+				"display_raw"
+			],
+			[
+				"dis",
+				"display_raw"
+			],
+			[
+				"par",
+				"parser"
+			],
+			[
+				"in",
+				"install_snmp"
+			],
+			[
+				"i",
+				"install_snmp"
+			],
+			[
+				"ins",
+				"install_snmp"
+			],
+			[
+				"res",
+				"resolve_host"
+			],
+			[
+				"s",
+				"should"
+			],
+			[
+				"tes",
+				"test_host"
+			],
+			[
 				"add",
 				"add_help"
 			],
@@ -14,10 +66,6 @@
 			[
 				"po",
 				"poll_all_hosts"
-			],
-			[
-				"dis",
-				"display_header"
 			],
 			[
 				"Poll",
@@ -48,10 +96,6 @@
 				"filename"
 			],
 			[
-				"d",
-				"dispay_header"
-			],
-			[
 				"run",
 				"run_cmd"
 			],
@@ -74,10 +118,6 @@
 			[
 				"S",
 				"ShowVmInfoCommand"
-			],
-			[
-				"C",
-				"Command"
 			],
 			[
 				"loc",
@@ -328,14 +368,6 @@
 				"user_input"
 			],
 			[
-				"in",
-				"includes"
-			],
-			[
-				"ins",
-				"install_ssh_key"
-			],
-			[
 				"sev",
 				"severities"
 			],
@@ -412,10 +444,6 @@
 				"DEVFLAGS"
 			],
 			[
-				"par",
-				"parse"
-			],
-			[
 				"ti",
 				"timestamp"
 			],
@@ -485,6 +513,19 @@
 			]
 		]
 	},
+	"buffers":
+	[
+		{
+			"contents": "- System uptime....: 4 days 2 hours 16 minutes\n- Disk space ROOT..: Size: 39G, Used: 11G, Avail: 29G\n- Weather..........: 41°F, Cloudy\n===============================================================\n\n3 updates can be applied immediately.\n3 of these updates are standard security updates.\nTo see these additional updates run: apt list --upgradable\n\n\n[snob (updates)]$ crystal spec spec/config_spec.cr \nMissing YAML attribute: user at line 3, column 1\nconfig # => nil\n...*\n\nPending:\n  Config #update_config_file updates the config file\n\nFinished in 1.06 milliseconds\n4 examples, 0 failures, 0 errors, 1 pending\n[snob (updates)]$ crystal spec spec/config_spec.cr \n\n\nFinished in 59 microseconds\n0 examples, 0 failures, 0 errors, 0 pending\n[snob (updates)]$ crystal spec spec/config_spec.cr \nMissing YAML attribute: user at line 3, column 1\nconfig # => nil\n.\n\nFinished in 622 microseconds\n1 examples, 0 failures, 0 errors, 0 pending\n[snob (updates)]$ crystal spec spec/config_spec.cr \nMissing YAML attribute: host at line 3, column 1\nconfig # => nil\n.\n\nFinished in 565 microseconds\n1 examples, 0 failures, 0 errors, 0 pending\n[snob (updates)]$ crystal spec spec/config_spec.cr \nMissing YAML attribute: host at line 3, column 1\nNil\nconfig # => nil\n.\n\nFinished in 585 microseconds\n1 examples, 0 failures, 0 errors, 0 pending\n[snob (updates)]$ crystal spec spec/config_spec.cr \nMissing YAML attribute: host at line 3, column 1\nNil\nconfig # => nil\n.*\n\nPending:\n  Config #fetch_credentials returns a NamedTuple object\n\nFinished in 315 microseconds\n2 examples, 0 failures, 0 errors, 1 pending\n[snob (updates)]$ crystal spec spec/config_spec.cr \nMissing YAML attribute: host at line 3, column 1\nNil\nconfig # => nil\n..\n\nFinished in 768 microseconds\n2 examples, 0 failures, 0 errors, 0 pending\n[snob (updates)]$ crystal spec spec/config_spec.cr \nMissing YAML attribute: host at line 3, column 1\nNil\nconfig # => nil\n.NamedTuple(user: String, auth_pass: String, priv_pass: String, auth: String, crypto: String)\n.\n\nFinished in 817 microseconds\n2 examples, 0 failures, 0 errors, 0 pending\n[snob (updates)]$ crystal spec spec/config_spec.cr \nError: Missing YAML attribute: host at line 3, column 1\nNil\nconfig # => nil\n.NamedTuple(user: String, auth_pass: String, priv_pass: String, auth: String, crypto: String)\n.\n\nFinished in 575 microseconds\n2 examples, 0 failures, 0 errors, 0 pending\n[snob (updates)]$ crystal spec spec/config_spec.cr \nError: Expected mapping, not scalar at line 4, column 9\nNil\nconfig # => nil\n.NamedTuple(user: String, auth_pass: String, priv_pass: String, auth: String, crypto: String)\n.\n\nFinished in 441 microseconds\n2 examples, 0 failures, 0 errors, 0 pending\n[snob (updates)]$ ",
+			"settings":
+			{
+				"buffer_size": 2685,
+				"line_ending": "Unix",
+				"name": "Login Shell",
+				"scratch": true
+			}
+		}
+	],
 	"build_system": "",
 	"build_system_choices":
 	[
@@ -496,6 +537,18 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"terminus",
+				"Terminus: Open Default Shell in Tab (View)"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
 			[
 				"install",
 				"Package Control: Install Package"
@@ -555,10 +608,6 @@
 			[
 				"the",
 				"Terminus Utilities: Select Theme"
-			],
-			[
-				"insta",
-				"Package Control: Install Package"
 			],
 			[
 				"op",
@@ -668,13 +717,61 @@
 		"side_bar_visible": false,
 		"status_bar_visible": false
 	},
+	"expanded_folders":
+	[
+		"/home/vagrant/projects/production/crystal/snob",
+		"/home/vagrant/projects/production/crystal/snob/src"
+	],
 	"file_history":
 	[
-		"/home/vagrant/projects/production/crystal/snob/docs/snob.1.adoc",
-		"/home/vagrant/projects/production/crystal/snob/shard.yml",
+		"/home/vagrant/projects/production/crystal/snob/src/cli.cr",
+		"/home/vagrant/projects/production/crystal/snob/CHANGELOG.md",
+		"/home/vagrant/projects/production/crystal/snob/src/config.cr",
+		"/home/vagrant/projects/production/crystal/snob/src/snob.cr",
+		"/home/vagrant/.snob/snobrc.yml",
+		"/home/vagrant/projects/production/crystal/snob/spec/config_spec.cr",
+		"/home/vagrant/projects/production/crystal/snob/spec/spec_helper.cr",
 		"/home/vagrant/projects/production/crystal/snob/Makefile",
+		"/home/vagrant/projects/production/crystal/snob/shard.yml",
+		"/home/vagrant/projects/production/crystal/snob/src/helpers.cr",
+		"/home/vagrant/projects/production/crystal/snob/.git/config",
+		"/home/vagrant/projects/production/crystal/snob/scripts/mkprod.sh",
+		"/home/vagrant/projects/production/crystal/snob/docs/snob.1.adoc",
+		"/home/vagrant/projects/production/crystal/snob/README.adoc",
+		"/home/vagrant/projects/production/crystal/snob/LICENSE",
 		"/home/vagrant/projects/production/crystal/snob/install.sh",
+		"/home/vagrant/projects/production/crystal/snob/src/util.cr",
+		"/home/vagrant/projects/production/crystal/snob/src/messages.cr",
+		"/home/vagrant/projects/production/crystal/snob/src/reports.cr",
+		"/home/vagrant/projects/production/crystal/snob/src/session.cr",
+		"/home/vagrant/projects/production/crystal/snob/src/snmp.cr",
+		"/home/vagrant/projects/production/crystal/snob/scripts/centosbuild.sh",
+		"/home/vagrant/projects/production/crystal/snob/.ameba.yml",
+		"/home/vagrant/projects/production/crystal/snob/.gitignore",
+		"/home/vagrant/projects/production/crystal/snob/.editorconfig",
+		"/home/vagrant/projects/production/crystal/snob/docs/snob.5.adoc",
 		"/home/vagrant/projects/production/crystal/snob/snob.sublime-project",
+		"/home/vagrant/projects/production/crystal/snob/scripts/mkman.sh",
+		"/home/vagrant/projects/production/crystal/snob/spec/snmp_spec.cr",
+		"/home/vagrant/projects/production/crystal/snob/spec/session_spec.cr",
+		"/home/vagrant/projects/production/crystal/snob/spec/reports_spec.cr",
+		"/home/vagrant/projects/production/crystal/snob/spec/helpers_spec.cr",
+		"/home/vagrant/projects/production/crystal/snob/scripts/mkdev.sh",
+		"/home/vagrant/.config/sublime-text/Packages/Crystal/Crystal.sublime-settings",
+		"/home/vagrant/projects/production/crystal/snob/shard.lock",
+		"/home/vagrant/projects/production/crystal/snob/scripts/mkdocs.sh",
+		"/home/vagrant/.config/sublime-text/Packages/Pretty YAML/Pretty YAML.sublime-settings",
+		"/home/vagrant/projects/production/crystal/snob/docs/README.html",
+		"/home/vagrant/.config/sublime-text/Packages/Asciidoctor/Asciidoctor.sublime-settings",
+		"/home/vagrant/projects/production/crystal/snob/README.md",
+		"/home/vagrant/projects/production/crystal/snob/docs/V3Credentials.html",
+		"/home/vagrant/projects/production/crystal/snob/scripts/rpibuild4.sh",
+		"/home/vagrant/projects/production/crystal/snob/Makefile.sav",
+		"/home/vagrant/projects/production/crystal/snob/scripts/dev.sh",
+		"/home/vagrant/projects/production/crystal/snob/dev.sh",
+		"/home/vagrant/projects/production/crystal/snob/mkman.sh",
+		"/home/vagrant/projects/production/crystal/snob/mkprod.sh",
+		"/home/vagrant/projects/production/crystal/snob/mkdocs.sh",
 		"/home/vagrant/projects/production/crystal/snob/man/snob.1.ronn",
 		"/home/vagrant/projects/production/crystal/backup/.gitignore",
 		"/home/lewisb/projects/production/crystal/raptor/shard.yml",
@@ -739,6 +836,27 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"@@prompt",
+			"prompt",
+			"print_chars",
+			"Centos",
+			"centos",
+			"CENTOSFLAGS",
+			"OS",
+			"SYSID",
+			"build_centos",
+			"file_write",
+			"  #check_crontab",
+			"  # check_crontab",
+			"  # remove_crontab",
+			"  #remove_crontab",
+			"backup",
+			"NAME",
+			"backup",
+			"Myutils",
+			"Helpers",
+			"Myutils",
+			"backup",
 			"##",
 			"```",
 			"`"
@@ -749,6 +867,18 @@
 		"regex": false,
 		"replace_history":
 		[
+			"PROMPT",
+			"Redhat",
+			"redhat",
+			"REDHATFLAGS",
+			"build_redhat",
+			"dump_file",
+			"",
+			"${name}",
+			"name",
+			"snob",
+			"Reports",
+			"Util",
 			"==",
 			"----",
 			"*"
@@ -761,6 +891,103 @@
 		"whole_word": false,
 		"wrap": true
 	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"selected": true,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2685,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2685,
+								2685
+							]
+						],
+						"settings":
+						{
+							"__vi_external_disable": true,
+							"auto_complete": false,
+							"auto_complete_commit_on_tab": false,
+							"bracket_highlighter.clone_locations":
+							{
+							},
+							"bracket_highlighter.ignore": true,
+							"color_scheme": "Terminus.hidden-color-scheme",
+							"default_dir": "/home/vagrant/projects/production/crystal/snob/spec",
+							"draw_centered": false,
+							"draw_indent_guides": false,
+							"draw_unicode_white_space": false,
+							"draw_white_space": "none",
+							"gutter": false,
+							"highlight_line": false,
+							"is_widget": true,
+							"result_base_dir": "/home/vagrant/projects/production/crystal/snob",
+							"result_file_regex": null,
+							"result_line_regex": null,
+							"rulers":
+							[
+								500
+							],
+							"scroll_past_end": true,
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"terminus.highlight_counter": 286,
+							"terminus_view": true,
+							"terminus_view.args":
+							{
+								"auto_close": true,
+								"cancellable": false,
+								"cmd":
+								[
+									"/bin/bash",
+									"-i",
+									"-l"
+								],
+								"cwd": "/home/vagrant/projects/production/crystal/snob",
+								"default_title": "Login Shell",
+								"env":
+								{
+									"LANG": "en_US.UTF-8",
+									"TERM": "linux",
+									"TERMINUS_SUBLIME": "1",
+									"TERM_PROGRAM": "Terminus-Sublime"
+								},
+								"file_regex": null,
+								"line_regex": null,
+								"panel_name": "Terminus",
+								"show_in_panel": null,
+								"tag": null,
+								"timeit": false,
+								"title": null
+							},
+							"terminus_view.cancellable": false,
+							"terminus_view.key.ctrl+k": true,
+							"terminus_view.key.ctrl+p": true,
+							"terminus_view.natural_keyboard": true,
+							"terminus_view.tag": null,
+							"terminus_view.viewport_y": 1433.6,
+							"word_wrap": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1792.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"stack_multiselect": false,
+					"type": "text"
+				}
+			]
+		}
+	],
 	"incremental_find":
 	{
 		"height": 39.0
@@ -796,14 +1023,23 @@
 	{
 		"height": 0.0
 	},
+	"output.crystal_errors":
+	{
+		"height": 190.0
+	},
+	"output.exec":
+	{
+		"height": 191.0
+	},
 	"output.find_results":
 	{
 		"height": 191.0
 	},
 	"pinned_build_system": "Development",
+	"project": "snob.sublime-project",
 	"replace":
 	{
-		"height": 101.0
+		"height": 74.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -826,13 +1062,14 @@
 	},
 	"select_symbol":
 	{
-		"height": 0.0,
+		"height": 277.0,
 		"last_filter": "",
 		"selected_items":
 		[
 		],
-		"width": 0.0
+		"width": 740.0
 	},
+	"selected_group": 0,
 	"settings":
 	{
 	},
@@ -840,7 +1077,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 284.0,
+	"side_bar_width": 279.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
