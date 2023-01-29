@@ -13,17 +13,18 @@
 module Messages
   extend self
 
-  def about
-    <<-DOC
+  def self.print_version
+    puts <<-DESCRIPTION
     snob v#{VERSION} [compiled with Crystal #{Crystal::VERSION}] (#{Util.date})
 
     Copyright (c) 2019 - #{Time.local.to_s("%Y")} Lewis E. Bogan
     The MIT License (MIT); http://opensource.org/licences/MIT
     creater, maintainer: lebogan <lewis.bogan@comcast.net>
-    DOC
+    DESCRIPTION
+    exit 0
   end
 
-  def banner_message
+  def self.print_banner
     <<-BANNER
     Usage: snob [OPTIONS] [HOST]
     Browse a host's snmpv3 mib tree.
@@ -35,57 +36,29 @@ module Messages
     BANNER
   end
 
-  def usage_message
-    <<-USAGE
+  def self.print_usage
+    puts <<-USAGE
     Usage: snob [OPTIONS] [HOST]
     See snob --help or man page for more information.
     USAGE
+    exit 0
   end
 
-  def copyright_message
-    <<-COPYRIGHT
-
-  Copyright (c) 2019 - #{Time.local.to_s("%Y")} Lewis E. Bogan
-  The MIT License (MIT); http://opensource.org/licences/MIT
-  creater, maintainer: lebogan <lewis.bogan@comcast.net>
-  COPYRIGHT
+  def self.print_help(parser)
+    puts parser
+    exit 0
   end
 
-  def ping_message(hostname : String)
-    <<-PING
-    ping: #{hostname} is unreachable on this network
-    PING
-  end
+  def self.print_default_config_message(config_file)
+    puts <<-CONFIG
+  A default configuration file, #{config_file} has been created to hold
+  a registry of host credentials.
 
-  def blank_host_message
-    <<-HOSTNAME
-    snob: hostname can not be blank
-    HOSTNAME
-  end
+  You will be prompted to enter host credentials if they are missing from
+  this registry.
 
-  def snmp_message(hostname : String, mib_oid : String)
-    <<-SNMP
-    Error: cannot process this request because:
-    1. net-snmp-utils not installed or
-    2. host '#{hostname}' not snmpv3 enabled or
-    3. incorrect credentials used or
-    4. communication not permitted from this host or
-    5. unknown object identifier: '#{mib_oid}'.
-    Try 'snob --help' for more information.
-    SNMP
-  end
+  It can also be edited using the '--edit' option to change any values.
 
-  def missing_message(flag : String)
-    <<-MISSING_OPTION
-    Missing option argument: #{flag} OID
-    Example: snob -m lldp hostname
-    MISSING_OPTION
-  end
-
-  def invalid_message(flag : String)
-    <<-INVALID_OPTION
-    snob: invalid option -- '#{flag}'
-    Try 'snob --help' for more information.
-    INVALID_OPTION
+  CONFIG
   end
 end

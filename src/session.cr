@@ -8,12 +8,14 @@
 #    COPYRIGHT:  (C) 2021 Lewis E. Bogan <lewis.bogan@comcast.net>
 # Distributed under terms of the MIT license.
 # ===============================================================================
-record V3Credentials, user : String, auth_pass : String, priv_pass : String,
-  auth : String, crypto : String
 
 #  Defines session methods.
 module Session
   class V3Session
+    record V3Credentials, user : String, auth_pass : String, priv_pass : String, auth : String, priv : String do
+      include YAML::Serializable
+    end
+
     def initialize
       @prompt = Term::Prompt.new
     end
@@ -21,7 +23,7 @@ module Session
     # Prompts the user for host credentials. This method is typically invoked
     # when the credentials are not in the configuration file.
     # ```
-    # configure_session # => NamedTuple(user: String, auth: String, priv: String, crypto: String)
+    # configure_session # => Session::V3Session::V3Credentials
     # ```
     #
     def configure_session
@@ -32,9 +34,7 @@ module Session
         @prompt.ask("Authentication: [MD5/SHA]", default: "SHA").to_s.upcase,
         @prompt.ask("Crypto algorithm [AES/DES]: ", default: "AES").to_s.upcase
       )
-
-      {user: creds.user, auth_pass: creds.auth_pass, priv_pass: creds.priv_pass,
-       auth: creds.auth, crypto: creds.crypto}
+      creds
     end
   end
 end

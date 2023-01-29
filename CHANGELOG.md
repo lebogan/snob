@@ -1,6 +1,16 @@
 #CHANGELOG
-## 1.1.3(2023-01-24)
+## 1.2.0(2023-02-01)
 - Update for Crystal 1.7.2
+- Moved option parser to options.cr file.
+- Use structs instead of named tuples for passing data to/from methods/classes.
+- *(breaking-change)* Changed privacy protocol name from _crypto_ to _priv_ for consistant naming.
+  Edit *snobrc.yml* to change. Or, run _sed -i.bak -e "/s/crypto/priv/g" ~/.snob/snobrc.yml_.
+- Created a singleton registry for reading host credentials. Thanks @Blacksmoke16 for help.
+- Added better error exception handling.
+- Removed redundant helpers file.
+- Added some color to messages.
+- Remove object cross-compile for RaspberryPi3.
+- General cleanup - make variable names more meaningful, use full module/class paths, etc.
 
 ## 1.1.2(2022-10-16)
 - Update for Crystal 1.6.0

@@ -15,6 +15,21 @@ SEPERATOR           = "-------------------+-------------------------------------
 
 # Displays the results of a snmpwalk operation either raw or formatted.
 module Reports
+  extend self
+
+  def print_results(hostname : String, results : String, opts : Options::Opts)
+    case opts
+    when .display_formatted?
+      show_formatted(hostname, results, opts.mib_oid)
+    when .dump_file?
+      Dir.mkdir_p(DUMP_PATH) unless Dir.exists?(DUMP_PATH)
+      Util.write_file("#{DUMP_PATH}/#{hostname}_raw_dump.txt", results)
+      puts "See #{DUMP_PATH}/#{hostname}_raw_dump.txt for output.".colorize(:green)
+    else
+      show_raw(results)
+    end
+  end
+
   # Prints a line of characters for display formatting, defaults to 20 dashes.
   #
   # ```
@@ -38,43 +53,13 @@ module Reports
     text.size > length ? "#{text[0...length - trunc_string.size]}#{trunc_string}" : text
   end
 
-  # Capitalizes only the first word in a string, leaving the rest untouched. This
-  # preserves the words I want capitalized intentionally.
-  #
-  # ```
-  # Reports.capitalize!("my dog has Fleas") # => "My dog has Fleas"
-  # ```
-  def capitalize!(string : String) : String
-    String.build { |str| str << string[0].upcase << string[1..string.size] }
-  end
-
-  # Adds a period to the end of a string if no terminating punctuation (?, !, .)
-  # is present.
-  #
-  # ```
-  # Reports.punctuate!("let's end this")  # => "let's end this."
-  # Reports.punctuate!("let's end this!") # => "let's end this!"
-  # Reports.punctuate!("let's end this?") # => "let's end this?"
-  # ```
-  def punctuate!(string : String) : String
-    case string
-    when .ends_with?('.'), .ends_with?('?'), .ends_with?('!')
-      string
-    else
-      string.insert(-1, '.')
-    end
-  end
-
   def show_formatted(hostname, results, mib_oid)
-    Util.clear_screen
-    say_hey(hostname)
     table = {} of String => String # => Hash(String, String)
     format_table(results.split("\n"), table)
     display_table(table, hostname, mib_oid)
   end
 
   def show_raw(results)
-    Util.clear_screen
     display_raw_table(results.split("\n")) # => Array(String)
   end
 
@@ -176,7 +161,6 @@ module Reports
   # -----------------+-------------------------------------------------
   # ```
   def list_oids(list : NamedTuple)
-    Util.clear_screen
     header = {"friendly name", "object identifier"}
     display_header("OIDs", header, "Included pre-defined object identifiers")
     display_formatted_table(list)

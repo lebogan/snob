@@ -333,7 +333,10 @@ file. Make sure net-snmp is installed and functional. ${red}Use over the public
 internet is NOT recommended!${normal}
 
 ${green}See ${name} --help for further info as needed.
-See also the man files ${name}.1 and ${name}.5.${normal}
+See also the man files ${name}.1 and ${name}rc.yml.5.${normal}.
+
+Breaking changes are listed in the CHANGELOG.md. Follow any instructions
+included.
 --------------------------------------------------------------------------
 FINISH
 }

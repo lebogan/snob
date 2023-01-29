@@ -14,7 +14,6 @@ CRFLAGS := --release --no-debug --warnings all## Production build flags
 DEVFLAGS := --warnings all --error-on-warnings## Development build flags
 RASPI64FLAGS := --cross-compile --target "aarch64-unknown-linux-gnu" --release## Rpi Ubuntu production build flags
 RASPI4FLAGS := --cross-compile --target "armv7l-unknown-linux-gnueabihf" --release## Rpi production build flags
-RASPI3FLAGS := --cross-compile --target "armv6k-unknown-linux-gnueabihf" --release## Rpi production build flags
 REDHATFLAGS := --cross-compile --target "x86_64-unknown-linux-gnu" --release## Redhat production build flags
 DEBIANFLAGS := --cross-compile --target "x86_64-pc-linux-gnu" --release## Redhat production build flags
 PREFIX := /usr/local## Install root directory
@@ -43,12 +42,6 @@ raspi64: ## RaspberryPi4 aarch object file and compile script
 raspi64: $(OBJECT_SOURCES) $(SRC_SOURCES)
 	@$(CRYSTAL) build src/snob.cr -o bin/snob-aarch64 $(RASPI64FLAGS) | tee scripts/rpibuild64.sh
 	@sed -i -e "s|-o bin/snob-aarch64|-o bin/snob|g" scripts/rpibuild64.sh
-
-.PHONY: raspi3
-raspi3: ## RaspberryPi3 armv6k object file and compile script
-raspi3: $(OBJECT_SOURCES) $(SRC_SOURCES)
-	@$(CRYSTAL) build src/snob.cr -o bin/snob-rpi3 $(RASPI3FLAGS) | tee scripts/rpibuild3.sh
-	@sed -i -e "s|-o bin/snob-rpi3|-o bin/snob|g" scripts/rpibuild3.sh
 
 .PHONY: redhat
 redhat: ## Build the object file and compile script for rpm-based architectures

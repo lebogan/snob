@@ -23,6 +23,7 @@ require "yaml"
 require "option_parser"
 require "socket"
 require "term-prompt"
+require "colorize"
 require "./cli"
 
 OIDLIST = {arp:     "ipNetToPhysicalPhysAddress",
@@ -38,16 +39,8 @@ OIDLIST = {arp:     "ipNetToPhysicalPhysAddress",
 
 CONFIG_PATH = File.expand_path("#{ENV["HOME"]}/.snob")
 CONFIG_FILE = File.expand_path("#{CONFIG_PATH}/snobrc.yml")
-OUT_PATH    = File.expand_path("#{ENV["HOME"]}/tmp")
-OUT_FILE    = File.expand_path("#{OUT_PATH}/raw_dump.txt")
+DUMP_PATH   = File.expand_path("#{ENV["HOME"]}/tmp")
 VERSION     = {{ `shards version #{__DIR__}`.chomp.downcase.stringify }}
 PROMPT      = Term::Prompt.new
-
-# Allows displaying object methods during development.
-class Object
-  macro methods
-    {{ @type.methods.map &.name.stringify }}
-  end
-end
 
 App.run

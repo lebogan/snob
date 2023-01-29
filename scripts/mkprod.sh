@@ -82,7 +82,6 @@ fi
 build_prod ${name} prod
 build_prod "Man pages" man
 build_prod "Extra docs" docs
-build_prod "Raspi3 object" raspi3
 build_prod "Raspi 4 object" raspi4
 build_prod "Raspi64 object" raspi64
 build_prod "RedHat object" redhat

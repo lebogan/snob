@@ -14,37 +14,6 @@ module Util
     Time.unix(time).to_s("%Y-%m-%d")
   end
 
-  # Displays prompt and cursor all on one line if prompt ends with a space,
-  # otherwise displays prompt string, a newline, and then the cursor.
-  #
-  # ```
-  # prompt_msg("Enter something: ") # => Nil
-  # ```
-  #
-  # ```text
-  # $ Enter something: _
-  # ```
-  #
-  def self.prompt_msg(prompt : Tuple)
-    prompt[0].ends_with?(" ") ? print(*prompt) : puts(*prompt)
-  end
-
-  # Gets a single character (no newline) for use in paging long displays
-  # and other single character prompts.
-  #
-  # ```
-  # Util.ask_char("press 'q' to quit ") # => 'q'
-  # ```
-  #
-  # ```text
-  # $ press 'q' to quit _
-  # ```
-  #
-  def self.ask_char(*args) : Char?
-    prompt_msg(args)
-    STDIN.raw &.read_char
-  end
-
   # Clears the screen using ansi codes.
   #
   # ```text
@@ -59,16 +28,6 @@ module Util
   #
   def self.clear_screen
     puts IO::Memory.new << "\e[2J\e[1;1H"
-  end
-
-  # Returns an array containing the contents of _filename_.
-  #
-  # ```
-  # Util.read_file("./src/spec_helper.cr") # => Array(String)
-  # ```
-  #
-  def self.read_file(filename : String) : Array(String)
-    File.read_lines(filename)
   end
 
   # Opens _filename_ for writing. Creates it if it doesn't exist. Overwrites _content_.
@@ -97,15 +56,34 @@ module Util
   # Util.process_argv("myhost") # => "myhost"
   # ```
   #
-  def process_argv(argv) : String
-    prompt = Term::Prompt.new
+  def self.process_argv(argv) : String
     if argv.empty?
-      hostname = prompt.ask("Enter hostname: ").to_s
-      abort blank_host_message if hostname.blank?
+      hostname = PROMPT.ask("Enter hostname: ").to_s
+      raise Errors::BlankHostError.error if hostname.blank?
       hostname
     else
       argv[0]
     end
+  end
+
+  # Does a lookup of a host's ip address and returns it as a Socket::IPAddress
+  # object. Raises an error if the hostname doesn't exist or can't be resolved.
+  # Remove the ":7" part with `rstrip(":7")` to get just the ip address.
+  #
+  # ```
+  # Util.resolve_host("example.com")                   # => ip_address:7
+  # Util.resolve_host("example.com").to_s.rstrip(":7") # => ip_address
+  # ```
+  #
+  def self.resolve_host(host)
+    addrinfo = Socket::Addrinfo.resolve(
+      domain: host,
+      service: "echo",
+      type: Socket::Type::DGRAM,
+      protocol: Socket::Protocol::UDP,
+    ) # => Array(Socket::Addrinfo)
+
+    addrinfo.first?.try(&.ip_address)
   end
 
   # Asks for a hostname if none is given on the command line.
@@ -114,16 +92,27 @@ module Util
   # Util.check_for_host # => String
   # ```
   #
-  def check_for_host(argv)
+  def self.check_for_host(argv)
     hostname = process_argv(argv)
-
-    # Checks if host exists on this network.
     begin
       resolve_host("#{hostname}")
     rescue ex
-      abort ex.message
+      Errors::InvalidHostnameError.error(ex.message)
     end
     hostname
+  end
+
+  # Runs the editor indicated by ENV["EDITOR"], nano as default.
+  # Redirect the standard input, output and error IO of a process
+  # using the IO of the parent process, Process::Redirect::Inherit.
+  def self.edit_config_file(filename)
+    Process.run(
+      ENV.fetch("EDITOR", "nano"),
+      args: {"#{filename}"},
+      input: Process::Redirect::Inherit,
+      output: Process::Redirect::Inherit,
+      error: Process::Redirect::Inherit,
+    )
   end
 
   # Runs a system-level command and returns a Tuple(Int32, String) containing

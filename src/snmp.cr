@@ -12,7 +12,7 @@
 # Defines the Snmp object and forms the **walk_mib3** command string.
 module Snmp
   class Snmp
-    property :user, :auth_pass, :priv_pass, :auth, :crypto
+    getter user, auth_pass, priv_pass, auth, priv
 
     # Creates a new Snmp object for a walk session.
     #
@@ -21,7 +21,7 @@ module Snmp
     # ```
     #
     def initialize(@user : String, @auth_pass : String, @priv_pass : String,
-                   @auth : String, @crypto : String)
+                   @auth : String, @priv : String)
     end
 
     # Walks the mib tree branch.
@@ -32,7 +32,7 @@ module Snmp
     #
     def walk_mib3(hostname : String, oid : String, format : String) : Tuple(Int32, String)
       Util.run_cmd("snmpwalk", {"-v3", "-u", "#{@user}", "-O#{format}", "-l", "authpriv",
-                                "-a", "#{auth}", "-A", "#{@auth_pass}", "-x", "#{@crypto}", "-X",
+                                "-a", "#{auth}", "-A", "#{@auth_pass}", "-x", "#{@priv}", "-X",
                                 "#{@priv_pass}", "#{hostname}", "#{oid}"}
       )
     end

@@ -15,30 +15,24 @@ module Config
 
   # Creates a dummy entry.
   def build_default_config(config_path : String, config_file : String)
-    Dir.mkdir_p(config_path, 0o700)
     conf = {"dummy" => {user: "username", auth_pass: "auth passphrase",
                         priv_pass: "priv passphrase", auth: "MD5/SHA",
-                        crypto: "AES/DES"}}
-    build_config_file(config_file, conf)
-  end
-
-  # Creates a new config file.
-  def build_config_file(config_file : String, conf : Hash)
+                        priv: "AES/DES"}}
+    Dir.mkdir_p(config_path, 0o700) unless Dir.exists?(config_path)
     File.open(config_file, "w") do |file|
       file.puts "# #{config_file}"
       YAML.dump(conf, file)
     end
   rescue ex
-    puts "Error encountered: #{ex.message}"
-    exit 1
+    Errors::BadFileError.error(ex.message)
   end
 
-  # Adds new host to config file
+  # Adds new host credentials to config file # => config.
   def update_config_file(hostname : String)
-    print_chars('-', 60)
+    Reports.print_chars('-', 60)
     config = Session::V3Session.new.configure_session
     credentials = {hostname => config}.to_yaml.gsub("---", "")
-    print_chars('-', 60)
+    Reports.print_chars('-', 60)
     choice = PROMPT.yes?("Save these credentials? ")
     Util.append_file(CONFIG_FILE, credentials) if choice
     config
@@ -46,12 +40,5 @@ module Config
 
   def check_credentials(config_file : String) : YAML::Any
     YAML.parse(File.read(config_file))
-  end
-
-  def fetch_credentials(config_file : String, hostname : String)
-    creds = YAML.parse(File.read(config_file))[hostname]
-    {user: creds["user"].to_s, auth_pass: creds["auth_pass"].to_s,
-     priv_pass: creds["priv_pass"].to_s, auth: creds["auth"].to_s,
-     crypto: creds["crypto"].to_s}
   end
 end
